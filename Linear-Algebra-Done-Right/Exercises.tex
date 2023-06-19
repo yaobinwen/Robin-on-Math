@@ -411,4 +411,388 @@ Therefore, according to the scalar multiplication on $\mathbf{F}^n$, we have:
   \end{split}
 \end{equation*}
 
+% =============================================================================
+\section{EXERCISES 1.B}
+% =============================================================================
+
+% ******************************
+\subsection{Question 1}
+% ******************************
+
+Prove that $-(-v) = v$ for every $v \in V$.
+
+Solution:
+
+Per 1.31, we know $-v = (-1)v$ for every $v \in V$. Therefore,
+
+\[ -(-v) = (-1)(-v) = (-1)\bigl((-1)v\bigr) \]
+
+Because $v$ is an element in the vector space $V$, that means the scalar
+multiplication on $V$ satisfies the property of associativity, i.e., for $a, b
+\in \mathbf{F}$ and $v \in V$, we have:
+
+\[ (ab)v = a(bv)\]
+
+and $1$ is the multiplicative identity, i.e.:
+
+\[ 1v = v\]
+
+Therefore,
+
+\[ (-1)\bigl((-1)v\bigr) = \bigl((-1)(-1)\bigr)v = 1v = v \]
+
+Therefore,
+
+\[ -(-v) = v \]
+
+% ******************************
+\subsection{Question 2}
+% ******************************
+
+Suppose $a \in \mathbf{F}$, $v \in V$, and $av = 0$. Prove that $a = 0$ or
+$v = 0$.
+
+Solution:
+
+We must be careful to not assume that $V$ is $\mathbf{F}^n$. Although we've
+learned that $\mathbf{F}^n$ is an important vector space, vector space itself
+can be a set of any kind of elements, not necessarily $\mathbf{F}^n$.
+
+We also need to note that the $0$ on the right side is the zero vector in $V$,
+not a complex number in $\mathbf{F}$.
+
+We need to discuss this in two cases.
+
+The first case is $a \neq 0$ where $0 \in \mathbf{F}$. Because $a \neq 0$,
+$1/a$ exists and makes sense. Therefore, if we do scalar multiplication on the
+left side, we have (applying the multiplicative associativity and the fact that
+1 is the multiplicative identity):
+
+\[ \frac{1}{a}(av) = (\frac{1}{a}a)v = 1v = v \]
+
+And on the right side, according to 1.29, we have:
+
+\[ \frac{1}{a}0 = 0 \]
+
+Therefore, in this case,
+
+\[ v = 0 \]
+
+The second case is $v \neq 0$ where $0 \in V$. In this case:
+
+\[ av = 0 = 0v \]
+
+Because $v \neq 0$, $a$ must be $0$ to make the equation work. So $a = 0$ where
+$0 \in \mathbf{F}$.
+
+% ******************************
+\subsection{Question 3}
+% ******************************
+
+Suppose $v, w \in V$. Explain why there exists a unique $x \in V$ such that
+$v + 3x = w$.
+
+Solution:
+
+This can be explained as follows:
+
+\begin{enumerate}
+  \item The original expression is $v + 3x = w$.
+  \item Applying the commutativity on the left side, we have $3x + v = w$.
+  \item Adding the additive inverse on both sides, we have $3x + v + (-v) =
+    w + (-v)$.
+  \item Applying the associativity on the left side, we have $3x + \bigl(v +
+    (-v)\bigr) = w + (-v)$.
+  \item Because an element adding its additive inverse equals $0$, we have
+    $3x + \bigl(v + (-v)\bigr) = 3x + 0 = w + (-v)$.
+  \item Because an element adding the additive identity equals itself, we have
+    $3x + 0 = 3x = w + (-v)$.
+  \item Multiplying $1/3$ on both sides, we have $(\frac{1}{3})3x =
+    (\frac{1}{3}3)x = 1x = x = \frac{1}{3}\bigl(w + (-v)\bigr)$.
+  \item Because $w, (-v) \in V$ and $V$ is a vector space, so the addition and
+    scalar multiplication are closed on $V$, so $\frac{1}{3}\bigl(w +
+    (-v)\bigr) \in V$. So $x$ exists.
+  \item Because $w, (-v)$ are specific elements in $V$, the arithmetics also
+    produce the same result. So $x$ is unique.
+\end{enumerate}
+
+% ******************************
+\subsection{Question 4}
+% ******************************
+
+The empty set is not a vector space. The empty set fails to satisfy only one of
+the requirements listed in 1.19. Which one?
+
+Solution:
+
+The empty set doesn't satisfy the requirement of additive identity. A vector
+space requires the existence of the additive identity, which means the vector
+space must have at least one element. This conflicts with the fact that the
+empty set doesn't have any elements.
+
+% ******************************
+\subsection{Question 5}
+% ******************************
+
+Show that in the definition of a vector space (1.19), the additive inverse
+condition can be replaced with the condition that $0v = 0$ for all $v \in V$.
+Here the $0$ on the left side is the number 0, and the $0$ on the right side is
+the additive identity of $V$. (The phrase ``a condition can be replaced'' in a
+definition means that the collection of objects satisfying the definition is
+unchanged if the original condition is replaced with the new condition.)
+
+Solution:
+
+Because the number $0$ can be written as $\bigl(1 + (-1)\bigr)$, we have:
+
+$0v = \bigl(1 + (-1)\bigr)v = 1v + (-1)v = v + (-1)v = 0$
+
+Here we denote $(-1)v$ as $w$, so we have $v + w = 0$, which is the same as the
+original condition of additive inverse.
+
+% ******************************
+\subsection{Question 6}
+% ******************************
+
+Let $\infty$ and $-\infty$ denote two distinct objects, neither of which is in
+$\mathbf{R}$. Define an addition and scalar multiplication on $\mathbf{R} \cup
+\{\infty\} \cup \{-\infty\}$ as you could guess from the notation. Specifically,
+the sum and product of two real numbers is as usual, and for $t \in \mathbf{R}$
+define:
+
+\begin{itemize}
+  \item
+    \[
+      t \infty = \begin{cases}
+        -\infty, & if \ t < 0 \\
+        0,       & if \ t = 0 \\
+        \infty,  & if \ t > 0
+      \end{cases}
+    \]
+  \item
+    \[
+      t (-\infty) = \begin{cases}
+        \infty,   & if \ t < 0 \\
+        0,        & if \ t = 0 \\
+        -\infty,  & if \ t > 0
+      \end{cases}
+    \]
+  \item $t + \infty = \infty + t = \infty$
+  \item $t + (-\infty) = (-\infty) + t = -\infty$
+  \item $\infty + \infty = \infty$
+  \item $(-\infty) + (-\infty) = -\infty$
+  \item $\infty + (-\infty) = 0$
+\end{itemize}
+
+Is $\mathbf{R} \cup \{\infty\} \cup \{-\infty\}$ a vector space over
+$\mathbf{R}$? Explain
+
+Solution:
+
+We can solve this problem by examining $\mathbf{R} \cup \{\infty\} \cup
+\{-\infty\}$ according to the definition of vector space.
+
+To make it easier to write, let's use $\mathbb{R}$ to denote $\mathbf{R} \cup
+\{\infty\} \cup \{-\infty\}$.
+
+First of all, because $\mathbf{R}$ itself is already a vector space, we don't
+need to verify that again, so we can focus on verifying whether the definition
+still holds for $\infty$ and $-\infty$.
+
+By examining the definition of addition and scalar multiplication above, we can
+easily tell that \textbf{addition} and \textbf{scalar multiplication} are
+closed on $\mathbb{R}$.
+
+\textbf{Commutativity} also holds for all $e \in \mathbb{R}$.
+
+For \textbf{associativity}, we need to examine the additive associativity and
+multiplicative associativity separately. Let's examine the additive
+associativity $(u + v) + w = u + (v + w)$ first. Again, we don't need to care
+about the case when $u, v, w \in \mathbf{R}$. We need to examine when at least
+one of $u, v, w$ is $\infty$ or $-\infty$. There are the following cases:
+
+\begin{enumerate}
+  \item $(\infty + v) + w$
+  \item $(-\infty + v) + w$
+  \item $(u + \infty) + w$
+  \item $(u + -\infty) + w$
+  \item $(u + v) + \infty$
+  \item $(u + v) + -\infty$
+  \item $(\infty + \infty) + w$
+  \item $(-\infty + \infty) + w = 0 + w = w$, while $-\infty + (\infty + w) =
+    -\infty + \infty = 0$ (not satisfied)
+  \item $(\infty + -\infty) + w = 0 + w = w$, while $\infty + (-\infty + w) =
+    \infty + -\infty = 0$ (not satisfied)
+  \item $(-\infty + -\infty) + w$
+  \item $(u + \infty) + \infty$
+  \item $(u + -\infty) + \infty$ (not satisfied)
+  \item $(u + \infty) + -\infty$ (not satisfied)
+  \item $(u + -\infty) + -\infty$
+  \item $(\infty + v) + \infty$
+  \item $(-\infty + v) + \infty$
+  \item $(\infty + v) + -\infty$
+  \item $(-\infty + v) + -\infty$
+  \item $(\infty + \infty) + \infty$
+  \item $(-\infty + \infty) + \infty$ (not satisfied)
+  \item $(\infty + -\infty) + \infty$
+  \item $(\infty + \infty) + -\infty$ (not satisfied)
+  \item $(-\infty + -\infty) + \infty$ (not satisfied)
+  \item $(-\infty + \infty) + -\infty$
+  \item $(\infty + -\infty) + -\infty$ (not satisfied)
+  \item $(-\infty + -\infty) + -\infty$
+\end{enumerate}
+
+We can see that the additive associativity does not hold for $\mathbb{R}$, so
+we can say $\mathbb{R}$ is not a vector space.
+
+(TODO: Examine further to determine if the other properties hold.)
+
+% =============================================================================
+\section{EXERCISES 1.C}
+% =============================================================================
+
+% ******************************
+\subsection{Question 1}
+% ******************************
+
+TODO
+
+% ******************************
+\subsection{Question 2}
+% ******************************
+
+TODO
+
+% ******************************
+\subsection{Question 3}
+% ******************************
+
+TODO
+
+% ******************************
+\subsection{Question 4}
+% ******************************
+
+TODO
+
+% ******************************
+\subsection{Question 5}
+% ******************************
+
+TODO
+
+% ******************************
+\subsection{Question 6}
+% ******************************
+
+TODO
+
+% ******************************
+\subsection{Question 7}
+% ******************************
+
+TODO
+
+% ******************************
+\subsection{Question 8}
+% ******************************
+
+TODO
+
+% ******************************
+\subsection{Question 9}
+% ******************************
+
+TODO
+
+% ******************************
+\subsection{Question 10}
+% ******************************
+
+TODO
+
+% ******************************
+\subsection{Question 11}
+% ******************************
+
+TODO
+
+% ******************************
+\subsection{Question 12}
+% ******************************
+
+TODO
+
+% ******************************
+\subsection{Question 13}
+% ******************************
+
+TODO
+
+% ******************************
+\subsection{Question 14}
+% ******************************
+
+TODO
+
+% ******************************
+\subsection{Question 15}
+% ******************************
+
+TODO
+
+% ******************************
+\subsection{Question 16}
+% ******************************
+
+TODO
+
+% ******************************
+\subsection{Question 17}
+% ******************************
+
+TODO
+
+% ******************************
+\subsection{Question 18}
+% ******************************
+
+TODO
+
+% ******************************
+\subsection{Question 19}
+% ******************************
+
+TODO
+
+% ******************************
+\subsection{Question 20}
+% ******************************
+
+TODO
+
+% ******************************
+\subsection{Question 21}
+% ******************************
+
+TODO
+
+% ******************************
+\subsection{Question 22}
+% ******************************
+
+TODO
+
+% ******************************
+\subsection{Question 23}
+% ******************************
+
+TODO
+
+% ******************************
+\subsection{Question 24}
+% ******************************
+
+TODO
+
 \end{document}
