@@ -132,3 +132,24 @@ This document records down my study activities for future reflection. The notes,
 - 11:00 ~ 11:30 (30m)
 
 1. Worked on Exercises 1.A to refresh my memory on Chapter 1A. I finished questions 12 ~ 16.
+
+## 2023-06-19 (Mon)
+
+- 09:16 ~ 10:01 (44m)
+- 10:35 ~ 11:12 (37m)
+- 12:43 ~ 13:20 (37m)
+- 13:37 ~ 14:35 (58m)
+
+1. Finished Exercises 1.B.
+
+## 2023-06-20 (Tue)
+
+- 07:50 ~ 08:25 (35m)
+
+1. Worked on Exercises 1.C.
+
+## 2023-06-30 (Fri)
+
+- 07:24 ~ 08:34 (1h10m)
+
+1. Worked on Exercises 1.C.
