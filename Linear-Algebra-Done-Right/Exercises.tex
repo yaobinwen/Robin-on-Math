@@ -685,10 +685,10 @@ Let's call this subset $A$.
     $(u_1 + w_1) + 2(u_2 + w_2) + 3(u_3 + w_3) = (u_1 + 2u_2 + 3u_3) + (w_1 +
     2w_2 + 3w_3) = 0 + 0 = 0$. Therefore, we know $u + w \in A$.
   \item $A$ is closed under scalar multiplication because: For $u \in A$ and
-  $a \in \mathbf{F}$, according to the scalar multiplication on $\mathbf{F}^3$,
-  $au = a(u_1, u_2, u_3) = (a u_1, a u_2, a u_3)$. We can also see that
-  $(a u_1) + 2(a u_2) + 3(a u_3) = a(u_1 + 2u_2 + 3u_3) = a \cdot 0 = 0$.
-  Therefore, we know that $au \in A$.
+    $a \in \mathbf{F}$, according to the scalar multiplication on
+    $\mathbf{F}^3$, $au = a(u_1, u_2, u_3) = (a u_1, a u_2, a u_3)$. We can
+    also see that $(a u_1) + 2(a u_2) + 3(a u_3) = a(u_1 + 2u_2 + 3u_3) =
+    a \cdot 0 = 0$. Therefore, we know that $au \in A$.
 \end{itemize}
 
 Therefore, the subset $A$ is a subspace of $\mathbf{F}^3$.
@@ -697,19 +697,94 @@ Therefore, the subset $A$ is a subspace of $\mathbf{F}^3$.
 \subsubsection*{(b)}
 % ------------------------------
 
-TODO
+Let's examine \{$(x_1, x_2, x_3) \in \mathbf{F}^3: x_1 + 2x_2 + 3x_3 = 4$\}.
+Let's call this subset $B$.
+
+\begin{itemize}
+  \item The additive identity $(0, 0, 0)$ is \textbf{not} in $B$ because $0 +
+    2 \cdot 0 + 3 \cdot 0 = 0 \neq 4$.
+  \item $B$ is \textbf{not} closed under addition because: For $u, w \in B$,
+    according to the addition on $\mathbf{F}^3$, we have $u + w = (u_1, u_2,
+    u_3) + (w_1, w_2, w_3) = (u_1 + w_1, u_2 + w_2, u_3 + w_3)$. We can also
+    see that $(u_1 + w_1) + 2(u_2 + w_2) + 3(u_3 + w_3) = (u_1 + 2u_2 + 3u_3) +
+    (w_1 + 2w_2 + 3w_3) = 4 + 4 = 8 \neq 4$. Therefore, we know $u + w \notin
+    B$.
+  \item $B$ is \textbf{not} closed under scalar multiplication because: For $u
+    \in B$ and $a \in \mathbf{F}$, according to the scalar multiplication on
+    $\mathbf{F}^3$, $au = a(u_1, u_2, u_3) = (a u_1, a u_2, a u_3)$. We can
+    also see that $(a u_1) + 2(a u_2) + 3(a u_3) = a(u_1 + 2u_2 + 3u_3) =
+    a \cdot 0 = 0 \neq 4$. Therefore, we know that $au \notin B$.
+\end{itemize}
+
+Therefore, the subset $B$ is \textbf{not} a subspace of $\mathbf{F}^3$.
 
 % ------------------------------
 \subsubsection*{(c)}
 % ------------------------------
 
-TODO
+Let's examine \{$(x_1, x_2, x_3) \in \mathbf{F}^3: x_1 x_2 x_3 = 0$\}. Let's
+call this subset $C$. (Note the $C$ in this section is not the set of the
+complex numbers.)
+
+\begin{itemize}
+  \item The additive identity $(0, 0, 0)$ is in $C$ because $0 \cdot 0 \cdot 0
+    = 0$.
+  \item $C$ is \textbf{not} closed under addition because: For $u, w \in C$,
+    according to the addition on $\mathbf{F}^3$, we have:
+    \begin{equation*}
+      \begin{split}
+        u + w
+        & = (u_1, u_2, u_3) + (w_1, w_2, w_3) \\
+        & = (u_1 + w_1, u_2 + w_2, u_3 + w_3)
+      \end{split}
+    \end{equation*}
+    We can also see that:
+    \begin{equation*}
+      \begin{split}
+        & (u_1 + w_1) \cdot (u_2 + w_2) \cdot (u_3 + w_3) \\
+        & = u_1 u_2 u_3 + u_1 u_2 w_3 + u_1 w_2 u_3 + u_1 w_2 w_3 +
+          w_1 u_2 w_3 + w_1 u_2 w_3 + w_1 w_2 u_3 + w_1 w_2 w_3 \\
+        & = 0 + u_1 u_2 w_3 + u_1 w_2 u_3 + u_1 w_2 w_3 + w_1 u_2 w_3 +
+          w_1 u_2 w_3 + w_1 w_2 u_3 + 0 \\
+        & = u_1 u_2 w_3 + u_1 w_2 u_3 + u_1 w_2 w_3 + w_1 u_2 w_3 + w_1 u_2 w_3
+          + w_1 w_2 u_3
+      \end{split}
+    \end{equation*}
+    Because $u_1 u_2 u_3 = 0$ and $w_1 w_2 w_3 = 0$, we know at least one of
+    $u_1, u_2, u_3$ is 0 and at least one of $w_1, w_2, w_3$ is 0. Among all
+    the cases, in some cases the expression above is not equal to 0. For
+    example, when $u_1, u_2 \neq 0, u_3 = 0$ and $w_1 = 0, w_2, w_3 \neq 0$,
+    the expression above is $u_1 u_2 w_3 + 0 + u_1 w_2 w_3 + 0 + 0 + 0 \neq 0$.
+    Therefore, $C$ is not closed under addition.
+  \item $C$ is closed under scalar multiplication because: For $u \in C$ and
+    $a \in \mathbf{F}$, according to the scalar multiplication on
+    $\mathbf{F}^3$, $au = a(u_1, u_2, u_3) = (a u_1, a u_2, a u_3)$. We can
+    also see that $(a u_1) \cdot (a u_2) \cdot (a u_3) = a^3(u_1 u_2 u_3) =
+    a^3 \cdot 0 = 0$. Therefore, we know that $au \in C$.
+\end{itemize}
+
+Therefore, the subset $C$ is \textbf{not} a subspace of $\mathbf{F}^3$.
 
 % ------------------------------
 \subsubsection*{(d)}
 % ------------------------------
 
-TODO
+Let's examine \{$(x_1, x_2, x_3) \in \mathbf{F}^3: x_1 = 5x_3$\}.
+Let's call this subset $D$.
+
+\begin{itemize}
+  \item The additive identity $(0, 0, 0)$ is in $D$ because $0 = 5 \cdot 0$.
+  \item $D$ is closed under addition because: For $u, w \in D$, according to
+    the addition on $\mathbf{F}^3$, we have $u + w = (u_1, u_2, u_3) + (w_1,
+    w_2, w_3) = (u_1 + w_1, u_2 + w_2, u_3 + w_3)$. We can also see that $(u_1
+    + w_1) = (5u_3 + 5w_3) = 5(u_3 + w_3)$. Therefore, we know $u + w \in D$.
+  \item $D$ is closed under scalar multiplication because: For $u \in D$ and $a
+    \in \mathbf{F}$, according to the scalar multiplication on $\mathbf{F}^3$,
+    $au = a(u_1, u_2, u_3) = (a u_1, a u_2, a u_3)$. We can also see that
+    $a u_1 = a (5u_3) = 5(a u_3)$. Therefore, we know that $au \in D$.
+\end{itemize}
+
+Therefore, the subset $D$ is a subspace of $\mathbf{F}^3$.
 
 % ******************************
 \subsection{Question 2}
