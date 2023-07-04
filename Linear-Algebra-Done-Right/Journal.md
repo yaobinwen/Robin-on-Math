@@ -159,3 +159,9 @@ This document records down my study activities for future reflection. The notes,
 - 12:07 ~ 13:11 (1h4m)
 
 1. Worked on Exercises 1.C.
+
+## 2023-07-04 (Tue)
+
+- 09:39 ~ 10:25 (46m)
+
+1. Worked on Exercises 1.C.
