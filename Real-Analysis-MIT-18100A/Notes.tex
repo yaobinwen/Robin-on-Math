@@ -1,0 +1,150 @@
+% Regarding `oneside` (https://stackoverflow.com/a/8371473/630364):
+%
+% `oneside` removes the blank pages between chapters.
+% "Note that this method make the margins of all the pages the same. In
+% `twoside`, the margins are different for the odd and the even pages".
+\documentclass[12pt, letterpaper, oneside]{book}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[letterpaper, textwidth=7.5in, textheight=8in]{geometry}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=magenta,
+  urlcolor=blue,
+}
+\usepackage{parskip}
+
+\title{
+  Notes on \textit{Basic Analysis I: Introduction to Real Analysis, Volume 1}
+}
+\author{Yaobin Wen}
+\date{July 2023}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\chapter*{Overview}
+\addcontentsline{toc}{chapter}{Overview}
+
+This document contains my study notes of the textbook \textit{Basic Analysis I:
+Introduction to Real Analysis, Volume 1}. I use it for a few purposes:
+
+\begin{enumerate}
+  \item As a reference to quickly refresh my memory on the subjects.
+  \item Keep the notes to help me understand the text that is not obvious for
+    me to comprehend.
+\end{enumerate}
+
+% =============================================================================
+%
+% Chapter: Review of Real Numbers
+%
+% =============================================================================
+
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+
+% =============================================================================
+\section{About this book}
+% =============================================================================
+
+(Nothing to write down.)
+
+% =============================================================================
+\section{About analysis}
+% =============================================================================
+
+The \textbf{most important difference} between analysis and algebra:
+\begin{itemize}
+  \item In algebra, we prove \textbf{equalities} directly.
+  \item In analysis, we usually prove \textbf{inequalities} and we prove those
+    inequalities by estimating.
+\end{itemize}
+
+% =============================================================================
+\section{Basic set theory}
+% =============================================================================
+
+% ******************************
+\subsection{Sets}
+% ******************************
+
+\textbf{Definition 0.3.1.} A \textit{set} is a collection of objects called
+\textit{elements} or \textit{members}. A set with no objects is called the
+\textit{empty set} and is denoted by $\emptyset$ (or sometimes by $\{\}$).
+
+The \textbf{universe} is the set that contains only the elements that we are
+interested in. It is generally understood from context and is not explicitly
+mentioned.
+
+The various set-related notations:
+\begin{itemize}
+  \item \textbf{Membership}:
+    \begin{itemize}
+      \item[$\bullet$] $a \in A$: the element $a$ belongs to the set $A$
+      \item[$\bullet$] $a \notin A$: the element $a$ does not belong to the set
+        $A$.
+    \end{itemize}
+  \item \textbf{Subset}:
+    \begin{itemize}
+      \item Used in this book: $A \subset B$ (at times: $B \supset A$)
+      \item Alternatively: Some people prefer to use $A \subseteq B$ to denote
+        ``A is a subset of B''.
+    \end{itemize}
+  \item \textbf{Equality}:
+    \begin{itemize}
+      \item[$\bullet$] $A = B$: A and B contain exactly the same elements.
+      \item[$\bullet$] $A \neq B$
+    \end{itemize}
+  \item \textbf{Proper subset}:
+    \begin{itemize}
+      \item Used in this book: $A \subsetneq B$: $A \subset B$ and $A \neq B$.
+      \item Alternatively: Some people prefer to use $A \subset B$ to denote
+        ``A is a proper subset of B''. Note this can be confused with the
+        notation of ``subset'' so consistency of usage is important.
+    \end{itemize}
+  \item \textbf{Set building notation}: $\{x \in A: P(x)\}$ refers to a subset
+    of the set $A$ containing all the elements of $A$ that satisfy the property
+    $P(x)$.
+  \item \textbf{Natural numbers}: $\mathbb{N} := \{1, 2, 3, \ldots \}$
+  \item \textbf{Integers}: $\mathbb{Z} := \{0, -1, 1, -2, 2, \ldots \}$
+  \item \textbf{Rational numbers}: $\mathbb{Q} := \{\frac{m}{n}: m,n \in
+    \mathbb{Z}, n \neq 0 \}$
+  \item \textbf{Real numbers}: $\mathbb{R}$
+  \item \textbf{Union}: $A \cup B := \{x: x \in A \ or \ x \in B\}$
+  \item \textbf{Intersection}: $A \cap B := \{x: x \in A \ and \ x \in B\}$
+  \item \textbf{Complement}:
+    \begin{itemize}
+      \item $A \setminus B := \{x: x \in A \ and \ x \notin B\}$
+      \item $B^c$: If the set $A$ can be understood from the context. Here ``c''
+        is the first letter of the word ``complement'', not a set $c$.
+    \end{itemize}
+  \item \textbf{Disjoint}: $A$ and $B$ are said to be \textit{disjoint} if $A
+    \cap B = \emptyset$.
+\end{itemize}
+
+% =============================================================================
+%
+% Chapter 1: Real Numbers
+%
+% =============================================================================
+
+\chapter{Real Numbers}
+
+TODO
+
+\chapter*{References}
+\addcontentsline{toc}{chapter}{References}
+
+\begin{itemize}
+  \item $[1]$ \href{https://ocw.mit.edu/courses/18-100a-real-analysis-fall-2020/resources/mit18_100af20_basic_analysis/}{Lebl, Jiří: \it{Basic Analysis I: Introduction to Real Analysis, Volume 1}}
+\end{itemize}
+
+\end{document}
