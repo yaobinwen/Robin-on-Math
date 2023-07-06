@@ -242,6 +242,78 @@ Let $P(n)$ be a statement depending on a natural number $n$. Suppose that:
 
 Then $P(n)$ is true for all $n \in \mathbb{N}$.
 
+The textbook leaves the proof of this theorem as an exercise, so here is mine:
+
+My proof: We still use the method of ``proof by contradiction''. Suppose $S$ is
+the set of natural numbers $i$ for which $P(i)$ is not true and $S$ is not
+empty. By the well ordering property, we know $S$ has a least element and let's
+call it $m$. Because $P(k)$ is true for all $k = 1, 2, \ldots, n$, we know that
+$1, 2, \ldots, n \notin S$. Therefore, $m > n$ and $m-1$ is a natural number,
+too. Since $m$ is the least element of $S$, we know $m-1 \notin S$. Because
+$P(i)$ is not true for all $i \in S$ and because $m-1 \notin S$, we know
+$P(m-1)$ is true. However, by the induction step, we see that $P(m-1+1) = P(m)$
+must be true, so $m \notin S$, contradicting the statement that $m \in S$.
+Therefore, $S$ must be empty and $P(n)$ is true for all $n \in \mathbb{N}$.
+
+% ******************************
+\subsection{Functions}
+% ******************************
+
+In order to define functions rigorously, we must define the Cartesian product
+firstly.
+
+% ------------------------------
+\subsubsection*{Definition 0.3.10 Cartesian product}
+% ------------------------------
+
+Let $A$ and $B$ be sets. The \textit{Cartesian product} is the set of tuples
+defined as \[ A \times B := \{(x, y): x \in A, y \in B \} \].
+
+\textbf{Note}: ``tuple'' is the same as the ``list'' as we see in ``Linear
+Algebra Done Right''.
+
+Examples:
+\begin{itemize}
+  \item $[0,1] \times [0,1]$ = $\{(0,0), (0,1), (1,0), (1,1)\}$
+  \item $[0,1] \times [0,1]$ is also denoted as $[0,1]^2$.
+  \item $\mathbb{R}^2$ = $\mathbb{R} \times \mathbb{R}$
+\end{itemize}
+
+% ------------------------------
+\subsubsection*{Definition 0.3.11 Function}
+% ------------------------------
+
+A \textit{function} $f: A \rightarrow B$ is a subset $f$ of $A \times B$ such
+that for each $x \in A$, there is a \textbf{unique} $(x,y) \in f$. We then
+write $f(x) = y$.
+
+The various terms that are related with functions:
+\begin{itemize}
+  \item Sometimes $f$ is called a \textbf{mapping} or a \textbf{map}: $f$
+    \textbf{maps} $A$ to $B$.
+  \item Sometimes the set $f$ is called the \textbf{graph} of the function
+    rather than the function itself.
+  \item \textbf{domain}: The set $A$ is called the domain of $f$. Sometimes it
+    is (confusingly) denoted as $D(f)$.
+  \item \textbf{range}: The set $R(f) := \{y \in B: \exists x: f(x) = y\}$ is
+    called the range of $f$.
+\end{itemize}
+
+% ------------------------------
+\subsubsection*{Definition 0.3.13 Direct image and inverse image}
+% ------------------------------
+
+Consider a function $f: A \rightarrow B$ and $C \subset A$. Define the
+\textit{image} (or \textit{direct image}) of $C$ as \[ f(C) := \{f(x) \in B:
+x \in C\} \].
+
+Let $D \subset B$. Define the \textit{inverse image} of $D$ as \[ f^{-1}(D) :=
+\{x \in A: f(x) \in D\}\].
+
+\textbf{Note} the definition of inverse image: the elements in $D$ do not have
+to have an element in $A$ that maps to it. See the example $f^{-1}(\{a,b,c\})$
+in \textbf{Figure 3} in the textbook.
+
 % =============================================================================
 %
 % Chapter 1: Real Numbers

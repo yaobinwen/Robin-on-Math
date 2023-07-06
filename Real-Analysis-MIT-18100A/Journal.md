@@ -17,3 +17,9 @@ This document records my study activities for future reflection. The notes, hope
 
 1. Studied: `0.3.1 Sets`
 2. Studied: `0.3.2 Induction`
+
+## 2023-07-06 (Thu)
+
+- 08:23 ~ 09:13 (50m)
+
+1. Studied: `0.3.3 Functions`
