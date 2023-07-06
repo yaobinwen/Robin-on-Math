@@ -8,4 +8,12 @@ This document records my study activities for future reflection. The notes, hope
 - 11:30 ~ 13:30 (2h)
 
 1. Studied: `0.2 About analysis`
-2. Studied: `0.3 Basic set theory`
+2. Studied: `0.3.1 Sets`
+
+## 2023-07-05 (Wed)
+
+- 09:19 ~ 10:00 (41m)
+- 20:39 ~ 21:55 (1h16m)
+
+1. Studied: `0.3.1 Sets`
+2. Studied: `0.3.2 Induction`

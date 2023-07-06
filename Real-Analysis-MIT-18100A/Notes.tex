@@ -128,7 +128,119 @@ The various set-related notations:
     \end{itemize}
   \item \textbf{Disjoint}: $A$ and $B$ are said to be \textit{disjoint} if $A
     \cap B = \emptyset$.
+  \item \textbf{Union of an infinite collection of sets}:
+    \[
+      \bigcup_{n=1}^{\infty} A_n := \{x: x \in A_i, \exists i \in \mathbb{N}\}
+    \]
+    Note the use of $\exists$: Because this is the union of the sets $A_i$,
+    by definition, it means that for any element $x$ in the final union, $x$
+    belongs to at least one of the sets $A_i$, but it may or may not belong to
+    all of them. Therefore, when we describe the membership of $x$, we must
+    express the meaning of ``may or may not''.
+  \item \textbf{Intersection of an infinite collection of sets}:
+    \[
+      \bigcap_{n=1}^{\infty} A_n := \{x: x \in A_i, \forall i \in \mathbb{N}\}
+    \]
+    The use of $\forall$ means that any element $x$ in the final set belongs
+    to all of the sets $A_i$.
+  \item \textbf{Unions/Intersection of sets with two indices}:
+    \[
+      \bigcup_{n=1}^{\infty} \bigcup_{m=1}^{\infty} A_{n,m} =
+      \bigcup_{n=1}^{\infty} \Bigl(\bigcup_{m=1}^{\infty} A_{n,m}\Bigr)
+    \]
+    \[
+      \bigcap_{n=1}^{\infty} \bigcap_{m=1}^{\infty} A_{n,m} =
+      \bigcap_{n=1}^{\infty} \Bigl(\bigcap_{m=1}^{\infty} A_{n,m}\Bigr)
+    \]
+  \item \textbf{A more general notation}:
+    \[
+      \bigcup_{\lambda \in I} A_{\lambda} :=
+      \{x: x \in A_{\lambda}, \exists \lambda \in I\}
+    \]
+    \[
+      \bigcap_{\lambda \in I} A_{\lambda} :=
+      \{x: x \in A_{\lambda}, \forall \lambda \in I\}
+    \]
 \end{itemize}
+
+\textbf{Theorem 0.3.5 (DeMorgan)}: Let $A$ be the \textit{universe} and $B, C$
+the subsets of $A$. Then:
+
+\begin{itemize}
+  \item $(B \cup C)^c$ = $B^c \cap C^c$
+  \item $(B \cap C)^c$ = $B^c \cup C^c$
+\end{itemize}
+
+or, more generally,
+
+\begin{itemize}
+  \item $A \setminus (B \cup C)$ = $(A \setminus B) \cap (A \setminus C)$
+  \item $A \setminus (B \cap C)$ = $(A \setminus B) \cup (A \setminus C)$
+\end{itemize}
+
+% ******************************
+\subsection{Induction}
+% ******************************
+
+% ------------------------------
+\subsubsection*{Theorem 0.3.6: Principle of induction}
+% ------------------------------
+
+Let $P(n)$ be a statement depending on a natural number $n$. Suppose that:
+
+\begin{enumerate}
+  \item (basis statement) $P(1)$ is true.
+  \item (induction step) If $P(n)$ is true, then $P(n+1)$ is true.
+\end{enumerate}
+
+Then $P(n)$ is true for all $n \in \mathbb{N}$.
+
+The textbook [1] offers the following proof:
+
+\begin{displayquote}
+  Suppose $S$ is the set of natural numbers $m$ for which $P(m)$ is not true.
+  Suppose $S$ is nonempty. Then $S$ has a least element by the well ordering
+  property. Let us call $m$ the least element of S. We know $1 \notin S$ by
+  assumption. So $m > 1$ and $m - 1$ is a natural number as well. Since $m$ is
+  the least element of $S$, we know that $P(m-1)$ is true. But by the induction
+  step we see that $P(m-1+1) = P(m)$ is true, contradicting the statement that
+  $m \in S$. Therefore, $S$ is empty and $P(n)$ is true for all $n \in
+  \mathbb{N}$.
+\end{displayquote}
+
+My notes on the proof:
+
+\begin{itemize}
+  \item The proof uses contradiction. Therefore, we need to suppose the opposite
+    conclusion of the theorem is true. Because the conclusion of the theorem is
+    ``$P(n)$ is true for \textbf{all} $n \in \mathbb{N}$'', the opposite
+    conclusion is ``there exist some $m \in \mathbb{N}$ that $P(m)$ is false''.
+    This is why the first sentence says ``... $m$ for which $P(m)$ is not true''
+    and ``$S$ is nonempty'': $S$ must not be empty, because otherwise the
+    original conclusion is true and it makes no sense to use proof by
+    contradiction.
+  \item Regarding $1 \notin S$: The basis statement is $P(1)$ is true; $S$ is
+    the set of natural numbers $m$ where $P(m)$ is false. Therefore, if $1 \in
+    S$, that means $P(1)$ is false, which contradicts with the conditions of
+    the theorem to-be-proven. Note that ``proof by contradiction'' starts with
+    the opposite \textbf{conclusion} of the original theorem but it still
+    accepts all the conditions of the original theorem. In this case, ``proof
+    by contradiction'' still accepts the condition that $P(1)$ is true.
+\end{itemize}
+
+% ------------------------------
+\subsubsection*{Theorem 0.3.9: Principle of strong induction}
+% ------------------------------
+
+Let $P(n)$ be a statement depending on a natural number $n$. Suppose that:
+
+\begin{enumerate}
+  \item (basis statement) $P(1)$ is true.
+  \item (induction step) If $P(k)$ is true for all $k = 1, 2, \ldots, n$, then
+    $P(n+1)$ is true.
+\end{enumerate}
+
+Then $P(n)$ is true for all $n \in \mathbb{N}$.
 
 % =============================================================================
 %
