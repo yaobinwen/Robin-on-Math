@@ -314,6 +314,117 @@ Let $D \subset B$. Define the \textit{inverse image} of $D$ as \[ f^{-1}(D) :=
 to have an element in $A$ that maps to it. See the example $f^{-1}(\{a,b,c\})$
 in \textbf{Figure 3} in the textbook.
 
+% ------------------------------
+\subsubsection*{Proposition 0.3.15}
+% ------------------------------
+
+Consider $f: A \rightarrow B$. Let $C$, $D$ be subsets of $B$. Then:
+\begin{enumerate}
+  \item $f^{-1}(C \cup D)$ = $f^{-1}(C) \cup f^{-1}(D)$
+  \item $f^{-1}(C \cap D)$ = $f^{-1}(C) \cap f^{-1}(D)$
+  \item $f^{-1}(C^c)$ = $\bigl(f^{-1}(C)\bigr)^c$ (which means $f^{-1}(B
+    \setminus C) = A \setminus f^{-1}(C)$)
+\end{enumerate}
+
+The textbook offers the proof for the first statement, but I want to prove it
+with more details.
+
+\textbf{My proof}:
+
+To prove that two sets are equal, we need to use the definition of \textit{
+equal} in definition 0.3.2, that two sets $A$ and $B$ are equal if $A \subset B$
+and $B \subset A$.
+
+\begin{enumerate}
+  \item The proof is divided into three steps:
+    \begin{enumerate}
+      \item $\forall x \in f^{-1}(C \cup D)$, according to the definition of
+        $f^{-1}$, we know $f(x) \in C \cup D$. According to the definition of
+        \textit{union}, we know this means $f(x) \in C$ or $f(x) \in D$. When
+        $f(x) \in C$, this means $x \in f^{-1}(C)$; when $f(x) \in D$, this
+        means $x \in f^{-1}(D)$. According to the definition of \textit{union}
+        again, we know this means $x \in f^{-1}(C) \cup f^{-1}(D)$. Therefore,
+        the whole reasoning chain can be summarized as $\forall x \in f^{-1}(C
+        \cup D) \Rightarrow x \in f^{-1}(C) \cup f^{-1}(D)$. According to the
+        definition of \textit{subset}, this means $f^{-1}(C \cup D) \subset
+        f^{-1}(C) \cup f^{-1}(D)$.
+      \item $\forall x \in f^{-1}(C) \cup f^{-1}(D)$ means $x \in f^{-1}(C)$ or
+        $x \in f^{-1}(D)$ which means $f(x) \in C$ or $f(x) \in D$ which means
+        $f(x) \in C \cup D$. According to the definition of \textit{inverse
+        image}, this means $x \in f^{-1}(C \cup D)$. Therefore, the whole
+        reasoning chain can be summarized as $\forall x \in f^{-1}(C) \cup
+        f^{-1}(D) \Rightarrow x \in f^{-1}(C \cup D)$. According to the
+        definition of \textit{subset}, this means $f^{-1}(C) \cup f^{-1}(D)
+        \subset f^{-1}(C \cup D)$.
+      \item According to the definition of \textit{equal}, we know $f^{-1}(C
+        \cup D)$ = $f^{-1}(C) \cup f^{-1}(D)$.
+    \end{enumerate}
+  \item The proof is divided into three steps:
+    \begin{enumerate}
+      \item $\forall x \in f^{-1}(C \cap D)$, according to the definition of
+        $f^{-1}$, we know $f(x) \in C \cap D$. According to the definition of
+        \textit{intersection}, we know this means $f(x) \in C$ and $f(x) \in D$.
+        When $f(x) \in C$, this means $x \in f^{-1}(C)$; when $f(x) \in D$, this
+        means $x \in f^{-1}(D)$. According to the definition of \textit{
+        intersection} again, we know this means $x \in f^{-1}(C) \cap
+        f^{-1}(D)$. Therefore, the whole reasoning chain can be summarized as
+        $\forall x \in f^{-1}(C \cap D) \Rightarrow x \in f^{-1}(C) \cap
+        f^{-1}(D)$. According to the definition of \textit{subset}, this means
+        $f^{-1}(C \cap D) \subset f^{-1}(C) \cap f^{-1}(D)$.
+      \item $\forall x \in f^{-1}(C) \cap f^{-1}(D)$ means $x \in f^{-1}(C)$ and
+        $x \in f^{-1}(D)$ which means $f(x) \in C$ and $f(x) \in D$ which means
+        $f(x) \in C \cap D$. According to the definition of \textit{inverse
+        image}, this means $x \in f^{-1}(C \cap D)$. Therefore, the whole
+        reasoning chain can be summarized as $\forall x \in f^{-1}(C) \cap
+        f^{-1}(D) \Rightarrow x \in f^{-1}(C \cap D)$. According to the
+        definition of \textit{subset}, this means $f^{-1}(C) \cap f^{-1}(D)
+        \subset f^{-1}(C \cap D)$.
+      \item According to the definition of \textit{equal}, we know $f^{-1}(C
+        \cap D)$ = $f^{-1}(C) \cap f^{-1}(D)$.
+    \end{enumerate}
+  \item The proof is divided into three steps:
+    \begin{enumerate}
+      \item First of all, according to the definition of \textit{inverse image}
+        on $f: A \rightarrow B$, we know that $\forall x \in f^{-1}(B \setminus
+        C)$ comes to two conclusions:
+        \begin{enumerate}
+          \item $x \in A$
+          \item $f(x) \in B \setminus C$
+        \end{enumerate}
+        The second conclusion means $f(x) \in B$ and $f(x) \notin C$. When $f(x)
+        \notin C$, we know $x \notin f^{-1}(C)$ (because if $x \in f^{-1}(C)$,
+        by definition it means $f(x) \in C$, contradicting with the condition
+        that $f(x) \notin C$). Therefore, now we have the following two
+        conditions hold at the same time:
+        \begin{enumerate}
+          \item $x \in A$
+          \item $x \notin f^{-1}(C)$
+        \end{enumerate}
+        This means $x \in A \setminus f^{-1}(C)$. The whole reasoning chain is
+        \[
+          \forall x \in f^{-1}(B \setminus C) \Rightarrow x \in A \setminus
+          f^{-1}(C)
+        \]
+        So we know $f^{-1}(B \setminus C) \subset (A \setminus f^{-1}(C))$.
+      \item Secondly, $\forall x \in A \setminus f^{-1}(C)$, we come to two
+        conclusions:
+        \begin{enumerate}
+          \item $x \in A \Rightarrow f(x) \in B$.
+          \item $x \notin f^{-1}(C) \Rightarrow f(x) \notin C$.
+        \end{enumerate}
+        Therefore, we know $f(x) \in (B \setminus C)$, so $x \in f^{-1}(B
+          \setminus C)$. The whole
+        reasoning chain is
+        \[
+          \forall x \in A \setminus f^{-1}(C) \Rightarrow x \in f^{-1}(B
+          \setminus C)
+        \]
+        So we know $A \setminus f^{-1}(C) \subset f^{-1}(B \setminus C)$
+      \item According to the definition of \textit{equal}, we know $f^{-1}(B
+        \setminus C)$ = $A \setminus f^{-1}(C)$.
+    \end{enumerate}
+\end{enumerate}
+
 % =============================================================================
 %
 % Chapter 1: Real Numbers
