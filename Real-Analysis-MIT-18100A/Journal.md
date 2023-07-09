@@ -28,5 +28,6 @@ This document records my study activities for future reflection. The notes, hope
 
 - 16:05 ~ 17:10 (1h5m)
 - 19:00 ~ 20:05 (1h5m)
+- 20:30 ~ 21:40 (1h10m)
 
 1. Studied: `0.3.3 Functions`

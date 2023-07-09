@@ -425,6 +425,52 @@ and $B \subset A$.
     \end{enumerate}
 \end{enumerate}
 
+% ------------------------------
+\subsubsection*{Proposition 0.3.16}
+% ------------------------------
+
+Consider $f: A \rightarrow B$. Let $C$, $D$ be subsets of $A$. Then
+\begin{enumerate}
+  \item $f(C \cup D)$ = $f(C) \cup f(D)$
+  \item $f(C \cap D) \subset f(C) \cap f(D)$
+\end{enumerate}
+
+\textbf{My proof}:
+
+To prove $f(C \cup D)$ = $f(C) \cup f(D)$, we need to prove $f(C \cup D)
+\subset f(C) \cup f(D)$ and $f(C \cup D) \supset f(C) \cup f(D)$.
+
+According to the definition of \textit{direct image}, $f(C \cup D) := \{f(x)
+\in B: x \in C \cup D\}$, so $\forall f(x) \in f(C \cup D)$, we have $x \in C
+\cup D$, so $x \in C$ or $x \in D$. When $x \in C$, $f(x) \in f(C) := \{f(x): x
+\in C\}$; when $x \in D$, $f(x) \in f(D) := \{f(x): x \in D\}$. Therefore, $f(x)
+\in f(C)$ or $f(x) \in f(D)$ depending on $x \in C$ or $x \in D$, i.e., when $x
+\in C \cup D$. Therefore, when $x \in C \cup D$, $f(x) \in f(C) \cup f(D)$. So
+$\forall f(x) \in f(C \cup D)$, we have $f(x) \in f(C) \cup f(D)$. So $f(C \cup
+D) \subset f(C) \cup f(D)$.
+
+On the other way, $\forall f(x) \in f(C) \cup f(D)$ $\Rightarrow$ $f(x) \in
+f(C)$ or $f(x) \in f(D)$. According to the definition of \textit{direct image},
+\begin{itemize}
+  \item $f(C) := {f(x) \in B: x \in C}$
+  \item $f(D) := {f(x) \in B: x \in D}$.
+\end{itemize}
+
+Therefore:
+\begin{itemize}
+  \item When $f(x) \in f(C)$, we know $x \in C$.
+  \item When $f(x) \in f(D)$, we know $x \in D$.
+\end{itemize}
+
+Therefore, when $f(x) \in f(C) \cup f(D)$, we have $x \in C$ or $x \in D$, i.e.,
+$x \in C \cup D$. According to the definition of \textit{direct image}, when $x
+\in C \cup D$, $f(x)$ is defined as $f(C \cup D)$. So we know $f(x) \in f(C
+\cup D)$. So $\forall f(x) \in f(C) \cup f(D)$, we have $f(x) \in f(C \cup D)$.
+So $f(C \cup D) \subset f(C \cup D)$.
+
+To sum up, we have $f(C \cup D) \subset f(C) \cup f(D)$ and $f(C \cup D)
+\supset f(C) \cup f(D)$, so $f(C \cup D)$ = $f(C) \cup f(D)$.
+
 % =============================================================================
 %
 % Chapter 1: Real Numbers
