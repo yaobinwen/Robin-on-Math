@@ -435,7 +435,7 @@ Consider $f: A \rightarrow B$. Let $C$, $D$ be subsets of $A$. Then
   \item $f(C \cap D) \subset f(C) \cap f(D)$
 \end{enumerate}
 
-\textbf{My proof}:
+\textbf{My proof of 1}:
 
 To prove $f(C \cup D)$ = $f(C) \cup f(D)$, we need to prove $f(C \cup D)
 \subset f(C) \cup f(D)$ and $f(C \cup D) \supset f(C) \cup f(D)$.
@@ -445,9 +445,9 @@ According to the definition of \textit{direct image}, $f(C \cup D) := \{f(x)
 \cup D$, so $x \in C$ or $x \in D$. When $x \in C$, $f(x) \in f(C) := \{f(x): x
 \in C\}$; when $x \in D$, $f(x) \in f(D) := \{f(x): x \in D\}$. Therefore, $f(x)
 \in f(C)$ or $f(x) \in f(D)$ depending on $x \in C$ or $x \in D$, i.e., when $x
-\in C \cup D$. Therefore, when $x \in C \cup D$, $f(x) \in f(C) \cup f(D)$. So
-$\forall f(x) \in f(C \cup D)$, we have $f(x) \in f(C) \cup f(D)$. So $f(C \cup
-D) \subset f(C) \cup f(D)$.
+\in C \cup D$, $f(x) \in B$, so we know all the $f(x)$ when $x \in C \cup D$ is
+defined as $f(C \cup D)$. So $\forall f(x) \in f(C) \cup f(D)$, we have $f(x)
+\in f(C \cup D)$. So $f(C \cup D) \subset f(C \cup D)$.
 
 On the other way, $\forall f(x) \in f(C) \cup f(D)$ $\Rightarrow$ $f(x) \in
 f(C)$ or $f(x) \in f(D)$. According to the definition of \textit{direct image},
@@ -470,6 +470,37 @@ So $f(C \cup D) \subset f(C \cup D)$.
 
 To sum up, we have $f(C \cup D) \subset f(C) \cup f(D)$ and $f(C \cup D)
 \supset f(C) \cup f(D)$, so $f(C \cup D)$ = $f(C) \cup f(D)$.
+
+\textbf{My proof of 2}:
+
+According to the definition of \textit{direct image}, $f(C \cap D) := \{f(x)
+\in B: x \in C \cap D\}$, so $\forall f(x) \in f(C \cap D)$, we have $x \in C
+\cap D$, so $x \in C$ and $x \in D$.
+
+\begin{itemize}
+  \item When $x \in C$, we have $f(x) \in f(C)$.
+  \item When $x \in D$, we have $f(x) \in f(D)$.
+\end{itemize}
+
+Because $x \in C$ and $x \in D$, we have $f(x) \in f(C)$ and $f(x) \in f(D)$,
+namely $f(x) \in f(C) \cap f(D)$.
+
+In sum, we have $\forall f(x) \in f(C \cap D)$, $f(x) \in f(C) \cap f(D)$, so
+we have $f(C \cap D) \subset f(C) \cap f(D)$.
+
+\textbf{The other way may not hold}, i.e., $f(C) \cap f(D)$ may \textbf{not} be
+a subset of $f(C \cap D)$. A counter example is $f: x \rightarrow x^2, x \in
+\mathbb{R}$. Here, in the context of this proposition, $A$ and $B$ are both
+$\mathbb{R}$. Now let $C := [-2, 0]$ and $D := [0, 2]$. We have:
+
+\begin{itemize}
+  \item $f(C) = [0, 4]$
+  \item $f(D) = [0, 4]$
+  \item $f(C) \cap f(D) = [0, 4]$
+  \item $C \cap D = \{0\}$, so $f(C \cap D) = f(\{0\}) = [0]$
+\end{itemize}
+
+Obviously, $f(C) \cap f(D)$ is \textbf{not} a subset of $f(C \cap D)$.
 
 % =============================================================================
 %
