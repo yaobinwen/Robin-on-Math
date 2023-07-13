@@ -18,6 +18,7 @@
   urlcolor=blue,
 }
 \usepackage{parskip}
+\usepackage{xcolor}
 
 \title{
   Notes on \textit{Basic Analysis I: Introduction to Real Analysis, Volume 1}
@@ -526,6 +527,78 @@ $\mathbb{R}$. Now let $C := [-2, 0]$ and $D := [0, 2]$. We have:
 \end{itemize}
 
 Obviously, $f(C) \cap f(D)$ is \textbf{not} a subset of $f(C \cap D)$.
+
+\colorbox{red!100}{\textcolor{yellow}{TODO}}: Prove the other way in a general
+way (i.e., not using counter examples).
+
+% ------------------------------
+\subsubsection*{
+  Definition 0.3.17 (injective; surjective; bijective; inverse function)
+}
+% ------------------------------
+
+Let $f: A \rightarrow B$ be a function. The function $f$ is said to be
+\textit{injective} or \textit{one-to-one} if $f(x_1) = f(x_2)$ implies $x_1 =
+x_2$. In other words, $\forall y \in B$, $f^{-1}(\{y\})$ is empty or consists
+of a single element. We call such an $f$ an \textit{injection}.
+
+If $f(A) = B$, then we say $f$ is \textit{surjective} or \textit{onto}. We call
+such an $f$ a \textit{surjection}.
+
+If $f$ is both an surjection and injection, then we say $f$ is
+\textit{bijective} or that $f$ is a \textit{bijection}.
+
+When $f: A \rightarrow B$ is a bijection, then the inverse image of a single
+element, $f^{-1}(\{y\})$, is always a unique element of A. We then consider
+$f^{-1}$ as a function $f^{-1}: B \rightarrow A$ and we write simply
+$f^{-1}(y)$. In this case, we call $f^{-1}$ the \textit{inverse function} of
+$f$.
+
+% ------------------------------
+\subsubsection*{Definition 0.3.18 (composition)}
+% ------------------------------
+
+Consider $f: A \rightarrow B$ and $g: B \rightarrow C$. The \textit{composition}
+of the functions $f$ and $g$ is the function $g \circ f: A \rightarrow C$
+defined as \[(g \circ f)(x) := g \bigl(f(x)\bigr)\].
+
+% ******************************
+\subsection{Relations and equivalence classes}
+% ******************************
+
+% ------------------------------
+\subsubsection*{Definition 0.3.19 (binary relation)}
+% ------------------------------
+
+Given a set $A$, a \textit{binary relation} on $A$ is a subset $\mathcal{R}
+\subset A \times A$, which are those pairs where the relation is said to hold.
+Instead of $(a, b) \subset \mathcal{R}$, we write $a \mathcal{R} b$.
+
+Any subset of $A \times A$ is a relation. See \textbf{Example 0.3.20}.
+
+% ------------------------------
+\subsubsection*{
+  Definition 0.3.21 (reflexive; symmetric; transitive; equivalence)
+}
+% ------------------------------
+
+Let $\mathcal{R}$ be a relation on a set $A$. Then $\mathcal{R}$ is said to be
+\begin{enumerate}
+  \item[(i)] \textit{reflexive} if $\forall a \in A$, $a \mathcal{R} a$,
+  \item[(ii)] \textit{symmetric} if $a \mathcal{R} b \Rightarrow b \mathcal{R}
+    a$,
+  \item[(iii)] \textit{transitive} if $a \mathcal{R} b$ and $b \mathcal{R} c$
+    implies $a \mathcal{R} c$.
+\end{enumerate}
+
+If $\mathcal{R}$ is reflexive, symmetric, and transitive, then it is said to be
+an \textit{equivalence relation}.
+
+% ******************************
+\subsection{Cardinality}
+% ******************************
+
+(TODO)
 
 % =============================================================================
 %
