@@ -38,3 +38,9 @@ This document records my study activities for future reflection. The notes, hope
 - 18:29 ~ 18:51 (22m)
 
 1. Studied: `0.3.3 Functions`
+
+## 2023-07-13 (Thu)
+
+- 09:11 ~ 09:33 (22m)
+
+1. Studied: `0.3.3 Functions`

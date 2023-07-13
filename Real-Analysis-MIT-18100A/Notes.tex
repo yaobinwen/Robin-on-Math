@@ -435,6 +435,31 @@ Consider $f: A \rightarrow B$. Let $C$, $D$ be subsets of $A$. Then
   \item $f(C \cap D) \subset f(C) \cap f(D)$
 \end{enumerate}
 
+To prove 1, we need to use the following conclusion: Given $f: A \rightarrow B$.
+Let $C$, $D$ be subsets of $A$. Then \[f(x) \in f(C) \cup f(D) \Rightarrow
+x \in C \cup D\]
+
+We can use contradiction to prove this. Suppose $\exists u \notin (C \cup D)$
+such that $f(u) \in f(C) \cup f(D)$. Because $C$ and $D$ are discussed under
+the universe $A$, we have $u \notin (C \cup D)$, which means $u \in A \setminus
+(C \cup D)$, which means $u \in (A \setminus C)$ AND $u \in (A \setminus D)$,
+which means $u \notin C$ AND $u \notin D$.
+
+When $u \notin C$, we can tell that $f(u) \notin f(C)$ (because otherwise if
+$f(u) \in f(C)$, according to the definition of \textit{direct image}, $u$ must
+be an element of $C$, contradicting the precondition $u \notin C$). Similarly,
+we can tell that when $u \notin D$, $f(u) \notin f(D)$.
+
+Because $\forall x \in A$, we have $f(x) \in B$, so $f(C)$ and $f(D)$ must be
+subsets of $B$, i.e., $B$ is the universe of $C$ and $D$. Therefore, when we
+say $f(u) \notin f(C)$, we mean $f(u) \in B \setminus f(C)$; when we say $f(u)
+\notin f(D)$, we mean $f(u) \in B \setminus f(D)$. Because $f(u) \notin f(C)$
+AND $f(u) \notin f(D)$, we have $f(u) \in \bigl(B \setminus f(C)\bigr) \cap
+\bigl(B \setminus f(D)\bigr) = B \setminus \bigl(f(C) \cup f(D)\bigr)$, so
+$f(u) \in B$ but $f(u) \notin \bigl(f(C) \cup f(D)\bigr)$ which contradicts
+the precondition that $f(u) \in \bigl(f(C) \cup f(D)\bigr)$. So such a $u
+\notin (C \cup D)$ does \textbf{not} exist.
+
 \textbf{My proof of 1}:
 
 To prove $f(C \cup D)$ = $f(C) \cup f(D)$, we need to prove $f(C \cup D)
