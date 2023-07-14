@@ -46,3 +46,11 @@ This document records my study activities for future reflection. The notes, hope
 
 1. Studied: `0.3.3 Functions`
 2. Studied: `0.3.4 Relations and equivalence classes`
+
+## 2023-07-14 (Fri)
+
+- 07:51 ~ 08:51 (1h)
+- 20:33 ~ 21:33 (1h)
+
+1. Studied: `0.3.4 Relations and equivalence classes`
+2. Studied: `0.3.5 Cardinality`

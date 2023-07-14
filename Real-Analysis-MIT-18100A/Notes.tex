@@ -594,11 +594,128 @@ Let $\mathcal{R}$ be a relation on a set $A$. Then $\mathcal{R}$ is said to be
 If $\mathcal{R}$ is reflexive, symmetric, and transitive, then it is said to be
 an \textit{equivalence relation}.
 
+% ------------------------------
+\subsubsection*{Definition 0.3.23 (equivalence class)}
+% ------------------------------
+
+Let $A$ be a set and $\mathcal{R}$ an equivalence relation. An
+\textit{equivalence class} of $a \in A$, often denoted by $[a]$, is the set
+$\{x \in A: a \mathcal{R} x\}$.
+
+\begin{itemize}
+  \item Reflexivity guarantees that $a \in [a]$.
+  \item Symmetry guarantees that if $b \in [a]$, then $a \in [b]$.
+  \item Transitivity guarantees that if $a \in [b]$ and $b \in [c]$, then $a
+    \in [c]$.
+\end{itemize}
+
+% ------------------------------
+\subsubsection*{Proposition 0.3.24 (equivalence class)}
+% ------------------------------
+
+If $\mathcal{R}$ is an \textit{equivalence relation} on a set $A$, then every
+$a \in A$ is in exactly one equivalence class. In particular, $a \mathcal{R} b$
+if and only if $[a] = [b]$.
+
+\colorbox{lime!100}{\textbf{My proof}}: Because the entire proposition consists
+of a few parts, we need to prove each part separately.
+
+\textbf{(1)} Prove that ``every $a \in A$ is in some equivalence class.''
+Because $\mathcal{R}$ is an equivalence relation, it must be reflexive too, so
+$\forall a \in A$, $a \mathcal{R} a$ must hold. Therefore, $a$ itself must be
+in $[a]$.
+
+\textbf{(2)} Prove that ``every $a \in A$ has no more than one equivalence
+class.'' Suppose $a$ has at least two equivalence classes, denoted as $M := \{
+m \in A: a \mathcal{R} m\}$ and $N := \{n \in A: a \mathcal{R} n\}$. We have:
+
+\begin{itemize}
+  \item $\forall u \in M$, we have $a \mathcal{R} u$, so $u$ must belong to N
+    as well, so we have $M \subset N$.
+  \item $\forall w \in N$, we have $a \mathcal{R} w$, so $w$ must belong to M
+    as well, so we have $N \subset M$.
+\end{itemize}
+
+Therefore, $M = N$, so $a \in A$ has no more than one equivalence class.
+
+\textbf{(3)} Prove that $a \mathcal{R} b$ $\Rightarrow$ $[a] = [b]$.
+
+According to the definition of equivalence class, we have: \[[a] := \{x \in A:
+a \mathcal{R} x\}\] and \[[b] := \{x \in A: b \mathcal{R} x\}\].
+
+Because $\mathcal{R}$ is an equivalence relation, it must be symmetric and
+transitive, so $a \mathcal{R} b$ $\Rightarrow$ $b \mathcal{R} a$. Therefore,
+$\forall x \in [a]$, we have $a \mathcal{R} x$; together with $b \mathcal{R} a$,
+we have $b \mathcal{R} x$. Therefore, $x \in [b]$. Therefore, $[a] \subset [b]$.
+Similarly, $\forall x \in [b]$, we have $b \mathcal{R} x$; together with $a
+\mathcal{R} b$, we have $a \mathcal{R} x$. Therefore, $x \in [a]$. Therefore,
+$[b] \subset [a]$. In sum, $[a] = [b]$.
+
+\textbf{(4)} Prove that $[a] = [b]$ $\Rightarrow$ $a \mathcal{R} b$.
+
+According to the definition of equivalence class, we have: \[[a] := \{x \in A:
+a \mathcal{R} x\}\] and \[[b] := \{x \in A: b \mathcal{R} x\}\].
+
+Because $[a] = [b]$, $\forall x \in [a]$, we have $x \in [b]$, so $a
+\mathcal{R} x$ and $b \mathcal{R} x$ must hold at the same time. Because
+$\mathcal{R}$ is an equivalence relation, it must be symmetric and transitive,
+so $b \mathcal{R} x$ $\Rightarrow$ $x \mathcal{R} b$. Together with $a
+\mathcal{R} x$, we have $a \mathcal{R} b$.
+
+In sum, (1) + (2) imply that ``every $a \in A$ is in exactly one equivalence
+class''; (3) + (4) imply that ``$a \mathcal{R} b$ if and only if $[a] = [b]$''.
+
+% ------------------------------
+\subsubsection*{Example 0.3.25}
+% ------------------------------
+
+The set of rational numbers can be defined as equivalence classes of a pair of
+an integer and a natural number, that is elements of $\mathbb{Z} \times
+\mathbb{N}$. The relation is defined by $(a, b) \sim (c, d)$ whenever $ad = bc$.
+
+Prove $\sim$ is an equivalence relation.
+
+\colorbox{lime!100}{\textbf{My proof}}: Let $A$ denote $\mathbb{Z} \times
+\mathbb{N}$, so $A := \{(z, n): z \in \mathbb{Z}, n \in \mathbb{N}\}$.
+
+\begin{itemize}
+  \item \textit{reflexive}: $\forall (z, n) \in A$, $\because zn = zn$,
+    $\therefore (z, n) \sim (z, n)$.
+  \item \textit{symmetric}: $\forall (z, n), (x, y) \in A$, when $(z, n) \sim
+    (x, y)$, we know $zy = nx$, $\therefore nx = zy$. Because $z, n, x, y \in
+    \mathbb{Z}$ (remember $\mathbb{N} \subset \mathbb{Z}$), therefore $nx = xn$
+    and $zy = yz$, so $nx = zy \Rightarrow xn = yz$, so $(x, y) \sim (z, n)$
+    also holds. In sum, $(z, n) \sim (x, y)$ implies $(x, y) \sim (z, n)$.
+  \item \textit{transitive}: Suppose $(z, n) \sim (p, q)$ and $(p, q) \sim
+    (x, y)$. Because $(z, n) \sim (p, q)$, we know $zq = pn$; because $n, q \in
+    \mathbb{N}$ so they can't be zero, we can divide both sides by $nq$ to get
+    $z/n = p/q$. Similarly, we can get $p/q = x/y$. Therefore, we can get $z/n
+    = p/q$. Therefore, $zq = np$, so $(z, n) \sim (p, q)$. In sum, that $(z, n)
+    \sim (p, q)$ and $(p, q) \sim (x, y)$ implies $(z, n) \sim (x, y)$.
+\end{itemize}
+
 % ******************************
 \subsection{Cardinality}
 % ******************************
 
-(TODO)
+% ------------------------------
+\subsubsection*{Definition 0.3.26 (cardinality)}
+% ------------------------------
+
+Let $A$ and $B$ be sets. We say $A$ and $B$ have the same \textit{cardinality}
+when there exists a bijection $f: A \rightarrow B$. We denote by $|A|$ the
+equivalence class of all sets with the same cardinality as A and we simply call
+$|A|$ the cardinality of $A$.
+
+\colorbox{lime!100}{\textbf{My notes}}:
+\begin{itemize}
+  \item Note that, technically, $|A|$ is ``the equivalence class of all sets
+    with the same cardinality as A'', so $|A|$ is a set. Every element in $|A|$
+    is also a set, so $|A|$ is a set of sets.
+  \item $|A|:= \{S: S \sim A\}$ where the binary relation $\sim$ is defined so
+    that $S_1 \sim S_2$ means the sets $S_1$ and $S_2$ have the same
+    cardinality.
+\end{itemize}
 
 % =============================================================================
 %
