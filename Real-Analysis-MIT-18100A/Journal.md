@@ -54,3 +54,10 @@ This document records my study activities for future reflection. The notes, hope
 
 1. Studied: `0.3.4 Relations and equivalence classes`
 2. Studied: `0.3.5 Cardinality`
+
+## 2023-07-15 (Sat)
+
+- 09:12 ~ 11:43 (2h30m)
+- 13:13 ~ 14:15 (1h1m)
+
+1. Studied: `0.3.5 Cardinality`

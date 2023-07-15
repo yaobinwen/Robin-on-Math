@@ -4,6 +4,7 @@
 % "Note that this method make the margins of all the pages the same. In
 % `twoside`, the margins are different for the odd and the even pages".
 \documentclass[12pt, letterpaper, oneside]{book}
+\usepackage{pseudocode}
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -716,6 +717,126 @@ $|A|$ the cardinality of $A$.
     that $S_1 \sim S_2$ means the sets $S_1$ and $S_2$ have the same
     cardinality.
 \end{itemize}
+
+\colorbox{red!100}{\textcolor{yellow}{TODO}}: Right under the definition is a
+paragraph that says ``The existence of a bijection really is an equivalence
+relation.'' But I don't quite understand what it means.
+
+% ------------------------------
+\subsubsection*{Definition 0.3.27 ($|A|$; finite; infinite)}
+% ------------------------------
+
+Suppose $A$ has the same cardinality as $\{1, 2, 3, \ldots , n\}$ for some $n
+\in \mathbb{N}$. We then write $|A|:= n$. If $A$ is empty, we write $|A|:= 0$.
+In either case, we say that $A$ is \textit{finite}.
+
+We say $A$ is \textit{infinite} or ``of infinite cardinality'' if $A$ is not
+finite.
+
+The textbook then asks the readers to prove that for each nonempty finite set
+$A$, there exists a unique natural number $n$ such that there exists a bijection
+from $A$ to $\{1, 2, 3, \ldots, n\}$.
+
+\colorbox{lime!100}{\textbf{My proof}}: Because $A$ is finite, we can enumerate
+all of its elements in a certain order. For example, if $A$ is the set of
+English upper-case alphabet, i.e., $\{A, B, C, \ldots, Z\}$, then we can arrange
+them in the order they appear in the alphabet and give each upper-case letter an
+index:
+\begin{itemize}
+  \item A $\rightarrow$ 1
+  \item B $\rightarrow$ 2
+  \item C $\rightarrow$ 3
+  \item $\ldots$
+  \item Z $\rightarrow$ 26
+\end{itemize}
+
+Even for a set of objects (e.g., fruits) or symbols (e.g., $\{\clubsuit,
+\diamondsuit, \heartsuit, \spadesuit \}$), as long as it is a finite number of
+items, we can always arrange them in a certain order. A more general algorithm
+to arrange a finite set $S$ can be described as follows:
+
+\begin{pseudocode}[ruled]{EnumerateSetElements}{S}
+  \LOCAL{T, i} \\
+  T \GETS \emptyset \\
+  i \GETS 1 \\
+  \WHILE \NOT (S = \emptyset) \DO
+    \BEGIN
+      s \GETS \mbox{pick a random element from S} \\
+      t_i \GETS s \\
+      S \GETS S \setminus \{s\} \\
+      T \GETS T \cup \{t_i\} \\
+      i \GETS i+1
+    \END \\
+  \RETURN{T}
+\end{pseudocode}
+
+After this algorithm is run on the set $S$, we have the following conclusions:
+\begin{itemize}
+  \item Because $S$ is a finite set, $T$ must be a finite set, too. Therefore,
+    $\exists n \in \mathbb{N}$, $i \leq n$.
+  \item $T:= \{t_i: i \in \mathbb{N}, i \leq n \}$
+  \item $T = S$ because all the elements in $T$ come from $S$.
+\end{itemize}
+
+Now we define $N := \{i: i \in \mathbb{N}, i \leq n\}$. Then we define
+$f: T \rightarrow N$ as \[\{(t_i, i): i \in \mathbb{N}, i \leq n\}\] i.e., \[
+f(t_i) = i, i \in \mathbb{N}, i \leq n\].
+
+Now we need to prove that $f$ is bijective and $n$ is unique.
+
+Firstly, let's see whether $f$ is injective. $\forall p, q \in N$, according to
+the definition of $f$, we know $p = f(t_p)$ and $q = f(t_q)$. When $p = q$, we
+can tell that $t_p$ and $t_q$ must point to the same element at the $p$-th (or
+$q$-th) location in $T$. Therefore, $t_p = t_q$. So $f$ is injective.
+
+Secondly, let's see whether $f$ is surjective. Suppose $\exists w \in N$ such
+that $\forall t \in T, f(t) \neq w$. Because $w \in N$, therefore $t_w \in T$,
+therefore $f(t_w) = w$, contradicting that $\forall t \in T, f(t) \neq w$, so
+such a $w$ doesn't exist in $N$.
+
+In sum, because $f$ is both injective and surjective, it is thus bijiective.
+
+$n$ must be unique. Suppose there exists $n_2$ such that $n_2 \neq n$.
+Define $N_2:= \{i: i \in \mathbb{N}, i \leq n_2\}$. Suppose we can find two
+bijective functions $g$ and $h$ so that $g: T \rightarrow N$ and $h: T
+\rightarrow N_2$. According to definition 0.3.26, we know that $A$ and $N$ have
+the same cardinality and $A$ and $N_2$ have the same cardinality. According to
+definition 0.3.27, we can write $|A| = n$ and $|A| = n_2$, so $n = n_2$,
+contradicting that $n_2 \neq n$. Therefore, such an $n_2$ doesn't exist. So $n$
+is unique.
+
+% ------------------------------
+\subsubsection*{Definition 0.3.28 ($|A|=|B|$;$|A| \leq |B|$;$|A|<|B|$)}
+% ------------------------------
+
+We write \[|A| \leq |B|\] if there exists an injection from $A$ to $B$.
+
+We write \[|A| = |B|\] if $A$ and $B$ have the same cardinality.
+
+We write \[|A| < |B|\] if $|A| \leq |B|$, but $A$ and $B$ do not have the same
+cardinality.
+
+% ------------------------------
+\subsubsection*{Cantor-Bernstein-Schroder theorem}
+% ------------------------------
+
+(\colorbox{red!100}{\textcolor{yellow}{TODO}}: Fix ``o'' in ``Schroder''.)
+
+$A$ and $B$ have the same cardinality if and only if $|A| \leq |B|$ and $|B|
+\leq |A|$.
+
+If $A$ and $B$ are any two sets, we can always write $|A| \leq |B|$ or $|B|
+\leq |A|$.
+
+% ------------------------------
+\subsubsection*{Definition 0.3.29 (countable; uncountable)}
+% ------------------------------
+
+If $|A| = |\mathbb{N}|$, then $A$ is said to be \textit{countably infinite}. If
+$A$ is finite or countably infinite, then we say $A$ is \textit{countable}. If
+$A$ is not countable, then A is said to be \textit{uncountable}.
+
+$|\mathbb{N}|$ is usually denoted as $\aleph_0$ (read as aleph-naught).
 
 % =============================================================================
 %
