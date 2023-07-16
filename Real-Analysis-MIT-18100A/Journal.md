@@ -61,3 +61,10 @@ This document records my study activities for future reflection. The notes, hope
 - 13:13 ~ 14:15 (1h1m)
 
 1. Studied: `0.3.5 Cardinality`
+
+## 2023-07-16 (Sun)
+
+- 08:12 ~ 10:16 (2h3m)
+- 13:01 ~ 16:26 (3h25m)
+
+1. Studied: `0.3.5 Cardinality`

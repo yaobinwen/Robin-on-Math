@@ -18,8 +18,11 @@
   filecolor=magenta,
   urlcolor=blue,
 }
+\usepackage{titlesec}
 \usepackage{parskip}
 \usepackage{xcolor}
+
+\setcounter{secnumdepth}{4}
 
 \title{
   Notes on \textit{Basic Analysis I: Introduction to Real Analysis, Volume 1}
@@ -185,7 +188,7 @@ or, more generally,
 % ******************************
 
 % ------------------------------
-\subsubsection*{Theorem 0.3.6: Principle of induction}
+\subsubsection{Theorem 0.3.6: Principle of induction}
 % ------------------------------
 
 Let $P(n)$ be a statement depending on a natural number $n$. Suppose that:
@@ -231,7 +234,7 @@ My notes on the proof:
 \end{itemize}
 
 % ------------------------------
-\subsubsection*{Theorem 0.3.9: Principle of strong induction}
+\subsubsection{Theorem 0.3.9: Principle of strong induction}
 % ------------------------------
 
 Let $P(n)$ be a statement depending on a natural number $n$. Suppose that:
@@ -265,7 +268,7 @@ In order to define functions rigorously, we must define the Cartesian product
 firstly.
 
 % ------------------------------
-\subsubsection*{Definition 0.3.10 Cartesian product}
+\subsubsection{Definition 0.3.10 Cartesian product}
 % ------------------------------
 
 Let $A$ and $B$ be sets. The \textit{Cartesian product} is the set of tuples
@@ -282,7 +285,7 @@ Examples:
 \end{itemize}
 
 % ------------------------------
-\subsubsection*{Definition 0.3.11 Function}
+\subsubsection{Definition 0.3.11 Function}
 % ------------------------------
 
 A \textit{function} $f: A \rightarrow B$ is a subset $f$ of $A \times B$ such
@@ -302,7 +305,7 @@ The various terms that are related with functions:
 \end{itemize}
 
 % ------------------------------
-\subsubsection*{Definition 0.3.13 Direct image and inverse image}
+\subsubsection{Definition 0.3.13 Direct image and inverse image}
 % ------------------------------
 
 Consider a function $f: A \rightarrow B$ and $C \subset A$. Define the
@@ -317,7 +320,7 @@ to have an element in $A$ that maps to it. See the example $f^{-1}(\{a,b,c\})$
 in \textbf{Figure 3} in the textbook.
 
 % ------------------------------
-\subsubsection*{Proposition 0.3.15}
+\subsubsection{Proposition 0.3.15}
 % ------------------------------
 
 Consider $f: A \rightarrow B$. Let $C$, $D$ be subsets of $B$. Then:
@@ -428,7 +431,7 @@ and $B \subset A$.
 \end{enumerate}
 
 % ------------------------------
-\subsubsection*{Proposition 0.3.16}
+\subsubsection{Proposition 0.3.16}
 % ------------------------------
 
 Consider $f: A \rightarrow B$. Let $C$, $D$ be subsets of $A$. Then
@@ -533,7 +536,7 @@ Obviously, $f(C) \cap f(D)$ is \textbf{not} a subset of $f(C \cap D)$.
 way (i.e., not using counter examples).
 
 % ------------------------------
-\subsubsection*{
+\subsubsection{
   Definition 0.3.17 (injective; surjective; bijective; inverse function)
 }
 % ------------------------------
@@ -556,7 +559,7 @@ $f^{-1}(y)$. In this case, we call $f^{-1}$ the \textit{inverse function} of
 $f$.
 
 % ------------------------------
-\subsubsection*{Definition 0.3.18 (composition)}
+\subsubsection{Definition 0.3.18 (composition)}
 % ------------------------------
 
 Consider $f: A \rightarrow B$ and $g: B \rightarrow C$. The \textit{composition}
@@ -568,7 +571,7 @@ defined as \[(g \circ f)(x) := g \bigl(f(x)\bigr)\].
 % ******************************
 
 % ------------------------------
-\subsubsection*{Definition 0.3.19 (binary relation)}
+\subsubsection{Definition 0.3.19 (binary relation)}
 % ------------------------------
 
 Given a set $A$, a \textit{binary relation} on $A$ is a subset $\mathcal{R}
@@ -578,7 +581,7 @@ Instead of $(a, b) \subset \mathcal{R}$, we write $a \mathcal{R} b$.
 Any subset of $A \times A$ is a relation. See \textbf{Example 0.3.20}.
 
 % ------------------------------
-\subsubsection*{
+\subsubsection{
   Definition 0.3.21 (reflexive; symmetric; transitive; equivalence)
 }
 % ------------------------------
@@ -596,7 +599,7 @@ If $\mathcal{R}$ is reflexive, symmetric, and transitive, then it is said to be
 an \textit{equivalence relation}.
 
 % ------------------------------
-\subsubsection*{Definition 0.3.23 (equivalence class)}
+\subsubsection{Definition 0.3.23 (equivalence class)}
 % ------------------------------
 
 Let $A$ be a set and $\mathcal{R}$ an equivalence relation. An
@@ -611,7 +614,7 @@ $\{x \in A: a \mathcal{R} x\}$.
 \end{itemize}
 
 % ------------------------------
-\subsubsection*{Proposition 0.3.24 (equivalence class)}
+\subsubsection{Proposition 0.3.24 (equivalence class)}
 % ------------------------------
 
 If $\mathcal{R}$ is an \textit{equivalence relation} on a set $A$, then every
@@ -667,7 +670,7 @@ In sum, (1) + (2) imply that ``every $a \in A$ is in exactly one equivalence
 class''; (3) + (4) imply that ``$a \mathcal{R} b$ if and only if $[a] = [b]$''.
 
 % ------------------------------
-\subsubsection*{Example 0.3.25}
+\subsubsection{Example 0.3.25}
 % ------------------------------
 
 The set of rational numbers can be defined as equivalence classes of a pair of
@@ -700,7 +703,7 @@ Prove $\sim$ is an equivalence relation.
 % ******************************
 
 % ------------------------------
-\subsubsection*{Definition 0.3.26 (cardinality)}
+\subsubsection{Definition 0.3.26 (cardinality)}
 % ------------------------------
 
 Let $A$ and $B$ be sets. We say $A$ and $B$ have the same \textit{cardinality}
@@ -723,7 +726,7 @@ paragraph that says ``The existence of a bijection really is an equivalence
 relation.'' But I don't quite understand what it means.
 
 % ------------------------------
-\subsubsection*{Definition 0.3.27 ($|A|$; finite; infinite)}
+\subsubsection{Definition 0.3.27 ($|A|$; finite; infinite)}
 % ------------------------------
 
 Suppose $A$ has the same cardinality as $\{1, 2, 3, \ldots , n\}$ for some $n
@@ -806,7 +809,55 @@ contradicting that $n_2 \neq n$. Therefore, such an $n_2$ doesn't exist. So $n$
 is unique.
 
 % ------------------------------
-\subsubsection*{Definition 0.3.28 ($|A|=|B|$;$|A| \leq |B|$;$|A|<|B|$)}
+\subsubsection{Note: $\mathbb{N}$ is infinite}
+% ------------------------------
+
+\colorbox{lime!100}{\textbf{My notes}}: We take for granted that $\mathbb{N}$
+is infinite. But how can we prove it?
+
+According to the definition 0.3.27, we need to prove that $\mathbb{N}$ is not
+finite. Because a set $A$ being finite is defined as that $A$ has the same
+cardinality as the set $\{1, 2, 3, \ldots, n\}$ for some $n \in \mathbb{N}$, we
+need to prove that such an $n \in \mathbb{N}$ doesn't exist for $\mathbb{N}$
+itself. (The second case that $A$ is finite is that $A$ is $\emptyset$ but this
+is surely not the case for $\mathbb{N}$, so we don't need to consider this.)
+
+Firstly, let's define $N_k:= \{i: i \leq k, k \in \mathbb{N}\} = \{1, 2, 3,
+\ldots, k\}$. Now let's prove that no matter how we choose $k$, $\mathbb{N}$
+doesn't have the same cardinality with $N_k$.
+
+We use contradiction to prove this. Suppose that $\exists k \in \mathbb{N}$
+such that $N_k$ and $\mathbb{N}$ have the same cardinality. According to the
+definition 0.3.26, having the same cardinality means there exists a bijection
+$f: N_k \rightarrow \mathbb{N}$ or $g: \mathbb{N} \rightarrow N_k$.
+
+However, no matter how $f$ is defined, $f$ can't be a bijection because it is
+not surjective, i.e., $\exists P \in \mathbb{N}$ such that $P \notin f(N_k)$.
+$P$ can be found this way: Define \[K = \sum_{i=1}^{k} f(i) \] and \[P = K +
+1\].
+
+We can tell that $\forall i \in N_k$, $P \neq f(i)$, so $P \notin f(N_k)$. But
+because $\forall i \in N_k, f(i) \in \mathbb{N}$, so the sum of them is still
+a natural number, i.e., $K \in \mathbb{N}$, hence $P = K + 1 \in \mathbb{N}$.
+Therefore, $P \in \mathbb{N}$ but $P \notin f(N_k)$, so $f$ is not surjective,
+so $f$ is not bijective.
+
+We then examine $g$. We can tell that no matter how $g$ is define, $g$ can't be
+a bijection because it is not injective. Suppose that $\forall i, j \in N_k$
+and $i \neq j$, we find $e_i, e_j \in \mathbb{N}$ and $e_i \neq e_j$ such that
+$g(e_i) = i$ and $g(e_j) = j$. Now define \[E = \sum_{i=1}^{k} e_i + 1\]. We
+can tell that $\forall i \in N_k, E \neq e_i$. Because the sum of natural
+numbers is also a natural number, so $E \in \mathbb{N}$. Suppose that $g(E) = w
+\in N_k$. According to how $g$ is defined, we can tell that $g(e_w) = w$. But
+because $E \neq e_w$, we have that $f(E) = f(e_w)$ does not imply $E = e_w$, so
+$g$ can't be injective, so $g$ can't be bijective.
+
+In sum, $\forall k \in \mathbb{N}$, we can't find a bijection between $N_k$ and
+$\mathbb{N}$, so $\mathbb{N}$ and $N_k$ don't have the same cardinality, so
+$\mathbb{N}$ is not finite, hence infinite.
+
+% ------------------------------
+\subsubsection{Definition 0.3.28 ($|A|=|B|$;$|A| \leq |B|$;$|A|<|B|$)}
 % ------------------------------
 
 We write \[|A| \leq |B|\] if there exists an injection from $A$ to $B$.
@@ -817,7 +868,7 @@ We write \[|A| < |B|\] if $|A| \leq |B|$, but $A$ and $B$ do not have the same
 cardinality.
 
 % ------------------------------
-\subsubsection*{Cantor-Bernstein-Schroder theorem}
+\subsubsection{Cantor-Bernstein-Schroder theorem}
 % ------------------------------
 
 (\colorbox{red!100}{\textcolor{yellow}{TODO}}: Fix ``o'' in ``Schroder''.)
@@ -829,7 +880,7 @@ If $A$ and $B$ are any two sets, we can always write $|A| \leq |B|$ or $|B|
 \leq |A|$.
 
 % ------------------------------
-\subsubsection*{Definition 0.3.29 (countable; uncountable)}
+\subsubsection{Definition 0.3.29 (countable; uncountable)}
 % ------------------------------
 
 If $|A| = |\mathbb{N}|$, then $A$ is said to be \textit{countably infinite}. If
@@ -837,6 +888,141 @@ $A$ is finite or countably infinite, then we say $A$ is \textit{countable}. If
 $A$ is not countable, then A is said to be \textit{uncountable}.
 
 $|\mathbb{N}|$ is usually denoted as $\aleph_0$ (read as aleph-naught).
+
+% ------------------------------
+\subsubsection{Example 0.3.31}
+% ------------------------------
+
+$\mathbb{N} \times \mathbb{N}$ is a countably infinite set.
+
+(\colorbox{red!100}{\textcolor{yellow}{TODO}}: Provide a more detailed proof.
+
+% ------------------------------
+\subsubsection{Example 0.3.32}
+% ------------------------------
+
+The set of rational numbers is countable.
+
+(\colorbox{red!100}{\textcolor{yellow}{TODO}}: Provide a more detailed proof.
+
+% ------------------------------
+\subsubsection{Definition 0.3.33 (power set)}
+% ------------------------------
+
+The \textit{power set} of a set $A$, denoted by $\mathcal{P}(A)$, is the set of
+all subsets of $A$.
+
+For example, if $A := \{1, 2\}$, then $\mathcal{P}(A) = \{\emptyset, \{1\},
+\{2\}, \{1, 2\}\}$.
+
+In general, for a finite set $A$ of cardinality $n$, the cardinality of
+$\mathcal{P}(A)$ is $2^n$.
+
+% ------------------------------
+\subsubsection{Theorem 0.3.34 (Cantor)}
+% ------------------------------
+
+$|A| < |\mathcal{P}(A)|$. In particular, there exists no surjection from $A$
+onto $\mathcal{P}(A)$.
+
+\colorbox{lime!100}{\textbf{My notes}}: The textbook provides a proof but I
+feel it omits some detailed steps for conciseness, so I'm trying to cover those
+details in the notes here.
+
+The first part of the proof, as quoted as follows, is quite easy to follow:
+
+\begin{displayquote}
+  There exists an injection $f: A \rightarrow \mathcal{P}(A)$. For any $x \in
+  A$, define $f(x) := \{x\}$. Therefore, $|A| \leq |\mathcal{P}(A)|$.
+\end{displayquote}
+
+The second part needs a bit more explanation. The second part starts with the
+following:
+
+\begin{displayquote}
+  To finish the proof, we must show that no function $g: A \rightarrow
+  \mathcal{P}(A)$ is a surjection. Suppose $g: A \rightarrow \mathcal{P}(A)$ is
+  a function. So for $x \in A$, $g(x)$ is a subset of $A$.
+\end{displayquote}
+
+Everything looks good so far. The proof then says:
+
+\begin{displayquote}
+  Define the set \[B:= \{x \in A: x \notin g(x)\}\].
+\end{displayquote}
+
+The question is: \textbf{Does such a set $B$ always exist?} In other words,
+\textbf{is it guaranteed that $B$ is not empty?} To see why this question is
+important, let's continue to see the subsequent part of the proof:
+
+\begin{displayquote}
+  Suppose for contradiction that there exists an $x_0$ such that $g(x_0) = B$.
+  Either $x_0 \in B$ or $x_0 \notin B$. If $x_0 \in B$, then $x_0 \notin g(x_0)
+  = B$, which is a contradiction. If $x_0 \notin B$, then $x_0 \in g(x_0) = B$,
+  which is again a contradiction.
+\end{displayquote}
+
+Suppose that $B$ is an empty set. The sentence ``Suppose for contradiction that
+there exists an $x_0$ such that $g(x_0) = B$'' still makes sense, because it is
+perfectly fine that $g$ can be a function that maps $x_0$ to the empty set
+$\emptyset$ which is a subset of $A$ (hence an element of $\mathcal{P}(A)$).
+But then the conditional branch ``$x_0 \in B$'' wouldn't be satisfied because
+$x_0$ can't belong to the empty set, so it makes no sense to talk about this
+branch. So we are only left with the other conditional branch that ``$x_0 \notin
+B$'' (which is $\emptyset$ now). This condition always holds, but its conclusion
+``$x_0 \in g(x_0) = B$'' makes no sense now because $B$ is $\emptyset$. We can
+no longer solidly say the contradiction exists. Therefore, the validity of the
+proof by contradiction is based on the fact that $B$ is always non-empty.
+
+Is it? Yes, $B$ is always non-empty regardless how $g$ is defined. We can prove
+this as follows:
+
+\begin{itemize}
+  \item Consider the case that $A$ is empty, so $\mathcal{P}(A):=
+    \{\emptyset\}$. So the statement $|A| < |\mathcal{P}(A)|$ already holds for
+    this case and we don't need to consider $B$ anymore.
+  \item When $A$ is not empty, then $\emptyset \in \mathcal{P}(A)$. Now:
+  \begin{itemize}
+    \item If $\forall x \in A$ such that $g(x) \neq \emptyset$, that means
+      $\emptyset$ is not in the range of $g$, so $g$ is not surjective.
+    \item If $\exists x \in A$ such that $g(x) = \emptyset$, then we have
+      $x \in A$ and $x \notin g(x) = \emptyset$, so $x \in B$, so in this case,
+      $B$ is not empty. Now we can apply the proof by contradiction as shown in
+      the textbook to prove that the general function $g$ can't be surjective.
+  \end{itemize}
+\end{itemize}
+
+Now when we look back at the entire proof, it looks better that we prove the
+statement $|A| < |\mathcal{P}(A)|$ by considering the following cases:
+\begin{enumerate}
+  \item When $A$ is $\emptyset$.
+  \item When $A$ is not $\emptyset$, consider the two sub-cases:
+  \begin{enumerate}
+    \item $\forall x \in A$ such that $g(x) \neq \emptyset$.
+    \item $\exists x \in A$ such that $g(x) = \emptyset$.
+  \end{enumerate}
+\end{enumerate}
+
+% ------------------------------
+\subsubsection{A few true statements (without proof)}
+% ------------------------------
+
+\begin{itemize}
+  \item A set is infinite if and only if it is in one-to-one correspondence
+    with a proper subset of itself.
+  \item If $A \subset B$ and $B$ is countable, then $A$ is countable. If $A$ is
+    uncountable, then $B$ is uncountable.
+  \item If $|A| < |N|$, then $A$ is finite. Similarly, if $B$ is finite and $A
+    \subset B$, then $A$ is finite.
+  \item Uncountable sets do exist, e.g., $\mathcal{P}(\mathbb{N})$. This can be
+    seen from the definition of uncountable, which is defined as ``not finite
+    and not countably infinite'':
+    \begin{enumerate}
+      \item $\mathcal{P}(\mathbb{N})$ is surely not finite.
+      \item $\mathcal{P}(\mathbb{N})$ is not countably infinite because
+        $\mathcal{P}(\mathbb{N}) > |\mathbb{N}|$.
+    \end{enumerate}
+\end{itemize}
 
 % =============================================================================
 %
