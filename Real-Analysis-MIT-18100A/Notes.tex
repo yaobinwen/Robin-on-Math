@@ -895,15 +895,62 @@ $|\mathbb{N}|$ is usually denoted as $\aleph_0$ (read as aleph-naught).
 
 $\mathbb{N} \times \mathbb{N}$ is a countably infinite set.
 
-(\colorbox{red!100}{\textcolor{yellow}{TODO}}: Provide a more detailed proof.
+(\colorbox{lime!100}{\textbf{My proof}}: We can figure out the formula for the
+bijection that the textbook proof uses.
 
-% ------------------------------
-\subsubsection{Example 0.3.32}
-% ------------------------------
+In the way that the textbook proof arranges the elements of $\mathbb{N} \times
+\mathbb{N}$, we can see that, $\forall (a, b) \in \mathbb{N} \times \mathbb{N}$:
+\begin{itemize}
+  \item $a + b = 2$: 1 element: $(1, 1)$
+  \item $a + b = 3$: 2 elements: $(1, 2), (2, 1)$
+  \item $a + b = 4$: 3 elements: $(1, 3), (2, 2), (3, 1)$
+  \item $a + b = 5$: 4 elements: $(1, 4), (2, 3), (3, 2), (4, 1)$
+  \item $\ldots$
+  \item $a + b = k$: (k-1) elements: $(1, k-1), (2, k-2), $\ldots$, (k-1, 1)$
+\end{itemize}
 
-The set of rational numbers is countable.
+We can use the sum of $a$ and $b$ to name that group of elements. For example,
+$(1, 1)$ is in the group of $2$; $(1, 2)$ and $(2, 1)$ are in the group of $3$.
+We can easily tell that the group $a + b$ has $(a + b -1)$ elements. Let's
+define $NUM$ as the function that, given $a + b$, returns the number of elements
+in this group: \[NUM(a + b) = a + b -1\]
 
-(\colorbox{red!100}{\textcolor{yellow}{TODO}}: Provide a more detailed proof.
+Therefore, when we are looking at an element $(a, b)$, we know it is in the
+group of $a + b$, and $(a, b)$ is the $a$-th element in this group. The total
+number of elements in all the groups \textbf{before} group $a + b$ is:
+
+\begin{equation*}
+  \begin{split}
+    \sum_{i=2}^{a + b - 1} NUM(i)
+    & = 1 + 2 + 3 + \ldots + (a + b - 1 - 1) \\
+    & = \frac{1}{2}\bigl(1 + (a + b - 1 - 1)\bigr) \times (a + b - 1 - 1) \\
+    & = \frac{1}{2}(a + b - 1)(a + b - 2)
+  \end{split}
+\end{equation*}
+
+So for an arbitrary element $(a, b) \in \mathbb{N} \times \mathbb{N}$, its
+corresponding natural number k is:
+\[ k = \frac{1}{2}(a + b - 1)(a + b - 2) + a \]
+
+We can define the function $INDEX$, given $(a, b)$, to return the corresponding
+natural number:
+\[ INDEX((a, b)) = \frac{1}{2}(a + b - 1)(a + b - 2) + a \]
+
+Then $INDEX$ is the bijection that the textbook proof talks about.
+(\colorbox{red!100}{\textcolor{yellow}{TODO}}: We still need to prove that
+the function $INDEX$ is bijective.)
+
+We can quickly verify $INDEX$ with the first few elements:
+
+\begin{enumerate}
+  \item $INDEX((1, 1)) = \frac{1}{2}(1 + 1 - 1)(1 + 1 - 2) + 1 = 1$
+  \item $INDEX((1, 2)) = \frac{1}{2}(1 + 2 - 1)(1 + 2 - 2) + 1 = 2$
+  \item $INDEX((2, 1)) = \frac{1}{2}(2 + 1 - 1)(2 + 1 - 2) + 2 = 3$
+  \item $INDEX((1, 3)) = \frac{1}{2}(1 + 3 - 1)(1 + 3 - 2) + 1 = 4$
+  \item $INDEX((2, 2)) = \frac{1}{2}(2 + 2 - 1)(2 + 2 - 2) + 2 = 5$
+  \item $INDEX((3, 1)) = \frac{1}{2}(3 + 1 - 1)(3 + 1 - 2) + 3 = 6$
+  \item etc.
+\end{enumerate}
 
 % ------------------------------
 \subsubsection{Definition 0.3.33 (power set)}
