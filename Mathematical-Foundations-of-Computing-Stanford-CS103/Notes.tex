@@ -1,0 +1,204 @@
+% Regarding `oneside` (https://stackoverflow.com/a/8371473/630364):
+%
+% `oneside` removes the blank pages between chapters.
+% "Note that this method make the margins of all the pages the same. In
+% `twoside`, the margins are different for the odd and the even pages".
+\documentclass[12pt, letterpaper, oneside]{book}
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage[letterpaper, textwidth=7.5in, textheight=8in]{geometry}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{pseudocode}
+\usepackage{titlesec}
+\usepackage{xcolor}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=magenta,
+  urlcolor=blue,
+}
+
+\setcounter{secnumdepth}{4}
+
+\title{
+  Notes on \textit{Stanford: CS103: Mathematical Foundations of Computing}
+}
+\author{Yaobin Wen}
+\date{July 2023}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\chapter*{Overview}
+\addcontentsline{toc}{chapter}{Overview}
+
+This document contains my study notes of the Stanford course \textit{CS103:
+Mathematical Foundations of Computing}. I use it for a few purposes:
+
+\begin{enumerate}
+  \item As a reference to quickly refresh my memory on the subjects.
+  \item Keep the notes to help me understand the text that is not obvious for
+    me to comprehend.
+\end{enumerate}
+
+% =============================================================================
+%
+% Set Theory
+%
+% =============================================================================
+
+\chapter{Set Theory}
+
+% =============================================================================
+\section{Is 0 a natural number?}
+% =============================================================================
+
+Is $0$ a natural number? Does $\mathbb{N}$ include $0$?
+
+There is no ``yes'' or ``no'' answer to these questions. Take a look at
+\href{https://math.stackexchange.com/q/283/665777}{this question} and you will
+find people all over the world have all kinds of understanding such as:
+\begin{itemize}
+  \item $0$ is definitely \textbf{NOT} a natural number and does not belong to
+    $\mathbb{N}$.
+  \item There are two conventions: In one convention, $0$ is not a natural
+    number; in another convention, $0$ is a natural number.
+  \item Natural numbers include 0; those positive integers are called ``whole
+    numbers'':
+    \begin{displayquote}
+      I see plenty of both these days, but when I was at school and at
+      university, I almost only saw them defined to be {0, 1, ..}. The elements
+      of {1, 2, ..} were called the whole numbers in my school days.
+    \end{displayquote}
+  \item Natural numbers don't include 0; whole numbers, denoted as $\mathbb{W}$,
+    include $0$.
+  \item $\mathbb{N}$ includes 0; $\mathbb{N^+}$ is all the positive integers so
+    it doesn't include 0.
+  \item yadda yadda yadda...
+\end{itemize}
+
+So I don't think it makes sense to argue whether $0$ is a natural number or not.
+We just need to define it clearly and move on.
+
+In CS103, $\mathbb{N}$ represents the natural numbers that \textbf{include} $0$.
+But if you read 18.100A, you'll see in that course, $\mathbb{N}$ does not
+include $0$.
+
+That's fine. The world is still in peace. So in this note, I will respect the
+choice of CS103 and treat $\mathbb{N}$ as the set of all the non-negative
+integers, i.e., \[\{0, 1, 2, 3, \ldots\}\].
+
+% =============================================================================
+\section{Introduction to Set Theory}
+% =============================================================================
+
+This first lecture introduces set theory. Because I have learned them in MIT
+OCW 18.100A Real Analysis, I won't repeat the notes again because they can be
+found in the notes for that course. Here, I will just mention a few points that
+are not covered in 18.100A.
+
+\begin{itemize}
+  \item Set difference: 18.100A uses $A \setminus B$ to denote ``A minus B''.
+    CS103 says $A - B$ is also used.
+  \item \textbf{Symmetric difference}: $A \bigtriangleup B = (A \setminus B)
+    \cup (B \setminus A) = (A \cup B) \setminus (A \cap B)$. For example, if
+    $A = \{1, 2, 3\}$ and $B = \{3, 4, 5\}$, then $A \bigtriangleup B = \{1, 2,
+    4, 5\}$. \colorbox{red}{\textcolor{yellow}{TODO:}} Add a Venn diagram.
+\end{itemize}
+
+% =============================================================================
+\section{Cardinality}
+% =============================================================================
+
+% ******************************
+\subsection{$|\mathbb{N}|$ and $|\mathbb{Z}|$}
+% ******************************
+
+I've already learned that $|\mathbb{Z}|$ and the set of all the even (or odd)
+numbers have the same cardinality, but in CS103 I just learned $|\mathbb{N}| =
+|\mathbb{Z}|$. The bijection (see 18.100A) between $\mathbb{N}$ and $\mathbb{Z}$
+is created in the following way:
+\begin{itemize}
+  \item All the non-negative even numbers (including $0$) in $\mathbb{N}$ are
+    matched to one non-negative integers in $\mathbb{Z}$.
+  \item All the non-negative odd numbers in $\mathbb{N}$ are matched to one
+    negative integers in $\mathbb{Z}$.
+\end{itemize}
+
+Visualized, this can be shown as:
+\begin{itemize}
+  \item $0 \longleftrightarrow 0$
+  \item $1 \longleftrightarrow -1$
+  \item $2 \longleftrightarrow 1$
+  \item $3 \longleftrightarrow -2$
+  \item $4 \longleftrightarrow 2$
+  \item $5 \longleftrightarrow -3$
+  \item $6 \longleftrightarrow 3$
+  \item $7 \longleftrightarrow -4$
+  \item $8 \longleftrightarrow 4$
+  \item etc.
+\end{itemize}
+
+In general, the bijection $f: \mathbb{N} \rightarrow \mathbb{Z}$ is defined as:
+
+\[
+  f(n) = \begin{cases}
+    n / 2,              & if \ MOD(n) = 0 \\
+    (-n - 1) / 2,       & if \ MOD(n) = 1
+  \end{cases}
+\]
+
+where $n \in \mathbb{N}$.
+
+% ******************************
+\subsection{Cantor's diagonalization proof}
+% ******************************
+
+\href{https://en.wikipedia.org/wiki/Cantor%27s_diagonal_argument}{Cantor's
+diagonalization proof} is used to prove $|S| < |\mathcal{P}(S)|$.
+
+% ******************************
+\subsection{$|Programs| < |Problems|$}
+% ******************************
+
+This is the most interesting conclusion I've seen in this lecture. The proof
+process can be summarized as follows:
+\begin{itemize}
+  \item Because every valid computer program is essentially a string, but not
+    every string is a valid program, we can see \[|Program| \leq |Strings|\].
+  \item The problems in the world may or may not deal with sets of strings.
+    Suppose $S$ denotes a set of strings, so one kind of problems is: Given a
+    string $s$, determine whether $s \in S$. For example:
+    \begin{itemize}
+      \item Suppose S = \{ ``a'', ``b'', ``c'', $\ldots$, ``z'' \}, then the
+        problem can be: Given a string $s$, determine whether $s$ is an English
+        letter.
+        \item Suppose S = \{ ``0'', ``1'', ``2'', ``3'', $\ldots$ \}, then the
+        problem can be: Given a string $s$, determine whether $s$ represents a
+        natural number.
+    \end{itemize}
+  \item Not to mention that other kinds of problems can exist and may not be
+    converted to problems that deal with sets of strings.
+  \item The conclusion is: $|Sets\ of\ strings| \leq |Problems|$. They could be
+    equal, if all the problems can be converted to problems that deal with sets
+    of strings.
+  \item Therefore:
+    \[|Program| \leq |Strings| < |Sets\ of\ strings| \leq |Problems|\]
+\end{itemize}
+
+\chapter*{References}
+\addcontentsline{toc}{chapter}{References}
+
+\begin{itemize}
+  \item $[1]$ \href{https://web.stanford.edu/class/cs103/}{CS103: Mathematical Foundations of Computing}
+\end{itemize}
+
+\end{document}
