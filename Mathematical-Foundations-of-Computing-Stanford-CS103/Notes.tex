@@ -194,6 +194,193 @@ process can be summarized as follows:
     \[|Program| \leq |Strings| < |Sets\ of\ strings| \leq |Problems|\]
 \end{itemize}
 
+% =============================================================================
+%
+% Mathematical Proofs
+%
+% =============================================================================
+
+\chapter{Mathematical Proofs}
+
+(TODO)
+
+% =============================================================================
+%
+% Indirect Proofs
+%
+% =============================================================================
+
+\chapter{Indirect Proofs}
+
+(TODO)
+
+% =============================================================================
+%
+% Propositional Logic
+%
+% =============================================================================
+
+\chapter{Propositional Logic}
+
+% =============================================================================
+\section{Proposition}
+% =============================================================================
+
+% ******************************
+\subsection{Definition}
+% ******************************
+
+A \textbf{proposition} is a statement that is, by itself, either \textbf{true}
+or \textbf{false}.
+\begin{itemize}
+  \item Commands are not propositions. Example: Open the door.
+  \item Questions are not propositions. Example: What day is it today?
+\end{itemize}
+
+A \textbf{propositional variable}, usually a lower-case English letter such as
+$p$, $q$, $r$, represents a proposition.
+
+A \textbf{propositional connective} expresses how propositions are related.
+Some of the connectives are:
+\begin{itemize}
+  \item $\lnot p$: ``NOT p''; logical negation.
+  \item $p \land q$: ``p AND q''; logical conjunction.
+  \item $p \lor q$: ``p OR q''; logical disjunction (inclusive). ``inclusive''
+    means $p$ and $q$ can be $true$ at the same time, while ``exclusive or''
+    means $p$ and $q$ cannot be $true$ at the same time.
+  \item $p \rightarrow q$: ``p implies q''; material condition.
+  \item $p \leftrightarrow q$: ``p if and only if q'', which also means ``(p
+    implies q) AND (q implies p)''.
+  \item $\top$: ``(always) true'' ($\top$ looks like a upper-case ``T'' that
+    can represent ``True''.)
+  \item $\bot$: ``(always) false''
+\end{itemize}
+
+% ******************************
+\subsection{Example of using $\top$ and $\bot$}
+% ******************************
+
+$\bot$ can be used to describe how proof by contradiction works. Suppose that
+you want to prove $p$ is $true$ using proof by contradiction. The usual steps
+are as follows:
+\begin{enumerate}
+  \item Assume $p$ is $false$.
+  \item Derive a conclusion that is known as $false$ (e.g., ``3 is even'').
+  \item Conclude that $p$ is $true$.
+\end{enumerate}
+
+Described in propositional logic, it is
+\[
+  (\lnot p \rightarrow \bot) \rightarrow p
+\].
+
+% ******************************
+\subsection{Logical operator precedence}
+% ******************************
+
+All the logical operators are \textbf{right-associative}.
+
+In the order of highest to lowest, they are:
+\begin{enumerate}
+  \item $\lnot$
+  \item $\land$
+  \item $\lor$
+  \item $\rightarrow$
+  \item $\leftrightarrow$
+\end{enumerate}
+
+For example, the statement
+\[
+  \lnot x \rightarrow y \lor z \rightarrow x \lor y \and z
+\]
+can be grouped as follows:
+\[
+  (\lnot x) \rightarrow ((y \lor z) \rightarrow (x \lor (y \and z)))
+\]
+
+% ******************************
+\subsection{Truth table}
+% ******************************
+
+I have already learned the truth tables for $\lnot$, $\land$, and $\lor$. What
+is surprising to me is the truth table for $\rightarrow$:
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|ll}
+  \cline{1-3}
+  p & q & $p \rightarrow q$ &  &  \\ [1ex] \cline{1-3}
+  F & F & T                 &  &  \\ [0.5ex] \cline{1-3}
+  F & T & T                 &  &  \\ [0.5ex] \cline{1-3}
+  T & F & F                 &  &  \\ [0.5ex] \cline{1-3}
+  T & T & T                 &  &  \\ [0.5ex] \cline{1-3}
+  \end{tabular}
+  \caption{Truth table for $p \rightarrow q$}
+\end{table}
+
+The first two lines are the most confusing to many people, and there are many
+questions about them. Here are some of them:
+\begin{itemize}
+  \item \href{https://philosophy.stackexchange.com/q/26719/44172}{Shouldn't statements be considered equivalent based on their meaning rather than truth tables?}
+  \item \href{https://philosophy.stackexchange.com/q/34082/44172}{Why are conditionals with false antecedents considered true?}
+  \item \href{https://math.stackexchange.com/q/3098664/665777}{How Implication or Material/Concrete Conditional works when the antecedent is false and the consequent is true}
+  \item \href{https://math.stackexchange.com/q/70736/665777}{In classical logic, why is ($p \rightarrow q$) True if p is False and q is True?}
+  \item And many more...
+\end{itemize}
+
+I read some of the posts and then decided to stop because this looks like a
+deep rabbit hole. For now, it is better to just accept the truth table and move
+on. But to help understand them a little bit:
+\begin{itemize}
+  \item $p \rightarrow q \equiv \lnot p \lor q \equiv \lnot (p \land \lnot q)$.
+  \item $\lnot (p \rightarrow q) \equiv p \land \lnot q$.
+  \item It's helpful to think about ``Ex falso sequitur quodlibet'' which means
+    ``from what is false any assertion validly follows''.
+\end{itemize}
+
+\colorbox{red}{\textcolor{yellow}{TODO:}} Figure out why $F \rightarrow F$ is
+$T$ and $F \rightarrow T$ is $T$. Or figure out why $p \rightarrow q$ is
+equivalent to $\lnot p \lor q$.
+
+Here is the truth table for $p \leftrightarrow q$:
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|ll}
+  \cline{1-3}
+  p & q & $p \leftrightarrow q$ &  &  \\ [1ex] \cline{1-3}
+  F & F & T                     &  &  \\ [0.5ex] \cline{1-3}
+  F & T & T                     &  &  \\ [0.5ex] \cline{1-3}
+  T & F & F                     &  &  \\ [0.5ex] \cline{1-3}
+  T & T & T                     &  &  \\ [0.5ex] \cline{1-3}
+  \end{tabular}
+  \caption{Truth table for $p \rightarrow q$}
+\end{table}
+
+% ------------------------------
+\subsubsection{Vacuously true; trivially true}
+% ------------------------------
+
+An implication with a false antecedent is called \textbf{vacuously true}, such
+as $F \rightarrow F: T$ and $F \rightarrow T: T$.
+
+An implication with a true consequent is called \textbf{trivially true}, such
+as $F \rightarrow T: T$ and $T \rightarrow T: T$.
+
+Note that the implication $F \rightarrow F: T$ is \textbf{both vacuous and
+trivial}.
+
+Note that the implication $T \rightarrow F: F$ is \textbf{neither of them}.
+
+% ******************************
+\subsection{de Morgan's Laws}
+% ******************************
+
+\begin{itemize}
+  \item $\lnot (p \land q) \equiv \lnot p \lor \lnot q$
+  \item $\lnot (p \lor q) \equiv \lnot p \land \lnot q$
+\end{itemize}
+
 \chapter*{References}
 \addcontentsline{toc}{chapter}{References}
 
