@@ -1,0 +1,463 @@
+\documentclass[12pt, letterpaper]{article}
+
+\usepackage{amssymb}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{xcolor}
+
+% Configure the display style of hyperlinks.
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=magenta,
+  urlcolor=blue,
+}
+
+\title{
+  My Understanding of Relation Between Material Condition and Logical
+  Implication
+}
+\author{
+  Yaobin Wen\thanks{Funded by my own humility, interest, and dedication.}
+}
+\date{July 2023}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  That using the material condition (i.e., one of the many binary truth
+  functions) to represent the logical implication has caused a lot of confusion.
+  One can search questions such as \textit{why is $p \rightarrow q$ $True$ if
+  $p$ is $False$ and $q$ is $True$?}, and many similar questions would show up.
+  I myself was confused, too. My confusion was resolved (so far) after reading
+  the related sections in the article \textit{Propositional Logic} that was
+  published by \textit{Stanford Encyclopedia of Philosophy}\footnote{I will
+  refer to this article as \textit{SEP-PL}}. This article has my notes of
+  learning.
+
+  In general, \textit{SEP-PL}, although admitted that there is controversy in
+  this topic, favors the position that it is wrong to treat material condition
+  as a way to describe logical implication (``This truth function is often
+  described, controversially, as giving the truth conditions..., or even,
+  erroneously, for the relation `implies'. ''). This is the key to dissolve the
+  confusion. Actually, \textit{SEP-PL} provides a bigger picture for us to see
+  how propositional logic is built, especially how the material condition came
+  into being in the first place, which helped us to see why it is inappropriate
+  to use it to indicate ``implication''.
+
+  This article is divided into the following sections. The first section
+  presents the confusion that many people have asked online. This confusion was
+  also my motivation to study the topic of this article. The next section
+  provides a quick answer to the question, which is essentially a summary of
+  the last section that explains answer in detail.
+\end{abstract}
+
+% =============================================================================
+\section{The Confusion}
+% =============================================================================
+
+When studying study propositional logic, you typically start with the
+definitions of ``proposition'' (which is usually represented by a lower-case
+letter such as ``p'') and ``connective'' (such as $\lnot$, $\land$, and $\lor$),
+followed by the definition of ``truth table''. The truth tables for $\lnot$
+(logical NOT), $\land$ (logical AND), and $\lor$ (logical OR) are not difficult
+to grasp because they match our daily experience. For example:
+
+\begin{itemize}
+  \item $\lnot True$ = $False$. Example: NOT it is raining = It is not raining.
+  \item Alice is here $\land$ Bob is here = It is true that both Alice and Bob
+    are here.
+  \item Alice will attend the meeting $\lor$ Bob will attend the meeting =
+    Either Alice or Bob (or both of them) will attend the meeting. (Note that
+    $\lor$ is \textit{inclusive or}, so the case of ``both'' can happen.)
+\end{itemize}
+
+However, depending on the textbooks, instructors, or courses, you may also be
+taught that $\rightarrow$ means ``implication'' and $p \rightarrow q$ means ``p
+implies q''. Its truth table is said to be as follows:
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|ll}
+  \cline{1-3}
+  p & q & $p \rightarrow q$ &  &  \\ [1ex] \cline{1-3}
+  F & F & T                 &  &  \\ [0.5ex] \cline{1-3}
+  F & T & T                 &  &  \\ [0.5ex] \cline{1-3}
+  T & F & F                 &  &  \\ [0.5ex] \cline{1-3}
+  T & T & T                 &  &  \\ [0.5ex] \cline{1-3}
+  \end{tabular}
+  \caption{Truth table for $p \rightarrow q$}
+\end{table}
+
+You may quickly raise questions about the first two lines:
+\begin{itemize}
+  \item Why is $p \rightarrow q$ $True$ if both $p$ and $q$ are $False$?
+  \item Why is $p \rightarrow q$ $True$ if $p$ is $False$ and $q$ is $True$?
+\end{itemize}
+
+If you have these questions, you are definitely not alone. Many people have the
+same questions, too:
+\begin{itemize}
+  \item \href{https://philosophy.stackexchange.com/q/26719/44172}{Shouldn't statements be considered equivalent based on their meaning rather than truth tables?}
+  \item \href{https://philosophy.stackexchange.com/q/34082/44172}{Why are conditionals with false antecedents considered true?}
+  \item \href{https://math.stackexchange.com/q/3098664/665777}{How Implication or Material/Concrete Conditional works when the antecedent is false and the consequent is true}
+  \item \href{https://math.stackexchange.com/q/70736/665777}{In classical logic, why is ($p \rightarrow q$) True if p is False and q is True?}
+  \item etc.
+\end{itemize}
+
+On those Q \& A websites, some answers used ``Ex falso sequitur quodlibet''
+(``from what is false any assertion validly follows''). This helps, to some
+extent, but I think it still doesn't explain why it makes sense to define $p
+\rightarrow q$ as $True$ in these two cases. In fact, I could argue the other way:
+if $p$ is already $False$, then whatever it implies cannot make sense, even if
+the proposition $q$ is a true statement, so the ``$\rightarrow$'' can't stand,
+so it doesn't make sense to define it as $True$.
+
+Among the answers I've read, \href{https://math.stackexchange.com/a/70739/665777}(this one)
+is the closest to what I'm going to write below.
+
+% =============================================================================
+\section{A Quick Answer}
+% =============================================================================
+
+\colorbox{red}{TODO}
+
+% =============================================================================
+\section{What Does SEP Say?}
+% =============================================================================
+
+\textit{SEP-PL} establishes the basic framework for propositional logic and
+then discuss the truth-functionality in this framework. The definition of
+truth-functions naturally answers part of this question, and \textit{SEP-PL}
+uses a separate subsection to discuss it further in order to provide additional
+details.
+
+% ******************************
+\subsection{Basic Framework}
+% ******************************
+
+``Atomic'' propositions can be represented by \textbf{propositional variables}:
+$p_1$, $p_2$, $p_3$, $\ldots$.
+
+The \textbf{propositional connectives}, denoted by $c_1^1, c_2^1, \ldots, c_1^2,
+c_2^2, \ldots$ can be applied to the propositions in order to create new
+propositions.
+
+In all these symbols, the subscripts are used to distinguish them from one
+another. The superscripts indicate the connective's ``arity'', i.e., the number
+of propositions they operate on.
+
+The \textbf{formulas} of propositional logic are defined recursively by:
+\begin{enumerate}
+  \item Atomic propositional variables are \textbf{formulas}.
+  \begin{itemize}
+    \item \colorbox{lime}{Note}: \textit{SEP-PL} doesn't use this term but I prefer
+    to call them \textbf{atomic formulas}.
+  \end{itemize}
+
+  \item If $c_n^m$ is a propositional connective, and $\langle A, B, C, \ldots
+    \rangle$ is a sequence of $m$, possibly but not necessarily atomic (so each
+    formula can be atomic or compound), possibly but not necessarily distinct
+    (for example, $A$ can be equal to $B$), then the result of applying $c_n^m$
+    to $\langle A, B, C, \ldots \rangle$ is a formula, written as \[c_n^m(A, B,
+    C, \ldots)\].
+    \begin{itemize}
+      \item \colorbox{lime}{Note}: \textit{SEP-PL} doesn't use this term but I
+        prefer to call them \textbf{compound formulas}.
+      \item Examples:
+      \begin{itemize}
+        \item $p_4$
+        \item $c_1^2(p_7, p_3)$
+        \item $c_2^2(c_1^1(p_1), c_1^1(c_1^2(p_2, p_3)))$
+      \end{itemize}
+    \end{itemize}
+\end{enumerate}
+
+It is customary to the following:
+\begin{itemize}
+  \item Indicate the specific connectives with special characters, typically
+    $\land$, $\lor$, $\supset$, $\lnot$.
+  \item Use infix notation for binary connectives, such as $A \land B$ instead
+    of $\land(A, B)$.
+  \item Display parentheses only when there would be ambiguity. For example,
+    if one wants to express the formula $(\lnot B) \land C$, one doesn't need
+    the parentheses because the precedence guarantees the formula is calculated
+    in the correct order. However, if one wants to express $\lnot (B \land C)$,
+    the parentheses are necessary.
+\end{itemize}
+
+\colorbox{lime}{\textbf{Notes}}:
+\begin{enumerate}
+  \item This section is helpful for those who learn propositional logic for the
+    first time. It defines the language of propositional logic in the most
+    abstract way so the readers can see what propositional logic generally
+    looks like. Understanding the abstraction is helpful when it gets more
+    specific, because the abstract expressions provide the readers a full
+    overview so the readers will not get lost in the details.
+  \item Note that the possible values of a proposition is not defined in the
+    framework. We usually think a proposition is either $True$ or $False$, but
+    later when we examine the truth functions, you will see that having binary
+    values is only one possible case (which is called the ``bivalent case'').
+    Technically, a proposition may be in more than two states.
+\end{enumerate}
+
+% ******************************
+\subsection{The interpretations}
+% ******************************
+
+``The logical analysis of propositional formulas proceeds from an association
+of some meaning with the connectives.'' In other words, we want to understand
+how we should interpret the meanings of the propositional connectives. As
+\textit{SEP-PL} says:
+
+\begin{displayquote}
+  Because the original motivation for studying propositional logic is the
+  observation that some particles in natural language often behave like
+  propositional connectives, a natural first move is to try to specify formal
+  rules of inference or precise assertability conditions that \textbf{capture}
+  or \textbf{approximate} the role that these natural language predicates serve
+  in informal reasoning.
+\end{displayquote}
+
+I find it interesting that \textit{SEP-PL} uses ``approximate''. It seems to
+suggest that the logicians have already realized that people's thoughts are
+by nature vague and difficult to be defined accurately on a mathematical level.
+As a result, the mathematical tools may not always accurately reflect people's
+thoughts. But it's more likely the other way: Mathematics is accurate; it is
+people's thoughts and languages that are vague by nature, that they cannot
+describe themselves in the way that can be fully and accurately expressed in
+mathematics.
+
+Nonetheless, the interpretations of the meanings of propositional connectives
+can be divided into two major categories, with each category being further
+divided into sub-categories:
+\begin{itemize}
+  \item The classical interpretation
+    \begin{itemize}
+      \item Truth functions
+      \item Axiomatic deduction systems
+    \end{itemize}
+  \item The non-classical interpretation
+    \begin{itemize}
+      \item Multi-valued logics
+      \item Constructive logics
+      \item Relevance and connexive logics
+      \item Linear logic
+    \end{itemize}
+\end{itemize}
+
+In this article, I only talk about the truth functions in the classical
+interpretation because, frankly speaking, I haven't learned the other
+interpretations yet.
+
+% ******************************
+\subsection{Truth-functionality}
+% ******************************
+
+From an mathematical perspective, the truth functions are probably the simplest
+form of interpretation to the propositional connectives.
+
+Define $\mathcal{V} := \{v_i: v_i \in \mathcal{V}, i \in \mathbb{N}\}$ as a set
+of truth values. A function \[f: \mathcal{V}^n \rightarrow \mathcal{V}\] that
+maps a n-tuple of truth values to a truth value is called an \textbf{n-ary
+truth function}.
+
+\colorbox{lime}{Notes}: It's interesting to think about whether $\mathcal{V}$
+can be an infinite set. When describing the basic framework, \textit{SEP-PL}
+says: ``... the fact that we use natural numbers indicates the typical
+convention that the vocabulary be countable.'' However, there is the concept of
+``infinitely countable'' so a countable set can be infinite at the same time.
+(I don't know the answer, but after quickly thinking about it, I think
+$\mathcal{V}$ should be a finite set.)
+
+Here are some additional definitions:
+\begin{enumerate}
+  \item \textbf{valence}: The number of values in $\mathcal{V}$ is called the
+    valence of the function space.
+  \item \textbf{bivalent}: When $\mathcal{V}$ has only two values, it is said
+    to be ``bivalent''. When these two values happen to match the meanings of
+    ``true'' or ``false'' in our daily conversation, denoted as \textbf{T} and
+    \textbf{F} respectively, we have the classical theory of truth. (This is
+    another case of going from ``abstract'' to ``concrete'': Most of the time,
+    we talk about the ``true/false'' case, but that doesn't mean all the
+    bivalent cases are all about ``true'' and ``false''.)
+\end{enumerate}
+
+The bivalent case is important because it is applicable in our daily life. So
+we will examine this case further.
+
+% ******************************
+\subsection{Bivalent case: Boolean propositional logic}
+% ******************************
+
+% ------------------------------
+\subsubsection{When n = 0, 1, 2}
+% ------------------------------
+
+\textit{SEP-PL} says:
+
+\begin{displayquote}
+  In the bivalent case, the truth values are denoted \textbf{T} and \textbf{F},
+  and one has the classical theory of truth. Observe that in this classical
+  function space are two \textbf{0-ary} truth functions which, following the
+  conventions on indices for propositional connectives we could denote $f_1^0$
+  and $f_2^0$, but are conventionally denoted $\top$ and $\bot$, defined by
+  $\top = \textbf{T}$ and $\bot = \textbf{F}$.
+\end{displayquote}
+
+This is the case in which $n = 0$:
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|}
+  \hline
+  input   &   & meaning \\ [1ex] \hline
+  $f_1^0$ & T & $\top$  \\ [0.5ex] \hline
+  $f_2^0$ & F & $\bot$  \\ [0.5ex] \hline
+  \end{tabular}
+  \caption{0-ary truth functions}
+\end{table}
+
+When $n = 1$, the truth functions are \textbf{unary}:
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|c|c}
+  \cline{1-4}
+  input   & $\langle T \rangle$ & $\langle F \rangle$ & Meaning &  \\ [1ex] \cline{1-4}
+  $f_1^1$ & T                   & T                   & $\top$  &  \\ [0.5ex] \cline{1-4}
+  $f_2^1$ & T                   & F                   & Same    &  \\ [0.5ex] \cline{1-4}
+  $f_3^1$ & F                   & T                   & NOT     &  \\ [0.5ex] \cline{1-4}
+  $f_4^1$ & F                   & F                   & $\bot$  &  \\ [0.5ex] \cline{1-4}
+  \end{tabular}
+  \caption{unary truth functions}
+\end{table}
+
+When $n = 2$, the truth functions are \textbf{binary}:
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|c|c|c|}
+  \hline
+  input      & $\langle T, T \rangle$ & $\langle T, F \rangle$ & $\langle F, T \rangle$ & $\langle F, F \rangle$ & Meaning \\ [1ex] \hline
+  $f_1^2$    & T                      & T                      & T                      & T                      &         \\ [0.5ex] \hline
+  $f_2^2$    & T                      & T                      & T                      & F                      & OR      \\ [0.5ex] \hline
+  $f_3^2$    & T                      & T                      & F                      & T                      &         \\ [0.5ex] \hline
+  $f_4^2$    & T                      & T                      & F                      & F                      &         \\ [0.5ex] \hline
+  $f_5^2$    & T                      & F                      & T                      & T                      &         \\ [0.5ex] \hline
+  $f_6^2$    & T                      & F                      & T                      & F                      &         \\ [0.5ex] \hline
+  $f_7^2$    & T                      & F                      & F                      & T                      & Same    \\ [0.5ex] \hline
+  $f_8^2$    & T                      & F                      & F                      & F                      & AND     \\ [0.5ex] \hline
+  $f_9^2$    & F                      & T                      & T                      & T                      &         \\ [0.5ex] \hline
+  $f_{10}^2$ & F                      & T                      & T                      & F                      & XOR     \\ [0.5ex] \hline
+  $f_{11}^2$ & F                      & T                      & F                      & T                      &         \\ [0.5ex] \hline
+  $f_{12}^2$ & F                      & T                      & F                      & F                      &         \\ [0.5ex] \hline
+  $f_{13}^2$ & F                      & F                      & T                      & T                      &         \\ [0.5ex] \hline
+  $f_{14}^2$ & F                      & F                      & T                      & F                      &         \\ [0.5ex] \hline
+  $f_{15}^2$ & F                      & F                      & F                      & T                      &         \\ [0.5ex] \hline
+  $f_{16}^2$ & F                      & F                      & F                      & F                      &         \\ [0.5ex] \hline
+  \end{tabular}
+  \caption{binary truth functions}
+\end{table}
+
+% ------------------------------
+\subsubsection{NOT, OR, AND, and their properties}
+% ------------------------------
+
+Let's only consider $f_3^1$ (logical NOT), $f_2^2$ (logical OR), $f_8^2$
+(logical AND). In this way, the language of propositional logic restricted to
+the connectives $\lnot$, $\land$, and $\lor$ with the formulas of two-element
+Boolean algebra of \textbf{complementation}, \textbf{union}, and \textbf{
+intersection}. Suppose we have two compound propositions $p$ and $q$, we can
+define:
+\begin{enumerate}
+  \item $p$ is \textbf{classical propositional validity} if it evaluates as
+    \textbf{T} on every possible assignment of values to its atomic
+    propositional variables.
+  \item $p$ is \textbf{classically satisfiable} if it evaluates as \textbf{T}
+    on \textbf{at least one possible assignment} of values to its atomic
+    propositional variables (and is \textbf{classically unsatisfiable}
+    otherwise, i.e, none of the assignments can make $p$ be evaluated as
+    \textbf{T}).
+  \item $p$ is a \textbf{classical propositional consequence} of $q$ if on no
+    assignment of values to the atoms that occur in $p$ and $q$ on which $q$,
+    evaluates as \textbf{T} does $p$ evaluate as \textbf{F}.
+    \colorbox{red}{TODO}: I don't understand this sentence.
+  \item $p$ is a \textbf{classical propositional equivalent} of $q$ if $p$ and
+    $q$ evaluate as \textbf{T} on precisely the \textbf{same assignments} of
+    values to atoms.
+\end{enumerate}
+
+And the Boolean laws are applicable:
+\begin{itemize}
+  \item \textbf{interchange}: Suppose $p$, $q$, $r_i$, $m_1$, and $m_2$ are all
+    formulas and:
+    \begin{enumerate}
+      \item $p$ and $q$ are equivalent.
+      \item $m_1 = c_1^n(p, r_1, r_2, \ldots)$
+      \item $m_2 = c_1^n(q, r_1, r_2, \ldots)$ (i.e., $m_2$ is only different
+        from $m_1$ in the replacement of $p$ with $q$ and everything else is
+        the same)
+    \end{enumerate}
+    Then $m_1$ and $m_2$ are also equivalent.
+  \item \textbf{substitution}: Suppose $p$, $q$, $m_1$, $m_2$, $n_1$, and $n_2$
+    are all formulas and:
+    \begin{enumerate}
+      \item $m_1 = c_1^n(p, \ldots)$
+      \item $n_1 = c_2^n(p, \ldots)$
+      \item $m_2$ is constructed by replacing $p$ in $m_1$ with $q$.
+      \item $n_2$ is constructed by replacing $p$ in $n_1$ with $q$.
+    \end{enumerate}
+    Then:
+    \begin{enumerate}
+      \item $m_1$ is valid $\Rightarrow$ $m_2$ is valid.
+      \item $m_1$ is unsatisfiable $\Rightarrow$ $m_2$ is unsatisfiable.
+      \item $n_1$ is a consequence of $m_1$ $\Rightarrow$ $n_2$ is a consequence
+        of $m_2$.
+      \item $m_1 \equiv n_1$ $\Rightarrow$ $m_2 \equiv n_2$
+    \end{enumerate}
+  \item \textbf{complementation}: $p \lor \lnot p$ is classical validity (i.e.,
+    always true). This is also called ``law of excluded middle'' (LEM).
+  \item \textbf{double complementation}: $\lnot \lnot p \equiv p$
+  \item \textbf{commutativity}
+    \begin{enumerate}
+      \item $p \land q \equiv q \land p$
+      \item $p \lor q \equiv q \lor p$
+    \end{enumerate}
+  \item \textbf{associativity}
+    \begin{enumerate}
+      \item $(p \land q) \land r \equiv p \land (q \land r)$
+      \item $(p \lor q) \lor r \equiv p \lor (q \lor r)$
+    \end{enumerate}
+  \item \textbf{distribution}
+    \begin{enumerate}
+      \item $p \land (q_1 \lor q_2 \lor \ldots \lor q_n) \equiv (p \land q_1)
+        \lor (p \land q_2) \lor \ldots \lor (p \land q_n)$
+      \item $p \lor (q_1 \land q_2 \land \ldots \land q_n) \equiv (p \lor q_1)
+        \land (p \lor q_2) \land \ldots \land (p \lor q_n)$
+    \end{enumerate}
+  \item \textbf{De Morgan equivalence}
+    \begin{enumerate}
+      \item $\lnot (p_1 \land p_2 \land \ldots \land p_n) \equiv \lnot p_1
+        \lor \lnot p_2 \lor \ldots \lor \lnot p_n$
+      \item $\lnot (p_1 \lor p_2 \lor \ldots \lor p_n) \equiv \lnot p_1
+        \land \lnot p_2 \land \ldots \land \lnot p_n$
+    \end{enumerate}
+\end{itemize}
+
+% ------------------------------
+\subsubsection{Normal forms}
+% ------------------------------
+
+\colorbox{red}{TODO}
+
+% ------------------------------
+\subsubsection{The material conditional}
+% ------------------------------
+
+\colorbox{red}{TODO}
+
+\end{document}
