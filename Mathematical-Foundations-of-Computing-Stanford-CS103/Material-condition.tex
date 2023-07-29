@@ -1,5 +1,6 @@
 \documentclass[12pt, letterpaper]{article}
 
+\usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{csquotes}
 \usepackage{float}
@@ -90,6 +91,7 @@ implies q''. Its truth table is said to be as follows:
   T & T & T                 &  &  \\ [0.5ex] \cline{1-3}
   \end{tabular}
   \caption{Truth table for $p \rightarrow q$}
+  \label{table:truth_table_for_p_q}
 \end{table}
 
 You may quickly raise questions about the first two lines:
@@ -123,7 +125,14 @@ is the closest to what I'm going to write below.
 \section{A Quick Answer}
 % =============================================================================
 
-\colorbox{red}{TODO}
+\begin{enumerate}
+  \item It is actually wrong to use material condition to indicate the relation
+    of implication $p \rightarrow q$.
+  \item Table \ref{table:truth_table_for_p_q} is actually the truth table for
+    the material condition. Because material condition should not be used to
+    indicate implication, it would make no sense to use this table to describe
+    $p \rightarrow q$.
+\end{enumerate}
 
 % =============================================================================
 \section{What Does SEP Say?}
@@ -361,6 +370,7 @@ When $n = 2$, the truth functions are \textbf{binary}:
   $f_{16}^2$ & F                      & F                      & F                      & F                      &         \\ [0.5ex] \hline
   \end{tabular}
   \caption{binary truth functions}
+  \label{table:binary_truth_functions}
 \end{table}
 
 % ------------------------------
@@ -452,12 +462,276 @@ And the Boolean laws are applicable:
 \subsubsection{Normal forms}
 % ------------------------------
 
-\colorbox{red}{TODO}
+There is a simple algorithm to convert an n-ary propositional connective in the
+bivalent function space to a Boolean formula. Take $f_5^2$ in table
+\ref{table:binary_truth_functions}, which I put into the following table, for
+example:
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|c|c|}
+  \hline
+  input      & $\langle T, T \rangle$ & $\langle T, F \rangle$ & $\langle F, T \rangle$ & $\langle F, F \rangle$ \\ [1ex] \hline
+  $f_5^2$    & T                      & F                      & T                      & T                      \\ [0.5ex] \hline
+  \end{tabular}
+  \caption{Connective $f_5^2$ in table \ref{table:binary_truth_functions}}
+  \label{table:f52}
+\end{table}
+
+For each column in which the output value is $T$, construct a conjunction of
+each propositional variable that is assigned $T$ and the negation of each
+propositional variable that is assigned $F$, then disjoin all the conjunctions.
+
+So for $f_5^2$, the process is as follows:
+\begin{enumerate}
+  \item Identity the columns in which the output value is $T$. So we have the
+    columns of $\langle T, T \rangle$, $\langle F, T \rangle$,
+    $\langle F, F \rangle$.
+  \item For each column, construct a conjunction of the $T$ variables and the
+    negation of $F$ variables. So we have:
+    \begin{enumerate}
+      \item $\langle T, T \rangle$: $A \land B$
+      \item $\langle F, T \rangle$: $\lnot A \land B$
+      \item $\langle F, F \rangle$: $\lnot A \land \lnot A$
+    \end{enumerate}
+  \item Then disjoin all the conjunctions. So we have \[ f_5^2 \equiv (A \land
+    B) \lor (\lnot A \land B) \lor (\lnot A \land \lnot B) \]
+\end{enumerate}
+
+Then, if needed, we can use the Boolean laws to simplify the Boolean formula.
+
+This is the \textbf{Disjunctive Normal Form (DNF)} theorem: Any formula of
+propositional logic under the classical interpretation is equivalent to a
+disjunction of conjunctions of propositional variables and negated propositional
+variables.
+
+% ------------------------------
+\subsubsection{Implication}
+% ------------------------------
+
+Before we discuss material condition, we must also discuss ``implication''.
+
+If $A$ implies $B$, that means whenever $A$ is true, $B$ is also true. If $A$
+causes $B$, that means $A$ is the reason that $B$ is in its current way or
+state. In either case, there must be \textbf{some kind of connection} between
+$A$ and $B$.
+
+I haven't learned if there is a proof but I think the following proposition is
+true: \textbf{implication} does not always describe \textbf{causation}, but
+\textbf{causation} always describes \textbf{implication}. For example:
+\begin{enumerate}
+  \item ``Applying enough force to an object'' causes (is the reason that)
+    ``the object's velocity changes'' according to physics. We can also say
+    that ``enough force is applied to an object'' implies ``the object velocity
+    changes''.
+  \item ``T is an apple tree'' implies that ``T is a tree''. We can also say
+    that ``T is an apple tree'' is the reason that ``T is a tree''. This is a
+    case of going from a specific concept to a general concept.
+  \item Suppose a town passes a weird law: anyone that's 18 years or older must
+    wear a blue jacket in the town; anyone that's under 18 years old must wear
+    a yellow jacket in the town. With that said, we can say:
+    \begin{enumerate}
+      \item ``A is 20 years old'' implies ``A must wear a blue jacket''. But
+        that A is 20 years old is not the reason that A must wear a blue jacket.
+        The real reason is the weird law in this town.
+      \item ``B is wearing a yellow jacket now'' implies ``B is under 18 years
+        old''. But that B is wearing a yellow jacket is not the reason that B
+        is under 18 years old. The real reason is that B was born less than 18
+        years ago.
+    \end{enumerate}
+\end{enumerate}
+
+We can use $A \rightarrow B$ to denote the relation that $A$ implies $B$. Now,
+\textbf{if we know the truth and falsity of $A$ and $B$, is it enough to
+determine whether the implication relation is true or false?} Consider the
+following examples:
+\begin{enumerate}
+  \item Let $A$ be the proposition ``2 + 2 = 4''; let $B$ be the proposition
+    ``New York state is an area of land''. Both $A$ and $B$ are true but can we
+    say that $A \rightarrow B$ is true (namely, ``A implies B'')?
+  \item Let $A$ be the proposition ``It is raining now''; let $B$ be ``the lawn
+    is wet''. Suppose both $A$ and $B$ are true now, can we say $A$ implies $B$?
+\end{enumerate}
+
+It doesn't look like so. In the first example, it doesn't make sense to say
+``2 + 2 = 4'' implies ``New York state is an area of land'', even though both
+statements are true under common knowledge. The implication relation doesn't
+hold because ``2 + 2 = 4'' talks about numbers, while ``New York state is an
+area of land'' talks about the US states. If we view them as two sets, we can't
+find any reasonable connection between these two sets, so we can't determine if
+they have an implication relation.
+
+In the second example, raining and lawn being wet do have some connection, but
+this connection doesn't always hold. This connection only exists when the lawn
+is not covered by anything above (so the rain can drop onto the lawn directly)
+and there is no other water source nearby the lawn (so the rain is the only
+source of water). However, the proposition $A$ doesn't provide enough conditions
+for us to determine if $A$ implies $B$. Note that the proposition itself does
+not have to enumerate all the needed conditions, but we must be able to infer
+enough context in order to check whether the implication relation holds. For
+example, in the town-with-weird-law example, the proposition ``A is 20 years
+old'' itself is actually insufficient. The full conditions should be that ``A
+is 20 years old'' and ``A is in the town with the weird law''. However, in that
+example, the condition ``A is in the town with the weird law'' can be obtained
+from the context, so we could still determine if the implication relation holds.
+
+Therefore, we can see that, given two propositions $A$ and $B$, knowing whether
+they are true or false is not always sufficient to determine if it is true or
+false that $A$ implies $B$.
+
+One can say that, if we don't have enough information to determine if $A$
+implies $B$, we can say that $A \rightarrow B$ is false. We only say
+$A \rightarrow B$ is true for those cases where $A$ can truly imply $B$. I
+think this makes sense, but this is an example of why we can't use the
+propositional connective $f_5^2$ to describe the relation of implication. See
+the next section.
 
 % ------------------------------
 \subsubsection{The material conditional}
 % ------------------------------
 
-\colorbox{red}{TODO}
+Finally, we come to the real topic of this article.
+
+First of all, it is important to quote the first paragraph of the section in
+\textit{SEP-PL} about the material condition:
+
+\begin{displayquote}
+  Another important feature of the classical interpretation is the special role
+  played by the binary truth function $f_5^2$, ... This truth function is often
+  described, \textbf{controversially}, as giving the truth conditions for the
+  indicative mood condition connective ``if ..., then ...'', or even,
+  \textbf{erroneously}, for the relation ``implies''. It is important to
+  underscore the \textbf{error in attributing truth functionality to the
+  implication relation}. To say that one proposition implies another is to say
+  that under any conditions in which the first is true, the second is also
+  true. To suggest that this relation is truth-functional is to suggest that
+  simply knowing whether A and B are true is enough to determine whether A
+  implies B. This suggestion is \textbf{untenable} because the truth or falsity
+  of A and B indicate nothing about other conditions. B could be true but, for
+  all that, not be implied by A because under some other situation A could be
+  true while B is false. As emphasized above, the implication relation is
+  \textbf{not thought of as a propositional connective at all}, but a relation
+  that two propositions might bear to one another.
+\end{displayquote}
+
+Here are \colorbox{lime}{my notes} for this paragraph:
+\begin{enumerate}
+  \item The use of ``controversially'' means that \textit{SEP-PL} also agrees
+    that there is no universally accepted conclusion that whether $f_5^2$ can
+    indicate the relation of ``implies'' or not.
+  \item However, the use of ``erroneously'' and ``... underscore the error ...''
+    shows that \textit{SEP-PL} believes it is wrong to use $f_5^2$ to indicate
+    the relation of ``implies''.
+  \item The sentence ``error in attributing truth functionality to the
+    implication relation'' means that using truth functions to describe the
+    implication relation is wrong in general, not particularly because $f_5^2$
+    is used to describe this relation.
+  \item This paragraph also explains why we can't use $f_5^2$ to indicate the
+    relation of implication. Under $f_5^2$, as long as we know the propositions
+    $A$ and $B$ are true, the implication relation must always hold. However,
+    we have seen in the previous section that it's also possible that we don't
+    have enough information to determine the implication even if $A$ and $B$
+    are both true. We said in the case of insufficient information, we can say
+    $A \rightarrow B$ is false, but this conflicts with the definition of
+    $f_5^2$ that when $A$ and $B$ are true, $A \rightarrow B$ must be true.
+\end{enumerate}
+
+\textit{SEP-PL} continues to say:
+
+\begin{displayquote}
+  What is more interesting is the thesis that $f_5^2$ captures the truth
+  conditions of, at least some uses of, conditional expressions in the
+  indicative mood. The binary connective given this truth-functional
+  interpretation is known as the ``material condition'' and is often denoted
+  $\supset$. One can readily check that $A \supset B$ is equivalent to the
+  Boolean expression $\lnot A \lor B$. There is a vast literature about the
+  tenability of the claim that ordinary language conditional expressions are
+  truth-functional. ... But its detractors have been many.
+\end{displayquote}
+
+Here are \colorbox{lime}{my notes} for this paragraph:
+\begin{enumerate}
+  \item The use of $\supset$ seems to be a good choice because $\rightarrow$
+    often makes people subconsciously think of ``implication''.
+  \item Still, many people believe ``if ... then ...'' (i.e., ``implication'')
+    can be treated as a truth function, but many people disagree that. It's
+    controversial, as said in the previous paragraph.
+  \item I'm going to show why $A \supset B \equiv \lnot A \lor B$ in a separate
+    section.
+\end{enumerate}
+
+The next few paragraphs in \textit{SEP-PL} presents different opinions whether
+the material condition (i.e., $f_5^2$) expresses the indicative conditional of
+the natural language (i.e., ``if ... then ...''), in order to give the readers
+a complete picture of the issue. It then says:
+
+\begin{displayquote}
+  Given the plurality of truth-functionally complete sets of connectives, why
+  would Frege or anyone else select the material conditional as primitive
+  connective for classical logic? Frege saw that the value of selecting the
+  material conditional as a primitive connective not from its approximation of
+  ordinary language expression but \textbf{from its role internal to logical
+  theory}.
+\end{displayquote}
+
+Frankly speaking, I haven't understood the reasoning in the rest of this
+paragraph. But \textbf{the key point is}: That the material condition seems to
+represent the indicative conditional of the natural language is more like a
+coincidence or even misunderstanding. It was never selected due to this reason.
+Therefore, it is also inappropriate to try to understand material condition
+using the indicative conditional of the natural language.
+
+% ------------------------------
+\subsubsection{Prove $A \supset B \equiv \lnot A \lor B$}
+% ------------------------------
+
+The proof of $A \supset B \equiv \lnot A \lor B$ needs to use the following
+conclusions:
+\begin{enumerate}
+  \item $A \land A = A$
+  \item $A \lor A = A$
+  \item $A \land \top = A$
+  \item $A \lor \top = \top$
+  \item $A \land \bot = \bot$
+  \item $A \lor \bot = A$
+\end{enumerate}
+
+In an earlier section, we had shown that \[ f_5^2 \equiv (A \land B) \lor
+(\lnot A \land B) \lor (\lnot A \land \lnot B) \].
+
+According to the properties of commutativity and associativity, we have:
+\begin{equation}\label{eq:A}
+  \begin{aligned}[b]
+    & (A \land B) \lor (\lnot A \land B) \lor (\lnot A \land \lnot B) \\
+    = & (B \land A) \lor (B \land \lnot A) \lor (\lnot A \land \lnot B) \\
+    = & \bigl[(B \land A) \lor (B \land \lnot A)\bigr] \lor (\lnot A \land \lnot B)
+  \end{aligned}
+\end{equation}
+
+According to the property of distribution:
+\[(B \land A) \lor (B \land \lnot A) = B \land (A \lor \lnot A)\]
+
+So equation \ref{eq:A} is:
+\begin{equation}\label{eq:B}
+  \begin{aligned}[b]
+    (\ref{eq:A})
+    & = \bigl[B \land (A \lor \lnot A)\bigr] \lor (\lnot A \land \lnot B) \\
+    & = \bigl[B \land \top\bigr] \lor (\lnot A \land \lnot B) \\
+    & = B \lor (\lnot A \land \lnot B)
+  \end{aligned}
+\end{equation}
+
+According to De Morgan equivalence, equation \ref{eq:B} is:
+\begin{equation}\label{eq:C}
+  \begin{aligned}[b]
+    (\ref{eq:B})
+    & = B \lor (\lnot A \land \lnot B) \\
+    & = (B \lor \lnot A) \land (B \lor \lnot B) \\
+    & = (\lnot A \lor B) \land \top \\
+    & = \lnot A \lor B
+  \end{aligned}
+\end{equation}
+
+Therefore, $f_5^2(A, B) \equiv \lnot A \lor B$
 
 \end{document}
