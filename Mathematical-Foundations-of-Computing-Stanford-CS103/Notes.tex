@@ -202,7 +202,25 @@ process can be summarized as follows:
 
 \chapter{Mathematical Proofs}
 
-(TODO)
+\begin{enumerate}
+  \item $\blacksquare$ means ``end of proof''.
+  \item Use the ``mugga mugga'' test to verify if the proof is written in valid
+    sentences: Replace all the mathematical notation with ``mugga mugga''. What
+    comes back should still be a valid sentence.
+  \item The section ``Proofs as a Dialog'' is interesting: It says the variables
+    used in a proof can be divided into three categories:
+    \begin{enumerate}
+      \item Proof writer picks. Example: ``Let r = n + 1''
+      \item Proof reader picks. Example: ``Consider some $n \in \mathbb{N}$''
+      \item Neither picks: The variable's value is determined by some laws or
+        definition. Example: ``If $n$ is even, there exists a $k$ so that $n =
+        2k$''. In this case, if the reader chooses an arbitrary even number $n$,
+        the corresponding $k$'s value is not chosen by either the reader or the
+        writer but by the definition of ``even''.
+    \end{enumerate}
+    Knowing which variables are picked by whom can help verify if the proof
+    makes sense. Don't change the variables you (the proof writer) don't own.
+\end{enumerate}
 
 % =============================================================================
 %
