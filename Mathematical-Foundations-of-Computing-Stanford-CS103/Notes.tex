@@ -14,6 +14,8 @@
 \usepackage{hyperref}
 \usepackage{parskip}
 \usepackage{pseudocode}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
 \usepackage{titlesec}
 \usepackage{xcolor}
 
@@ -242,7 +244,161 @@ An implication can be denoted as $p \rightarrow q$:
   \item In mathematics, implication says nothing about causality.
 \end{enumerate}
 
-(TODO)
+\begin{tikzpicture}
+  % Set Q, the enclosing set.
+  \node [ellipse,
+    draw=blue!60,
+    fill=cyan!40,
+    line width=1mm,
+    minimum width=8cm,
+    minimum height=5cm,
+    label={-90:$Q(x)=True$}] (Q) at (0,0) {};
+
+  % Set P, the enclosed set.
+  \node [ellipse,
+    draw=orange!80,
+    fill=yellow!20,
+    line width=1mm,
+    minimum width=3cm,
+    minimum height=2cm,
+    label={$P(x)=True$}] (P) at (-1,0) {};
+
+  % Element a where P(a) = True and Q(a) = True
+  \node [
+    regular polygon,
+    draw,
+    regular polygon sides=4,
+    minimum size=0.5cm,
+    fill=yellow] (a) at (-0.5,0) {a};
+  \node[
+    draw=black,
+    left, black, fill=white] at (8,2) {P(a)=T and Q(a)=T};
+  \draw [-stealth] (3.8,2) -- (0,0);
+
+  % Element b where P(b) = True but Q(b) = False
+  \node [
+    regular polygon,
+    draw,
+    regular polygon sides=4,
+    minimum size=0.5cm,
+    fill=yellow] (b) at (2,0) {b};
+  \node[
+    draw=black,
+    left, black, fill=white] at (9,0) {P(b)=T but Q(b)=F};
+  \draw [-stealth] (4.9,0) -- (2.4,0);
+
+  % Element c where P(c) = True and Q(c) = True
+  \node [
+    regular polygon,
+    draw,
+    regular polygon sides=4,
+    minimum size=0.5cm,
+    fill=yellow] (c) at (4,-2) {c};
+  \node[
+    draw=black,
+    left, black, fill=white] at (10,-2) {P(c)=F and Q(c)=F};
+  \draw [-stealth] (5.9,-2) -- (4.4,-2);
+\end{tikzpicture}
+
+% =============================================================================
+\section{Negation}
+% =============================================================================
+
+The negation of the \textbf{universal} statement is the \textbf{existential}
+statement:
+\begin{enumerate}
+  \item ``Every P is a Q'' $\rightarrow$ ``There is a P that is not a Q''
+  \item ``$\forall x: P(x)=True$'' $\rightarrow$ ``$\exists x: P(x)=False$''
+\end{enumerate}
+
+The negation of the \textbf{existential} statement is the \textbf{universal}
+statement:
+\begin{enumerate}
+  \item ``There exists a P that is a Q'' $\rightarrow$ ``Every P is not a Q''
+  \item ``$\exists x: P(x)=True$'' $\rightarrow$ ``$\forall x: P(x)=False$''
+\end{enumerate}
+
+% -----------------------------------------------------------------------------
+\subsection{Negate an implication}
+% -----------------------------------------------------------------------------
+
+How to negate the implication:
+
+\begin{displayquote}
+  If Nanni pays money to Ea-Nasir, then Ea-Nasir will give Nanni quality copper
+  ingots.
+\end{displayquote}
+
+An implication should be viewed as in the form as follows:
+
+\begin{displayquote}
+  For any x, if P(x) is true, then Q(x) is also true.
+\end{displayquote}
+
+Therefore the implication above should be re-interpretted as follows:
+
+\begin{displayquote}
+  For any time when Nanni pays money to Ea-Nasir, then Ea-Nasir will give Nanni
+  quality copper ingots.
+\end{displayquote}
+
+So the negation of the concerned implication is:
+
+\begin{displayquote}
+  There are times when Nanni pays money to Ea-Nasir, then Ea-Nasir does not
+  give Nanni quality copper ingots.
+\end{displayquote}
+
+% =============================================================================
+\section{Proof by Contrapositive}
+% =============================================================================
+
+The contrapositive of the implication
+
+\begin{displayquote}
+  If \textbf{\textcolor{teal}{P is true}}, then \textbf{\textcolor{violet}{Q is
+  true}}
+\end{displayquote}
+
+is the implication
+
+\begin{displayquote}
+  If \textbf{\textcolor{violet}{Q is false}}, then \textbf{\textcolor{teal}{P
+  is false}}.
+\end{displayquote}
+
+They are \textbf{equivalent}.
+
+To prove the original proposition, one can prove its contrapositive, hence
+``proof by contrapositive''.
+
+% =============================================================================
+\section{Biconditionals}
+% =============================================================================
+
+Biconditionals are the ``if and only if''s, namely $p \Leftrightarrow q$.
+
+To prove a biconditional, we must prove two directions: $p \Rightarrow q$ and
+$q \Rightarrow p$.
+
+% =============================================================================
+\section{Proof by contradiction}
+% =============================================================================
+
+Example of how to write a proof by contradiction:
+
+\begin{displayquote}
+  Theorem: There is no largest set.
+
+  Proof: \textbf{\textcolor{violet}{Assume for the sake of contradiction}} that
+  \textbf{\textcolor{orange}{there is a largest set; call it $S$}}.
+
+  (Steps to show the contradiction.)
+
+  (Conclusion) \textbf{\textcolor{teal}{We've reached a contradiction, so our
+  assumption must have been wrong. Therefore, there is no largest set.}}
+  $\blacksquare$
+\end{displayquote}
 
 % =============================================================================
 %
