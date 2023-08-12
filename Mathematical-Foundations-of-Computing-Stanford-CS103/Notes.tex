@@ -461,7 +461,7 @@ Described in propositional logic, it is
 \].
 
 % ******************************
-\subsection{Logical operator precedence}
+\subsection{Logical operator precedence}\label{logical_operator_precedence}
 % ******************************
 
 All the logical operators are \textbf{right-associative}.
@@ -575,7 +575,144 @@ Note that the implication $T \rightarrow F: F$ is \textbf{neither of them}.
 
 \chapter{First-Order Logic}
 
-(TODO)
+% =============================================================================
+\section{What is First-Order Logic?}
+% =============================================================================
+
+First-order logic:
+\begin{enumerate}
+  \item It is a a logical system for reasoning about properties of objects.
+    There are two kinds of objects:
+    \begin{enumerate}
+      \item \textbf{Constants}: A symbol that refers to a specific object. For
+        example, ``You'', ``Me'', ``EastAtlanta'', ``137''. Note that
+        numbers such as ``137'' are \textbf{not} built in to first-order logic.
+        They are just constant symbols like ``You'' and ``Me''.
+      \item \textbf{Variables}: A symbol that serves as a placeholder to
+        represent any object in a particular set. Usually this is used when
+        \textbf{quantifiers} is used (because when quantifiers are used, we
+        don't specify just one specific object, so we need a symbol to
+        represent any of such objects we are referring to).
+    \end{enumerate}
+  \item It is built upon propositional logic.
+  \item It uses the following three devices to describe more complex logic:
+    \begin{enumerate}
+      \item \textbf{predicates}: Describe \textbf{properties} of objects. It
+        can take one or more objects as input and turn them into a proposition
+        which is evaluated as $true$ or $false$.
+          \begin{enumerate}
+            \item Binary predicates are sometimes written in \textbf{infix
+              notation}. For example, instead of writing ``$<(x, 8)$'', it's
+              more natural to write ``$x < 8$''.
+          \end{enumerate}
+      \item \textbf{functions}: Map objects to objects.
+      \item \textbf{quantifiers}: Describe the quantities of objects, mainly
+        two cases: ``for all objects'' and ``for some objects''.
+    \end{enumerate}
+  \item Examples:
+    \begin{enumerate}
+      \item $Likes(You, Eggs) \land Likes(You, Tomato) \rightarrow
+        Likes(You, Shakshuka)$
+      \item $In(MyHeart, Havana) \land TookBackTo(Him, Me, EastAtlanta)$
+    \end{enumerate}
+\end{enumerate}
+
+% =============================================================================
+\section{Equality}
+% =============================================================================
+
+\begin{enumerate}
+  \item The predicates ``$=$'' and ``$\neq$'' indicate whether two
+    \textbf{objects} are equal or not.
+  \item ``$\leftrightarrow $'' indicates that two \textbf{propositions} are
+    equal. Note that ``$\leftrightarrow $'' is not a predicate because
+    predicates are applied to objects to describe the objects' properties, but
+    ``$\leftrightarrow $'' is applied to propositions to describe their logical
+    relations.
+\end{enumerate}
+
+% =============================================================================
+\section{Type-Checking Table}
+% =============================================================================
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|l|l|l|}
+  \hline
+      \textbf{} & \textbf{...operate on..} & \textbf{...produce} \\ [1ex] \hline
+      \textbf{Connectives} & propositions & a proposition \\ [1ex] \hline
+      \textbf{Predicates} & objects & a proposition \\ [1ex] \hline
+      \textbf{Functions} & objects & an object \\ [1ex] \hline
+  \end{tabular}
+  \caption{Type-Checking Table}
+  \label{FOL_type_checking_table}
+\end{table}
+
+% =============================================================================
+\section{Existential and Universal Quantifiers}
+% =============================================================================
+
+% ******************************
+\subsection{General form}
+% ******************************
+
+The general form of using the quantifiers is as follows:
+\begin{enumerate}
+  \item $\exists x. PROPERTY(x)$: Some $x$ has the property ``PROPERTY''.
+  \item $\forall x. PROPERTY(x)$: All $x$ has the property ``PROPERTY''.
+\end{enumerate}
+
+To describe the set that $x$ belongs to, use the following forms:
+\begin{enumerate}
+  \item $\exists x. (x \in X \rightarrow PROPERTY(x))$
+  \item $\forall x. (x \in X \rightarrow PROPERTY(x))$
+\end{enumerate}
+
+For example, ``For any natural number $n$, $n$ is even if and only if $n^2$ is
+even'' can be translated into
+\[
+  \forall n. (n \in \mathbb{N} \rightarrow (Even(n) \leftrightarrow Even(n^2)))
+\]
+
+% ******************************
+\subsection{Edge cases}
+% ******************************
+
+I'm familiar with the existential quantifier ``$\exists$'' and the universal
+quantifier ``$\forall$'', but I didn't think about the two edge cases before:
+\begin{enumerate}
+  \item $\exists x. (x \in \emptyset \rightarrow PROPERTY(x) = \bot)$, i.e.,
+    existentially-quantified statements are always \textbf{false} in an empty
+    world because \textbf{nothing exists}.
+  \item $\forall x. (x \in \emptyset \rightarrow PROPERTY(x) = \top)$, i.e.,
+    universally-quantified statements are said to be \textbf{vacuously true} in
+    an empty world.
+\end{enumerate}
+
+% ******************************
+\subsection{Association}
+% ******************************
+
+The variable is scoped just to the statement being quantified. For example:
+\[(\exists x. BIGGER(A, x)) \land (\exists y. SMALLER(y, B))\]
+
+\begin{enumerate}
+  \item $x$ is only applicable to ``BIGGER''.
+  \item $y$ is only applicable to ``SMALLER''.
+\end{enumerate}
+
+% ******************************
+\subsection{Precedence}
+% ******************************
+
+Quantifiers have precedence just below ``$\lnot$''. See
+\ref{logical_operator_precedence}.
+
+Therefore, the statement \[\exists x. P(x) \land R(x) \land Q(x)\] is parsed as
+\[(\exists x. P(x)) \land R(x) \land Q(x)\] which is \textbf{syntactically
+invalid} because the variable $x$ is out of scope for $R$ and $Q$.
+
+
 
 % =============================================================================
 %
