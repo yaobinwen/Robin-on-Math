@@ -752,7 +752,50 @@ invalid} because the variable $x$ is out of scope for $R$ and $Q$.
 
 \chapter{Finite Automata}
 
-(TODO)
+% =============================================================================
+\section{Computability Theory}
+% =============================================================================
+
+\textbf{Two key questions}: How can we prove what computers can and can't do...
+\begin{enumerate}
+  \item ... so that our results are still true in 20 years?
+  \item ... without multi-hundred page proofs?
+\end{enumerate}
+
+% ******************************
+\subsection{Finite Automata: Modeling Finite Computation}
+% ******************************
+
+Slide 42 says:
+\begin{displayquote}
+  As a simplifying assumption, we'll assume that we just need to get a single
+  bit of output. That is, our machines will just say \textbf{YES} or
+  \textbf{NO}.
+\end{displayquote}
+
+\colorbox{red}{\textcolor{yellow}{TODO:}} I need to learn how the
+generalization happens.
+
+Slide 44 introduces the following terms:
+\begin{itemize}
+  \item \textbf{accepting states}: \colorbox{red}{\textcolor{yellow}{TODO:}}
+    How to determine if a state is an accepting state?
+  \item \textbf{accepts}: If the device ends in an \textbf{accepting state}
+    after seeing all the input, it \textbf{accepts} the input (says
+    \textbf{YES}).
+  \item \textbf{rejects}: If the device does not end in an \textbf{accepting
+    state} after seeing all the input, it \textbf{rejects} the input (says
+    \textbf{NO}).
+\end{itemize}
+
+Finite automata model computers where:
+\begin{enumerate}
+  \item memory is finite.
+  \item the computation produces as YES/NO answer. (``YES/NO" is similar to
+    ``True/False". In other words, given the input, an automaton outputs
+    ``True/False", so an automaton can be viewed as a \textbf{predicate}. See
+    ``first-order logic'' for the meaning of a ``predicate''.)
+\end{enumerate}
 
 % =============================================================================
 %
