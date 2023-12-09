@@ -766,6 +766,12 @@ Therefore, the statement \[\exists x. P(x) \land R(x) \land Q(x)\] is parsed as
 \subsection{Finite Automata: Modeling Finite Computation}
 % ******************************
 
+\colorbox{lime}{\textbf{NOTE(ywen)}}: The automata seem to be different from the ``state machines'' I have understood
+so far. The ``state machines'' I've been using are those whose every state is an ``accepting state'' (see below for the
+meaning of an ``accepting state''), but an automaton may have accepting states (which the automaton returns ``Yes'' to
+indicate the acceptance) and rejecting states (which the automaton returns ``No'' to indicate the rejection). In other
+words, the ``state machines'' I've been using all the time are a subset of automata.
+
 Slide 42 says:
 \begin{displayquote}
   As a simplifying assumption, we'll assume that we just need to get a single
@@ -795,6 +801,73 @@ Finite automata model computers where:
         ``True/False". In other words, given the input, an automaton outputs
         ``True/False", so an automaton can be viewed as a \textbf{predicate}. See
         ``first-order logic'' for the meaning of a ``predicate''.)
+\end{enumerate}
+
+% ******************************
+\subsection{Finite Automata and Languages}
+% ******************************
+
+In order to define finite automata and their languages, we need to define ``languages'' first.
+
+% ------------------------------
+\subsubsection{Alphabet}
+% ------------------------------
+
+An \textbf{alphabet} is:
+\begin{enumerate}
+  \item a \textbf{finite}, \textbf{nonempty} set of symbols called \textbf{characters}.
+  \item denoted by $\Sigma$.
+\end{enumerate}
+
+For example, $\Sigma = \{a, b\}$ is an alphabet over the characters ``a'' and ``b''.
+
+% ------------------------------
+\subsubsection{Strings}
+% ------------------------------
+
+A \textbf{string} over an alphabet $\Sigma$ is a \textbf{finite} sequence of characters drawn from $\Sigma$. The
+\textbf{empty string} has no characters and is denoted $\epsilon$. The set of \textbf{all strings} composed from the
+characters in $\Sigma$ is denoted $\Sigma^*$.
+
+For example, some strings over $\Sigma = \{a, b\}$ are: ``a'', ``ababbabbbababba'', ``abbabbab''.
+
+% ------------------------------
+\subsubsection{Languages}
+% ------------------------------
+
+A \textbf{language}:
+\begin{enumerate}
+  \item is a set of \textbf{strings}.
+  \item is a language over $\Sigma$ if it is a subset of $\Sigma^*$.
+\end{enumerate}
+
+% ------------------------------
+\subsubsection{Finite Automata and Languages}
+% ------------------------------
+
+Let $A$ be an automaton that processes strings drawn from an alphabet $\Sigma$. The language of $A$, denoted
+$\mathfrak{L}(A)$, is the set of strings over $\Sigma$ that $A$ accepts:
+
+\[
+  \mathfrak{L}(A) = \{ w \in \Sigma^* | A \ accepts \ w \}
+\]
+
+Here ``$A$ accepts $w$'' is the general form of the rule about $w$. In a particular example of automaton, it can be
+``$w$ ends in the character $a$''.
+
+% ------------------------------
+\subsubsection{Summary}
+% ------------------------------
+
+\begin{enumerate}
+  \item A \textbf{finite automaton} is a collection of \textbf{states} joined by \textbf{transitions}.
+  \item Some state is designated as the \textbf{start state}.
+  \item Some number of states are designated as \textbf{accepting states}. These accepting states make the automaton
+        return ``Yes''.
+  \item The automaton processes a string by beginning in the start state and following the indicated transitions.
+  \item If the automaton ends in an accepting state, it \textbf{accepts} the input. Otherwise, the automaton
+        \textbf{rejects} the input.
+  \item The \textbf{language} of an automaton is the set of strings it accepts.
 \end{enumerate}
 
 % =============================================================================
