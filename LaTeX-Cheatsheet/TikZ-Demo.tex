@@ -21,12 +21,12 @@
 Useful links
 \begin{enumerate}
   \item \href{https://latexdraw.com/}{TikZBlog}
-    \begin{enumerate}
-      \item \href{https://latexdraw.com/tikz-shapes-circle/}{TikZ shapes: Circle}
-      \item \href{https://latexdraw.com/how-to-draw-venn-diagrams-in-latex/}{How to draw Venn Diagrams in LaTeX}
-      \item \href{https://latexdraw.com/how-to-annotate-an-image-in-latex/}{How to Annotate an Image in LaTeX}
-      \item \href{https://latexdraw.com/exploring-tikz-arrows/}{TikZ arrows}
-    \end{enumerate}
+        \begin{enumerate}
+          \item \href{https://latexdraw.com/tikz-shapes-circle/}{TikZ shapes: Circle}
+          \item \href{https://latexdraw.com/how-to-draw-venn-diagrams-in-latex/}{How to draw Venn Diagrams in LaTeX}
+          \item \href{https://latexdraw.com/how-to-annotate-an-image-in-latex/}{How to Annotate an Image in LaTeX}
+          \item \href{https://latexdraw.com/exploring-tikz-arrows/}{TikZ arrows}
+        \end{enumerate}
 \end{enumerate}
 
 % =============================================================================
@@ -134,13 +134,13 @@ on the circles to (0, 0).
 
 \begin{tikzpicture}
 
-\foreach \i in {100, 80, 60, 40, 20}{
-  \node[draw,
-    circle,
-    minimum size=1.5cm,
-    fill=cyan!\i,
-    label={$\i\%$}] (circle1) at (\i/10, 0){};
-}
+  \foreach \i in {100, 80, 60, 40, 20}{
+      \node[draw,
+        circle,
+        minimum size=1.5cm,
+        fill=cyan!\i,
+        label={$\i\%$}] (circle1) at (\i/10, 0){};
+    }
 
 \end{tikzpicture}
 
@@ -150,22 +150,22 @@ on the circles to (0, 0).
 
 \begin{tikzpicture}
 
-% Circle with label
-\node[draw,
+  % Circle with label
+  \node[draw,
     circle,
     minimum size=2cm,
     fill=green,
     label=$A$] (circle1) at (0,0){};
 
-% Circle with label at 225 deg.
-\node[draw,
+  % Circle with label at 225 deg.
+  \node[draw,
     circle,
     minimum size =2cm,
     fill=cyan,
     label={225:$B$}] (circle2) at (3,0){};
 
-% Circle with label at 45 deg and a distance of 0.5cm.
-\node[draw,
+  % Circle with label at 45 deg and a distance of 0.5cm.
+  \node[draw,
     circle,
     minimum size =2cm,
     fill=yellow,
@@ -181,12 +181,12 @@ This requires ``shapes.geometric''.
 
 \begin{tikzpicture}
 
-\node [ellipse,
-  draw=red,
-  fill=green!50,
-  text=blue,
-  minimum width = 3cm,
-  minimum height = 2cm] (e1) at (0, 0) {Ellipse1};
+  \node [ellipse,
+    draw=red,
+    fill=green!50,
+    text=blue,
+    minimum width = 3cm,
+    minimum height = 2cm] (e1) at (0, 0) {Ellipse1};
 
 \end{tikzpicture}
 
@@ -200,14 +200,14 @@ This requires ``shapes.geometric''.
 
 \begin{tikzpicture}
 
-% Set A
-\node [draw, circle, minimum size=3cm, label={135:$A$}] (A) at (0,0){};
+  % Set A
+  \node [draw, circle, minimum size=3cm, label={135:$A$}] (A) at (0,0){};
 
-% Set B
-\node [draw, circle, minimum size=3cm, label={45:$B$}] (B) at (1.8,0){};
+  % Set B
+  \node [draw, circle, minimum size=3cm, label={45:$B$}] (B) at (1.8,0){};
 
-% Set intersection label
-\node at (0.9,0) {$A \cap B$};
+  % Set intersection label
+  \node at (0.9,0) {$A \cap B$};
 
 \end{tikzpicture}
 
@@ -217,24 +217,24 @@ This requires ``shapes.geometric''.
 
 \begin{tikzpicture}
 
-% Set A
-\node [circle,
+  % Set A
+  \node [circle,
     fill=orange,
     minimum size =3cm,
     label={135:$A$}] (A) at (0,0){};
 
-% Set B
-\node [circle,
+  % Set B
+  \node [circle,
     fill=orange,
     minimum size =3cm,
     label={45:$B$}] (B) at (1.8,0){};
 
-% Circles outline
-\draw[white,thick] (0,0) circle(1.5cm);
-\draw[white,thick] (1.8,0) circle(1.5cm);
+  % Circles outline
+  \draw[white,thick] (0,0) circle(1.5cm);
+  \draw[white,thick] (1.8,0) circle(1.5cm);
 
-% Union text label
-\node[orange!90!black] at (0.9,1.8) {$A\cup B$};
+  % Union text label
+  \node[orange!90!black] at (0.9,1.8) {$A\cup B$};
 
 \end{tikzpicture}
 
@@ -244,18 +244,18 @@ This requires ``shapes.geometric''.
 
 \begin{tikzpicture}
 
-% Set A
-\node [circle, minimum size=3cm, fill=red!50, label={135:$A$}] (A) at (0,0) {};
+  % Set A
+  \node [circle, minimum size=3cm, fill=red!50, label={135:$A$}] (A) at (0,0) {};
 
-% Set B
-\node[circle, minimum size=3cm, fill=white, label={45:$B$}] (B) at (2,0) {};
+  % Set B
+  \node[circle, minimum size=3cm, fill=white, label={45:$B$}] (B) at (2,0) {};
 
-% Circles outline
-\draw (0,0) circle(1.5cm);
-\draw (2,0) circle(1.5cm);
+  % Circles outline
+  \draw (0,0) circle(1.5cm);
+  \draw (2,0) circle(1.5cm);
 
-% Difference text label (note that A's center is used to anchor the label)
-\node[left,white] at (A.center){$A-B$};
+  % Difference text label (note that A's center is used to anchor the label)
+  \node[left,white] at (A.center){$A-B$};
 
 \end{tikzpicture}
 
@@ -265,33 +265,33 @@ This requires ``shapes.geometric''.
 
 \begin{tikzpicture}
 
-% Set A
-\node[circle,
-minimum size = 3cm,
-fill=blue!50,label={135:$A$}] (A) at (0,0) {};
+  % Set A
+  \node[circle,
+    minimum size = 3cm,
+    fill=blue!50,label={135:$A$}] (A) at (0,0) {};
 
-% Set B
-\node[circle,
-minimum size = 3cm,
-fill=blue!50,label={45:$B$}] (B) at (1.8,0) {};
+  % Set B
+  \node[circle,
+    minimum size = 3cm,
+    fill=blue!50,label={45:$B$}] (B) at (1.8,0) {};
 
-% Intersection.
-% We used \clip command inside a scope environment to get a local effect of the
-% clipping. All drawings inside the scope environment will be clipped to the
-% closed path created by \clip command. We used \clip twice to consider only
-% the intersection region between the two circles.
-\begin{scope}
-  \clip (0,0) circle(1.5cm);
-  \clip (1.8,0) circle(1.5cm);
-  \fill[red!50](0,0) circle(1.5cm);
-\end{scope}
+  % Intersection.
+  % We used \clip command inside a scope environment to get a local effect of the
+  % clipping. All drawings inside the scope environment will be clipped to the
+  % closed path created by \clip command. We used \clip twice to consider only
+  % the intersection region between the two circles.
+  \begin{scope}
+    \clip (0,0) circle(1.5cm);
+    \clip (1.8,0) circle(1.5cm);
+    \fill[red!50](0,0) circle(1.5cm);
+  \end{scope}
 
-% Circles outline
-\draw (0,0) circle(1.5cm);
-\draw (1.8,0) circle(1.5cm);
+  % Circles outline
+  \draw (0,0) circle(1.5cm);
+  \draw (1.8,0) circle(1.5cm);
 
-% Set intersection label
-\node at (0.9,0) {$A \cap B$};
+  % Set intersection label
+  \node at (0.9,0) {$A \cap B$};
 
 \end{tikzpicture}
 
