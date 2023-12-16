@@ -15,7 +15,7 @@
 \usepackage{parskip}
 \usepackage{pseudocode}
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{arrows, automata, positioning, shapes.geometric}
 \usepackage{titlesec}
 \usepackage{xcolor}
 
@@ -869,6 +869,68 @@ Here ``$A$ accepts $w$'' is the general form of the rule about $w$. In a particu
         \textbf{rejects} the input.
   \item The \textbf{language} of an automaton is the set of strings it accepts.
 \end{enumerate}
+
+% ******************************
+\subsection{Deterministic Finite Automaton (DFA)}
+% ******************************
+
+% ------------------------------
+\subsubsection{Two problems of indeterminism}
+% ------------------------------
+
+First problem: \textbf{No transition is defined out of a state on some input.} For example, in the following automaton,
+the entire possible input space is $\{0, 1\}$. However, for the states $q_0$ and $q_2$, the transitions on the input
+$1$ are \textbf{undefined}; for the state $q_1$, the transition on the input $0$ is \textbf{undefined}.
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
+  \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+
+  \node[state,initial]   (q_0)                      {$q_0$};
+  \node[state,accepting] (q_1) [below right of=q_0] {$q_1$};
+  \node[state]           (q_2) [below left of=q_0]  {$q_2$};
+
+  \path[->]
+  (q_0) edge node {0} (q_1)
+  (q_1) edge node {1} (q_2)
+  (q_2) edge node {0} (q_0)
+  ;
+\end{tikzpicture}
+
+Second problem: \textbf{There are multiple transitions out of a state on some input.} For example, in the following
+automaton, on the input $0$, the state $q_1$ has two possible out transitions.
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
+  \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+
+  \node[state,initial]   (q_0)                 {$q_0$};
+  \node[state]           (q_1) [right of=q_0]  {$q_1$};
+  \node[state,accepting] (q_2) [below of=q_1]  {$q_2$};
+
+  \path[->]
+  (q_0) edge              node {0,1} (q_1)
+  (q_1) edge [loop right] node {0,1} (q_1)
+  (q_1) edge              node {0}   (q_2)
+  (q_2) edge [bend left]  node {0,1} (q_0)
+  ;
+\end{tikzpicture}
+
+Therefore, in order to reason about the limits of what finite automata can and cannot do, we need to formally specify
+their behavior in \textbf{all cases}. All of the following need to be \textbf{defined} or \textbf{disallowed}:
+\begin{itemize}
+  \item What happens if there is no transition out of a state on some input?
+  \item What happens if there are multiple transitions out of a state on some input?
+\end{itemize}
+
+% ------------------------------
+\subsubsection{DFAs}
+% ------------------------------
+
+\begin{itemize}
+  \item A DFA is defined relative to some alphabet $\Sigma$.
+  \item For each state in the DFA, there must be \textbf{exactly one} transition defined for each symbol in $\Sigma$.
+  \item There is \textbf{exactly one} start state.
+  \item There are \textbf{zero or more} accepting states.
+\end{itemize}
 
 % =============================================================================
 %
