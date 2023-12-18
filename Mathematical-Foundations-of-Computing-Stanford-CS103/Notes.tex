@@ -932,6 +932,100 @@ their behavior in \textbf{all cases}. All of the following need to be \textbf{de
   \item There are \textbf{zero or more} accepting states.
 \end{itemize}
 
+% ------------------------------
+\subsubsection{The DFA for valid C-style comments}
+% ------------------------------
+
+The problem to solve is to design a DFA that represents any valid C-style comments. We use the symbol ``a'' to be the
+placeholder for the characters that are not an asterisk or slash.
+
+Note that the following are valid C-style comments:
+\begin{itemize}
+  \item /*/*/
+  \item /*//*/
+  \item /*/***/
+\end{itemize}
+
+In my first attempt, I designed the following DFA. Note this design has a few mistakes. See my notes below.
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
+  \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+
+  \node[state,initial]   (q_0)                 {$q_0$};
+  \node[state]           (q_1) [right of=q_0]  {$q_1$};
+  \node[state]           (q_2) [right of=q_1]  {$q_2$};
+  \node[state]           (q_3) [right of=q_2]  {$q_3$};
+  \node[state]           (q_4) [below of=q_2]  {$q_4$};
+  \node[state,accepting] (q_5) [below of=q_4]  {$q_5$};
+  \node[state]           (q_6) [right of=q_5]  {$q_6$};
+
+  \path[->]
+  (q_0) edge                    node {/}        (q_1)
+  (q_0) edge [loop below]       node {a, *}     ()
+  (q_1) edge                    node {*}        (q_2)
+  (q_1) edge [loop below]       node {a, /}     ()
+  (q_2) edge                    node {a, /}     (q_3)
+  (q_2) edge                    node {*}        (q_4)
+  (q_3) edge [loop right]       node {a, /}     ()
+  (q_3) edge [swap]             node {*}        (q_4)
+  (q_4) edge [bend right, swap] node {a}        (q_3)
+  (q_4) edge [loop left]        node {*}        ()
+  (q_4) edge                    node {/}        (q_5)
+  (q_5) edge                    node {$\Sigma$} (q_6)
+  (q_6) edge [loop above]       node {$\Sigma$} ()
+  ;
+\end{tikzpicture}
+
+Unfortunately, there are a few errors in this design:
+\begin{enumerate}
+  \item On the state $q_0$, the edge \{a, *\} that goes into itself is wrong because it means if a ``/'' follows a
+        bunch of ``a'' and ``*'', the result can still be a valid C-style comment. For example, ``a/a/aa/*aa*/'' is
+        not a valid C-style comment, but my DFA would consider it valid, which is an error. \textbf{The lesson:} When
+        validating the design, we need to use three \textbf{types} of input:
+        \begin{enumerate}
+          \item \textbf{Full valid} input. For example, ``/* aaa */'' is a full valid input.
+          \item \textbf{Full invalid} input. For example, ``*//**'' is a full invalid input.
+          \item \textbf{Partial invalid (valid prefix + invalid suffix)} input. For example, ``/* a */*/**''. The
+                former part ``/* a */'' is a valid input but the latter part ``*/**'' is an invalid input.
+          \item \textbf{Partial invalid (invalid prefix + valid suffix)} input. For example, ``*/**/* a */''. The
+                former part ``*/**'' is an invalid input but the latter part ``/* a */'' is a valid input.
+        \end{enumerate}
+  \item Likewise, on the state $q_1$, the edge \{a, /\} that goes into itself is wrong for the similar reason. For
+        example, ``/a/aaa*a*/'' is not a valid C-style comment, but my DFA would consider it valid.
+  \item The states $q_2$ and $q_3$ are equivalent and can be merged as one state. One way to check if two states are
+        \textbf{possibly} redundant can be checking whether the two states have the same out-transitions. In my DFA,
+        the state $q_2$ has two out-transitions: the edge \{a, /\} to $q_3$ and the edge \{*\} to $q_4$. The state
+        $q_3$ has the same two out-transitions. This means $q_2$ and $q_3$ may be equivalent and should be examined
+        more closely.
+\end{enumerate}
+
+The correct DFA should be the following one (which is equivalent to the one in the course slides):
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
+  \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+
+  \node[state,initial]   (q_0)                 {$q_0$};
+  \node[state]           (q_1) [right of=q_0]  {$q_1$};
+  \node[state]           (q_2) [right of=q_1]  {$q_2$};
+  \node[state]           (q_3) [below of=q_2]  {$q_3$};
+  \node[state,accepting] (q_4) [below of=q_3]  {$q_4$};
+  \node[state]           (q_5) [left of=q_4]   {$q_5$};
+
+  \path[->]
+  (q_0) edge                    node {/}        (q_1)
+  (q_0) edge [bend right, swap] node {a, *}     (q_5)
+  (q_1) edge                    node {*}        (q_2)
+  (q_1) edge                    node {a, /}     (q_5)
+  (q_2) edge [loop right]       node {a, /}     ()
+  (q_2) edge [bend right, swap] node {*}        (q_3)
+  (q_3) edge [bend right, swap] node {a}        (q_2)
+  (q_3) edge [loop right]       node {*}        ()
+  (q_3) edge                    node {/}        (q_4)
+  (q_4) edge                    node {$\Sigma$} (q_5)
+  (q_5) edge [loop below]       node {$\Sigma$} ()
+  ;
+\end{tikzpicture}
+
 % =============================================================================
 %
 % Regular Expression
