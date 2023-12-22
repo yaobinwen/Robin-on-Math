@@ -762,9 +762,9 @@ Therefore, the statement \[\exists x. P(x) \land R(x) \land Q(x)\] is parsed as
   \item ... without multi-hundred page proofs?
 \end{enumerate}
 
-% ******************************
-\subsection{Finite Automata: Modeling Finite Computation}
-% ******************************
+% =============================================================================
+\section{Finite Automata: Modeling Finite Computation}
+% =============================================================================
 
 \colorbox{lime}{\textbf{NOTE(ywen)}}: The automata seem to be different from the ``state machines'' I have understood
 so far. The ``state machines'' I've been using are those whose every state is an ``accepting state'' (see below for the
@@ -870,13 +870,13 @@ Here ``$A$ accepts $w$'' is the general form of the rule about $w$. In a particu
   \item The \textbf{language} of an automaton is the set of strings it accepts.
 \end{enumerate}
 
-% ******************************
-\subsection{Deterministic Finite Automaton (DFA)}
-% ******************************
+% =============================================================================
+\section{Deterministic Finite Automaton (DFA)}
+% =============================================================================
 
-% ------------------------------
-\subsubsection{Two problems of indeterminism}
-% ------------------------------
+% ******************************
+\subsection{Two problems of indeterminism}
+% ******************************
 
 First problem: \textbf{No transition is defined out of a state on some input.} For example, in the following automaton,
 the entire possible input space is $\{0, 1\}$. However, for the states $q_0$ and $q_2$, the transitions on the input
@@ -921,9 +921,9 @@ their behavior in \textbf{all cases}. All of the following need to be \textbf{de
   \item What happens if there are multiple transitions out of a state on some input?
 \end{itemize}
 
-% ------------------------------
-\subsubsection{DFAs}
-% ------------------------------
+% ******************************
+\subsection{DFAs}
+% ******************************
 
 \begin{itemize}
   \item A DFA is defined relative to some alphabet $\Sigma$.
