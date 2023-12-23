@@ -1047,25 +1047,14 @@ regular or not? It depends on whether there exists a DFA to define this language
 % =============================================================================
 
 % ******************************
-\subsection{Definition and properties}
+\subsection{Definition and properties} \label{automata:nfa:definition-and-properties}
 % ******************************
 
 An \textbf{NFA} is a \textbf{N}ondeterministic \textbf{F}inite \textbf{A}utomaton.
 
-An NFA has a \textbf{finite number} (0, 1, or more) of choices available to make at each state. In contrast, a DFA has
-has \textbf{exactly one} choice at each state.
-
-The machine \textbf{accepts} if \textbf{any} series of choices leads to an accepting state.
-
-\colorbox{red}{\textcolor{yellow}{TODO:}} Two questions:
-\begin{enumerate}
-  \item I don't think I really understand the meaning of ``accepts'' here. In the sentence above, ``accept'' doesn't
-        have an object that follows. So does the word ``accept'' describe a property of the NFA? Or does it really mean
-        ``accepts (the series of choices)''?
-  \item What does ``any'' mean?
-\end{enumerate}
-
-The following NFA shows two cases of \textbf{indeterminism}:
+An NFA has a \textbf{finite number} (0, 1, or more) of transitions available to make at each state. In contrast, a DFA
+has \textbf{exactly one} transition at each state. The machine \textbf{accepts} (the input) if \textbf{any} series of
+transitions leads to an accepting state. The following NFA shows two cases of \textbf{indeterminism}:
 
 \begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
   \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
@@ -1088,6 +1077,20 @@ The following NFA shows two cases of \textbf{indeterminism}:
         $q_1$. When we are in the state $q_1$ but then the input is $0$, we say the automaton \textbf{dies} and this
         particular series of choices do not accept.
 \end{enumerate}
+
+\colorbox{lime}{\textbf{NOTE(ywen)}}: Understanding ``any series of transitions'': Given the NFA above, consider the
+input ``$1 \rightarrow 0 \rightarrow 1 \rightarrow 1$''. There are a few ways to go through the NFA:
+
+\begin{enumerate}
+  \item $q_0 \rightarrow q_0 \rightarrow q_0 \rightarrow q_0 \rightarrow q_0$: reject
+  \item $q_0 \rightarrow q_0 \rightarrow q_0 \rightarrow q_0 \rightarrow q_1$: reject
+  \item $q_0 \rightarrow q_0 \rightarrow q_0 \rightarrow q_1 \rightarrow q_2$: \textbf{accept}
+  \item $q_0 \rightarrow q_1 $: die (i.e., reject)
+\end{enumerate}
+
+Each one is a series of transitions to go through the NFA. ``any series of transitions'' means if any one of the
+possible series of transitions can lead to acceptance (i.e., the 3rd series in the example above), the input is
+considered accepted.
 
 % ******************************
 \subsection{The \texorpdfstring{$\epsilon$}{}-Transitions}
@@ -1136,6 +1139,45 @@ by going through the states in the following sequence from $q_0$:
 
 Note that the $\epsilon$-transitions were applied at the very beginning and at the very end. This is what ``\textbf{any
   time}'' means.
+
+% ******************************
+\subsection{NFA: Perfect positive guessing}
+% ******************************
+
+Perfect positive guessing means an NFA has the \textbf{magical superpower} that enables them to guess choices that lead
+to an accepting state. (If there are no such choices, the NFA guesses any one of the wrong guesses.)
+
+For example, given the following NFA,
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
+  \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+
+  \node[state,initial]   (q_0)                 {$q_0$};
+  \node[state]           (q_1) [right of=q_0]  {$q_1$};
+  \node[state]           (q_2) [right of=q_1]  {$q_2$};
+  \node[state,accepting] (q_3) [right of=q_2]  {$q_3$};
+
+  \path[->]
+  (q_0) edge                    node {a}        (q_1)
+  (q_0) edge [loop above]       node {$\Sigma$} ()
+  (q_1) edge                    node {b}        (q_2)
+  (q_2) edge                    node {a}        (q_3)
+  ;
+\end{tikzpicture}
+
+consider the input ``$a \rightarrow b \rightarrow a \rightarrow b \rightarrow a$''. To land on the accepting state
+$q_3$, the right transitions to go are $q_0 \rightarrow q_0 \rightarrow q_0 \rightarrow q_1 \rightarrow q_2 \rightarrow
+  q_3$. The ``magical superpower'' means the NFA can magically figures out these transitions to choose them to arrive
+at the accepting state.
+
+This magical superpower has something to do with the property of NFAs that ``the machine \textbf{accepts} (the input)
+if \textbf{any} series of transitions leads to an accepting state.'' See \ref{automata:nfa:definition-and-properties}.
+
+However, as the course slides said:
+
+\begin{displayquote}
+  There is no known way to physically model this intuition of nondeterminism - this is quite a departure from reality!
+\end{displayquote}
 
 % =============================================================================
 %
