@@ -779,8 +779,7 @@ Slide 42 says:
   \textbf{NO}.
 \end{displayquote}
 
-\colorbox{red}{\textcolor{yellow}{TODO:}} I need to learn how the
-generalization happens.
+\colorbox{red}{\textcolor{yellow}{TODO:}} I need to learn how the generalization happens.
 
 Slide 44 introduces the following terms:
 \begin{itemize}
@@ -831,6 +830,11 @@ characters in $\Sigma$ is denoted $\Sigma^*$.
 
 For example, some strings over $\Sigma = \{a, b\}$ are: ``a'', ``ababbabbbababba'', ``abbabbab''.
 
+\colorbox{lime}{\textbf{NOTE(ywen)}}: A tip to remember the symbols: In regular expressions in computer science, we use
+asterisks (``*'') to denote the quantifier ``repeating the previous item zero or more times''. Therefore, $\Sigma^*$
+can be seen as ``repeating the characters in the set of $\Sigma$ zero or more times.'' When it's zero times, the
+resulting string is the empty string $\epsilon$; when it's one or more times, the resulting string is a non-empty one.
+
 % ------------------------------
 \subsubsection{Languages}
 % ------------------------------
@@ -842,7 +846,7 @@ A \textbf{language}:
 \end{enumerate}
 
 % ------------------------------
-\subsubsection{Finite Automata and Languages}
+\subsubsection{Finite Automata and Languages} \label{automata:automata-and-languages}
 % ------------------------------
 
 Let $A$ be an automaton that processes strings drawn from an alphabet $\Sigma$. The language of $A$, denoted
@@ -1025,6 +1029,113 @@ The correct DFA should be the following one (which is equivalent to the one in t
   (q_5) edge [loop below]       node {$\Sigma$} ()
   ;
 \end{tikzpicture}
+
+% =============================================================================
+\section{The Regular Languages}
+% =============================================================================
+
+A language $L$ is called a \textbf{regular language} if there exists a DFA $D$ such that $\mathfrak{L}(D) = L$.
+If $L$ is a language and $\mathfrak{L}(D) = L$, we say that $D$ \textbf{recognizes} the language $L$.
+
+\colorbox{lime}{\textbf{NOTE(ywen)}}: The section \ref{automata:automata-and-languages} talks about the languages from
+the perspective of a DFA: given a DFA, the strings that this DFA accepts form the language of this DFA. Here, we are
+talking about the languages from the perspective of the language itself: given a language, how can we tell if it is
+regular or not? It depends on whether there exists a DFA to define this language.
+
+% =============================================================================
+\section{NFAs}
+% =============================================================================
+
+% ******************************
+\subsection{Definition and properties}
+% ******************************
+
+An \textbf{NFA} is a \textbf{N}ondeterministic \textbf{F}inite \textbf{A}utomaton.
+
+An NFA has a \textbf{finite number} (0, 1, or more) of choices available to make at each state. In contrast, a DFA has
+has \textbf{exactly one} choice at each state.
+
+The machine \textbf{accepts} if \textbf{any} series of choices leads to an accepting state.
+
+\colorbox{red}{\textcolor{yellow}{TODO:}} Two questions:
+\begin{enumerate}
+  \item I don't think I really understand the meaning of ``accepts'' here. In the sentence above, ``accept'' doesn't
+        have an object that follows. So does the word ``accept'' describe a property of the NFA? Or does it really mean
+        ``accepts (the series of choices)''?
+  \item What does ``any'' mean?
+\end{enumerate}
+
+The following NFA shows two cases of \textbf{indeterminism}:
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
+  \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+
+  \node[state,initial]   (q_0)                 {$q_0$};
+  \node[state]           (q_1) [right of=q_0]  {$q_1$};
+  \node[state,accepting] (q_2) [right of=q_1]  {$q_2$};
+
+  \path[->]
+  (q_0) edge                    node {1}        (q_1)
+  (q_0) edge [loop below]       node {0,1}      ()
+  (q_1) edge                    node {1}        (q_2)
+  ;
+\end{tikzpicture}
+
+\begin{enumerate}
+  \item The state $q_0$ has \textbf{more than one} possible transitions for the input $1$: it could go to state $q_1$,
+        or it could go back to itself.
+  \item The state $q_1$ has \textbf{zero} transition for the input $0$: the input $0$ makes no sense in the context of
+        $q_1$. When we are in the state $q_1$ but then the input is $0$, we say the automaton \textbf{dies} and this
+        particular series of choices do not accept.
+\end{enumerate}
+
+% ******************************
+\subsection{The \texorpdfstring{$\epsilon$}{}-Transitions}
+% ******************************
+
+The $\epsilon$-transitions are \textbf{NFA-specific}. An NFA may follow \textbf{any number} of $\epsilon$-transitions
+at \textbf{any time} without consuming \textbf{any input}. NFAs are \textbf{not required} to follow $\epsilon$-
+transitions. It's simply another option at the machine's disposal.
+
+For example, given the following NFA,
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
+  \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+
+  \node[state,initial]   (q_0)                 {$q_0$};
+  \node[state]           (q_1) [right of=q_0]  {$q_1$};
+  \node[state]           (q_2) [right of=q_1]  {$q_2$};
+  \node[state]           (q_3) [below of=q_0]  {$q_3$};
+  \node[state,accepting] (q_4) [right of=q_3]  {$q_4$};
+  \node[state]           (q_5) [right of=q_4]  {$q_5$};
+
+  \path[->]
+  (q_0) edge                    node {a}             (q_1)
+  (q_0) edge [swap]             node {$\epsilon$}    (q_3)
+  (q_1) edge                    node {a}             (q_2)
+  (q_2) edge [bend right, swap] node {a}             (q_0)
+  (q_3) edge                    node {b, $\epsilon$} (q_4)
+  (q_4) edge                    node {$\epsilon$}    (q_1)
+  (q_4) edge                    node {b}             (q_5)
+  (q_5) edge [bend left]        node {b}             (q_3)
+  ;
+\end{tikzpicture}
+
+consider the series of choices ``$b \rightarrow a \rightarrow a \rightarrow b \rightarrow b$''. There is no transition
+on the input $b$ in the starting state $q_0$. However, because $q_0$ has an $\epsilon$-transition, before the first
+input choice $b$ is consumed, the automaton can transition from $q_0$ to $q_3$ which has a transition on $b$. Likewise,
+$q_4$ doesn't have any transition for $a$, but it has an $\epsilon$-transition to $q_1$ which has a transition on $a$.
+
+The input series of choices ``$b \rightarrow a \rightarrow a \rightarrow b \rightarrow b$'' lead to the accepting state
+by going through the states in the following sequence from $q_0$:
+
+\[
+  \epsilon \rightarrow b \rightarrow \epsilon \rightarrow a \rightarrow a \rightarrow \epsilon \rightarrow \epsilon
+  \rightarrow b \rightarrow b \rightarrow \epsilon
+\]
+
+Note that the $\epsilon$-transitions were applied at the very beginning and at the very end. This is what ``\textbf{any
+  time}'' means.
 
 % =============================================================================
 %
