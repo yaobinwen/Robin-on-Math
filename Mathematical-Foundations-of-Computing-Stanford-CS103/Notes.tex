@@ -1141,7 +1141,7 @@ Note that the $\epsilon$-transitions were applied at the very beginning and at t
   time}'' means.
 
 % ******************************
-\subsection{NFA: Perfect positive guessing}
+\subsection{NFA: Perfect positive guessing} \label{automata:nfa:perfect-positive-guessing}
 % ******************************
 
 Perfect positive guessing means an NFA has the \textbf{magical superpower} that enables them to guess choices that lead
@@ -1178,6 +1178,119 @@ However, as the course slides said:
 \begin{displayquote}
   There is no known way to physically model this intuition of nondeterminism - this is quite a departure from reality!
 \end{displayquote}
+
+% ******************************
+\subsection{NFA: Massive parallelism}
+% ******************************
+
+An NFA can be thought of as a DFA that can be \textbf{in many states at once}. At each point in time, when the NFA
+needs to follow a transition, it tries \textbf{all the options at the same time}.
+
+Use the same NFA as in the section \ref{automata:nfa:perfect-positive-guessing} for example. Consider the same series
+of transitions ``$a \rightarrow b \rightarrow a \rightarrow b \rightarrow a$''. Initially, the NFA starts at $q_0$. For
+the first transition ``a'', it can move to two states: going through the $\Sigma$ transition back to itself; going
+through the $a$ transition to $q_1$. Massive parallelism says the NFA can do these two transitions at the same time,
+ending up in both states (\colorbox{yellow}{yellow} and \colorbox{green}{green}):
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
+  \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+
+  \node[state,initial,fill=yellow]   (q_0)                 {$q_0$};
+  \node[state,fill=green]            (q_1) [right of=q_0]  {$q_1$};
+  \node[state]                       (q_2) [right of=q_1]  {$q_2$};
+  \node[state,accepting]             (q_3) [right of=q_2]  {$q_3$};
+
+  \path[->]
+  (q_0) edge                    node {a}        (q_1)
+  (q_0) edge [loop above]       node {$\Sigma$} ()
+  (q_1) edge                    node {b}        (q_2)
+  (q_2) edge                    node {a}        (q_3)
+  ;
+\end{tikzpicture}
+
+The next transition is ``b''. Because now the NFA is at both $q_0$ and $q_1$, both of which can do the transition $b$,
+so the NFA can do both again. $q_0$ still moves to itself; $q_1$ moves to $q_2$. See the following result.
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
+  \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+
+  \node[state,initial,fill=yellow]   (q_0)                 {$q_0$};
+  \node[state]                       (q_1) [right of=q_0]  {$q_1$};
+  \node[state,fill=green]            (q_2) [right of=q_1]  {$q_2$};
+  \node[state,accepting]             (q_3) [right of=q_2]  {$q_3$};
+
+  \path[->]
+  (q_0) edge                    node {a}        (q_1)
+  (q_0) edge [loop above]       node {$\Sigma$} ()
+  (q_1) edge                    node {b}        (q_2)
+  (q_2) edge                    node {a}        (q_3)
+  ;
+\end{tikzpicture}
+
+The next transition is ``a'' again. Now there are three possible transitions to do: $q_0 \rightarrow q_0$,
+$q_0 \rightarrow q_1$, $q_2 \rightarrow q_3$. Massive parallelism says they can all happen at the same time, resulting
+in the new states below:
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
+  \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+
+  \node[state,initial,fill=cyan]     (q_0)                 {$q_0$};
+  \node[state,fill=yellow]           (q_1) [right of=q_0]  {$q_1$};
+  \node[state]                       (q_2) [right of=q_1]  {$q_2$};
+  \node[state,accepting,fill=green]  (q_3) [right of=q_2]  {$q_3$};
+
+  \path[->]
+  (q_0) edge                    node {a}        (q_1)
+  (q_0) edge [loop above]       node {$\Sigma$} ()
+  (q_1) edge                    node {b}        (q_2)
+  (q_2) edge                    node {a}        (q_3)
+  ;
+\end{tikzpicture}
+
+The next transition is ``b''. The state $q_3$ doesn't have a transition defined for ``b'', so we say the NFA
+\textbf{dies} for this particular choice of transitions. But the transition ``b'' still works for $q_0$ and $q_1$. So
+the NFA's new state will be as follows:
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
+  \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+
+  \node[state,initial,fill=cyan]     (q_0)                 {$q_0$};
+  \node[state]                       (q_1) [right of=q_0]  {$q_1$};
+  \node[state,fill=yellow]           (q_2) [right of=q_1]  {$q_2$};
+  \node[state,accepting]             (q_3) [right of=q_2]  {$q_3$};
+
+  \path[->]
+  (q_0) edge                    node {a}        (q_1)
+  (q_0) edge [loop above]       node {$\Sigma$} ()
+  (q_1) edge                    node {b}        (q_2)
+  (q_2) edge                    node {a}        (q_3)
+  ;
+\end{tikzpicture}
+
+The last transition is ``a''. At this moment, the NFA is at the state $q_0$ and $q_2$. Its previous state $q_3$ had
+``died''. The new state will be as follows:
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
+  \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+
+  \node[state,initial,fill=magenta]  (q_0)                 {$q_0$};
+  \node[state,fill=cyan]             (q_1) [right of=q_0]  {$q_1$};
+  \node[state]                       (q_2) [right of=q_1]  {$q_2$};
+  \node[state,accepting,fill=yellow] (q_3) [right of=q_2]  {$q_3$};
+
+  \path[->]
+  (q_0) edge                    node {a}        (q_1)
+  (q_0) edge [loop above]       node {$\Sigma$} ()
+  (q_1) edge                    node {b}        (q_2)
+  (q_2) edge                    node {a}        (q_3)
+  ;
+\end{tikzpicture}
+
+Now we've finished running all the transitions. We are in at least one accepting state (the \colorbox{yellow}{$q_3$}),
+so there is some path that gets us to an accepting state.
+
+In contrast, the input sequence ``$a \rightarrow b \rightarrow a \rightarrow b$'' will not lead to any accepting state.
+See the course slides for the detailed state changes.
 
 % =============================================================================
 %
