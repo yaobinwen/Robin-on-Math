@@ -1292,6 +1292,58 @@ so there is some path that gets us to an accepting state.
 In contrast, the input sequence ``$a \rightarrow b \rightarrow a \rightarrow b$'' will not lead to any accepting state.
 See the course slides for the detailed state changes.
 
+% ******************************
+\subsection{Designing NFAs}
+% ******************************
+
+A good model for designing NFAs: \textbf{guess-and-check}:
+\begin{itemize}
+  \item Is there some information that you'd really like to have? Have the machine \textbf{nondeterministically guess}
+        that information.
+  \item Then, have the machine \textbf{deterministically check} that the choice was correct.
+\end{itemize}
+
+\colorbox{lime}{\textbf{NOTE(ywen)}}: According to my own experience, given a problem:
+\begin{itemize}
+  \item It seems to be helpful to \textbf{directly} describe the \textbf{desired ending states}, and then figure out
+        where the nondeterminism can fit in.
+  \item Remember NFAs have two special devices:
+        \begin{itemize}
+          \item The $\epsilon$-transitions.
+          \item An NFA can die to indicate the input is rejected.
+        \end{itemize}
+\end{itemize}
+
+The course slides provide two examples. The second example demonstrates the use of the two devices: Design an automaton
+that recognizes the language $L = \{ w \in \{a, b, c\}* | at \ least \ one \ of \ a, b, or \ c \ is \ not \ in \ w \}$.
+The DFA solution is complicated (see the course slides), but the NFA solution is more simple:
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
+  \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+
+  \node[state,initial]     (q_0)                 {$q_0$};
+  \node[state,accepting]   (q_2) [right of=q_0]  {$q_2$};
+  \node[state,accepting]   (q_1) [above of=q_2]  {$q_1$};
+  \node[state,accepting]   (q_3) [below of=q_2]  {$q_3$};
+
+  \path[->]
+  (q_0) edge [bend left]  node {$\epsilon$}      (q_1)
+  (q_1) edge [loop right] node {a,b}             ()
+  (q_0) edge              node {$\epsilon$}      (q_2)
+  (q_2) edge [loop right] node {a,c}             ()
+  (q_0) edge [bend right] node {$\epsilon$}      (q_3)
+  (q_3) edge [loop right] node {b,c}             ()
+  ;
+\end{tikzpicture}
+
+If the input sequence doesn't contain ``a'', the solution relies on the NFA be able to magically pick the
+$\epsilon$-transition to $q_3$; if the input sequence doesn't contain ``b'', the solution relies on the NFA be able to
+magically pick the $\epsilon$-transition to $q_2$; if the input sequence doesn't contain ``c'', the solution relies on
+the NFA be able to magically pick the $\epsilon$-transition to $q_1$.
+
+If the input sequence contains all the letters ``a'', ``b'', and ``c'', it doesn't matter which transition to take at
+$q_0$. The NFA will always die at a point, which indicates the rejection of the input.
+
 % =============================================================================
 %
 % Regular Expression
