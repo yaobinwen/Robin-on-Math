@@ -1031,18 +1031,6 @@ The correct DFA should be the following one (which is equivalent to the one in t
 \end{tikzpicture}
 
 % =============================================================================
-\section{The Regular Languages}
-% =============================================================================
-
-A language $L$ is called a \textbf{regular language} if there exists a DFA $D$ such that $\mathfrak{L}(D) = L$.
-If $L$ is a language and $\mathfrak{L}(D) = L$, we say that $D$ \textbf{recognizes} the language $L$.
-
-\colorbox{lime}{\textbf{NOTE(ywen)}}: The section \ref{automata:automata-and-languages} talks about the languages from
-the perspective of a DFA: given a DFA, the strings that this DFA accepts form the language of this DFA. Here, we are
-talking about the languages from the perspective of the language itself: given a language, how can we tell if it is
-regular or not? It depends on whether there exists a DFA to define this language.
-
-% =============================================================================
 \section{NFAs}
 % =============================================================================
 
@@ -1343,6 +1331,199 @@ the NFA be able to magically pick the $\epsilon$-transition to $q_1$.
 
 If the input sequence contains all the letters ``a'', ``b'', and ``c'', it doesn't matter which transition to take at
 $q_0$. The NFA will always die at a point, which indicates the rejection of the input.
+
+% =============================================================================
+\section{Describe DFAs and NFAs as tables}
+% =============================================================================
+
+DFAs and NFAs are essentially graphs, so we can use adjacent matrices (with some modifications) to describe them.
+
+% ******************************
+\subsection{Tabular DFAs}
+% ******************************
+
+Because a DFA is deterministic, the state of the DFA after a transition can be completely described by a state in the
+DFA, so the transitions are truly from one state to another state.
+
+For example, given the following DFA:
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
+  \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+
+  \node[state,initial,accepting] (q_0) {$q_0$};
+  \node[state]                   (q_1) [right of=q_0] {$q_1$};
+  \node[state]                   (q_2) [right of=q_1]{$q_2$};
+  \node[state,accepting]         (q_3) [right of=q_2] {$q_3$};
+
+  \path[->]
+  (q_0) edge [loop above] node {1}        ()
+  (q_0) edge              node {0}        (q_1)
+  (q_1) edge              node {1}        (q_2)
+  (q_1) edge [bend left]  node {0}        (q_3)
+  (q_2) edge              node {0}        (q_3)
+  (q_2) edge [bend left]  node {1}        (q_0)
+  (q_3) edge [loop right] node {$\Sigma$} (q_3)
+  ;
+\end{tikzpicture}
+
+We can use the following modified adjacent matrix to describe it with two modifications:
+\begin{enumerate}
+  \item The first row is the starting state.
+  \item The asterisks (``*'') indicate the accepting states.
+\end{enumerate}
+
+\begin{table}[H]
+  \begin{tabular}{|c|c|c|ll}
+    \cline{1-3}
+           & 0     & 1     &  & \\ [1ex]   \cline{1-3}
+    *$q_0$ & $q_1$ & $q_0$ &  & \\ [0.5ex] \cline{1-3}
+    $q_1$  & $q_3$ & $q_2$ &  & \\ [0.5ex] \cline{1-3}
+    $q_2$  & $q_3$ & $q_0$ &  & \\ [0.5ex] \cline{1-3}
+    *$q_3$ & $q_3$ & $q_3$ &  & \\ [0.5ex] \cline{1-3}
+  \end{tabular}
+\end{table}
+
+% ******************************
+\subsection{Tabular NFAs} \label{automata:tabular-nfas}
+% ******************************
+
+Because an NFA is nondeterministic, the state of the NFA after a transition are described by a set of states in the NFA
+due to the massive parallelism, so the transitions are actually from one set of states to another set of states.
+
+For example, given the following NFA:
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
+  \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+
+  \node[state,initial]   (q_0)                {$q_0$};
+  \node[state]           (q_1) [right of=q_0] {$q_1$};
+  \node[state]           (q_2) [right of=q_1] {$q_2$};
+  \node[state,accepting] (q_3) [right of=q_2] {$q_3$};
+
+  \path[->]
+  (q_0) edge [loop above] node {$\Sigma$} ()
+  (q_0) edge              node {a}        (q_1)
+  (q_1) edge              node {b}        (q_2)
+  (q_2) edge              node {a}        (q_3)
+  ;
+\end{tikzpicture}
+
+We can use the following adjacent matrix to describe it:
+
+\begin{table}[H]
+  \begin{tabular}{|c|c|c|ll}
+    \cline{1-3}
+                         & a                   & b              &  & \\ [1ex]   \cline{1-3}
+    \{$q_0$\}            & \{$q_0, q_1$\}      & \{$q_0$\}      &  & \\ [0.5ex] \cline{1-3}
+    \{$q_0, q_1$\}       & \{$q_0, q_1$\}      & \{$q_0, q_2$\} &  & \\ [0.5ex] \cline{1-3}
+    \{$q_0, q_2$\}       & \{$q_0, q_1, q_3$\} & \{$q_0$\}      &  & \\ [0.5ex] \cline{1-3}
+    *\{$q_0, q_1, q_3$\} & \{$q_0, q_1$\}      & \{$q_0, q_2$\} &  & \\ [0.5ex] \cline{1-3}
+  \end{tabular}
+\end{table}
+
+This can be viewed as a DFA as follows:
+
+\begin{tikzpicture}[shorten >=1pt,node distance=3cm,auto]
+  \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+
+  \node[state,initial]   (q0) {\{$q_0$\}};
+  \node[state]           (q0q1) [right of=q0] {\{$q_0, q_1$\}};
+  \node[state]           (q0q2) [below of=q0q1]{\{$q_0, q_2$\}};
+  \node[state,accepting] (q0q1q3) [right of=q0q2] {\{$q_0, q_1, q_3$\}};
+
+  \path[->]
+  (q0) edge [loop above]           node {b} ()
+  (q0) edge                        node {a} (q0q1)
+  (q0q1) edge [loop above]         node {a} ()
+  (q0q1) edge                      node {b} (q0q2)
+  (q0q2) edge [bend right, swap]   node {a} (q0q1q3)
+  (q0q2) edge                      node {b} (q0)
+  (q0q1q3) edge [bend right, swap] node {b} (q0q2)
+  (q0q1q3) edge [swap]             node {a} (q0q1)
+  ;
+\end{tikzpicture}
+
+% =============================================================================
+\section{The Regular Languages}
+% =============================================================================
+
+% ******************************
+\subsection{Definition}
+% ******************************
+
+A language $L$ is called a \textbf{regular language} if there exists a DFA $D$ such that $\mathfrak{L}(D) = L$.
+If $L$ is a language and $\mathfrak{L}(D) = L$, we say that $D$ \textbf{recognizes} the language $L$.
+
+\colorbox{lime}{\textbf{NOTE(ywen)}}: The section \ref{automata:automata-and-languages} talks about the languages from
+the perspective of a DFA: given a DFA, the strings that this DFA accepts form the language of this DFA. Here, we are
+talking about the languages from the perspective of the language itself: given a language, how can we tell if it is
+regular or not? It depends on whether there exists a DFA to define this language.
+
+% ******************************
+\subsection{NFA's language and DFA's language}
+% ******************************
+
+Remember that the language of an automaton is the set of the inputs that the automaton accepts. Therefore, the language
+of the NFA in \ref{automata:tabular-nfas} is the same as the language of the DFA which was converted from the NFA.
+
+\textbf{Theorem}: A language $L$ is regular $\Leftrightarrow$ $\exists N: \mathfrak{L}(N) = L$. (See the course slides
+for a sketchy proof.)
+
+% ******************************
+\subsection{Properties}
+% ******************************
+
+Given a language $L \subseteq \Sigma*$, the \textbf{complement} of that language (denoted $\bar{L}$) is the language of
+all strings in $\Sigma*$ that aren't in $L$. Formally: $L = \Sigma* - L$.
+
+If $L$ is a regular language, that means there exists a DFA $D$ that recognizes $L$. We can construct the DFA of $L$'s
+complement by changing all the accepting states in $D$ to non-accepting states, and changing all the non-accepting
+states in $D$ to accepting states. For example:
+
+L = \{ w $\in$ \{a, b\}* $|$ w contains ``aa'' as a substring \}
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
+  \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+
+  \node[state,initial]   (q_0)                {$q_0$};
+  \node[state]           (q_1) [right of=q_0] {$q_1$};
+  \node[state,accepting] (q_2) [right of=q_1] {$q_2$};
+
+  \path[->]
+  (q_0) edge [loop above] node {b} ()
+  (q_0) edge [bend left]  node {a}        (q_1)
+  (q_1) edge              node {a}        (q_2)
+  (q_1) edge [bend left]  node {b}        (q_0)
+  (q_2) edge [loop right] node {$\Sigma$} (q_3)
+  ;
+\end{tikzpicture}
+
+$\bar{L}$ = \{ w $\in$ \{a, b\}* $|$ w \textbf{does not} contain ``aa'' as a substring \}
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
+  \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+
+  \node[state,initial,accepting] (q_0)                {$q_0$};
+  \node[state,accepting]         (q_1) [right of=q_0] {$q_1$};
+  \node[state]                   (q_2) [right of=q_1] {$q_2$};
+
+  \path[->]
+  (q_0) edge [loop above] node {b} ()
+  (q_0) edge [bend left]  node {a}        (q_1)
+  (q_1) edge              node {a}        (q_2)
+  (q_1) edge [bend left]  node {b}        (q_0)
+  (q_2) edge [loop right] node {$\Sigma$} (q_3)
+  ;
+\end{tikzpicture}
+
+Therefore: If $L$ is a regular language, then $\bar{L}$ is also a regular language. As a result, we say that the
+regular languages are \textbf{closed under complementation}.
+
+We also have: If $L_1$ and $L_2$ are regular languages, then:
+\begin{enumerate}
+  \item $L_1 \cup L_2$ is regular. (The proof uses $\epsilon$-transitions of NFAs.)
+  \item $L_1 \cap L_2$ is regular. (The proof uses De Morgan laws.)
+\end{enumerate}
 
 % =============================================================================
 %
