@@ -1444,6 +1444,66 @@ This can be viewed as a DFA as follows:
 \end{tikzpicture}
 
 % =============================================================================
+\section{Concatenation}
+% =============================================================================
+
+% ******************************
+\subsection{String concatenation}
+% ******************************
+
+If $w \in \Sigma^*$ and $x \in \Sigma^*$, the \textbf{concatenation} of $w$ and $x$, denoted $wx$, is the string formed
+by tacking all the characters of $x$ onto the end of $w$. For example, if if $w = quo$ and $x = kka$, the concatenation
+$wx = quokka$.
+
+\begin{itemize}
+  \item The empty string $\epsilon$ is the \textbf{identity element} for concatenation: $w\epsilon = \epsilon w = w$.
+  \item Concatenation is \textbf{associative}: $wxy = w(xy) = (wx)y$
+\end{itemize}
+
+% ******************************
+\subsection{Language concatenation}
+% ******************************
+
+The \textbf{concatenation} of two languages $L_1$ and $L_2$ over the alphabet $\Sigma$ is the language
+\[ L_1L_2 = \{ wx \in \Sigma^* | w \in L_1 \and x \in L_2 \} \]
+
+For example: Let $\Sigma$ = \{ a, b, $\ldots$, z, A, B, $\ldots$, Z \}. Define the following languages over $\Sigma$:
+\begin{itemize}
+  \item Noun = \{ Puppy, Rainbow, Whale, $\ldots$ \}
+  \item Verb = \{ Hugs, Juggles, Loves, $\ldots$ \}
+  \item The = \{ The \}
+\end{itemize}
+
+The language ``TheNounVerbTheNoun'' is:
+\[ \{ ThePuppyHugsTheWhale, TheWhaleLovesTheRainbow, TheRainbowJugglesTheRainbow, \ldots \} \]
+
+% ******************************
+\subsection{Language exponentiation}
+% ******************************
+
+We can define language ``exponentiation'' as follows:
+\begin{enumerate}
+  \item The base: $L^0 = \{ \epsilon \}$
+  \item The extension: $L^{n+1} = LL^n$ where $n \ge 0$.
+\end{enumerate}
+
+\colorbox{red}{TODO(ywen)}: Question to ponder: Why defne $L^0 = \{ \epsilon \}$?
+
+\colorbox{red}{TODO(ywen)}: Question to ponder: What is $\emptyset^0$?
+
+% ******************************
+\subsection{The Kleene closure}
+% ******************************
+
+The Kleene closure is the language of all possible ways of concatenating zero or more strings in $L$ together, possibly
+with repetition defined as \[ L^* = \{ w \in \Sigma^* | \exists n \in \mathbb{N}: w \in L^n \} \]
+
+\colorbox{red}{TODO(ywen)}: Question to ponder: What is $\emptyset^*$?
+
+For example, if $L = \{a, b\}$, then $L^* = \{ \epsilon, a, b, aa, ab, ba, bb, aaa, aab, aba, abb, baa, bab, bba, bbb,
+  \ldots \}$.
+
+% =============================================================================
 \section{The Regular Languages}
 % =============================================================================
 
@@ -1473,8 +1533,8 @@ for a sketchy proof.)
 \subsection{Properties}
 % ******************************
 
-Given a language $L \subseteq \Sigma*$, the \textbf{complement} of that language (denoted $\bar{L}$) is the language of
-all strings in $\Sigma*$ that aren't in $L$. Formally: $L = \Sigma* - L$.
+Given a language $L \subseteq \Sigma^*$, the \textbf{complement} of that language (denoted $\bar{L}$) is the language of
+all strings in $\Sigma^*$ that aren't in $L$. Formally: $L = \Sigma^* - L$.
 
 If $L$ is a regular language, that means there exists a DFA $D$ that recognizes $L$. We can construct the DFA of $L$'s
 complement by changing all the accepting states in $D$ to non-accepting states, and changing all the non-accepting
@@ -1523,6 +1583,8 @@ We also have: If $L_1$ and $L_2$ are regular languages, then:
 \begin{enumerate}
   \item $L_1 \cup L_2$ is regular. (The proof uses $\epsilon$-transitions of NFAs.)
   \item $L_1 \cap L_2$ is regular. (The proof uses De Morgan laws.)
+  \item $L_1L_2$ is regular.
+  \item ${L_1}^*$ and ${L_2}^*$ are regular.
 \end{enumerate}
 
 % =============================================================================
