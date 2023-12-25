@@ -433,4 +433,23 @@ This requires ``shapes.geometric''.
   edge [loop below] node {1} ();
 \end{tikzpicture}
 
+How to change the bend angle and edge colors:
+
+\begin{tikzpicture}[shorten >=1pt,node distance=3cm,auto]
+  \node[state,initial]   (q_s)                {$q_s$};
+  \node[state]           (q_1) [right of=q_s] {$q_1$};
+  \node[state]           (q_2) [right of=q_1] {$q_2$};
+  \node[state,accepting] (q_f) [right of=q_2] {$q_f$};
+
+  \path[->]
+  (q_s) edge [red]                node {$\epsilon$}                   (q_1)
+  (q_s) edge [bend left=60,blue]  node {$\epsilon {R_{11}}^* R_{12}$} (q_2)
+  (q_1) edge [loop above,red]     node {$R_{11}$}                     ()
+  (q_1) edge [bend left,red]      node {$R_{12}$}                     (q_2)
+  (q_2) edge [loop above]         node {$R_{22}$}                     ()
+  (q_2) edge [bend left]          node {$R_{21}$}                     (q_1)
+  (q_2) edge                      node {$\epsilon$}                   (q_f)
+  ;
+\end{tikzpicture}
+
 \end{document}
