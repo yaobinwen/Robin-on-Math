@@ -1595,7 +1595,251 @@ We also have: If $L_1$ and $L_2$ are regular languages, then:
 
 \chapter{Regular Expression}
 
- (TODO)
+% =============================================================================
+\section{Regular expressions}
+% =============================================================================
+
+% ******************************
+\subsection{Definition}
+% ******************************
+
+In the chapter of automata, we described a language using \textbf{graphical} DFAs and NFAs. \textbf{Regular expressions}
+are a way of describing a language via a \textbf{string representation}. Therefore, a regular expression is equivalent
+to a DFA or an NFA.
+
+% ******************************
+\subsection{Atomic regular expressions}
+% ******************************
+
+The regular expressions begin with three simple building blocks:
+\begin{enumerate}
+  \item The symbol $\emptyset$ represents the empty language $\emptyset$.
+  \item For any $\mathbf{a} \in \Sigma$, the symbol \textbf{a} is a regular expression for the \textbf{language \{a\}}.
+  \item The symbol $\epsilon$ represents the \textbf{language \{$\epsilon$\}}. But remember that:
+        \begin{itemize}
+          \item $\{\epsilon\} \ne \emptyset$
+          \item $\{\epsilon\} \ne \epsilon$
+        \end{itemize}
+\end{enumerate}
+
+\colorbox{lime}{\textbf{NOTE(ywen)}}: Don't confuse a regular expression (which describes a language) and a string
+(which is an element in a language which is a set of strings).
+
+% ******************************
+\subsection{Compound regular expressions}
+% ******************************
+
+If $R_1$ and $R_2$ are two regular expressions:
+\begin{enumerate}
+  \item $(R_1)$ is a regular expression with the \textbf{same meaning} as $R_1$.
+  \item ${R_1}^*$ is a regular expression for the \textbf{Kleene closure} of the language of $R_1$. (The same is
+        applicable to $R_2$.)
+  \item $R_1R_2$ is a regular expression for the \textbf{concatenation} of the languages of $R_1$ and $R_2$.
+  \item $R_1 \cup R_2$ is a regular expression for the \textbf{union} of the languages of $R_1$ and $R_2$.
+\end{enumerate}
+
+The operator precedence is \[ (R_1) > {R_1}^* > R_1R_2 > R_1 \cup R_2 \]. So $\mathbf{ab^*c \cup d}$ is parsed as
+$\mathbf{((a(b^*))c) \cup d}$.
+
+% ******************************
+\subsection{Language of a regular expression}
+% ******************************
+
+Because a regular expression is equivalent to a DFA or an NFA, the language of a regular expression is the language
+that the regular expression describes.
+
+\begin{itemize}
+  \item The atomic ones:
+        \begin{enumerate}
+          \item $\mathfrak{L}(\emptyset) = \emptyset$
+          \item $\mathfrak{L}(\epsilon) = \{ \epsilon \}$
+          \item $\mathfrak{L}(a) = \{ a \}$
+        \end{enumerate}
+  \item The compund ones:
+        \begin{enumerate}
+          \item $\mathfrak{L}((R)) = \mathfrak{L}(R)$
+          \item $\mathfrak{L}(R^*) = \mathfrak{L}(R)^*$
+          \item $\mathfrak{L}(R_1R_2) = \mathfrak{L}(R_1)\mathfrak{L}(R_2)$
+          \item $\mathfrak{L}(R_1 \cup R_2) = \mathfrak{L}(R_1) \cup \mathfrak{L}(R_2)$
+        \end{enumerate}
+\end{itemize}
+
+Some theorems:
+\begin{itemize}
+  \item If $R$ is a regular expression, then $\mathfrak{L}(R)$ is regular.
+  \item If $L$ is a regular language, then there is a regular expression for $L$.
+\end{itemize}
+
+% ******************************
+\subsection{Converting an NFA to a regular expression}
+% ******************************
+
+The key idea of converting an NFA to a regular expression is to convert an arbitrary NFA that may contain \textbf{many
+  states} into the following general form that consists of only \textbf{two states}:
+
+\begin{tikzpicture}[shorten >=1pt,node distance=4cm,auto]
+  \node[state,initial]   (q_0)                {$q_0$};
+  \node[state,accepting] (q_1) [right of=q_0] {$q_1$};
+
+  \path[->]
+  (q_0) edge node {some-regex} (q_1)
+  ;
+\end{tikzpicture}
+
+Then ``\textbf{some-regex}'' is the regular expression that is equivalent to this NFA.
+
+For example, given the following NFA, where $R_n$ represents some regular expression:
+
+\begin{tikzpicture}[shorten >=1pt,node distance=3cm,auto]
+  \node[state,initial]   (q_1)                {$q_1$};
+  \node[state,accepting] (q_2) [right of=q_1] {$q_2$};
+
+  \path[->]
+  (q_1) edge [loop above] node {$R_{11}$} ()
+  (q_1) edge [bend left]  node {$R_{12}$} (q_2)
+  (q_2) edge [loop above] node {$R_{22}$} ()
+  (q_2) edge [bend left]  node {$R_{21}$} (q_1)
+  ;
+\end{tikzpicture}
+
+the major steps of conversion are described as follows:
+
+Step 1: Add a new starting state $q_s$ and a new accepting state $q_f$. Connect $q_s$ and $q_f$ using $\epsilon$-
+transitions:
+
+\begin{tikzpicture}[shorten >=1pt,node distance=3cm,auto]
+  \node[state,initial]   (q_s)                {$q_s$};
+  \node[state]           (q_1) [right of=q_s] {$q_1$};
+  \node[state]           (q_2) [right of=q_1] {$q_2$};
+  \node[state,accepting] (q_f) [right of=q_2] {$q_f$};
+
+  \path[->]
+  (q_s) edge              node {$\epsilon$} (q_1)
+  (q_1) edge [loop above] node {$R_{11}$}   ()
+  (q_1) edge [bend left]  node {$R_{12}$}   (q_2)
+  (q_2) edge [loop above] node {$R_{22}$}   ()
+  (q_2) edge [bend left]  node {$R_{21}$}   (q_1)
+  (q_2) edge              node {$\epsilon$} (q_f)
+  ;
+\end{tikzpicture}
+
+Step 2: Add a new transition from $q_s$ to $q_2$ to eliminate the transitions $\epsilon \rightarrow R_{11} \rightarrow
+  R_{12}$.
+
+\begin{tikzpicture}[shorten >=1pt,node distance=3cm,auto]
+  \node[state,initial]   (q_s)                {$q_s$};
+  \node[state]           (q_1) [right of=q_s] {$q_1$};
+  \node[state]           (q_2) [right of=q_1] {$q_2$};
+  \node[state,accepting] (q_f) [right of=q_2] {$q_f$};
+
+  \path[->]
+  (q_s) edge [red]                node {$\epsilon$}                   (q_1)
+  (q_s) edge [bend left=60,blue]  node {$\epsilon {R_{11}}^* R_{12}$} (q_2)
+  (q_1) edge [loop above,red]     node {$R_{11}$}                     ()
+  (q_1) edge [bend left,red]      node {$R_{12}$}                     (q_2)
+  (q_2) edge [loop above]         node {$R_{22}$}                     ()
+  (q_2) edge [bend left]          node {$R_{21}$}                     (q_1)
+  (q_2) edge                      node {$\epsilon$}                   (q_f)
+  ;
+\end{tikzpicture}
+
+Step 3: Add a new transition from $q_2$ back to itself to eliminate the transitions $R_{21} \rightarrow R_{11}
+  \rightarrow R_{12}$.
+
+\begin{tikzpicture}[shorten >=1pt,node distance=3cm,auto]
+  \node[state,initial]   (q_s)                {$q_s$};
+  \node[state]           (q_1) [right of=q_s] {$q_1$};
+  \node[state]           (q_2) [right of=q_1] {$q_2$};
+  \node[state,accepting] (q_f) [right of=q_2] {$q_f$};
+
+  \path[->]
+  (q_s) edge                      node {$\epsilon$}                 (q_1)
+  (q_s) edge [bend left=60]       node {${R_{11}}^* R_{12}$}        (q_2)
+  (q_1) edge [loop above,red]     node {$R_{11}$}                   ()
+  (q_1) edge [bend left,red]      node {$R_{12}$}                   (q_2)
+  (q_2) edge [loop above]         node {$R_{22}$}                   ()
+  (q_2) edge [bend left,red]      node {$R_{21}$}                   (q_1)
+  (q_2) edge                      node {$\epsilon$}                 (q_f)
+  (q_2) edge [loop below,blue]    node {$R_{21} {R_{11}}^* R_{12}$} ()
+  ;
+\end{tikzpicture}
+
+Step 4: Because all the in- and out-transitions of $q_1$ have been equivalently described by other transitions from
+$q_s$ to $q_2$, $q_1$ can be eliminated from the NFA now:
+
+\begin{tikzpicture}[shorten >=1pt,node distance=3cm,auto]
+  \node[state,initial]   (q_s)                {$q_s$};
+  \node[state]           (q_2) [right of=q_1] {$q_2$};
+  \node[state,accepting] (q_f) [right of=q_2] {$q_f$};
+
+  \path[->]
+  (q_s) edge              node {${R_{11}}^* R_{12}$}        (q_2)
+  (q_2) edge [loop above] node {$R_{22}$}                   ()
+  (q_2) edge              node {$\epsilon$}                 (q_f)
+  (q_2) edge [loop below] node {$R_{21} {R_{11}}^* R_{12}$} ()
+  ;
+\end{tikzpicture}
+
+Step 5: Merge the two self-transitions on $q_2$:
+
+\begin{tikzpicture}[shorten >=1pt,node distance=3cm,auto]
+  \node[state,initial]   (q_s)                {$q_s$};
+  \node[state]           (q_2) [right of=q_1] {$q_2$};
+  \node[state,accepting] (q_f) [right of=q_2] {$q_f$};
+
+  \path[->]
+  (q_s) edge                   node {${R_{11}}^* R_{12}$}                        (q_2)
+  (q_2) edge                   node {$\epsilon$}                                 (q_f)
+  (q_2) edge [loop below,blue] node {$R_{22} \cup (R_{21} {R_{11}}^* R_{12})$}   ()
+  ;
+\end{tikzpicture}
+
+Step 6: Similarly, we can add a new transition from $q_s$ to $q_f$ to eliminate the transitions in between:
+
+\begin{tikzpicture}[shorten >=1pt,node distance=3cm,auto]
+  \node[state,initial]   (q_s)                {$q_s$};
+  \node[state]           (q_2) [right of=q_1] {$q_2$};
+  \node[state,accepting] (q_f) [right of=q_2] {$q_f$};
+
+  \path[->]
+  (q_s) edge [bend left,blue] node {${R_{11}}^* R_{12} (R_{22} \cup (R_{21} {R_{11}}^* R_{12}))^* \epsilon$} (q_f)
+  (q_s) edge [red]            node {${R_{11}}^* R_{12}$}                                                     (q_2)
+  (q_2) edge [red]            node {$\epsilon$}                                                              (q_f)
+  (q_2) edge [loop below,red] node {$R_{22} \cup (R_{21} {R_{11}}^* R_{12})$}                                ()
+  ;
+\end{tikzpicture}
+
+Step 7: Because all the in- and out-transitions of $q_2$ have been equivalently described by other transitions from
+$q_s$ to $q_f$, $q_2$ can be eliminated from the NFA now:
+
+\begin{tikzpicture}[shorten >=1pt,node distance=3cm,auto]
+  \node[state,initial]   (q_s)                {$q_s$};
+  \node[state,accepting] (q_f) [right of=q_2] {$q_f$};
+
+  \path[->]
+  (q_s) edge node {${R_{11}}^* R_{12} (R_{22} \cup (R_{21} {R_{11}}^* R_{12}))^*$} (q_f)
+  ;
+\end{tikzpicture}
+
+Therefore, the regular expression for the original NFA is
+\[ {R_{11}}^* R_{12} (R_{22} \cup (R_{21} {R_{11}}^* R_{12}))^* \]
+
+% =============================================================================
+\section{DFAs, NFAs, and Regexp}
+% =============================================================================
+
+\begin{tikzpicture}[shorten >=1pt,node distance=6cm,auto]
+  \node[state]   (q_0)                {$DFA$};
+  \node[state]   (q_1) [right of=q_0] {$NFA$};
+  \node[state]   (q_2) [right of=q_1] {$Regexp$};
+
+  \path[->]
+  (q_0) edge [bend left] node {direct conversion}    (q_1)
+  (q_1) edge [bend left] node {state elimination}    (q_2)
+  (q_2) edge [bend left] node {Thompson's algorithm} (q_1)
+  (q_1) edge [bend left] node {subset construction}  (q_0)
+  ;
+\end{tikzpicture}
 
 % =============================================================================
 %
