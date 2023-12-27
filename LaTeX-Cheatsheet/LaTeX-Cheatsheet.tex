@@ -29,9 +29,9 @@
 
 \[
   \Biggl \langle \biggl \langle \Bigl \langle \bigl \langle
-    \langle
-      hello
-    \rangle
+  \langle
+  hello
+  \rangle
   \bigr \rangle \Bigr \rangle \biggr \rangle \Biggr \rangle
 \]
 
@@ -52,18 +52,33 @@ This paragraph is below the quoted part.
 % =============================================================================
 
 \begin{align*}
-  0 & \in U_1 \\
-  0 & \in U_2 \\
-    & \ldots \\
-+ \ 0 & \in U_m \\
-= \ 0 & \in U_1 + U_2 + \ldots + U_m
+  0     & \in U_1                      \\
+  0     & \in U_2                      \\
+        & \ldots                       \\
+  + \ 0 & \in U_m                      \\
+  = \ 0 & \in U_1 + U_2 + \ldots + U_m
 \end{align*}
 
 \begin{align*}
   w_1 + w_2 & = (u_{11} + \ldots + u_{m1}) + (u_{12} + \ldots + u_{m2}) \\
-            & = u_{11} + \ldots + u_{m1} + u_{12} + \ldots + u_{m2} \\
+            & = u_{11} + \ldots + u_{m1} + u_{12} + \ldots + u_{m2}     \\
             & = (u_{11} + u_{12}) + \ldots + (u_{m1} + u_{m2})
 \end{align*}
+
+% =============================================================================
+\section{Negation}
+% =============================================================================
+
+In some situations, the tag ``not'' can be used to negate the symbol that follows. This is useful when the ``n''
+counterpart is not imported by default:
+
+\begin{itemize}
+  \item $a \in S$
+  \item $a \notin S$
+  \item $a \not\in S$
+  \item $a \equiv b$
+  \item $a \not\equiv b$
+\end{itemize}
 
 % =============================================================================
 \section{Table}
@@ -73,19 +88,19 @@ Useful online tool: \href{https://www.tablesgenerator.com/}{Tables Generator}
 
 Table compares lists and sets:
 \begin{table}[H]
-\centering
-\begin{tabular}{||c c c ||}
- \hline
-   & Lists & Sets \\ [0.5ex]
- \hline
- \hline
- Length & Finite & Finite or infinite \\
- Order & Matters & Doesn't matter \\
- Repetition & Allows & Doesn't allow \\ [1ex]
- \hline
-\end{tabular}
-\caption{Compare lists and sets}
-\label{table:lists_sets_comp}
+  \centering
+  \begin{tabular}{||c c c ||}
+    \hline
+               & Lists   & Sets               \\ [0.5ex]
+    \hline
+    \hline
+    Length     & Finite  & Finite or infinite \\
+    Order      & Matters & Doesn't matter     \\
+    Repetition & Allows  & Doesn't allow      \\ [1ex]
+    \hline
+  \end{tabular}
+  \caption{Compare lists and sets}
+  \label{table:lists_sets_comp}
 \end{table}
 
 This is a reference to table \ref{table:lists_sets_comp}
@@ -93,12 +108,12 @@ This is a reference to table \ref{table:lists_sets_comp}
 \begin{table}[H]
   \centering
   \begin{tabular}{|c|c|c|ll}
-  \cline{1-3}
-  p & q & $p \rightarrow q$ &  &  \\ [1ex] \cline{1-3}
-  F & F & T                 &  &  \\ [0.5ex] \cline{1-3}
-  F & T & T                 &  &  \\ [0.5ex] \cline{1-3}
-  T & F & F                 &  &  \\ [0.5ex] \cline{1-3}
-  T & T & T                 &  &  \\ [0.5ex] \cline{1-3}
+    \cline{1-3}
+    p & q & $p \rightarrow q$ &  & \\ [1ex] \cline{1-3}
+    F & F & T                 &  & \\ [0.5ex] \cline{1-3}
+    F & T & T                 &  & \\ [0.5ex] \cline{1-3}
+    T & F & F                 &  & \\ [0.5ex] \cline{1-3}
+    T & T & T                 &  & \\ [0.5ex] \cline{1-3}
   \end{tabular}
   \caption{Truth table for $p \rightarrow q$}
 \end{table}
