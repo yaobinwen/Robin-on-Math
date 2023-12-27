@@ -1980,7 +1980,115 @@ For example:
 
 \chapter{Context-Free Languages}
 
- (TODO)
+% =============================================================================
+\section{Context-free grammar (CFG) and context-free languages (CFL)}
+% =============================================================================
+
+% ******************************
+\subsection{Context-free grammar (CFG)}
+% ******************************
+
+A \textbf{context-free grammar} (\textbf{CFG}) is a \textbf{recursive} set of rules that define a language. It consists
+of the following items:
+\begin{enumerate}
+  \item A set of \textbf{nonterminal symbols} (i.e., the \textbf{variables}).
+  \item A set of \textbf{terminal symbols} (i.e., the \textbf{alphabet} of the CFG).
+  \item A set of \textbf{production rules} about how each nonterminal can be replaced by a string of terminals and
+        nonterminals.
+  \item A \textbf{start symbol} (which must be a nonterminal) that begins the derivation. By convention, the start
+        symbol is the one on the left-hand side of the first production.
+\end{enumerate}
+
+A sequence of zero or more steps where nonterminals are replaced by the right-hand side of a production rule is called
+a \textbf{derivation}, denoted $\alpha \Rightarrow^* \omega$.
+
+% ******************************
+\subsection{CFG Example}
+% ******************************
+
+Long form:
+
+\begin{itemize}
+  \item \textcolor{red}{\textbf{Expr}} $\rightarrow$ \textcolor{blue}{int}
+  \item \textcolor{red}{\textbf{Expr}} $\rightarrow$ \textcolor{red}{\textbf{Expr Op Expr}}
+  \item \textcolor{red}{\textbf{Expr}} $\rightarrow$ \textcolor{blue}{(}\textcolor{red}{\textbf{Expr}}
+        \textcolor{blue}{)}
+  \item \textcolor{red}{\textbf{Op}} $\rightarrow$ \textcolor{blue}{$+$}
+  \item \textcolor{red}{\textbf{Op}} $\rightarrow$ \textcolor{blue}{$-$}
+  \item \textcolor{red}{\textbf{Op}} $\rightarrow$ \textcolor{blue}{$\times$}
+  \item \textcolor{red}{\textbf{Op}} $\rightarrow$ \textcolor{blue}{$\div$}
+\end{itemize}
+
+Short form:
+
+\begin{itemize}
+  \item \textcolor{red}{\textbf{Expr}} $\rightarrow$ \textcolor{blue}{int} $|$ \textcolor{red}{\textbf{Expr Op Expr}}
+        $|$ \textcolor{blue}{(}\textcolor{red}{\textbf{Expr}}\textcolor{blue}{)}
+  \item \textcolor{red}{\textbf{Op}} $\rightarrow$ \textcolor{blue}{$+$} $|$ \textcolor{blue}{$-$} $|$
+        \textcolor{blue}{$\times$} $|$ \textcolor{blue}{$\div$}
+\end{itemize}
+
+A derivation: \textcolor{red}{\textbf{Expr}} $\Rightarrow^*$ \textcolor{blue}{int + int}.
+
+% ******************************
+\subsection{Context-free languages (CFL)}
+% ******************************
+
+A language $L$ is called a \textbf{context-free language} (\textbf{CFL}) if there is a CFG $G$ such that $L =
+  \mathfrak{L}(G)$.
+
+% ******************************
+\subsection{Context-free languages (CFL) and regular languages}
+% ******************************
+
+Every regular language is a context-free language; but not all context-free languages are regular languages.
+
+\begin{tikzpicture}
+  \node[
+    rectangle,
+    draw=blue,  % border color
+    text=red,   % text color
+    fill = green!30!yellow, % fill-in color
+    minimum width = 10cm,
+    minimum height = 6cm
+  ] (r) at (0.8,0) {};
+  \node[left, black] at (5, -2.5) {All languages};
+
+  % Set CFLs, the enclosing set.
+  \node [ellipse,
+    draw=blue!60,
+    fill=cyan!40,
+    line width=1mm,
+    minimum width=8cm,
+    minimum height=5cm,
+  ] at (0,0) {};
+  \node[left, black, fill=cyan!40] at (3.5,0) {CFLs};
+
+  % Set regular languages, the enclosed set.
+  \node [ellipse,
+    draw=orange!80,
+    fill=yellow!20,
+    line width=1mm,
+    minimum width=4cm,
+    minimum height=2cm] at (-1,0) {Regular languages};
+\end{tikzpicture}
+
+For example, the CFG ``\textcolor{red}{\textbf{S}} $\rightarrow$ \textcolor{blue}{a}\textcolor{red}{\textbf{S}}
+\textcolor{blue}{b} $|$ \textcolor{blue}{$\epsilon$}'' generates the non-regular language $\{ a^nb^n | n \in \mathbb{N}
+  \}$.
+
+% ******************************
+\subsection{The extra power}
+% ******************************
+
+CFGs derivations essentially have \textbf{unbounded} states. Therefore, they can describe both regular languages (which
+only need finite number of states) and non-regular languages (which need infinite number of states).
+
+% =============================================================================
+\section{Designing CFGs}
+% =============================================================================
+
+See the course slides.
 
 % =============================================================================
 %
