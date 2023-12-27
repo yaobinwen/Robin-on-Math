@@ -1849,7 +1849,128 @@ Therefore, the regular expression for the original NFA is
 
 \chapter{Nonregular Languages}
 
- (TODO)
+\begin{itemize}
+  \item Regular languages correspond to problems that \textbf{can be solved} with \textbf{finite} memory.
+  \item Nonregular languages correspond to problems that \textbf{cannot be solved} with \textbf{finite} memory.
+\end{itemize}
+
+% =============================================================================
+\section{Example 1} \label{automata:nonregexp:example1}
+% =============================================================================
+
+Try to design an NFA for the language $E = \{ a^nb^n | n \in \mathbb{N} \}$.
+
+Think: Can $a^2$ and $a^4$ be represented by the same state?
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
+  \node[state,initial]                   (q_0)                       {};
+  \node[state]                           (q_1) [right of=q_0]        {$\ldots$};
+  \node[state with output,fill=yellow]   (q_a2a4) [right of=q_1]     {$a^2$ \nodepart{lower} $a^4$};
+  \node[state]                           (q_2) [right of=q_a2a4]     {$\ldots$};
+  \node[state with output,fill=yellow]   (q_a2b4a4b4) [right of=q_2] {$a^2b^4$ \nodepart{lower} $a^4b^4$};
+
+  \path[->]
+  (q_0) edge node {} (q_1)
+  (q_1) edge node {} (q_a2a4)
+  (q_a2a4) edge node {} (q_2)
+  (q_2) edge node {} (q_a2b4a4b4)
+  ;
+\end{tikzpicture}
+
+They can't be represented by the same state (i.e., this state represents both $a^2$ and $a^4$ at the same time),
+because if they could, then appending $b^4$ would lead the NFA to a state that represents the following two \textbf{at
+  the same time}:
+\begin{itemize}
+  \item $a^2b^4$
+  \item $a^4b^4$
+\end{itemize}
+
+Now we end up in a dilemma:
+\begin{itemize}
+  \item If we make it an accepting state in order to accept $a^4b^4 \in E$, then we also accept $a^2b^4 \notin E$.
+  \item If we make it a rejecting state in order to reject $a^2b^4 \notin E$, then we also reject $a^4b^4 \in E$.
+\end{itemize}
+
+% =============================================================================
+\section{Distinguishability}
+% =============================================================================
+
+Let $L$ be an arbitrary language over $\Sigma$. Two strings $x \in \Sigma^*$ and $y \in \Sigma^*$ are called
+\textbf{distinguishable} relative to $L$ if there is a string $w \in \Sigma^*$ such that either $xw$ or $yw$ is in $L$.
+We denote this by writing $x \not\equiv_L y$.
+
+Formally, we say $x \not\equiv_L y$ if the following is true (described in first-order logic):
+
+\[ \exists w \in \Sigma^*. (xw \in L \leftrightarrow yw \notin L) \]
+
+\textbf{Theorem}: Let $L$ be an arbitrary language over $\Sigma$. Let $x \in \Sigma^*$ and $y \in \Sigma^*$ be strings
+where $x \not\equiv_L y$. Then if $D$ is \textbf{any} DFA for $L$, then $D$ must end in different states when run on
+inputs $x$ and $y$.
+
+% ******************************
+\subsection{Proof: Example 1 is not regular}
+% ******************************
+
+\textbf{Lemma}: In the language $E$ in \ref{automata:nonregexp:example1}, if $m, n \in \mathbb{N}$ and $m \neq n$, then
+$a^m \not\equiv_E a^n$.
+
+\textbf{Proof}: Let $a^m$ and $a^n$ be strings where $m \neq n$. Then $a^mb^m \in E$ and $a^nb^m \notin E$. According
+to the definition of ``distinguishable'', we see that $a^m \not\equiv_E a^n$, as required. $\blacksquare$
+
+\textbf{Theorem}: The language $E$ in \ref{automata:nonregexp:example1} is not regular.
+
+\textbf{Proof}: Suppose for the sake of contradiction that $E$ is regular. Let $D$ be a DFA for $E$, and let $k$ be the
+number of states in $D$. Consider the strings $a^0$, $a^1$, $a^2$, $\ldots$, $a^k$. This is a collection of $k+1$
+strings and there are only $k$ states in $D$. Therefore, by the pigeonhole principle, there must be two distinct
+strings $a^m$ and $a^n$ that end in the same state when run through $D$. Our lemma tells us that $a^m \not\equiv_E a^n$,
+so by our earlier theorem we know that $a^m$ and $a^n$ cannot end in the same state when run through $D$. We have
+reached a contradiction, so our assumption must have been wrong. Therefore, $E$ is not regular. $\blacksquare$
+
+% =============================================================================
+\section{Distinguishing Sets}
+% =============================================================================
+
+Let $L$ be a language over $\Sigma$. A \textbf{distinguishing set} for $L$ is a set $S \subset \Sigma^*$ where the
+following is true:
+
+\[ \forall x \in S. \forall y \in S. (x \neq y \rightarrow x \not\equiv_L y) \]
+
+Intuitively, it means if you pick any two strings that are not equal to one another, then they are distinguishable
+relative to $L$.
+
+% =============================================================================
+\section{Myhill-Nerode theorem}
+% =============================================================================
+
+\textbf{Theorem} If $L$ is a language and $S$ is a distinguishing set for $L$ that contains \textbf{infinitely many}
+strings, then $L$ is not regular.
+
+\textbf{Proof}: Let $L$ be an arbitrary language over $\Sigma$ and let $S$ be a distinguishing set for L that contains
+infinitely many strings. We will show that $L$ is not regular.
+
+Suppose for the sake of contradiction that $L$ is regular. This means that there must be some DFA $D$ for $L$. Let $k$
+be the number of states in $D$. Since there are infinitely many strings in $S$, we can choose $k+1$ distinct strings
+from $S$ and consider what happens when we run $D$ on all of those strings. Because there are only $k$ states in $D$
+and we've chosen $k+1$ strings from $S$, by the pigeonhole principle we know that at least two strings from $S$ must
+end in the same state in $D$. Choose any two such strings and call them $x$ and $y$.
+
+Because $x \neq y$ and $S$ is a distinguishing set for $L$, we know that $x \not\equiv_L y$. Our earlier theorem
+therefore tells us that when we run $D$ on inputs $x$ and $y$, they must end up in different states. But this is
+impossible - we chose $x$ and $y$ precisely because they end in the same state when run through $D$.
+
+We have reached a contradiction, so our assumption must have been wrong. Thus $L$ is not a regular language.
+$\blacksquare$
+
+% ******************************
+\subsection{Using the Myhill-Nerode theorem}
+% ******************************
+
+To use the Myhill-Nerode theorem, we only need to find a set $S$ in $L$ that is infinite and is a distinguishing set.
+For example:
+\begin{itemize}
+  \item For the language $E = \{ a^nb^n | n \in \mathbb{N} \}$, $S = \{ a^n | n \in \mathbb{N} \}$.
+  \item For the language $EQ = \{ w\stackrel{?}{=}w | w \in \{a, b\}^* \}$, $S = \{a, b\}^*$
+\end{itemize}
 
 % =============================================================================
 %
