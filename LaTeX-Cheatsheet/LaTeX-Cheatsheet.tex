@@ -3,6 +3,8 @@
 \usepackage{csquotes}
 \usepackage{float}
 \usepackage{hyperref}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
 \usepackage{tikz}
 \usepackage{parskip}
 \usepackage{xcolor}
@@ -117,6 +119,29 @@ This is a reference to table \ref{table:lists_sets_comp}
   \end{tabular}
   \caption{Truth table for $p \rightarrow q$}
 \end{table}
+
+% =============================================================================
+\section{Code listings}
+% =============================================================================
+
+A Python code listing:
+
+\begin{lstlisting}[language=Python]
+def say_hello():
+    print("Hello, Python!")
+
+say_hello()
+\end{lstlisting}
+
+A C code listing:
+
+\begin{lstlisting}[language=C]
+  #include <stdio.h>
+  int main(int argc, char * argv[]) {
+    printf("Hello, world!\n");
+    return 0;
+  }
+\end{lstlisting}
 
 % =============================================================================
 \section{Colors}
