@@ -10,8 +10,10 @@
 \usepackage{amssymb}
 \usepackage{csquotes}
 \usepackage{float}
-\usepackage[letterpaper, textwidth=7.5in, textheight=8in]{geometry}
 \usepackage{hyperref}
+\usepackage[letterpaper, textwidth=7.5in, textheight=8in]{geometry}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
 \usepackage{parskip}
 \usepackage{pseudocode}
 \usepackage{tikz}
@@ -2046,9 +2048,9 @@ Every regular language is a context-free language; but not all context-free lang
 \begin{tikzpicture}
   \node[
     rectangle,
-    draw=blue,  % border color
-    text=red,   % text color
-    fill = green!30!yellow, % fill-in color
+    draw=blue,
+    text=red,
+    fill = green!30!yellow,
     minimum width = 10cm,
     minimum height = 6cm
   ] (r) at (0.8,0) {};
@@ -2098,7 +2100,394 @@ See the course slides.
 
 \chapter{Turing Machines}
 
- (TODO)
+% =============================================================================
+\section{A Turing machine}
+% =============================================================================
+
+% ******************************
+\subsection{Definition}
+% ******************************
+
+About a Turing machine:
+\begin{itemize}
+  \item A Turing machine has an \textbf{infinite} tape that consists of \textbf{tape cells}.
+  \item At any time, a Turing machine can only see the \textbf{one} tape cell that is pointed at by the \textbf{tape
+          head}.
+  \item The tape begins with the input string surrounded by infinitely many \textbf{blank cells}. (Therefore, the input
+        string cannot contain blank cells.)
+  \item A Turing machine is a series of \textbf{instructions} that control a tape head as it moves across the tape.
+        \begin{itemize}
+          \item The instructions can have \textbf{labels} that mark the starting of different sections of instructions.
+                Labels have no effect when executed. We just move to the next instruction.
+          \item The special label ``Start'' means ``begin here''.
+          \item \textbf{If} \textcolor{blue}{symbol} \textcolor{red}{command}: If the character under the tape head is
+                \textcolor{blue}{symbol}, then execute \textcolor{red}{command}; otherwise nothing happens.
+          \item \textbf{If Not} \textcolor{blue}{symbol} \textcolor{red}{command}: If the character under the tape head
+                is \textbf{not} \textcolor{blue}{symbol}, then execute \textcolor{red}{command}; otherwise nothing
+                happens.
+          \item \textbf{Write} \textcolor{blue}{symbol$|$Blank}: Write \textcolor{blue}{symbol$|$Blank} to the cell
+                under the tape head.
+          \item \textbf{Move} \textcolor{blue}{Left$|$Right}: Move the tape head to \textcolor{blue}{Left} or
+                \textcolor{blue}{Right}.
+          \item \textbf{Goto} \textcolor{blue}{label}: Jump to the \textcolor{blue}{label}.
+          \item \textbf{Return} \textcolor{blue}{True$|$False}: The Turing machine stops at \textbf{Return}. The result
+                \textcolor{blue}{True} means the Turing machine accepts the input; the result \textcolor{blue}{False}
+                means the Turing machine rejects the input.
+        \end{itemize}
+\end{itemize}
+
+\colorbox{lime}{\textbf{NOTE(ywen)}}: Remember that a Turing machine is not just the tape. The tape is the information
+storage that the Turing machine can operate on. The part that distinguishes one Turing machine from another Turing
+machine is the list of the instructions. Different lists of instructions define different Turing machines.
+
+% ******************************
+\subsection{Powers of Turing machines}
+% ******************************
+
+Turing machines are equal in power to \textbf{idealized computers}. That is, any computation that can be done on a
+Turing machine can be done on an idealized computer and vice-versa.
+
+Because the list of instructions distinguishes one Turing machine from another, we can see that:
+\begin{itemize}
+  \item A Turing machine can implement conditional branching (by using \textbf{If}).
+  \item A Turing machine can implement loops (by using \textbf{Goto}, \textbf{If}, and labels).
+  \item A Turing machine can do arithmetics such as addition, subtraction, powers of numbers, ceiling, floor, etc.
+        \colorbox{red}{\textcolor{yellow}{TODO(ywen)}}: Figure out how to implement them using Turing machines.
+  \item A Turing machine can maintain variables.
+  \item A Turing machine can implement ``helper'' functions that work together to solve larger problems.
+  \item A Turing machine can maintain strings and arrays (by storing them with special separator character).
+  \item A Turing machine can support pointers.
+  \item A Turing machine can support function call and return.
+\end{itemize}
+
+% ******************************
+\subsection{Designing Turing machines}
+% ******************************
+
+See the course slides for examples.
+
+% ******************************
+\subsection{Effective computation}
+% ******************************
+
+An \textbf{effective method of computation} is a form of computation with the following properties:
+\begin{itemize}
+  \item The computation consists of a set of steps.
+  \item There are fixed rules governing how one step leads to the next.
+  \item Any computation that yields an answer does so in finitely many steps.
+  \item Any computation that yields an answer always yields the correct answer.
+\end{itemize}
+
+\textbf{Church-Turing Thesis}: Every effective method of computation is either \textbf{equivalent to or weaker than} a
+Turing machine.
+
+% =============================================================================
+\section{Decidability and Recognizability}
+% =============================================================================
+
+Let $M$ be a Turing machine:
+\begin{itemize}
+  \item $M$ \textbf{accepts} a string $w$ if it returns $true$ on $w$.
+  \item $M$ \textbf{rejects} a string $w$ if it returns $false$ on $w$.
+  \item $M$ \textbf{loops infinitely} (or just \textbf{loops}) on a string $w$ if when run on $w$ it neither returns
+        $true$ nor returns $false$.
+  \item $M$ \textbf{does not accept} $w$ if it either rejects $w$ or loops on $w$.
+  \item $M$ \textbf{does not reject} $w$ if it either accepts $w$ or loops on $w$.
+  \item $M$ \textbf{halts} on $w$ if it accepts $w$ or rejects $w$.
+\end{itemize}
+
+% ******************************
+\subsection{Recognizers}
+% ******************************
+
+A Turing machine $M$ is called a \textbf{recognizer} for a language $L$ over $\Sigma$ if the following statement is
+true: \[ \forall w \in \Sigma^*. (w \in L \leftrightarrow M \ accepts \ w) \]
+
+\begin{itemize}
+  \item If you are absolutely certain that $w \in L$, then running a recognizer for $L$ on $w$ will (eventually)
+        confirm this, i.e., eventually, $M$ will accept $w$.
+  \item If you don't know whether $w \in L$, running $M$ on $w$ may never tell you anything. $M$ might loop on $w$, but
+        you can't differentiate between ``it'll never give an answer'' and ``just wait a bit more.''
+\end{itemize}
+
+% ******************************
+\subsection{Deciders}
+% ******************************
+
+A Turing machine $M$ is called a \textbf{decider} for a language $L$ over $\Sigma$ if the following statements are
+true:
+\begin{itemize}
+  \item $\forall w \in \Sigma^*$. $M$ halts on $w$.
+  \item $\forall w \in \Sigma^*$. ($w \in L$ $\leftrightarrow$ $M$ accepts $w$)
+  \item $\forall w \in \Sigma^*$. ($w \notin L$ $\leftrightarrow$ $M$ rejects $w$)
+\end{itemize}
+
+A \textbf{decision problem} is a type of problem where the goal is to provide a ``yes'' or ``no'' answer.
+\textbf{Solving a problem} means ``deciding yes or no''.
+
+% ******************************
+\subsection{RE (recognizable languages) and R (decidable languages)}
+% ******************************
+
+The class \textbf{RE} consists of all recognizable languages:
+\begin{itemize}
+  \item RE = \{ $L$ $|$ $L$ is a language and there's a recognizer for $L$ \}.
+  \item RE is all the problems with ``yes/no'' answers where ``yes'' answers can be confirmed by a computer.
+\end{itemize}
+
+The class \textbf{R} consists of all decidable languages:
+\begin{itemize}
+  \item R = \{ $L$ $|$ $L$ is a language and there's a decider for $L$ \}.
+  \item R is all problems with ``yes/no'' answers that can be fully solved by computers.
+\end{itemize}
+
+% =============================================================================
+\section{Solving a problem using Turing machines}
+% =============================================================================
+
+The model looks like the following illustration:
+
+\begin{tikzpicture}
+  \node[left, black, fill=white] at (0,0) {input};
+  \draw [-stealth](0,0) -- (1.4,0);
+
+  \node[
+    rectangle,
+    draw,
+    text=red,
+    fill = green!30!yellow,
+    minimum width = 3cm,
+    minimum height = 2cm
+  ] (M) at (3,0) {Turing machine};
+
+  \node[draw,
+    circle,
+    minimum size=1cm,
+    fill=green!30,
+    label=(accept),
+  ] (T) at (7,1.5) {True};
+
+  \node[draw,
+    circle,
+    minimum size=1cm,
+    fill=red!30,
+    label=(reject),
+  ] (F) at (7,-1.5) {False};
+
+  \draw [-stealth](4.8,0) -- (6.2,1.3);
+  \draw [-stealth](4.8,0) -- (6.2,-1.3);
+\end{tikzpicture}
+
+A Turing machine's input is a string on some alphabet $\Sigma$. In order to solve a problem using a Turing machine, we
+need to translate an arbitrary input object into a string.
+
+% ******************************
+\subsection{Encoding of objects}
+% ******************************
+
+If ``Obj'' is an object that is \textbf{discrete} and \textbf{finite}, the notation $\langle Obj \rangle$ means some
+way of encoding ``Obj'' as a string.
+
+Given a list of $Obj_1, Obj_2, \ldots, Obj_n$, $\langle Obj_1, Obj_2, \ldots, Obj_n \rangle$ is a \textbf{single string}
+that denotes the encoding of this \textbf{entire list} of objects.
+
+% ******************************
+\subsection{The universal Turing machine}
+% ******************************
+
+\textbf{Theorem (Turing, 1936)}: There is a Turing machine $U_{TM}$ called the \textbf{universal Turing machine} that,
+when run on an input of the form $\langle M, w\rangle$, where $M$ is a Turing machine and $w$ is a string, simulates
+$M$ running on $w$ and does whatever $M$ does on $w$ (accepts, rejects, or loops).
+
+In other words:
+\begin{itemize}
+  \item If $M$ accepts $w$, then $U_{TM}$ accepts $\langle M, w\rangle$.
+  \item If $M$ rejects $w$, then $U_{TM}$ rejects $\langle M, w\rangle$.
+  \item If $M$ loops on $w$, then $U_{TM}$ loops on $\langle M, w\rangle$.
+\end{itemize}
+
+Here we encode the Turing machine $M$ and its input $w$ into a string $\langle M, w\rangle$ (over some alphabet
+$\Sigma$) and feed it into $U_{TM}$. So all the possible strings in the form of $\langle M, w\rangle$ that are accepted
+by $U_{TM}$ form the language that's recognized by $U_{TM}$. In contrast, because there exists some $w$ that's not
+accepted by $M$, not all the strings in the form of $\langle M, w\rangle$ belong to the language that $U_{TM}$
+recognizes.
+
+Let $A_{TM}$ be the language that's recognized by $U_{TM}$. That means $\forall x \in \Sigma^*.$ ($U_{TM}$ accepts $x$
+$\leftrightarrow$ $x \in A_{TM}$), or, equivalently, $\forall M. \forall w \in \Sigma^*.$ ($U_{TM}$ accepts
+$\langle M, w\rangle$ $\leftrightarrow$ $\langle M, w\rangle$ $\in$ $A_{TM}$ )
+
+So we have $A_{TM}$ = \{ $\langle M, w\rangle$ $|$ $M$ is a Turing machine and $M$ accepts $w$ \}
+
+% =============================================================================
+\section{$A_{TM}$ is recognizable but not decidable}
+% =============================================================================
+
+\textbf{Theorem}: The language $A_{TM}$ is recognizable but not decidable. In other words, $A_{TM} \notin \textbf{R}$.
+
+Intuitively, because $U_{TM}$ has the same behavior as the given Turing machine $M$, $U_{TM}$ doesn't halt when $M$
+doesn't halt. We already know the $M$ for the hailstone sequence is only recognizable, so $U_{TM}$ can't be decidable.
+
+But to prove this, we need more knowledge.
+
+% ******************************
+\subsection{Self-defeating objects and the fortune teller}
+% ******************************
+
+A \textbf{self-defeating object} is an object whose essential properties ensure it \textbf{does not exist}.
+
+For example: ``the largest integer'' is a self-defeating object. Suppose we use ``N'' to denote the largest integer,
+then ``N+1'' is even larger than ``N'' so ``N'' doesn't exist. Here we use the object ``N'' itself to construct
+something that undermines ``N'', hence ``self-defeating''.
+
+A fortune teller who charges \$100 and tells about the future is a self-defeating object too. The
+trickster has the following request to the fortune teller:
+\begin{enumerate}
+  \item I have a ``yes/no'' question about the future.
+  \item If your answer is ``yes'', I'll pay \$1,000.
+  \item If your answer is ``no'', I'll pay \$500.
+\end{enumerate}
+
+Suppose the fortune teller accepts the request because he wants to make more money. The trickster's question is:
+``Am I going to pay \$500?''
+\begin{itemize}
+  \item If the fortune teller says ``yes'', according to the previous request, the trickster will pay \$1,000, but
+        according to the question itself, the trickster will pay \$500.
+  \item If the fortune teller says ``no'', according to the previous request, the trickster will pay \$500, but
+        according to the question itself, the trickster will not pay \$500.
+\end{itemize}
+
+The fortune teller can't answer all the questions about the future.
+
+% ******************************
+\subsection{Self-Referential programs}
+% ******************************
+
+A Turing machine can take itself as the input. Turing machines can take their own code as input, and ask questions
+about (or even execute) their own code. In fact, any computing system that's equal in power to a Turing machine possesses some mechanism for self-reference.
+
+A \textbf{quine} is a special kind of self-referential program that, when run, prints its own source code.
+
+% ******************************
+\subsection{A self-defeating decider program}
+% ******************************
+
+Suppose we have the following decider program:
+
+\begin{lstlisting}[language=C++]
+  bool willAccept(string function, string input);
+\end{lstlisting}
+
+which
+\begin{itemize}
+  \item returns $true$ if $function$ returns $true$;
+  \item returns $false$ if $function$ does not return $true$.
+\end{itemize}
+
+We can construct a $trickster$ function as follows:
+
+\begin{lstlisting}[language=C++]
+  bool trickster(string input) {
+    // This is a self-referential program.
+    string self_ref = /* source code of trickster itself */;
+    return !willAccept(self_ref, input);
+  }
+\end{lstlisting}
+
+As a result, the $willAccept$ is a self-defeating program:
+\begin{itemize}
+  \item If $willAccept$ says $trickster$ returns $true$, then $trickster$ will return $false$.
+  \item If $willAccept$ says $trickster$ returns $false$, then $trickster$ will return $true$.
+\end{itemize}
+
+% ******************************
+\subsection{Prove $A_{TM} \notin \textbf{R}$}
+% ******************************
+
+\textbf{Theorem}: $A_{TM} \notin \textbf{R}$
+
+\textbf{Proof}: By contradiction, assume that $A_{TM} \in \mathbf{R}$. Then there is a decider $D$ for $A_{TM}$. We can
+represent $D$ as the following function:
+
+\begin{lstlisting}[language=C++]
+  bool willAccept(string function, string w);
+\end{lstlisting}
+
+which takes in the source code of a function $function$ and a string $w$, then returns $true$ if $function(w)$ returns
+$true$ and returns $false$ otherwise.
+
+Given the decider $willAccept$, consider the following function $trickster$:
+
+\begin{lstlisting}[language=C++]
+  bool trickster(string input) {
+    string me = /* source code of trickster itself */;
+    return !willAccept(me, input);
+  }
+\end{lstlisting}
+
+Choose a string $w$. We consider two cases:
+\begin{enumerate}
+  \item $willAccept(me, input)$ returns $true$. Since $willAccept$ decides $A_{TM}$, this means $trickster(w)$ returns
+        $true$. However, given how $trickster$ is written, in this case $trickster(w)$ returns $false$.
+  \item $willAccept(me, input)$ returns $false$. Since $willAccept$ decides $A_{TM}$, this means $trickster(w)$ doesn't
+        return $true$. However, given how $trickster$ is written, in this case $trickster(w)$ returns $true$.
+\end{enumerate}
+
+In both cases we reach a contradiction, so our assumption must have been wrong. Therefore, $A_{TM} \notin \textbf{R}$.
+$\blacksquare$
+
+% =============================================================================
+\section{Relationships of languages}
+% =============================================================================
+
+\begin{tikzpicture}
+  \node[
+    rectangle,
+    draw=blue,
+    text=red,
+    fill = green!30!yellow,
+    minimum width = 15cm,
+    minimum height = 9cm
+  ] (r) at (3,0) {};
+  \node[left, black] at (9.5, -4) {All languages};
+
+  % Set RE, the recognizable languages.
+  \node [ellipse,
+    draw=blue!60,
+    fill=red!40,
+    line width=1mm,
+    minimum width=12cm,
+    minimum height=8cm,
+  ] at (2,0) {};
+  \node[left, black, fill=red!40] at (7.5,0) {RE};
+
+  % Set R, the decidable languages.
+  \node [ellipse,
+    draw=blue!60,
+    fill=orange!40,
+    line width=1mm,
+    minimum width=10cm,
+    minimum height=6cm,
+  ] at (1,0) {};
+  \node[left, black, fill=orange!40] at (5.5,0) {R};
+
+  % Set CFLs.
+  \node [ellipse,
+    draw=blue!60,
+    fill=cyan!40,
+    line width=1mm,
+    minimum width=8cm,
+    minimum height=4cm,
+  ] at (0,0) {};
+  \node[left, black, fill=cyan!40] at (3.5,0) {CFLs};
+
+  % Set regular languages.
+  \node [ellipse,
+    draw=orange!80,
+    fill=yellow!20,
+    line width=1mm,
+    minimum width=4cm,
+    minimum height=2cm] at (-1,0) {Regular languages};
+\end{tikzpicture}
 
 % =============================================================================
 %
