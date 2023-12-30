@@ -37,7 +37,8 @@ For now (2023), I want to learn the following subjects:
 
 As I was learning linear algebra and real analysis, I gradually realize I needed to refresh my memory on these fundamental subjects, too. I had learned various such subjects when I was in middle school, high school, or college, but that was two or three decades ago.
 
-As of 2023, I'm (remotely) auditing the Stanford course [CS103: Mathematical Foundations of Computing](https://web.stanford.edu/class/cs103/). This course started on June 26, and today (July 24), the slides for _Finite Automata (Part I)_ were just released, so I am actually learning this course at almost the same time with the students who are physically in Stanford.
+I'm primrily using all kinds of online resources to (re)learn the fundamental subjects:
+- [CS103: Mathematical Foundations of Computing](https://web.stanford.edu/class/cs103/)
 
 ## Linear algebra
 
