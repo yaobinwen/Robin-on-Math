@@ -2497,7 +2497,90 @@ $\blacksquare$
 
 \chapter{Unsolvable Problems}
 
- (TODO)
+% =============================================================================
+\section{The halting problem}
+% =============================================================================
+
+The \textbf{halting problem} is: Given a Turing machine $M$ and a string $w$, will $M$ halt when run on $w$?
+
+The language: $HALT$ = \{ $\langle M, w\rangle$ $|$ $M$ is a Turing machine that halts on $w$ \}.
+
+\textbf{Theorem}: $HALT$ is recognizable but not decidable. In other words, $HALT \in \mathbf{RE}$ and $HALT \notin
+  \mathbf{R}$.
+
+See the course slides for the proof.
+
+% =============================================================================
+\section{The languages in RE}
+% =============================================================================
+
+A language $L$ is in \textbf{RE} if, for any string $w$, if you are convinced that $w \in L$, there is some way you
+could prove that to someone else.
+\begin{itemize}
+  \item If you can prove that, that means $w \in L$.
+  \item If you can't prove that, that does not mean $w \notin L$. You just don't know whether $w \in L$.
+\end{itemize}
+
+% =============================================================================
+\section{Verifiers}
+% =============================================================================
+
+A \textbf{verifier} for a language $L$ is a Turing machine $V$ with the following two properties:
+\begin{itemize}
+  \item $V$ halts on all inputs.
+  \item $\forall w \in \Sigma^*.$ ($w \in L$ $\leftrightarrow$ ($\exists c \in \Sigma^*.$ $V$ accepts $\langle w,
+          c\rangle$)).
+\end{itemize}
+
+Some notes about verifiers:
+\begin{itemize}
+  \item A decider solves a problem; a verifier checks an answer.
+  \item If $V$ accepts $\langle w, c \rangle$, we're guaranteed $w \in L$.
+  \item If $V$ rejects $\langle w, c \rangle$, then either of the following two:
+        \begin{itemize}
+          \item $w \in L$, but you gave the wrong $c$.
+          \item $w \notin L$, so no possible $c$ will work.
+        \end{itemize}
+  \item $V$ is neither a recognizer or a decider for $L$.
+  \item The job of $V$ is just to check certificates, not to decide membership in $L$. \colorbox{red}{TODO(ywen)}: Why
+        is the job of $V$ to check the \textbf{certificates} but not the input string $w$?
+  \item In practice, $c$ will likely just be ``some other auxiliary data that helps you out.''
+\end{itemize}
+
+% ******************************
+\subsection{The verifier for $A_{TM}$}
+% ******************************
+
+\begin{lstlisting}[language=C++]
+  bool checkWillAccept(string M, string w, int c) {
+    // Set up a simulation of M that runs on w;
+    for (int i = 0; i < c; i++) {
+      // Simulate the next step of M that runs on w;
+    }
+    return whether M is in an accepting state;
+  }
+\end{lstlisting}
+
+% =============================================================================
+\section{Verifiable languages}
+% =============================================================================
+
+\textbf{Theorem}: If $L$ is a language, then there is a verifier for $L$ \textbf{if and only if} $L \in \mathbf{RE}$.
+
+Verifiers are explicitly built to check proofs that strings are in the language.
+
+You can think of a recognizer as a device that ``searches'' for a proof that $w \in L$.
+
+% =============================================================================
+\section{Finding a non-RE language}
+% =============================================================================
+
+\colorbox{lime}{\textbf{NOTE(ywen)}}: The course slides 151, 152 and 153 show the language of all the Turing machines
+that do not accept their encoded strings, or: \{ $\langle M \rangle$ $|$ $M$ is a Turing machine that does not accept
+$\langle M \rangle$ \}.
+
+The existence of non-RE languages means \textbf{there are statements that are true but not provable} (i.e., the Godel's
+incompleteness theorem).
 
 % =============================================================================
 %
