@@ -2590,7 +2590,54 @@ incompleteness theorem).
 
 \chapter{Complexity Theory and P vs NP}
 
- (TODO)
+% =============================================================================
+\section{\textbf{P} and \textbf{NP}}
+% =============================================================================
+
+An algorithm runs in \textbf{polynomial time} if its runtime is some polynomial in $n$, i.e., time $O(n^k)$ for some
+constant $k \in \mathbb{N}$.
+
+\textbf{Cobham-Edmonds Thesis}: A language $L$ can be \textbf{decided efficiently} if it can be decided in time $O(n^k)$
+for some $k \in \mathbb{N}$.
+
+The class \textbf{P} represents problems that can be solved \textbf{efficiently} by a computer.
+
+The class \textbf{NP} represents problems where ``yes'' answers can be verified \textbf{efficiently} by a computer.
+
+% =============================================================================
+\section{Reducibility}
+% =============================================================================
+
+If problem A's input can be \textbf{polynomial-timely translated} into the input for problem B, and problem B can be
+\textbf{polynomial-timely solved}, then we say A is \textbf{polynomial-time reducible} to B, denoted $A \le_p B$.
+
+Intuitively, that means:
+\begin{itemize}
+  \item A is at most as hard as B.
+  \item A can't be harder than B.
+  \item B could be harder than A.
+\end{itemize}
+
+If $A \le_p B$ and $B \in \mathbf{P}$, then $A \in \mathbf{P}$. If $A \le_p B$ and $B \in \mathbf{NP}$, then
+$A \in \mathbf{NP}$.
+
+% =============================================================================
+\section{NP-hard and NP-complete}
+% =============================================================================
+
+For languages $A$ and $B$, we say $A \le_p B$ if $A$ reduces to $B$ in polynomial time. (Intuitively, $B$ is at least
+as hard as $A$. $B$ could be harder than $A$. $A$ can't be harder than $B$.)
+
+We say that a language $L$ is \textbf{NP-hard} if $\forall A \in \mathbf{NP}. A \le_p L$. (Intuitively, $L$ is at least
+as hard as any language in \textbf{NP}.)
+
+We say that a language $L$ is $NP-complete$ if $L \in \mathbf{NP}$ and $L$ is \textbf{NP-hard}.
+
+% =============================================================================
+%
+% References
+%
+% =============================================================================
 
 \chapter*{References}
 \addcontentsline{toc}{chapter}{References}
