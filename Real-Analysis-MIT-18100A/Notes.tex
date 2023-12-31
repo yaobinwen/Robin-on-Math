@@ -39,12 +39,12 @@
 \addcontentsline{toc}{chapter}{Overview}
 
 This document contains my study notes of the textbook \textit{Basic Analysis I:
-Introduction to Real Analysis, Volume 1}. I use it for a few purposes:
+  Introduction to Real Analysis, Volume 1}. I use it for a few purposes:
 
 \begin{enumerate}
   \item As a reference to quickly refresh my memory on the subjects.
   \item Keep the notes to help me understand the text that is not obvious for
-    me to comprehend.
+        me to comprehend.
 \end{enumerate}
 
 % =============================================================================
@@ -60,7 +60,7 @@ Introduction to Real Analysis, Volume 1}. I use it for a few purposes:
 \section{About this book}
 % =============================================================================
 
-(Nothing to write down.)
+Nothing to write down.
 
 % =============================================================================
 \section{About analysis}
@@ -70,7 +70,7 @@ The \textbf{most important difference} between analysis and algebra:
 \begin{itemize}
   \item In algebra, we prove \textbf{equalities} directly.
   \item In analysis, we usually prove \textbf{inequalities} and we prove those
-    inequalities by estimating.
+        inequalities by estimating.
 \end{itemize}
 
 % =============================================================================
@@ -92,80 +92,80 @@ mentioned.
 The various set-related notations:
 \begin{itemize}
   \item \textbf{Membership}:
-    \begin{itemize}
-      \item[$\bullet$] $a \in A$: the element $a$ belongs to the set $A$
-      \item[$\bullet$] $a \notin A$: the element $a$ does not belong to the set
-        $A$.
-    \end{itemize}
+        \begin{itemize}
+          \item[$\bullet$] $a \in A$: the element $a$ belongs to the set $A$
+          \item[$\bullet$] $a \notin A$: the element $a$ does not belong to the set
+                $A$.
+        \end{itemize}
   \item \textbf{Subset}:
-    \begin{itemize}
-      \item Used in this book: $A \subset B$ (at times: $B \supset A$)
-      \item Alternatively: Some people prefer to use $A \subseteq B$ to denote
-        ``A is a subset of B''.
-    \end{itemize}
+        \begin{itemize}
+          \item Used in this book: $A \subset B$ (at times: $B \supset A$)
+          \item Alternatively: Some people prefer to use $A \subseteq B$ to denote
+                ``A is a subset of B''.
+        \end{itemize}
   \item \textbf{Equality}:
-    \begin{itemize}
-      \item[$\bullet$] $A = B$: A and B contain exactly the same elements.
-      \item[$\bullet$] $A \neq B$
-    \end{itemize}
+        \begin{itemize}
+          \item[$\bullet$] $A = B$: A and B contain exactly the same elements.
+          \item[$\bullet$] $A \neq B$
+        \end{itemize}
   \item \textbf{Proper subset}:
-    \begin{itemize}
-      \item Used in this book: $A \subsetneq B$: $A \subset B$ and $A \neq B$.
-      \item Alternatively: Some people prefer to use $A \subset B$ to denote
-        ``A is a proper subset of B''. Note this can be confused with the
-        notation of ``subset'' so consistency of usage is important.
-    \end{itemize}
+        \begin{itemize}
+          \item Used in this book: $A \subsetneq B$: $A \subset B$ and $A \neq B$.
+          \item Alternatively: Some people prefer to use $A \subset B$ to denote
+                ``A is a proper subset of B''. Note this can be confused with the
+                notation of ``subset'' so consistency of usage is important.
+        \end{itemize}
   \item \textbf{Set building notation}: $\{x \in A: P(x)\}$ refers to a subset
-    of the set $A$ containing all the elements of $A$ that satisfy the property
-    $P(x)$.
+        of the set $A$ containing all the elements of $A$ that satisfy the property
+        $P(x)$.
   \item \textbf{Natural numbers}: $\mathbb{N} := \{1, 2, 3, \ldots \}$
   \item \textbf{Integers}: $\mathbb{Z} := \{0, -1, 1, -2, 2, \ldots \}$
   \item \textbf{Rational numbers}: $\mathbb{Q} := \{\frac{m}{n}: m,n \in
-    \mathbb{Z}, n \neq 0 \}$
+          \mathbb{Z}, n \neq 0 \}$
   \item \textbf{Real numbers}: $\mathbb{R}$
   \item \textbf{Union}: $A \cup B := \{x: x \in A \ or \ x \in B\}$
   \item \textbf{Intersection}: $A \cap B := \{x: x \in A \ and \ x \in B\}$
   \item \textbf{Complement}:
-    \begin{itemize}
-      \item $A \setminus B := \{x: x \in A \ and \ x \notin B\}$
-      \item $B^c$: If the set $A$ can be understood from the context. Here ``c''
-        is the first letter of the word ``complement'', not a set $c$.
-    \end{itemize}
+        \begin{itemize}
+          \item $A \setminus B := \{x: x \in A \ and \ x \notin B\}$
+          \item $B^c$: If the set $A$ can be understood from the context. Here ``c''
+                is the first letter of the word ``complement'', not a set $c$.
+        \end{itemize}
   \item \textbf{Disjoint}: $A$ and $B$ are said to be \textit{disjoint} if $A
-    \cap B = \emptyset$.
+          \cap B = \emptyset$.
   \item \textbf{Union of an infinite collection of sets}:
-    \[
-      \bigcup_{n=1}^{\infty} A_n := \{x: x \in A_i, \exists i \in \mathbb{N}\}
-    \]
-    Note the use of $\exists$: Because this is the union of the sets $A_i$,
-    by definition, it means that for any element $x$ in the final union, $x$
-    belongs to at least one of the sets $A_i$, but it may or may not belong to
-    all of them. Therefore, when we describe the membership of $x$, we must
-    express the meaning of ``may or may not''.
+        \[
+          \bigcup_{n=1}^{\infty} A_n := \{x: x \in A_i, \exists i \in \mathbb{N}\}
+        \]
+        Note the use of $\exists$: Because this is the union of the sets $A_i$,
+        by definition, it means that for any element $x$ in the final union, $x$
+        belongs to at least one of the sets $A_i$, but it may or may not belong to
+        all of them. Therefore, when we describe the membership of $x$, we must
+        express the meaning of ``may or may not''.
   \item \textbf{Intersection of an infinite collection of sets}:
-    \[
-      \bigcap_{n=1}^{\infty} A_n := \{x: x \in A_i, \forall i \in \mathbb{N}\}
-    \]
-    The use of $\forall$ means that any element $x$ in the final set belongs
-    to all of the sets $A_i$.
+        \[
+          \bigcap_{n=1}^{\infty} A_n := \{x: x \in A_i, \forall i \in \mathbb{N}\}
+        \]
+        The use of $\forall$ means that any element $x$ in the final set belongs
+        to all of the sets $A_i$.
   \item \textbf{Unions/Intersection of sets with two indices}:
-    \[
-      \bigcup_{n=1}^{\infty} \bigcup_{m=1}^{\infty} A_{n,m} =
-      \bigcup_{n=1}^{\infty} \Bigl(\bigcup_{m=1}^{\infty} A_{n,m}\Bigr)
-    \]
-    \[
-      \bigcap_{n=1}^{\infty} \bigcap_{m=1}^{\infty} A_{n,m} =
-      \bigcap_{n=1}^{\infty} \Bigl(\bigcap_{m=1}^{\infty} A_{n,m}\Bigr)
-    \]
+        \[
+          \bigcup_{n=1}^{\infty} \bigcup_{m=1}^{\infty} A_{n,m} =
+          \bigcup_{n=1}^{\infty} \Bigl(\bigcup_{m=1}^{\infty} A_{n,m}\Bigr)
+        \]
+        \[
+          \bigcap_{n=1}^{\infty} \bigcap_{m=1}^{\infty} A_{n,m} =
+          \bigcap_{n=1}^{\infty} \Bigl(\bigcap_{m=1}^{\infty} A_{n,m}\Bigr)
+        \]
   \item \textbf{A more general notation}:
-    \[
-      \bigcup_{\lambda \in I} A_{\lambda} :=
-      \{x: x \in A_{\lambda}, \exists \lambda \in I\}
-    \]
-    \[
-      \bigcap_{\lambda \in I} A_{\lambda} :=
-      \{x: x \in A_{\lambda}, \forall \lambda \in I\}
-    \]
+        \[
+          \bigcup_{\lambda \in I} A_{\lambda} :=
+          \{x: x \in A_{\lambda}, \exists \lambda \in I\}
+        \]
+        \[
+          \bigcap_{\lambda \in I} A_{\lambda} :=
+          \{x: x \in A_{\lambda}, \forall \lambda \in I\}
+        \]
 \end{itemize}
 
 \textbf{Theorem 0.3.5 (DeMorgan)}: Let $A$ be the \textit{universe} and $B, C$
@@ -220,27 +220,27 @@ The textbook [1] offers the following proof:
   the least element of $S$, we know that $P(m-1)$ is true. But by the induction
   step we see that $P(m-1+1) = P(m)$ is true, contradicting the statement that
   $m \in S$. Therefore, $S$ is empty and $P(n)$ is true for all $n \in
-  \mathbb{N}$.
+    \mathbb{N}$.
 \end{displayquote}
 
 My notes on the proof:
 
 \begin{itemize}
   \item The proof uses contradiction. Therefore, we need to suppose the opposite
-    conclusion of the theorem is true. Because the conclusion of the theorem is
-    ``$P(n)$ is true for \textbf{all} $n \in \mathbb{N}$'', the opposite
-    conclusion is ``there exist some $m \in \mathbb{N}$ that $P(m)$ is false''.
-    This is why the first sentence says ``... $m$ for which $P(m)$ is not true''
-    and ``$S$ is nonempty'': $S$ must not be empty, because otherwise the
-    original conclusion is true and it makes no sense to use proof by
-    contradiction.
+        conclusion of the theorem is true. Because the conclusion of the theorem is
+        ``$P(n)$ is true for \textbf{all} $n \in \mathbb{N}$'', the opposite
+        conclusion is ``there exist some $m \in \mathbb{N}$ that $P(m)$ is false''.
+        This is why the first sentence says ``... $m$ for which $P(m)$ is not true''
+        and ``$S$ is nonempty'': $S$ must not be empty, because otherwise the
+        original conclusion is true and it makes no sense to use proof by
+        contradiction.
   \item Regarding $1 \notin S$: The basis statement is $P(1)$ is true; $S$ is
-    the set of natural numbers $m$ where $P(m)$ is false. Therefore, if $1 \in
-    S$, that means $P(1)$ is false, which contradicts with the conditions of
-    the theorem to-be-proven. Note that ``proof by contradiction'' starts with
-    the opposite \textbf{conclusion} of the original theorem but it still
-    accepts all the conditions of the original theorem. In this case, ``proof
-    by contradiction'' still accepts the condition that $P(1)$ is true.
+        the set of natural numbers $m$ where $P(m)$ is false. Therefore, if $1 \in
+          S$, that means $P(1)$ is false, which contradicts with the conditions of
+        the theorem to-be-proven. Note that ``proof by contradiction'' starts with
+        the opposite \textbf{conclusion} of the original theorem but it still
+        accepts all the conditions of the original theorem. In this case, ``proof
+        by contradiction'' still accepts the condition that $P(1)$ is true.
 \end{itemize}
 
 % ------------------------------
@@ -252,7 +252,7 @@ Let $P(n)$ be a statement depending on a natural number $n$. Suppose that:
 \begin{enumerate}
   \item (basis statement) $P(1)$ is true.
   \item (induction step) If $P(k)$ is true for all $k = 1, 2, \ldots, n$, then
-    $P(n+1)$ is true.
+        $P(n+1)$ is true.
 \end{enumerate}
 
 Then $P(n)$ is true for all $n \in \mathbb{N}$.
@@ -305,13 +305,13 @@ write $f(x) = y$.
 The various terms that are related with functions:
 \begin{itemize}
   \item Sometimes $f$ is called a \textbf{mapping} or a \textbf{map}: $f$
-    \textbf{maps} $A$ to $B$.
+        \textbf{maps} $A$ to $B$.
   \item Sometimes the set $f$ is called the \textbf{graph} of the function
-    rather than the function itself.
+        rather than the function itself.
   \item \textbf{domain}: The set $A$ is called the domain of $f$. Sometimes it
-    is (confusingly) denoted as $D(f)$.
+        is (confusingly) denoted as $D(f)$.
   \item \textbf{range}: The set $R(f) := \{y \in B: \exists x: f(x) = y\}$ is
-    called the range of $f$.
+        called the range of $f$.
 \end{itemize}
 
 % ------------------------------
@@ -320,10 +320,10 @@ The various terms that are related with functions:
 
 Consider a function $f: A \rightarrow B$ and $C \subset A$. Define the
 \textit{image} (or \textit{direct image}) of $C$ as \[ f(C) := \{f(x) \in B:
-x \in C\} \].
+  x \in C\} \].
 
 Let $D \subset B$. Define the \textit{inverse image} of $D$ as \[ f^{-1}(D) :=
-\{x \in A: f(x) \in D\}\].
+  \{x \in A: f(x) \in D\}\].
 
 \textbf{Note} the definition of inverse image: the elements in $D$ do not have
 to have an element in $A$ that maps to it. See the example $f^{-1}(\{a,b,c\})$
@@ -338,7 +338,7 @@ Consider $f: A \rightarrow B$. Let $C$, $D$ be subsets of $B$. Then:
   \item $f^{-1}(C \cup D)$ = $f^{-1}(C) \cup f^{-1}(D)$
   \item $f^{-1}(C \cap D)$ = $f^{-1}(C) \cap f^{-1}(D)$
   \item $f^{-1}(C^c)$ = $\bigl(f^{-1}(C)\bigr)^c$ (which means $f^{-1}(B
-    \setminus C) = A \setminus f^{-1}(C)$)
+          \setminus C) = A \setminus f^{-1}(C)$)
 \end{enumerate}
 
 The textbook offers the proof for the first statement, but I want to prove it
@@ -347,97 +347,97 @@ with more details.
 \textbf{My proof}:
 
 To prove that two sets are equal, we need to use the definition of \textit{
-equal} in definition 0.3.2, that two sets $A$ and $B$ are equal if $A \subset B$
+  equal} in definition 0.3.2, that two sets $A$ and $B$ are equal if $A \subset B$
 and $B \subset A$.
 
 \begin{enumerate}
   \item The proof is divided into three steps:
-    \begin{enumerate}
-      \item $\forall x \in f^{-1}(C \cup D)$, according to the definition of
-        $f^{-1}$, we know $f(x) \in C \cup D$. According to the definition of
-        \textit{union}, we know this means $f(x) \in C$ or $f(x) \in D$. When
-        $f(x) \in C$, this means $x \in f^{-1}(C)$; when $f(x) \in D$, this
-        means $x \in f^{-1}(D)$. According to the definition of \textit{union}
-        again, we know this means $x \in f^{-1}(C) \cup f^{-1}(D)$. Therefore,
-        the whole reasoning chain can be summarized as $\forall x \in f^{-1}(C
-        \cup D) \Rightarrow x \in f^{-1}(C) \cup f^{-1}(D)$. According to the
-        definition of \textit{subset}, this means $f^{-1}(C \cup D) \subset
-        f^{-1}(C) \cup f^{-1}(D)$.
-      \item $\forall x \in f^{-1}(C) \cup f^{-1}(D)$ means $x \in f^{-1}(C)$ or
-        $x \in f^{-1}(D)$ which means $f(x) \in C$ or $f(x) \in D$ which means
-        $f(x) \in C \cup D$. According to the definition of \textit{inverse
-        image}, this means $x \in f^{-1}(C \cup D)$. Therefore, the whole
-        reasoning chain can be summarized as $\forall x \in f^{-1}(C) \cup
-        f^{-1}(D) \Rightarrow x \in f^{-1}(C \cup D)$. According to the
-        definition of \textit{subset}, this means $f^{-1}(C) \cup f^{-1}(D)
-        \subset f^{-1}(C \cup D)$.
-      \item According to the definition of \textit{equal}, we know $f^{-1}(C
-        \cup D)$ = $f^{-1}(C) \cup f^{-1}(D)$.
-    \end{enumerate}
+        \begin{enumerate}
+          \item $\forall x \in f^{-1}(C \cup D)$, according to the definition of
+                $f^{-1}$, we know $f(x) \in C \cup D$. According to the definition of
+                \textit{union}, we know this means $f(x) \in C$ or $f(x) \in D$. When
+                $f(x) \in C$, this means $x \in f^{-1}(C)$; when $f(x) \in D$, this
+                means $x \in f^{-1}(D)$. According to the definition of \textit{union}
+                again, we know this means $x \in f^{-1}(C) \cup f^{-1}(D)$. Therefore,
+                the whole reasoning chain can be summarized as $\forall x \in f^{-1}(C
+                  \cup D) \Rightarrow x \in f^{-1}(C) \cup f^{-1}(D)$. According to the
+                definition of \textit{subset}, this means $f^{-1}(C \cup D) \subset
+                  f^{-1}(C) \cup f^{-1}(D)$.
+          \item $\forall x \in f^{-1}(C) \cup f^{-1}(D)$ means $x \in f^{-1}(C)$ or
+                $x \in f^{-1}(D)$ which means $f(x) \in C$ or $f(x) \in D$ which means
+                $f(x) \in C \cup D$. According to the definition of \textit{inverse
+                  image}, this means $x \in f^{-1}(C \cup D)$. Therefore, the whole
+                reasoning chain can be summarized as $\forall x \in f^{-1}(C) \cup
+                  f^{-1}(D) \Rightarrow x \in f^{-1}(C \cup D)$. According to the
+                definition of \textit{subset}, this means $f^{-1}(C) \cup f^{-1}(D)
+                  \subset f^{-1}(C \cup D)$.
+          \item According to the definition of \textit{equal}, we know $f^{-1}(C
+                  \cup D)$ = $f^{-1}(C) \cup f^{-1}(D)$.
+        \end{enumerate}
   \item The proof is divided into three steps:
-    \begin{enumerate}
-      \item $\forall x \in f^{-1}(C \cap D)$, according to the definition of
-        $f^{-1}$, we know $f(x) \in C \cap D$. According to the definition of
-        \textit{intersection}, we know this means $f(x) \in C$ and $f(x) \in D$.
-        When $f(x) \in C$, this means $x \in f^{-1}(C)$; when $f(x) \in D$, this
-        means $x \in f^{-1}(D)$. According to the definition of \textit{
-        intersection} again, we know this means $x \in f^{-1}(C) \cap
-        f^{-1}(D)$. Therefore, the whole reasoning chain can be summarized as
-        $\forall x \in f^{-1}(C \cap D) \Rightarrow x \in f^{-1}(C) \cap
-        f^{-1}(D)$. According to the definition of \textit{subset}, this means
-        $f^{-1}(C \cap D) \subset f^{-1}(C) \cap f^{-1}(D)$.
-      \item $\forall x \in f^{-1}(C) \cap f^{-1}(D)$ means $x \in f^{-1}(C)$ and
-        $x \in f^{-1}(D)$ which means $f(x) \in C$ and $f(x) \in D$ which means
-        $f(x) \in C \cap D$. According to the definition of \textit{inverse
-        image}, this means $x \in f^{-1}(C \cap D)$. Therefore, the whole
-        reasoning chain can be summarized as $\forall x \in f^{-1}(C) \cap
-        f^{-1}(D) \Rightarrow x \in f^{-1}(C \cap D)$. According to the
-        definition of \textit{subset}, this means $f^{-1}(C) \cap f^{-1}(D)
-        \subset f^{-1}(C \cap D)$.
-      \item According to the definition of \textit{equal}, we know $f^{-1}(C
-        \cap D)$ = $f^{-1}(C) \cap f^{-1}(D)$.
-    \end{enumerate}
+        \begin{enumerate}
+          \item $\forall x \in f^{-1}(C \cap D)$, according to the definition of
+                $f^{-1}$, we know $f(x) \in C \cap D$. According to the definition of
+                \textit{intersection}, we know this means $f(x) \in C$ and $f(x) \in D$.
+                When $f(x) \in C$, this means $x \in f^{-1}(C)$; when $f(x) \in D$, this
+                means $x \in f^{-1}(D)$. According to the definition of \textit{
+                  intersection} again, we know this means $x \in f^{-1}(C) \cap
+                  f^{-1}(D)$. Therefore, the whole reasoning chain can be summarized as
+                $\forall x \in f^{-1}(C \cap D) \Rightarrow x \in f^{-1}(C) \cap
+                  f^{-1}(D)$. According to the definition of \textit{subset}, this means
+                $f^{-1}(C \cap D) \subset f^{-1}(C) \cap f^{-1}(D)$.
+          \item $\forall x \in f^{-1}(C) \cap f^{-1}(D)$ means $x \in f^{-1}(C)$ and
+                $x \in f^{-1}(D)$ which means $f(x) \in C$ and $f(x) \in D$ which means
+                $f(x) \in C \cap D$. According to the definition of \textit{inverse
+                  image}, this means $x \in f^{-1}(C \cap D)$. Therefore, the whole
+                reasoning chain can be summarized as $\forall x \in f^{-1}(C) \cap
+                  f^{-1}(D) \Rightarrow x \in f^{-1}(C \cap D)$. According to the
+                definition of \textit{subset}, this means $f^{-1}(C) \cap f^{-1}(D)
+                  \subset f^{-1}(C \cap D)$.
+          \item According to the definition of \textit{equal}, we know $f^{-1}(C
+                  \cap D)$ = $f^{-1}(C) \cap f^{-1}(D)$.
+        \end{enumerate}
   \item The proof is divided into three steps:
-    \begin{enumerate}
-      \item First of all, according to the definition of \textit{inverse image}
-        on $f: A \rightarrow B$, we know that $\forall x \in f^{-1}(B \setminus
-        C)$ comes to two conclusions:
         \begin{enumerate}
-          \item $x \in A$
-          \item $f(x) \in B \setminus C$
+          \item First of all, according to the definition of \textit{inverse image}
+                on $f: A \rightarrow B$, we know that $\forall x \in f^{-1}(B \setminus
+                  C)$ comes to two conclusions:
+                \begin{enumerate}
+                  \item $x \in A$
+                  \item $f(x) \in B \setminus C$
+                \end{enumerate}
+                The second conclusion means $f(x) \in B$ and $f(x) \notin C$. When $f(x)
+                  \notin C$, we know $x \notin f^{-1}(C)$ (because if $x \in f^{-1}(C)$,
+                by definition it means $f(x) \in C$, contradicting with the condition
+                that $f(x) \notin C$). Therefore, now we have the following two
+                conditions hold at the same time:
+                \begin{enumerate}
+                  \item $x \in A$
+                  \item $x \notin f^{-1}(C)$
+                \end{enumerate}
+                This means $x \in A \setminus f^{-1}(C)$. The whole reasoning chain is
+                \[
+                  \forall x \in f^{-1}(B \setminus C) \Rightarrow x \in A \setminus
+                  f^{-1}(C)
+                \]
+                So we know $f^{-1}(B \setminus C) \subset (A \setminus f^{-1}(C))$.
+          \item Secondly, $\forall x \in A \setminus f^{-1}(C)$, we come to two
+                conclusions:
+                \begin{enumerate}
+                  \item $x \in A \Rightarrow f(x) \in B$.
+                  \item $x \notin f^{-1}(C) \Rightarrow f(x) \notin C$.
+                \end{enumerate}
+                Therefore, we know $f(x) \in (B \setminus C)$, so $x \in f^{-1}(B
+                  \setminus C)$. The whole
+                reasoning chain is
+                \[
+                  \forall x \in A \setminus f^{-1}(C) \Rightarrow x \in f^{-1}(B
+                  \setminus C)
+                \]
+                So we know $A \setminus f^{-1}(C) \subset f^{-1}(B \setminus C)$
+          \item According to the definition of \textit{equal}, we know $f^{-1}(B
+                  \setminus C)$ = $A \setminus f^{-1}(C)$.
         \end{enumerate}
-        The second conclusion means $f(x) \in B$ and $f(x) \notin C$. When $f(x)
-        \notin C$, we know $x \notin f^{-1}(C)$ (because if $x \in f^{-1}(C)$,
-        by definition it means $f(x) \in C$, contradicting with the condition
-        that $f(x) \notin C$). Therefore, now we have the following two
-        conditions hold at the same time:
-        \begin{enumerate}
-          \item $x \in A$
-          \item $x \notin f^{-1}(C)$
-        \end{enumerate}
-        This means $x \in A \setminus f^{-1}(C)$. The whole reasoning chain is
-        \[
-          \forall x \in f^{-1}(B \setminus C) \Rightarrow x \in A \setminus
-          f^{-1}(C)
-        \]
-        So we know $f^{-1}(B \setminus C) \subset (A \setminus f^{-1}(C))$.
-      \item Secondly, $\forall x \in A \setminus f^{-1}(C)$, we come to two
-        conclusions:
-        \begin{enumerate}
-          \item $x \in A \Rightarrow f(x) \in B$.
-          \item $x \notin f^{-1}(C) \Rightarrow f(x) \notin C$.
-        \end{enumerate}
-        Therefore, we know $f(x) \in (B \setminus C)$, so $x \in f^{-1}(B
-          \setminus C)$. The whole
-        reasoning chain is
-        \[
-          \forall x \in A \setminus f^{-1}(C) \Rightarrow x \in f^{-1}(B
-          \setminus C)
-        \]
-        So we know $A \setminus f^{-1}(C) \subset f^{-1}(B \setminus C)$
-      \item According to the definition of \textit{equal}, we know $f^{-1}(B
-        \setminus C)$ = $A \setminus f^{-1}(C)$.
-    \end{enumerate}
 \end{enumerate}
 
 % ------------------------------
@@ -452,12 +452,12 @@ Consider $f: A \rightarrow B$. Let $C$, $D$ be subsets of $A$. Then
 
 To prove 1, we need to use the following conclusion: Given $f: A \rightarrow B$.
 Let $C$, $D$ be subsets of $A$. Then \[f(x) \in f(C) \cup f(D) \Rightarrow
-x \in C \cup D\]
+  x \in C \cup D\]
 
 We can use contradiction to prove this. Suppose $\exists u \notin (C \cup D)$
 such that $f(u) \in f(C) \cup f(D)$. Because $C$ and $D$ are discussed under
 the universe $A$, we have $u \notin (C \cup D)$, which means $u \in A \setminus
-(C \cup D)$, which means $u \in (A \setminus C)$ AND $u \in (A \setminus D)$,
+  (C \cup D)$, which means $u \in (A \setminus C)$ AND $u \in (A \setminus D)$,
 which means $u \notin C$ AND $u \notin D$.
 
 When $u \notin C$, we can tell that $f(u) \notin f(C)$ (because otherwise if
@@ -468,29 +468,29 @@ we can tell that when $u \notin D$, $f(u) \notin f(D)$.
 Because $\forall x \in A$, we have $f(x) \in B$, so $f(C)$ and $f(D)$ must be
 subsets of $B$, i.e., $B$ is the universe of $C$ and $D$. Therefore, when we
 say $f(u) \notin f(C)$, we mean $f(u) \in B \setminus f(C)$; when we say $f(u)
-\notin f(D)$, we mean $f(u) \in B \setminus f(D)$. Because $f(u) \notin f(C)$
+  \notin f(D)$, we mean $f(u) \in B \setminus f(D)$. Because $f(u) \notin f(C)$
 AND $f(u) \notin f(D)$, we have $f(u) \in \bigl(B \setminus f(C)\bigr) \cap
-\bigl(B \setminus f(D)\bigr) = B \setminus \bigl(f(C) \cup f(D)\bigr)$, so
+  \bigl(B \setminus f(D)\bigr) = B \setminus \bigl(f(C) \cup f(D)\bigr)$, so
 $f(u) \in B$ but $f(u) \notin \bigl(f(C) \cup f(D)\bigr)$ which contradicts
 the precondition that $f(u) \in \bigl(f(C) \cup f(D)\bigr)$. So such a $u
-\notin (C \cup D)$ does \textbf{not} exist.
+  \notin (C \cup D)$ does \textbf{not} exist.
 
 \textbf{My proof of 1}:
 
 To prove $f(C \cup D)$ = $f(C) \cup f(D)$, we need to prove $f(C \cup D)
-\subset f(C) \cup f(D)$ and $f(C \cup D) \supset f(C) \cup f(D)$.
+  \subset f(C) \cup f(D)$ and $f(C \cup D) \supset f(C) \cup f(D)$.
 
 According to the definition of \textit{direct image}, $f(C \cup D) := \{f(x)
-\in B: x \in C \cup D\}$, so $\forall f(x) \in f(C \cup D)$, we have $x \in C
-\cup D$, so $x \in C$ or $x \in D$. When $x \in C$, $f(x) \in f(C) := \{f(x): x
-\in C\}$; when $x \in D$, $f(x) \in f(D) := \{f(x): x \in D\}$. Therefore, $f(x)
-\in f(C)$ or $f(x) \in f(D)$ depending on $x \in C$ or $x \in D$, i.e., when $x
-\in C \cup D$, $f(x) \in B$, so we know all the $f(x)$ when $x \in C \cup D$ is
+  \in B: x \in C \cup D\}$, so $\forall f(x) \in f(C \cup D)$, we have $x \in C
+  \cup D$, so $x \in C$ or $x \in D$. When $x \in C$, $f(x) \in f(C) := \{f(x): x
+  \in C\}$; when $x \in D$, $f(x) \in f(D) := \{f(x): x \in D\}$. Therefore, $f(x)
+  \in f(C)$ or $f(x) \in f(D)$ depending on $x \in C$ or $x \in D$, i.e., when $x
+  \in C \cup D$, $f(x) \in B$, so we know all the $f(x)$ when $x \in C \cup D$ is
 defined as $f(C \cup D)$. So $\forall f(x) \in f(C) \cup f(D)$, we have $f(x)
-\in f(C \cup D)$. So $f(C \cup D) \subset f(C \cup D)$.
+  \in f(C \cup D)$. So $f(C \cup D) \subset f(C \cup D)$.
 
 On the other way, $\forall f(x) \in f(C) \cup f(D)$ $\Rightarrow$ $f(x) \in
-f(C)$ or $f(x) \in f(D)$. According to the definition of \textit{direct image},
+  f(C)$ or $f(x) \in f(D)$. According to the definition of \textit{direct image},
 \begin{itemize}
   \item $f(C) := {f(x) \in B: x \in C}$
   \item $f(D) := {f(x) \in B: x \in D}$.
@@ -504,18 +504,18 @@ Therefore:
 
 Therefore, when $f(x) \in f(C) \cup f(D)$, we have $x \in C$ or $x \in D$, i.e.,
 $x \in C \cup D$. According to the definition of \textit{direct image}, when $x
-\in C \cup D$, $f(x)$ is defined as $f(C \cup D)$. So we know $f(x) \in f(C
-\cup D)$. So $\forall f(x) \in f(C) \cup f(D)$, we have $f(x) \in f(C \cup D)$.
+  \in C \cup D$, $f(x)$ is defined as $f(C \cup D)$. So we know $f(x) \in f(C
+  \cup D)$. So $\forall f(x) \in f(C) \cup f(D)$, we have $f(x) \in f(C \cup D)$.
 So $f(C \cup D) \subset f(C \cup D)$.
 
 To sum up, we have $f(C \cup D) \subset f(C) \cup f(D)$ and $f(C \cup D)
-\supset f(C) \cup f(D)$, so $f(C \cup D)$ = $f(C) \cup f(D)$.
+  \supset f(C) \cup f(D)$, so $f(C \cup D)$ = $f(C) \cup f(D)$.
 
 \textbf{My proof of 2}:
 
 According to the definition of \textit{direct image}, $f(C \cap D) := \{f(x)
-\in B: x \in C \cap D\}$, so $\forall f(x) \in f(C \cap D)$, we have $x \in C
-\cap D$, so $x \in C$ and $x \in D$.
+  \in B: x \in C \cap D\}$, so $\forall f(x) \in f(C \cap D)$, we have $x \in C
+  \cap D$, so $x \in C$ and $x \in D$.
 
 \begin{itemize}
   \item When $x \in C$, we have $f(x) \in f(C)$.
@@ -530,7 +530,7 @@ we have $f(C \cap D) \subset f(C) \cap f(D)$.
 
 \textbf{The other way may not hold}, i.e., $f(C) \cap f(D)$ may \textbf{not} be
 a subset of $f(C \cap D)$. A counter example is $f: x \rightarrow x^2, x \in
-\mathbb{R}$. Here, in the context of this proposition, $A$ and $B$ are both
+  \mathbb{R}$. Here, in the context of this proposition, $A$ and $B$ are both
 $\mathbb{R}$. Now let $C := [-2, 0]$ and $D := [0, 2]$. We have:
 
 \begin{itemize}
@@ -546,14 +546,12 @@ Obviously, $f(C) \cap f(D)$ is \textbf{not} a subset of $f(C \cap D)$.
 way (i.e., not using counter examples).
 
 % ------------------------------
-\subsubsection{
-  Definition 0.3.17 (injective; surjective; bijective; inverse function)
-}
+\subsubsection{Definition 0.3.17 (injective; surjective; bijective; inverse function)}
 % ------------------------------
 
 Let $f: A \rightarrow B$ be a function. The function $f$ is said to be
 \textit{injective} or \textit{one-to-one} if $f(x_1) = f(x_2)$ implies $x_1 =
-x_2$. In other words, $\forall y \in B$, $f^{-1}(\{y\})$ is empty or consists
+  x_2$. In other words, $\forall y \in B$, $f^{-1}(\{y\})$ is empty or consists
 of a single element. We call such an $f$ an \textit{injection}.
 
 If $f(A) = B$, then we say $f$ is \textit{surjective} or \textit{onto}. We call
@@ -585,7 +583,7 @@ defined as \[(g \circ f)(x) := g \bigl(f(x)\bigr)\].
 % ------------------------------
 
 Given a set $A$, a \textit{binary relation} on $A$ is a subset $\mathcal{R}
-\subset A \times A$, which are those pairs where the relation is said to hold.
+  \subset A \times A$, which are those pairs where the relation is said to hold.
 Instead of $(a, b) \subset \mathcal{R}$, we write $a \mathcal{R} b$.
 
 Any subset of $A \times A$ is a relation. See \textbf{Example 0.3.20}.
@@ -600,9 +598,9 @@ Let $\mathcal{R}$ be a relation on a set $A$. Then $\mathcal{R}$ is said to be
 \begin{enumerate}
   \item[(i)] \textit{reflexive} if $\forall a \in A$, $a \mathcal{R} a$,
   \item[(ii)] \textit{symmetric} if $a \mathcal{R} b \Rightarrow b \mathcal{R}
-    a$,
+          a$,
   \item[(iii)] \textit{transitive} if $a \mathcal{R} b$ and $b \mathcal{R} c$
-    implies $a \mathcal{R} c$.
+        implies $a \mathcal{R} c$.
 \end{enumerate}
 
 If $\mathcal{R}$ is reflexive, symmetric, and transitive, then it is said to be
@@ -620,7 +618,7 @@ $\{x \in A: a \mathcal{R} x\}$.
   \item Reflexivity guarantees that $a \in [a]$.
   \item Symmetry guarantees that if $b \in [a]$, then $a \in [b]$.
   \item Transitivity guarantees that if $a \in [b]$ and $b \in [c]$, then $a
-    \in [c]$.
+          \in [c]$.
 \end{itemize}
 
 % ------------------------------
@@ -641,13 +639,13 @@ in $[a]$.
 
 \textbf{(2)} Prove that ``every $a \in A$ has no more than one equivalence
 class.'' Suppose $a$ has at least two equivalence classes, denoted as $M := \{
-m \in A: a \mathcal{R} m\}$ and $N := \{n \in A: a \mathcal{R} n\}$. We have:
+  m \in A: a \mathcal{R} m\}$ and $N := \{n \in A: a \mathcal{R} n\}$. We have:
 
 \begin{itemize}
   \item $\forall u \in M$, we have $a \mathcal{R} u$, so $u$ must belong to N
-    as well, so we have $M \subset N$.
+        as well, so we have $M \subset N$.
   \item $\forall w \in N$, we have $a \mathcal{R} w$, so $w$ must belong to M
-    as well, so we have $N \subset M$.
+        as well, so we have $N \subset M$.
 \end{itemize}
 
 Therefore, $M = N$, so $a \in A$ has no more than one equivalence class.
@@ -655,26 +653,26 @@ Therefore, $M = N$, so $a \in A$ has no more than one equivalence class.
 \textbf{(3)} Prove that $a \mathcal{R} b$ $\Rightarrow$ $[a] = [b]$.
 
 According to the definition of equivalence class, we have: \[[a] := \{x \in A:
-a \mathcal{R} x\}\] and \[[b] := \{x \in A: b \mathcal{R} x\}\].
+  a \mathcal{R} x\}\] and \[[b] := \{x \in A: b \mathcal{R} x\}\].
 
 Because $\mathcal{R}$ is an equivalence relation, it must be symmetric and
 transitive, so $a \mathcal{R} b$ $\Rightarrow$ $b \mathcal{R} a$. Therefore,
 $\forall x \in [a]$, we have $a \mathcal{R} x$; together with $b \mathcal{R} a$,
 we have $b \mathcal{R} x$. Therefore, $x \in [b]$. Therefore, $[a] \subset [b]$.
 Similarly, $\forall x \in [b]$, we have $b \mathcal{R} x$; together with $a
-\mathcal{R} b$, we have $a \mathcal{R} x$. Therefore, $x \in [a]$. Therefore,
+  \mathcal{R} b$, we have $a \mathcal{R} x$. Therefore, $x \in [a]$. Therefore,
 $[b] \subset [a]$. In sum, $[a] = [b]$.
 
 \textbf{(4)} Prove that $[a] = [b]$ $\Rightarrow$ $a \mathcal{R} b$.
 
 According to the definition of equivalence class, we have: \[[a] := \{x \in A:
-a \mathcal{R} x\}\] and \[[b] := \{x \in A: b \mathcal{R} x\}\].
+  a \mathcal{R} x\}\] and \[[b] := \{x \in A: b \mathcal{R} x\}\].
 
 Because $[a] = [b]$, $\forall x \in [a]$, we have $x \in [b]$, so $a
-\mathcal{R} x$ and $b \mathcal{R} x$ must hold at the same time. Because
+  \mathcal{R} x$ and $b \mathcal{R} x$ must hold at the same time. Because
 $\mathcal{R}$ is an equivalence relation, it must be symmetric and transitive,
 so $b \mathcal{R} x$ $\Rightarrow$ $x \mathcal{R} b$. Together with $a
-\mathcal{R} x$, we have $a \mathcal{R} b$.
+  \mathcal{R} x$, we have $a \mathcal{R} b$.
 
 In sum, (1) + (2) imply that ``every $a \in A$ is in exactly one equivalence
 class''; (3) + (4) imply that ``$a \mathcal{R} b$ if and only if $[a] = [b]$''.
@@ -685,27 +683,27 @@ class''; (3) + (4) imply that ``$a \mathcal{R} b$ if and only if $[a] = [b]$''.
 
 The set of rational numbers can be defined as equivalence classes of a pair of
 an integer and a natural number, that is elements of $\mathbb{Z} \times
-\mathbb{N}$. The relation is defined by $(a, b) \sim (c, d)$ whenever $ad = bc$.
+  \mathbb{N}$. The relation is defined by $(a, b) \sim (c, d)$ whenever $ad = bc$.
 
 Prove $\sim$ is an equivalence relation.
 
 \colorbox{lime!100}{\textbf{My proof}}: Let $A$ denote $\mathbb{Z} \times
-\mathbb{N}$, so $A := \{(z, n): z \in \mathbb{Z}, n \in \mathbb{N}\}$.
+  \mathbb{N}$, so $A := \{(z, n): z \in \mathbb{Z}, n \in \mathbb{N}\}$.
 
 \begin{itemize}
   \item \textit{reflexive}: $\forall (z, n) \in A$, $\because zn = zn$,
-    $\therefore (z, n) \sim (z, n)$.
+        $\therefore (z, n) \sim (z, n)$.
   \item \textit{symmetric}: $\forall (z, n), (x, y) \in A$, when $(z, n) \sim
-    (x, y)$, we know $zy = nx$, $\therefore nx = zy$. Because $z, n, x, y \in
-    \mathbb{Z}$ (remember $\mathbb{N} \subset \mathbb{Z}$), therefore $nx = xn$
-    and $zy = yz$, so $nx = zy \Rightarrow xn = yz$, so $(x, y) \sim (z, n)$
-    also holds. In sum, $(z, n) \sim (x, y)$ implies $(x, y) \sim (z, n)$.
+          (x, y)$, we know $zy = nx$, $\therefore nx = zy$. Because $z, n, x, y \in
+          \mathbb{Z}$ (remember $\mathbb{N} \subset \mathbb{Z}$), therefore $nx = xn$
+        and $zy = yz$, so $nx = zy \Rightarrow xn = yz$, so $(x, y) \sim (z, n)$
+        also holds. In sum, $(z, n) \sim (x, y)$ implies $(x, y) \sim (z, n)$.
   \item \textit{transitive}: Suppose $(z, n) \sim (p, q)$ and $(p, q) \sim
-    (x, y)$. Because $(z, n) \sim (p, q)$, we know $zq = pn$; because $n, q \in
-    \mathbb{N}$ so they can't be zero, we can divide both sides by $nq$ to get
-    $z/n = p/q$. Similarly, we can get $p/q = x/y$. Therefore, we can get $z/n
-    = p/q$. Therefore, $zq = np$, so $(z, n) \sim (p, q)$. In sum, that $(z, n)
-    \sim (p, q)$ and $(p, q) \sim (x, y)$ implies $(z, n) \sim (x, y)$.
+          (x, y)$. Because $(z, n) \sim (p, q)$, we know $zq = pn$; because $n, q \in
+          \mathbb{N}$ so they can't be zero, we can divide both sides by $nq$ to get
+        $z/n = p/q$. Similarly, we can get $p/q = x/y$. Therefore, we can get $z/n
+          = p/q$. Therefore, $zq = np$, so $(z, n) \sim (p, q)$. In sum, that $(z, n)
+          \sim (p, q)$ and $(p, q) \sim (x, y)$ implies $(z, n) \sim (x, y)$.
 \end{itemize}
 
 % ******************************
@@ -724,11 +722,11 @@ $|A|$ the cardinality of $A$.
 \colorbox{lime!100}{\textbf{My notes}}:
 \begin{itemize}
   \item Note that, technically, $|A|$ is ``the equivalence class of all sets
-    with the same cardinality as A'', so $|A|$ is a set. Every element in $|A|$
-    is also a set, so $|A|$ is a set of sets.
+        with the same cardinality as A'', so $|A|$ is a set. Every element in $|A|$
+        is also a set, so $|A|$ is a set of sets.
   \item $|A|:= \{S: S \sim A\}$ where the binary relation $\sim$ is defined so
-    that $S_1 \sim S_2$ means the sets $S_1$ and $S_2$ have the same
-    cardinality.
+        that $S_1 \sim S_2$ means the sets $S_1$ and $S_2$ have the same
+        cardinality.
 \end{itemize}
 
 \colorbox{red!100}{\textcolor{yellow}{TODO}}: Right under the definition is a
@@ -740,7 +738,7 @@ relation.'' But I don't quite understand what it means.
 % ------------------------------
 
 Suppose $A$ has the same cardinality as $\{1, 2, 3, \ldots , n\}$ for some $n
-\in \mathbb{N}$. We then write $|A|:= n$. If $A$ is empty, we write $|A|:= 0$.
+  \in \mathbb{N}$. We then write $|A|:= n$. If $A$ is empty, we write $|A|:= 0$.
 In either case, we say that $A$ is \textit{finite}.
 
 We say $A$ is \textit{infinite} or ``of infinite cardinality'' if $A$ is not
@@ -764,7 +762,7 @@ index:
 \end{itemize}
 
 Even for a set of objects (e.g., fruits) or symbols (e.g., $\{\clubsuit,
-\diamondsuit, \heartsuit, \spadesuit \}$), as long as it is a finite number of
+  \diamondsuit, \heartsuit, \spadesuit \}$), as long as it is a finite number of
 items, we can always arrange them in a certain order. A more general algorithm
 to arrange a finite set $S$ can be described as follows:
 
@@ -773,27 +771,27 @@ to arrange a finite set $S$ can be described as follows:
   T \GETS \emptyset \\
   i \GETS 1 \\
   \WHILE \NOT (S = \emptyset) \DO
-    \BEGIN
-      s \GETS \mbox{pick a random element from S} \\
-      t_i \GETS s \\
-      S \GETS S \setminus \{s\} \\
-      T \GETS T \cup \{t_i\} \\
-      i \GETS i+1
-    \END \\
+  \BEGIN
+  s \GETS \mbox{pick a random element from S} \\
+  t_i \GETS s \\
+  S \GETS S \setminus \{s\} \\
+  T \GETS T \cup \{t_i\} \\
+  i \GETS i+1
+  \END \\
   \RETURN{T}
 \end{pseudocode}
 
 After this algorithm is run on the set $S$, we have the following conclusions:
 \begin{itemize}
   \item Because $S$ is a finite set, $T$ must be a finite set, too. Therefore,
-    $\exists n \in \mathbb{N}$, $i \leq n$.
+        $\exists n \in \mathbb{N}$, $i \leq n$.
   \item $T:= \{t_i: i \in \mathbb{N}, i \leq n \}$
   \item $T = S$ because all the elements in $T$ come from $S$.
 \end{itemize}
 
 Now we define $N := \{i: i \in \mathbb{N}, i \leq n\}$. Then we define
 $f: T \rightarrow N$ as \[\{(t_i, i): i \in \mathbb{N}, i \leq n\}\] i.e., \[
-f(t_i) = i, i \in \mathbb{N}, i \leq n\].
+  f(t_i) = i, i \in \mathbb{N}, i \leq n\].
 
 Now we need to prove that $f$ is bijective and $n$ is unique.
 
@@ -812,7 +810,7 @@ In sum, because $f$ is both injective and surjective, it is thus bijiective.
 $n$ must be unique. Suppose there exists $n_2$ such that $n_2 \neq n$.
 Define $N_2:= \{i: i \in \mathbb{N}, i \leq n_2\}$. Suppose we can find two
 bijective functions $g$ and $h$ so that $g: T \rightarrow N$ and $h: T
-\rightarrow N_2$. According to definition 0.3.26, we know that $A$ and $N$ have
+  \rightarrow N_2$. According to definition 0.3.26, we know that $A$ and $N$ have
 the same cardinality and $A$ and $N_2$ have the same cardinality. According to
 definition 0.3.27, we can write $|A| = n$ and $|A| = n_2$, so $n = n_2$,
 contradicting that $n_2 \neq n$. Therefore, such an $n_2$ doesn't exist. So $n$
@@ -833,7 +831,7 @@ itself. (The second case that $A$ is finite is that $A$ is $\emptyset$ but this
 is surely not the case for $\mathbb{N}$, so we don't need to consider this.)
 
 Firstly, let's define $N_k:= \{i: i \leq k, k \in \mathbb{N}\} = \{1, 2, 3,
-\ldots, k\}$. Now let's prove that no matter how we choose $k$, $\mathbb{N}$
+  \ldots, k\}$. Now let's prove that no matter how we choose $k$, $\mathbb{N}$
 doesn't have the same cardinality with $N_k$.
 
 We use contradiction to prove this. Suppose that $\exists k \in \mathbb{N}$
@@ -844,7 +842,7 @@ $f: N_k \rightarrow \mathbb{N}$ or $g: \mathbb{N} \rightarrow N_k$.
 However, no matter how $f$ is defined, $f$ can't be a bijection because it is
 not surjective, i.e., $\exists P \in \mathbb{N}$ such that $P \notin f(N_k)$.
 $P$ can be found this way: Define \[K = \sum_{i=1}^{k} f(i) \] and \[P = K +
-1\].
+  1\].
 
 We can tell that $\forall i \in N_k$, $P \neq f(i)$, so $P \notin f(N_k)$. But
 because $\forall i \in N_k, f(i) \in \mathbb{N}$, so the sum of them is still
@@ -858,7 +856,7 @@ and $i \neq j$, we find $e_i, e_j \in \mathbb{N}$ and $e_i \neq e_j$ such that
 $g(e_i) = i$ and $g(e_j) = j$. Now define \[E = \sum_{i=1}^{k} e_i + 1\]. We
 can tell that $\forall i \in N_k, E \neq e_i$. Because the sum of natural
 numbers is also a natural number, so $E \in \mathbb{N}$. Suppose that $g(E) = w
-\in N_k$. According to how $g$ is defined, we can tell that $g(e_w) = w$. But
+  \in N_k$. According to how $g$ is defined, we can tell that $g(e_w) = w$. But
 because $E \neq e_w$, we have that $f(E) = f(e_w)$ does not imply $E = e_w$, so
 $g$ can't be injective, so $g$ can't be bijective.
 
@@ -884,10 +882,10 @@ cardinality.
 (\colorbox{red!100}{\textcolor{yellow}{TODO}}: Fix ``o'' in ``Schroder''.)
 
 $A$ and $B$ have the same cardinality if and only if $|A| \leq |B|$ and $|B|
-\leq |A|$.
+  \leq |A|$.
 
 If $A$ and $B$ are any two sets, we can always write $|A| \leq |B|$ or $|B|
-\leq |A|$.
+  \leq |A|$.
 
 % ------------------------------
 \subsubsection{Definition 0.3.29 (countable; uncountable)}
@@ -909,7 +907,7 @@ $\mathbb{N} \times \mathbb{N}$ is a countably infinite set.
 bijection that the textbook proof uses.
 
 In the way that the textbook proof arranges the elements of $\mathbb{N} \times
-\mathbb{N}$, we can see that, $\forall (a, b) \in \mathbb{N} \times \mathbb{N}$:
+  \mathbb{N}$, we can see that, $\forall (a, b) \in \mathbb{N} \times \mathbb{N}$:
 \begin{itemize}
   \item $a + b = 2$: 1 element: $(1, 1)$
   \item $a + b = 3$: 2 elements: $(1, 2), (2, 1)$
@@ -970,7 +968,7 @@ The \textit{power set} of a set $A$, denoted by $\mathcal{P}(A)$, is the set of
 all subsets of $A$.
 
 For example, if $A := \{1, 2\}$, then $\mathcal{P}(A) = \{\emptyset, \{1\},
-\{2\}, \{1, 2\}\}$.
+  \{2\}, \{1, 2\}\}$.
 
 In general, for a finite set $A$ of cardinality $n$, the cardinality of
 $\mathcal{P}(A)$ is $2^n$.
@@ -990,7 +988,7 @@ The first part of the proof, as quoted as follows, is quite easy to follow:
 
 \begin{displayquote}
   There exists an injection $f: A \rightarrow \mathcal{P}(A)$. For any $x \in
-  A$, define $f(x) := \{x\}$. Therefore, $|A| \leq |\mathcal{P}(A)|$.
+    A$, define $f(x) := \{x\}$. Therefore, $|A| \leq |\mathcal{P}(A)|$.
 \end{displayquote}
 
 The second part needs a bit more explanation. The second part starts with the
@@ -998,7 +996,7 @@ following:
 
 \begin{displayquote}
   To finish the proof, we must show that no function $g: A \rightarrow
-  \mathcal{P}(A)$ is a surjection. Suppose $g: A \rightarrow \mathcal{P}(A)$ is
+    \mathcal{P}(A)$ is a surjection. Suppose $g: A \rightarrow \mathcal{P}(A)$ is
   a function. So for $x \in A$, $g(x)$ is a subset of $A$.
 \end{displayquote}
 
@@ -1015,7 +1013,7 @@ important, let's continue to see the subsequent part of the proof:
 \begin{displayquote}
   Suppose for contradiction that there exists an $x_0$ such that $g(x_0) = B$.
   Either $x_0 \in B$ or $x_0 \notin B$. If $x_0 \in B$, then $x_0 \notin g(x_0)
-  = B$, which is a contradiction. If $x_0 \notin B$, then $x_0 \in g(x_0) = B$,
+    = B$, which is a contradiction. If $x_0 \notin B$, then $x_0 \in g(x_0) = B$,
   which is again a contradiction.
 \end{displayquote}
 
@@ -1026,7 +1024,7 @@ $\emptyset$ which is a subset of $A$ (hence an element of $\mathcal{P}(A)$).
 But then the conditional branch ``$x_0 \in B$'' wouldn't be satisfied because
 $x_0$ can't belong to the empty set, so it makes no sense to talk about this
 branch. So we are only left with the other conditional branch that ``$x_0 \notin
-B$'' (which is $\emptyset$ now). This condition always holds, but its conclusion
+  B$'' (which is $\emptyset$ now). This condition always holds, but its conclusion
 ``$x_0 \in g(x_0) = B$'' makes no sense now because $B$ is $\emptyset$. We can
 no longer solidly say the contradiction exists. Therefore, the validity of the
 proof by contradiction is based on the fact that $B$ is always non-empty.
@@ -1036,17 +1034,17 @@ this as follows:
 
 \begin{itemize}
   \item Consider the case that $A$ is empty, so $\mathcal{P}(A):=
-    \{\emptyset\}$. So the statement $|A| < |\mathcal{P}(A)|$ already holds for
-    this case and we don't need to consider $B$ anymore.
+          \{\emptyset\}$. So the statement $|A| < |\mathcal{P}(A)|$ already holds for
+        this case and we don't need to consider $B$ anymore.
   \item When $A$ is not empty, then $\emptyset \in \mathcal{P}(A)$. Now:
-  \begin{itemize}
-    \item If $\forall x \in A$ such that $g(x) \neq \emptyset$, that means
-      $\emptyset$ is not in the range of $g$, so $g$ is not surjective.
-    \item If $\exists x \in A$ such that $g(x) = \emptyset$, then we have
-      $x \in A$ and $x \notin g(x) = \emptyset$, so $x \in B$, so in this case,
-      $B$ is not empty. Now we can apply the proof by contradiction as shown in
-      the textbook to prove that the general function $g$ can't be surjective.
-  \end{itemize}
+        \begin{itemize}
+          \item If $\forall x \in A$ such that $g(x) \neq \emptyset$, that means
+                $\emptyset$ is not in the range of $g$, so $g$ is not surjective.
+          \item If $\exists x \in A$ such that $g(x) = \emptyset$, then we have
+                $x \in A$ and $x \notin g(x) = \emptyset$, so $x \in B$, so in this case,
+                $B$ is not empty. Now we can apply the proof by contradiction as shown in
+                the textbook to prove that the general function $g$ can't be surjective.
+        \end{itemize}
 \end{itemize}
 
 Now when we look back at the entire proof, it looks better that we prove the
@@ -1054,10 +1052,10 @@ statement $|A| < |\mathcal{P}(A)|$ by considering the following cases:
 \begin{enumerate}
   \item When $A$ is $\emptyset$.
   \item When $A$ is not $\emptyset$, consider the two sub-cases:
-  \begin{enumerate}
-    \item $\forall x \in A$ such that $g(x) \neq \emptyset$.
-    \item $\exists x \in A$ such that $g(x) = \emptyset$.
-  \end{enumerate}
+        \begin{enumerate}
+          \item $\forall x \in A$ such that $g(x) \neq \emptyset$.
+          \item $\exists x \in A$ such that $g(x) = \emptyset$.
+        \end{enumerate}
 \end{enumerate}
 
 % ------------------------------
@@ -1066,19 +1064,19 @@ statement $|A| < |\mathcal{P}(A)|$ by considering the following cases:
 
 \begin{itemize}
   \item A set is infinite if and only if it is in one-to-one correspondence
-    with a proper subset of itself.
+        with a proper subset of itself.
   \item If $A \subset B$ and $B$ is countable, then $A$ is countable. If $A$ is
-    uncountable, then $B$ is uncountable.
+        uncountable, then $B$ is uncountable.
   \item If $|A| < |N|$, then $A$ is finite. Similarly, if $B$ is finite and $A
-    \subset B$, then $A$ is finite.
+          \subset B$, then $A$ is finite.
   \item Uncountable sets do exist, e.g., $\mathcal{P}(\mathbb{N})$. This can be
-    seen from the definition of uncountable, which is defined as ``not finite
-    and not countably infinite'':
-    \begin{enumerate}
-      \item $\mathcal{P}(\mathbb{N})$ is surely not finite.
-      \item $\mathcal{P}(\mathbb{N})$ is not countably infinite because
-        $\mathcal{P}(\mathbb{N}) > |\mathbb{N}|$.
-    \end{enumerate}
+        seen from the definition of uncountable, which is defined as ``not finite
+        and not countably infinite'':
+        \begin{enumerate}
+          \item $\mathcal{P}(\mathbb{N})$ is surely not finite.
+          \item $\mathcal{P}(\mathbb{N})$ is not countably infinite because
+                $\mathcal{P}(\mathbb{N}) > |\mathbb{N}|$.
+        \end{enumerate}
 \end{itemize}
 
 % =============================================================================
