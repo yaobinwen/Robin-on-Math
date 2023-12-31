@@ -74,3 +74,9 @@ This document records my study activities for future reflection. The notes, hope
 - 20:16 ~ 21:04 (48m)
 
 1. Studied: `0.3.5 Cardinality`
+
+## 2023-12-31 (Sun)
+
+- 11:24 ~ 14:24 (3h)
+
+1. Revised the existing notes because I haven't studied the subject for almost half a year (because I switched my gear to Stanford CS103 during this time).

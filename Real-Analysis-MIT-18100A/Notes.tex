@@ -302,6 +302,10 @@ A \textit{function} $f: A \rightarrow B$ is a subset $f$ of $A \times B$ such
 that for each $x \in A$, there is a \textbf{unique} $(x,y) \in f$. We then
 write $f(x) = y$.
 
+\colorbox{lime}{NOTE(ywen)}: This word ``unique'' does exclude the case of the
+same $x$ being mapped to different $y_i$, but it doesn't exclude the case of
+different $x_i$ being mapped to the same $y$.
+
 The various terms that are related with functions:
 \begin{itemize}
   \item Sometimes $f$ is called a \textbf{mapping} or a \textbf{map}: $f$
@@ -309,7 +313,7 @@ The various terms that are related with functions:
   \item Sometimes the set $f$ is called the \textbf{graph} of the function
         rather than the function itself.
   \item \textbf{domain}: The set $A$ is called the domain of $f$. Sometimes it
-        is (confusingly) denoted as $D(f)$.
+        is denoted as $D(f)$.
   \item \textbf{range}: The set $R(f) := \{y \in B: \exists x: f(x) = y\}$ is
         called the range of $f$.
 \end{itemize}
@@ -344,7 +348,7 @@ Consider $f: A \rightarrow B$. Let $C$, $D$ be subsets of $B$. Then:
 The textbook offers the proof for the first statement, but I want to prove it
 with more details.
 
-\textbf{My proof}:
+\colorbox{lime}{\textbf{My proof}}:
 
 To prove that two sets are equal, we need to use the definition of \textit{
   equal} in definition 0.3.2, that two sets $A$ and $B$ are equal if $A \subset B$
@@ -574,6 +578,9 @@ Consider $f: A \rightarrow B$ and $g: B \rightarrow C$. The \textit{composition}
 of the functions $f$ and $g$ is the function $g \circ f: A \rightarrow C$
 defined as \[(g \circ f)(x) := g \bigl(f(x)\bigr)\].
 
+\colorbox{lime}{NOTE(ywen)}: The functions $f$ and $g$ may or may not be
+injective or surjective.
+
 % ******************************
 \subsection{Relations and equivalence classes}
 % ******************************
@@ -589,9 +596,7 @@ Instead of $(a, b) \subset \mathcal{R}$, we write $a \mathcal{R} b$.
 Any subset of $A \times A$ is a relation. See \textbf{Example 0.3.20}.
 
 % ------------------------------
-\subsubsection{
-  Definition 0.3.21 (reflexive; symmetric; transitive; equivalence)
-}
+\subsubsection{Definition 0.3.21 (reflexive; symmetric; transitive; equivalence)}
 % ------------------------------
 
 Let $\mathcal{R}$ be a relation on a set $A$. Then $\mathcal{R}$ is said to be
@@ -629,13 +634,13 @@ If $\mathcal{R}$ is an \textit{equivalence relation} on a set $A$, then every
 $a \in A$ is in exactly one equivalence class. In particular, $a \mathcal{R} b$
 if and only if $[a] = [b]$.
 
-\colorbox{lime!100}{\textbf{My proof}}: Because the entire proposition consists
-of a few parts, we need to prove each part separately.
+\colorbox{lime}{\textbf{My proof}}: Because the entire proposition consists of
+a few parts, we need to prove each part separately.
 
 \textbf{(1)} Prove that ``every $a \in A$ is in some equivalence class.''
 Because $\mathcal{R}$ is an equivalence relation, it must be reflexive too, so
 $\forall a \in A$, $a \mathcal{R} a$ must hold. Therefore, $a$ itself must be
-in $[a]$.
+in $[a]$ at least.
 
 \textbf{(2)} Prove that ``every $a \in A$ has no more than one equivalence
 class.'' Suppose $a$ has at least two equivalence classes, denoted as $M := \{
@@ -655,13 +660,26 @@ Therefore, $M = N$, so $a \in A$ has no more than one equivalence class.
 According to the definition of equivalence class, we have: \[[a] := \{x \in A:
   a \mathcal{R} x\}\] and \[[b] := \{x \in A: b \mathcal{R} x\}\].
 
-Because $\mathcal{R}$ is an equivalence relation, it must be symmetric and
-transitive, so $a \mathcal{R} b$ $\Rightarrow$ $b \mathcal{R} a$. Therefore,
-$\forall x \in [a]$, we have $a \mathcal{R} x$; together with $b \mathcal{R} a$,
-we have $b \mathcal{R} x$. Therefore, $x \in [b]$. Therefore, $[a] \subset [b]$.
-Similarly, $\forall x \in [b]$, we have $b \mathcal{R} x$; together with $a
-  \mathcal{R} b$, we have $a \mathcal{R} x$. Therefore, $x \in [a]$. Therefore,
-$[b] \subset [a]$. In sum, $[a] = [b]$.
+Because $\mathcal{R}$ is an equivalence relation, it must be symmetric, i.e.,
+$a \mathcal{R} b$ $\Rightarrow$ $b \mathcal{R} a$. Therefore:
+\begin{enumerate}
+  \item $\forall x \in [a]$, we have $a \mathcal{R} x$.
+  \item Put $a \mathcal{R} x$, $b \mathcal{R} a$, and the transitive property
+        of $mathcal{R}$ together, we have $b \mathcal{R} x$.
+  \item Therefore, $x \in [b]$.
+  \item Therefore, $[a] \subset [b]$.
+\end{enumerate}
+
+Similarly,
+\begin{enumerate}
+  \item $\forall x \in [b]$, we have $b \mathcal{R} x$.
+  \item Put $b \mathcal{R} x$, $a \mathcal{R} b$, and the transitive property
+        of $mathcal{R}$ together, we have $a \mathcal{R} x$.
+  \item Therefore, $x \in [a]$.
+  \item Therefore, $[b] \subset [a]$.
+\end{enumerate}
+
+In sum, $[a] = [b]$.
 
 \textbf{(4)} Prove that $[a] = [b]$ $\Rightarrow$ $a \mathcal{R} b$.
 
@@ -670,9 +688,10 @@ According to the definition of equivalence class, we have: \[[a] := \{x \in A:
 
 Because $[a] = [b]$, $\forall x \in [a]$, we have $x \in [b]$, so $a
   \mathcal{R} x$ and $b \mathcal{R} x$ must hold at the same time. Because
-$\mathcal{R}$ is an equivalence relation, it must be symmetric and transitive,
-so $b \mathcal{R} x$ $\Rightarrow$ $x \mathcal{R} b$. Together with $a
-  \mathcal{R} x$, we have $a \mathcal{R} b$.
+$\mathcal{R}$ is an equivalence relation, it must be symmetric, so
+$b \mathcal{R} x$ $\Rightarrow$ $x \mathcal{R} b$. Together with
+$a \mathcal{R} x$ and the transitive property of $\mathcal{R}$, we have
+$a \mathcal{R} b$.
 
 In sum, (1) + (2) imply that ``every $a \in A$ is in exactly one equivalence
 class''; (3) + (4) imply that ``$a \mathcal{R} b$ if and only if $[a] = [b]$''.
@@ -729,10 +748,6 @@ $|A|$ the cardinality of $A$.
         cardinality.
 \end{itemize}
 
-\colorbox{red!100}{\textcolor{yellow}{TODO}}: Right under the definition is a
-paragraph that says ``The existence of a bijection really is an equivalence
-relation.'' But I don't quite understand what it means.
-
 % ------------------------------
 \subsubsection{Definition 0.3.27 ($|A|$; finite; infinite)}
 % ------------------------------
@@ -750,15 +765,15 @@ from $A$ to $\{1, 2, 3, \ldots, n\}$.
 
 \colorbox{lime!100}{\textbf{My proof}}: Because $A$ is finite, we can enumerate
 all of its elements in a certain order. For example, if $A$ is the set of
-English upper-case alphabet, i.e., $\{A, B, C, \ldots, Z\}$, then we can arrange
-them in the order they appear in the alphabet and give each upper-case letter an
+English lower-case alphabet, i.e., $\{a, b, c, \ldots, z\}$, then we can arrange
+them in the order they appear in the alphabet and give each lower-case letter an
 index:
 \begin{itemize}
-  \item A $\rightarrow$ 1
-  \item B $\rightarrow$ 2
-  \item C $\rightarrow$ 3
+  \item a $\rightarrow$ 1
+  \item b $\rightarrow$ 2
+  \item c $\rightarrow$ 3
   \item $\ldots$
-  \item Z $\rightarrow$ 26
+  \item z $\rightarrow$ 26
 \end{itemize}
 
 Even for a set of objects (e.g., fruits) or symbols (e.g., $\{\clubsuit,
@@ -769,51 +784,55 @@ to arrange a finite set $S$ can be described as follows:
 \begin{pseudocode}[ruled]{EnumerateSetElements}{S}
   \LOCAL{T, i} \\
   T \GETS \emptyset \\
-  i \GETS 1 \\
+  i \GETS 1 \mbox{/* Next index of the picked element from S. */} \\
+  \\
   \WHILE \NOT (S = \emptyset) \DO
   \BEGIN
   s \GETS \mbox{pick a random element from S} \\
-  t_i \GETS s \\
+  t_i \GETS s \mbox{/* $t_i$ is just an indexed symbol to denote s. */} \\
   S \GETS S \setminus \{s\} \\
   T \GETS T \cup \{t_i\} \\
   i \GETS i+1
   \END \\
-  \RETURN{T}
+  \\
+  \mbox{/* c is the number of elements in T. */} \\
+  c \GETS i - 1 \\
+  \\
+  \RETURN{T, c}
 \end{pseudocode}
 
 After this algorithm is run on the set $S$, we have the following conclusions:
 \begin{itemize}
-  \item Because $S$ is a finite set, $T$ must be a finite set, too. Therefore,
-        $\exists n \in \mathbb{N}$, $i \leq n$.
-  \item $T:= \{t_i: i \in \mathbb{N}, i \leq n \}$
+  \item Because $S$ is a finite set, $c$ must be an integer in $\mathbb{N}$.
+  \item $T:= \{t_i: i \in \mathbb{N}, i \leq c, t_i \in S \}$
   \item $T = S$ because all the elements in $T$ come from $S$.
 \end{itemize}
 
-Now we define $N := \{i: i \in \mathbb{N}, i \leq n\}$. Then we define
-$f: T \rightarrow N$ as \[\{(t_i, i): i \in \mathbb{N}, i \leq n\}\] i.e., \[
-  f(t_i) = i, i \in \mathbb{N}, i \leq n\].
+Now we define $C := \{i: i \in \mathbb{N}, i \leq c\}$. Then we define
+$f: T \rightarrow C$ as \[\{(t_i, i): i \in \mathbb{N}, i \leq c\}\] i.e., \[
+  f(t_i) = i, i \in \mathbb{N}, i \leq c\].
 
-Now we need to prove that $f$ is bijective and $n$ is unique.
+Now we need to prove that $f$ is bijective and $c$ is unique.
 
 Firstly, let's see whether $f$ is injective. $\forall p, q \in N$, according to
 the definition of $f$, we know $p = f(t_p)$ and $q = f(t_q)$. When $p = q$, we
 can tell that $t_p$ and $t_q$ must point to the same element at the $p$-th (or
 $q$-th) location in $T$. Therefore, $t_p = t_q$. So $f$ is injective.
 
-Secondly, let's see whether $f$ is surjective. Suppose $\exists w \in N$ such
-that $\forall t \in T, f(t) \neq w$. Because $w \in N$, therefore $t_w \in T$,
+Secondly, let's see whether $f$ is surjective. Suppose $\exists w \in C$ such
+that $\forall t \in T, f(t) \neq w$. Because $w \in C$, therefore $t_w \in T$,
 therefore $f(t_w) = w$, contradicting that $\forall t \in T, f(t) \neq w$, so
 such a $w$ doesn't exist in $N$.
 
 In sum, because $f$ is both injective and surjective, it is thus bijiective.
 
-$n$ must be unique. Suppose there exists $n_2$ such that $n_2 \neq n$.
-Define $N_2:= \{i: i \in \mathbb{N}, i \leq n_2\}$. Suppose we can find two
-bijective functions $g$ and $h$ so that $g: T \rightarrow N$ and $h: T
-  \rightarrow N_2$. According to definition 0.3.26, we know that $A$ and $N$ have
-the same cardinality and $A$ and $N_2$ have the same cardinality. According to
-definition 0.3.27, we can write $|A| = n$ and $|A| = n_2$, so $n = n_2$,
-contradicting that $n_2 \neq n$. Therefore, such an $n_2$ doesn't exist. So $n$
+$c$ must be unique. Suppose there exists $c_2$ such that $c \neq c_2$.
+Define $C_2:= \{i: i \in \mathbb{N}, i \leq c_2\}$. Suppose we can find two
+bijective functions $g$ and $h$ so that $g: T \rightarrow C$ and $h: T
+  \rightarrow C_2$. According to definition 0.3.26, we know that $A$ and $C$ have
+the same cardinality and $A$ and $C_2$ have the same cardinality. According to
+definition 0.3.27, we can write $|A| = c$ and $|A| = c_2$, so $c = c_2$,
+contradicting that $c \neq c_2$. Therefore, such an $c_2$ doesn't exist. So $c$
 is unique.
 
 % ------------------------------
@@ -903,7 +922,7 @@ $|\mathbb{N}|$ is usually denoted as $\aleph_0$ (read as aleph-naught).
 
 $\mathbb{N} \times \mathbb{N}$ is a countably infinite set.
 
-(\colorbox{lime!100}{\textbf{My proof}}: We can figure out the formula for the
+\colorbox{lime!100}{\textbf{My proof}}: We can figure out the formula for the
 bijection that the textbook proof uses.
 
 In the way that the textbook proof arranges the elements of $\mathbb{N} \times
@@ -945,7 +964,7 @@ natural number:
 \[ INDEX((a, b)) = \frac{1}{2}(a + b - 1)(a + b - 2) + a \]
 
 Then $INDEX$ is the bijection that the textbook proof talks about.
-(\colorbox{red!100}{\textcolor{yellow}{TODO}}: We still need to prove that
+(\colorbox{red!100}{\textcolor{yellow}{TODO(ywen)}}: We still need to prove that
 the function $INDEX$ is bijective.)
 
 We can quickly verify $INDEX$ with the first few elements:
