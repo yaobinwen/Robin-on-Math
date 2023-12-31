@@ -714,7 +714,16 @@ Therefore, the statement \[\exists x. P(x) \land R(x) \land Q(x)\] is parsed as
 \[(\exists x. P(x)) \land R(x) \land Q(x)\] which is \textbf{syntactically
   invalid} because the variable $x$ is out of scope for $R$ and $Q$.
 
+% =============================================================================
+\section{Translating into first-order logic}
+% =============================================================================
 
+\begin{itemize}
+  \item ``Some P is a Q'' translates as $\exists x. (P(x) \land Q(x))$.
+  \item ``Some P's are not Q's'' translates as $\exists x. (P(x) \land \lnot Q(x))$.
+  \item ``All P's are Q's'' translates as $\forall x. (P(x) \rightarrow Q(x))$.
+  \item ``No P's are Q's'' translates as $\forall x. (P(x) \rightarrow \lnot Q(x))$.
+\end{itemize}
 
 % =============================================================================
 %
