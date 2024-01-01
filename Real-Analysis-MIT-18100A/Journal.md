@@ -78,5 +78,7 @@ This document records my study activities for future reflection. The notes, hope
 ## 2023-12-31 (Sun)
 
 - 11:24 ~ 14:24 (3h)
+- 18:16 ~ 19:49 (1h33m)
 
 1. Revised the existing notes because I haven't studied the subject for almost half a year (because I switched my gear to Stanford CS103 during this time).
+2. Studied Chapter 1 (Real Numbers), Section 1.1: Basic properties.

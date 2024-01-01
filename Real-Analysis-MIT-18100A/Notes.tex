@@ -586,7 +586,7 @@ injective or surjective.
 % ******************************
 
 % ------------------------------
-\subsubsection{Definition 0.3.19 (binary relation)}
+\subsubsection{Definition 0.3.19 (binary relation)} \label{def:binary-relation}
 % ------------------------------
 
 Given a set $A$, a \textit{binary relation} on $A$ is a subset $\mathcal{R}
@@ -1106,7 +1106,61 @@ statement $|A| < |\mathcal{P}(A)|$ by considering the following cases:
 
 \chapter{Real Numbers}
 
-TODO
+% =============================================================================
+\section{Basic properties}
+% =============================================================================
+
+% ******************************
+\subsection{Definition 1.1.1: Ordered set}
+% ******************************
+
+An \textbf{ordered set} is a set $S$, together with a relation $<$ such that:
+\begin{enumerate}
+  \item For any $x, y \in S$, \textbf{exactly one of} $x < y$, $x = y$, or $y < x$ holds.
+  \item If $x < y$ and $y < z$, then $x < z$.
+\end{enumerate}
+
+We write $x \leq y$ if $x < y$ or $x = y$. We define $>$ and $\geq$ in the obvious way.
+
+\colorbox{lime}{NOTE(ywen)}: $<$, $\le$, $>$, and $\ge$ are all binary relations (see \ref{def:binary-relation}). But
+do they have all the three properties of reflexivity, symmetry, and transitivity?
+\begin{itemize}
+  \item $<$ is not reflexive (i.e., $x \nless x$), not symmetric (i.e., $x < y \nRightarrow y < x $). It is only
+        transitive by definition above.
+  \item $\le$ is reflexive (i.e., $x \le x$), not symmetric (i.e., $x \le y \nRightarrow y \le x$), transitive.
+  \item $>$ is the same as $<$.
+  \item $\ge$ is the same as $\le$.
+\end{itemize}
+
+% ******************************
+\subsection{Definition 1.1.2: Bounds}
+% ******************************
+
+Let $E \subset S$ where $S$ is an ordered set.
+\begin{enumerate}
+  \item $\exists b \in S$, $\forall x \in E$. ($x \le b$): We say $E$ is \textbf{bounded above} and $b$ is an
+        \textbf{upper bound} of $E$.
+  \item $\exists b \in S$, $\forall x \in E$. ($x \ge b$): We say $E$ is \textbf{bounded below} and $b$ is a
+        \textbf{lower bound} of $E$.
+  \item $\exists b_0 \in S$. (IsUpperBound($b_0$, E, S) $\land$ ($\forall b$. (IsUpperBound(b, E, S) $\rightarrow$ $b_0 \le b$))):
+        $b_0$ is called the \textbf{least upper bound} or the \textbf{supremum} of $E$. Denoted as $sup E := b_0$.
+        (Suppose ``IsUpperBound(x, E, S)'' is a predicate that determines whether $x$ is an upper bound of $E$ in $S$.)
+  \item $\exists b_0 \in S$. (IsLowerBound($b_0$, E, S) $\land$ ($\forall b$. (IsLowerBound(b, E, S) $\rightarrow$ $b_0 \ge b$))):
+        $b_0$ is called the \textbf{greatest lower bound} or the \textbf{infimum} of $E$. Denoted as $inf E := b_0$.
+        (Suppose ``IsLowerBound(x, E, S)'' is a predicate that determines whether $x$ is a lower bound of $E$ in $S$.)
+\end{enumerate}
+
+When $E$ is \textbf{both} bounded above and bounded below, we simply say that $E$ is \textbf{bounded}.
+
+Supremum (or infimum) is \textbf{unique} (if it exists): If $b$ and $b_0$ are suprema of $E$:
+\begin{itemize}
+  \item Because $b$ is a supremum, it is also an upper bound, so the supremum $b_0$ is $\le b$ by definition.
+  \item Because $b_0$ is a supremum, it is also an upper bound, so the supremum $b$ is $\le b_0$ by definition.
+  \item The only way to satisfy $b_0 \le b$ and $b \le b_0$ is $b = b_0$, so $b = b_0$.
+\end{itemize}
+
+A supremum or infimum for $E$ (even if they exist) \textbf{need not be in} $E$. For example, the set $E = {x \in
+  \mathbb{Q}: x < 1}$ has the least upper bound of 1 but $1 \notin E$.
 
 % =============================================================================
 %
