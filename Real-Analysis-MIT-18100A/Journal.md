@@ -88,3 +88,10 @@ This document records my study activities for future reflection. The notes, hope
 - 11:38 ~ 13:06 (1h28m)
 
 1. Studied Chapter 1 (Real Numbers), Section 1.1: Basic properties.
+
+## 2024-01-02 (Tue)
+
+- 16:56 ~ 17:11 (14m)
+- 17:47 ~ 18:12 (24m)
+
+1. Exercise 1.1.1

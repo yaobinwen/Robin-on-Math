@@ -31,6 +31,19 @@
 \subsection{Exercise 1.1.1}
 % ******************************
 
-TODO
+\textbf{Proof}: This exercise requires to prove part (iii) of Proposition 1.1.8. That means I can make use of part (i)
+and part (ii) in Proposition 1.1.8. The proof steps are as follows:
+\begin{itemize}
+  \item (a) $\because x < 0, \therefore (-x) > 0, \therefore (-x)y < (-x)z$ (Proposition 1.1.8 (i), (ii))
+  \item (b) $\because (-x)y < (-x)z, \therefore (-x)y + xy < (-x)z + xy$ (Definition 1.1.7 (i))
+  \item (c) $(-x)y + xy = (-x + x)y = 0y = 0$ (Definition 1.1.5 (D), (A5), (A2))
+  \item (d) $\therefore 0 < (-x)z + xy$. ((b), (c))
+  \item (e) $\therefore 0 + xz < (-x)z + xy + xz$ (Definition 1.1.7 (i))
+  \item (f) $0 + xz = xz$ (Definition 1.1.5 (A4))
+  \item (g) $(-x)z + xy + xz = \left((-x)z + xy\right) + xz = \left(xy + (-x)z\right) + xz =
+          xy + \left((-x)z + xz \right) = xy + \left((-x) + x\right)z = xy + 0z = xy + 0 = xy$ (Definition 1.1.5 (D),
+        (A2), (A3), (A4))
+  \item (h) $\therefore xz < xy; \therefore xy > xz$ ((f), (g))
+\end{itemize}
 
 \end{document}
