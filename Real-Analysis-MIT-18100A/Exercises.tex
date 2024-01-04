@@ -46,4 +46,61 @@ and part (ii) in Proposition 1.1.8. The proof steps are as follows:
   \item (h) $\therefore xz < xy; \therefore xy > xz$ ((f), (g))
 \end{itemize}
 
+% ******************************
+\subsection{Exercise 1.1.2}
+% ******************************
+
+\textbf{Proof}: Let's use induction to prove it.
+
+Because $A$ is a nonempty finite set, that means $A$ has at least one element.
+
+\textbf{(1)}: Let's examine the case in which $A$ has exactly one element. Suppose $A = \{ a_1 \}$, then we know
+$a_1 \in S$. Because $S$ is an ordered set, so $a_1 = a_1$. By the definition of $\le$, we can also say $a_1 \le a_1$.
+Then by definition of \textit{bounded above}, we can see that there exists $a_1 \in S$ such that $\forall x in A$,
+$x \le a_1$. Therefore, $A$ is bounded above and $a_1$ is an upper bound of $A$.
+
+Similarly, by the definition of $\ge$, we can also say $a_1 \ge a_1$. Then by definition of \textit{bounded below}, we
+can see that there exists $a_1 \in S$ such that $\forall x in A, x \ge a_1$. Therefore, $A$ is bounded below and $a_1$
+is a lower bound of $A$.
+
+In sum, $A$ is bounded when $A$ has exactly one element.
+
+Now let's prove that $a_1$ is $A$'s supremum. Because $S$ is an ordered set, $\forall s \in S$, we know exactly one of
+$s < a_1$, $s = a_1$, or $s > a_1$ holds. If $s < a_1$, by definition of \textit{upper bound}, we know $s$ is not an
+upper bound of $A$. if $s > a_1$, we know $s$ is an upper bound of $A$. But because $s > a_1$, $s$ can't be equal to
+$a_1$, so this $s$ must not be in $A$. When $s = a_1$, that means $s$ is $a_1$ itself, and by the definition of upper
+bound, we can tell $a_1$ is also an upper bound. Therefore, $a_1$ is the upper bound of $A$ that whenever $s$ is any
+upper bound for $A$, we have $a_1 \le s$. So we can see $a_1$ is the supremum of $A$. Because $a_1 \in A$, we can see
+$sup A \in A$.
+
+Similarly, we can prove that $inf A \in A$.
+
+\textbf{(2)}: Let's assume that when $A$ has $N$ elements where $N \in \mathbb{N} \land N > 1$, $A$ is bounded and
+$inf A \in A$ and $sup A \in A$. Let's define $A = \{ a_1, a_2, \ldots, a_N \}$. Without losing the generality, let's
+order them in the ascending order so $a_1 \le a_2 \le \ldots \le a_N$. By the definition of upper bound and lower bound,
+we can also tell that $inf A = a_1$ and $sup A = a_N$.
+
+\textbf{(3)}: Now let's look at the case in which $A$ has $N+1$ elements where $N \in \mathbb{N} \land N > 1$. We can
+construct this new $A$ by adding exactly one more element $a_{N+1}$ into the $A$ in step (2). Then:
+\begin{itemize}
+  \item If $a_{N+1} \le a_1$, then $inf A = a_{N+1}$ and $sup A = a_N$.
+  \item If $a_1 \le a_{N+1} \le a_N$, then $inf A = a_1$ and $sup A = a_N$.
+  \item If $a_N \le a_{N+1}$, then $inf A = a_1$ and $sup A = a_{N+1}$.
+\end{itemize}
+
+In all the cases above, $A$ is bounded and $inf A \in A$ and $sup A \in A$.
+
+% ******************************
+\subsection{Exercise 1.1.3}
+% ******************************
+
+\textbf{Proof}:
+\begin{itemize}
+  \item (a) $\because x > 0 \land x < y$, $\therefore xx < xy$ (Proposition 1.1.8 (ii))
+  \item (b) $\because y > 0 \land x < y$, $\therefore yx < yy$ (Proposition 1.1.8 (ii))
+  \item (c) $xy = yx$ (Definition 1.1.5 (M2))
+  \item (d) $\because xx < xy \land xy = yx \land yx < yy$, $\therefore xx < yy$ (Definition 1.1.1 (ii))
+  \item (e) Denote $xx$ as $x^2$ and $yy$ as $y^2$, we have $x^2 < y^2$.
+\end{itemize}
+
 \end{document}

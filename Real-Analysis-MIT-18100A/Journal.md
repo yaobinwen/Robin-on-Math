@@ -95,3 +95,9 @@ This document records my study activities for future reflection. The notes, hope
 - 17:47 ~ 18:12 (24m)
 
 1. Exercise 1.1.1
+
+## 2024-01-03 (Wed)
+
+- 19:49 ~ 21:29 (1h40m)
+
+1. Exercises 1.1.2 and 1.1.3.
