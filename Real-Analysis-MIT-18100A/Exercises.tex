@@ -103,4 +103,86 @@ In all the cases above, $A$ is bounded and $inf A \in A$ and $sup A \in A$.
   \item (e) Denote $xx$ as $x^2$ and $yy$ as $y^2$, we have $x^2 < y^2$.
 \end{itemize}
 
+% ******************************
+\subsection{Exercise 1.1.4}
+% ******************************
+
+% ------------------------------
+\subsubsection{Description}
+% ------------------------------
+
+Let $S$ be an ordered set. Let $B \subset S$ be bounded (above and below). Let $A \subset B$ be a nonempty subset.
+Suppose all the \textit{inf}s and \textit{sup}s exist. Show that $inf B \le inf A \le sup A \le sup B$.
+
+% ------------------------------
+\subsubsection{Proof}
+% ------------------------------
+
+\textbf{(1)} First of all, let's prove $inf A \le sup A$:
+\begin{itemize}
+  \item (a) $A \ne \emptyset \rightarrow \exists a \in A$.
+  \item (b) $IsUpperBound(sup A, A, S) \rightarrow (\forall a \in A. (a \le sup A))$ (Definition 1.1.2 (i))
+  \item (c) $IsLowerBound(inf A, A, S) \rightarrow (\forall a \in A. (inf A \le a))$ (Definition 1.1.2 (ii))
+  \item (d) $(b) \land (c) \rightarrow inf A \le a \le sup A$
+\end{itemize}
+
+\textbf{(2)} Secondly, let's prove $inf B \le inf A$:
+\begin{itemize}
+  \item (a) $IsLowerBound(inf B, B, S) \rightarrow (\forall b \in B. (inf B \le b))$ (Definition 1.1.2 (ii))
+  \item (b) $IsLowerBound(inf A, A, S) \rightarrow (\forall a \in A. (inf A \le a))$ (Definition 1.1.2 (ii))
+  \item (c) $A \subset B \rightarrow \forall a \in A. (a \in B)$
+  \item (d) $(a) \land (c) \rightarrow \forall a \in A. (inf B \le a)$
+  \item (e) $(A \subset S) \land (inf B \in S) \land (d) \rightarrow IsLowerBound(inf B, A, S)$ (Definition 1.1.2 (ii))
+  \item (f) $IsLowerBound(inf B, A, S) \land inf A \rightarrow inf B \le inf A$ (Definition 1.1.2 (iv))
+\end{itemize}
+
+\textbf{(3)} Lastly, let's prove $sup A \le sup B$:
+\begin{itemize}
+  \item (a) $IsUpperBound(sup B, B, S) \rightarrow (\forall b \in B. (b \le sup B))$ (Definition 1.1.2 (i))
+  \item (b) $IsUpperBound(sup A, A, S) \rightarrow (\forall a \in A. (a \le sup A))$ (Definition 1.1.2 (i))
+  \item (c) $A \subset B \rightarrow \forall a \in A. (a \in B)$
+  \item (d) $(a) \land (c) \rightarrow \forall a \in A. (a \le sup B)$
+  \item (e) $(A \subset S) \land (sup B \in S) \land (d) \rightarrow IsUpperBound(sup B, A, S)$ (Definition 1.1.2 (i))
+  \item (f) $IsUpperBound(sup B, A, S) \land sup A \rightarrow sup A \le sup B$
+\end{itemize}
+
+In sum, $inf B \le inf A \le sup A \le sup B$.
+
+% ******************************
+\subsection{Exercise 1.1.5}
+% ******************************
+
+% ------------------------------
+\subsubsection{Description}
+% ------------------------------
+
+Let $S$ be an ordered set. Let $A \subset S$ and suppose $b$ is an upper bound for $A$. Suppose $b \in A$. Show that
+$b = sup A$.
+
+% ------------------------------
+\subsubsection{Proof}
+% ------------------------------
+
+\begin{itemize}
+  \item (a) $sup A \rightarrow \forall x \in A. (x \le sup A)$ (Definition 1.1.2 (i))
+  \item (b) $(b \in A) \land (a) \rightarrow b \le sup A$
+  \item (c) $IsUpperBound(b, A, S) \land sup A \rightarrow sup A \le b$ (Definition 1.1.2 (iii))
+  \item (d) $(b) \land (c) \rightarrow b = sup A$ (Definition 1.1.1 (i))
+\end{itemize}
+
+% =============================================================================
+%
+% First-order logic predicates
+%
+% =============================================================================
+
+\chapter{First-order logic predicates}
+
+Throughout all the exercises, we use the following first-order logic predicates in the proofs:
+
+\begin{itemize}
+  \item $IsUpperBound(e, E, S)$: Element $e$ is an upper bound of $E$ in $S$ where $E \subset S$.
+  \item $IsLowerBound(e, E, S)$: Element $e$ is an lower bound of $E$ in $S$ where $E \subset S$.
+\end{itemize}
+
 \end{document}
