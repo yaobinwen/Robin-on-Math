@@ -1,10 +1,11 @@
 \documentclass[12pt, letterpaper, oneside]{book}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{csquotes}
 \usepackage{empheq}
 \usepackage[letterpaper, textwidth=7.5in, textheight=8in]{geometry}
-\usepackage{csquotes}
 \usepackage{parskip}
+\usepackage{xcolor}
 
 \title{Exercises in \textit{Basic Analysis I: Introduction to Real Analysis, Volume 1}}
 \author{Yaobin Wen}
@@ -49,6 +50,17 @@ and part (ii) in Proposition 1.1.8. The proof steps are as follows:
 % ******************************
 \subsection{Exercise 1.1.2}
 % ******************************
+
+% ------------------------------
+\subsubsection{Description}
+% ------------------------------
+
+Let $S$ be an ordered set. Let $A \subset S$ be a nonempty finite subset. Then $A$ is bounded. Furthermore, $inf A$
+exists and is in $A$ and $sup A$ exists and is in $A$. Hint: Use induction.
+
+% ------------------------------
+\subsubsection{Proof}
+% ------------------------------
 
 \textbf{Proof}: Let's use induction to prove it.
 
@@ -170,6 +182,164 @@ $b = sup A$.
   \item (d) $(b) \land (c) \rightarrow b = sup A$ (Definition 1.1.1 (i))
 \end{itemize}
 
+% ******************************
+\subsection{Exercise 1.1.6}
+% ******************************
+
+% ------------------------------
+\subsubsection{Description}
+% ------------------------------
+
+Let $S$ be an ordered set. Let $A \subset S$ be a nonempty subset that is bounded above. Suppose $sup A$ exists and
+$sup A \notin A$. Show that $A$ contains a countably infinite subset.
+
+% ------------------------------
+\subsubsection{Proof}
+% ------------------------------
+
+First of all, we must understand what this exercise is asking us to prove. It is asking us to prove that:
+\begin{enumerate}
+  \item $A$ contains a subset.
+  \item And, this subset is infinite.
+  \item And, this subset is countable.
+\end{enumerate}
+
+This exercise is \textbf{NOT} asking us to prove that:
+\begin{itemize}
+  \item $A$ is countably infinite.
+  \item Or, $A$ has infinite subsets.
+\end{itemize}
+
+\textbf{(1)}: Let's prove $A$ is infinite:
+\begin{itemize}
+  \item (a) For the sake of contradiction, assume $A$ is finite.
+  \item (b) According to Exercise 1.1.2, $sup A \in A$.
+  \item (c) But we already know $sup A \notin A$.
+  \item (d) (b) and (c) contradict, so the assumption (a) must be invalid. So $A$ is not finite, hence infinite.
+\end{itemize}
+
+\textbf{(2)}: Let's prove that $A$ contains an infinite subset:
+\begin{itemize}
+  \item (a) $A$ is infinite. (Part (1))
+  \item (b) $A \subset A$.
+  \item (c) $A$ contains at least one subset, $A$ itself, that's infinite. Let's call this subset $B$.
+\end{itemize}
+
+\textbf{(3)}: \colorbox{red}{\textcolor{yellow}{TODO(ywen):}} Let's prove that $B$ is countable.
+
+% ******************************
+\subsection{Exercise 1.1.7}
+% ******************************
+
+% ------------------------------
+\subsubsection{Description}
+% ------------------------------
+
+Find a (nonstandard) ordering of the set of natural numbers $\mathbb{N}$ such that there exists a nonempty proper
+subset $A \subsetneq N$ and such that $sup A \in \mathbb{N}$, but $sup A \notin A$. To keep things straight it might be
+a good idea to use a different notation for the nonstandard ordering such as $n \prec m$.
+
+% ------------------------------
+\subsubsection{Remarks about the wrong analysis and solution}
+% ------------------------------
+
+The following two sections are a wrong analysis and a wrong solution when I was working on this exercise for the first
+time. I wanted to still keep them here because I may learn from the wrong thoughts.
+
+% ------------------------------
+\subsubsection{Wrong analysis}
+% ------------------------------
+
+Note that in this textbook, the set of natural numbers $\mathbf{N}$ does not include zero.
+
+Note that in the definition of upper bound (Definition 1.1.2 (i)), we need to compare every element in the subset $E$
+with the possible upper bound value $b$ using the operator $\le$ (i.e., $< \lor =$).
+
+Also note that in the standard ordering of the numbers in $\mathbb{N}$, $a = b$ if $a$ and $b$ are the same number. For
+example, $1 = 1$, $79 = 79$.
+
+Because the relation $=$ exists in the standard ordering, when we examine any upper bounded subset of $\mathbb{N}$, the
+largest number in the subset, denoted $n_0$, always satisfies $n_0 \le n_0$ because $n_0 = n_0$. As a result, $n_0$ is
+the supremum of this subset but $n_0$ is a member of this subset.
+
+Therefore, the key is to remove the $=$ relation.
+
+% ------------------------------
+\subsubsection{Wrong solution}
+% ------------------------------
+
+With the help of the standard ordering relation $<$ in $\mathbb{N}$, let's define the nonstandard ordering relation
+$\prec$ in $\mathbb{N}$ as follows. $\forall x, y \in \mathbb{N}$:
+\begin{enumerate}
+  \item $(x = y) \lor (x < y) \rightarrow x \prec y$
+  \item $x > y \rightarrow x \succ y$
+\end{enumerate}
+
+We can prove that $\mathbb{N}$ is still an ordered set under the relation $\prec$:
+\begin{itemize}
+  \item $\forall x, y \in \mathbf{N}. (ExactlyOneIsTrue(x < y, x = y, x > y) \rightarrow ExactlyOneIsTrue(x \prec y, x \succ y))$
+  \item $x \le y \rightarrow x \prec y$; $y \le z \rightarrow y \prec z$; $(x \le y) \land (y \le z) \rightarrow x \le z \rightarrow x \prec z$
+\end{itemize}
+
+\colorbox{red}{TODO(ywen)}: Interestingly, should $1 \prec 1$ and $1 \succ 1$ be treated as the same predicate or
+different predicates? If they should be treated differently, then $\mathbb{N}$ and $\prec$ can't be an ordered set.
+
+Then every proper subset $A = \{ k \in \mathbb{N}: 0, 1, 2, \ldots, k \}$ has $sup A = k + 1 \in \mathbb{N}$, but
+$sup A = k+1 \notin A$. \colorbox{lime}{NOTE(ywen)}: I realized the solution was wrong when I arrived here. Clearly,
+$sup A$ should be $k$ instead of $k+1$ because:
+\begin{itemize}
+  \item (a) $(\forall x \in A. (x \le k \land x \prec k)) \rightarrow IsUpperBound(k, A, \mathbb{N})$
+  \item (b) $\forall y \in \mathbb{N}. (k \le y \rightarrow (\forall x \in A. (x \le y \land x \prec y)))$
+  \item (c) $(b) \rightarrow (\forall y \in \mathbb{N}. (k \le y \rightarrow IsUpperBound(y, A, \mathbb{N})))$
+  \item (d) $\forall y \in \mathbb{N}. (k \le y \rightarrow k \prec y)$
+  \item $(a) \land (c) \land (d) \rightarrow sup A = k$
+\end{itemize}
+
+But $k \in A$, so $A$ is not the subset that satisfies the requirements of this exercise.
+
+% ------------------------------
+\subsubsection{Correct analysis}
+% ------------------------------
+
+Think about Example 1.1.4: The subset \{$x \in \mathbb{Q}: x^2 < 2$\} does not have a supremum in $\mathbb{Q}$. In this
+example, we notice that this subset is bounded and has infinite elements. The rational numbers in this subset can get
+\textbf{infinitely closer} to $\pm \sqrt{2}$ but can never reach them. The property of \textbf{``getting infinitely
+  closer''} can give us the hint of finding the appropriate binary relation $\prec$.
+
+% ------------------------------
+\subsubsection{Correct solution}
+% ------------------------------
+
+With the help of the standard ordering relation $<$ in $\mathbb{N}$, let's define the nonstandard ordering relation
+$\prec$ in $\mathbb{N}$ as follows. $\forall x, y \in \mathbb{N}$:
+\begin{enumerate}
+  \item $IsOdd(x) \land IsEven(y) \rightarrow x \prec y$
+  \item $IsEven(x) \land IsOdd(y) \rightarrow x \succ y$
+  \item $IsOdd(x) \land IsOdd(y) \rightarrow (x < y \rightarrow x \prec y) \lor (x = y \rightarrow x = y) \lor
+          (x > y \rightarrow x \succ y)$
+  \item $IsEven(x) \land IsEven(y) \rightarrow (x < y \rightarrow x \prec y) \lor (x = y \rightarrow x = y) \lor
+          (x > y \rightarrow x \succ y)$
+\end{enumerate}
+
+In sum:
+\begin{enumerate}
+  \item All the odd numbers are less than the even numbers, e.g., $19337 \prec 2$.
+  \item Within all the odd (or even) numbers, the numbers are ordered in the same way as the standard ordering, e.g.,
+        $1 \prec 3 \prec 5 \prec 7 \ldots$, $2 \prec 4 \prec 6 \prec 8 \ldots$
+\end{enumerate}
+
+Then we examine the proper subset $A = \{ x \in \mathbb{N}: IsOdd(x) \}$:
+\begin{itemize}
+  \item (a): $IsEven(2) \land 2 \notin A$
+  \item (b): $\forall e \in \mathbb{N}. (IsEven(e) \rightarrow (\forall a \in A. (a \prec e)))$
+  \item (c): $(b) \rightarrow (\forall e \in \mathbb{N}. (IsEven(e) \rightarrow IsUpperBound(e, A, \mathbb{N})))$
+  \item (d): $(a) \land (c) \rightarrow IsUpperBound(2, A, \mathbb{N})$
+  \item (e): $\forall e \in \mathbb{N}. (IsEven(e) \rightarrow 2 \le e)$
+  \item (f): $(c) \land (d) \land (e) \rightarrow sup A = 2$
+\end{itemize}
+
+Therefore, $A$ under this $\prec$ relation has $sup A$ but $sup A \notin A$.
+
 % =============================================================================
 %
 % First-order logic predicates
@@ -181,8 +351,13 @@ $b = sup A$.
 Throughout all the exercises, we use the following first-order logic predicates in the proofs:
 
 \begin{itemize}
-  \item $IsUpperBound(e, E, S)$: Element $e$ is an upper bound of $E$ in $S$ where $E \subset S$.
+  \item $ExactlyOneIsTrue(pred1, pred2, \ldots, predN)$: Exactly one of the predicates of \{ pred1, pred2, $\ldots$,
+        predN \} is true.
+  \item $IsBijection(f, A, B)$: Function $f$ is a bijection from the set $A$ to set $B$.
+  \item $IsOdd(i)$: Integer $i$ is an odd number (e.g., $-79$, $3$).
+  \item $IsEven(i)$: Integer $i$ is an even number (e.g., $-880$, $0$, $1938$).
   \item $IsLowerBound(e, E, S)$: Element $e$ is an lower bound of $E$ in $S$ where $E \subset S$.
+  \item $IsUpperBound(e, E, S)$: Element $e$ is an upper bound of $E$ in $S$ where $E \subset S$.
 \end{itemize}
 
 \end{document}
