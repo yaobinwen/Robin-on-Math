@@ -52,6 +52,12 @@ While I'm learning linear algebra by reading a textbook, for real mathematical a
 
 (TODO)
 
+## Misc.
+
+- [Open Logic Project](https://openlogicproject.org/): "The Open Logic Project is a collection of teaching materials on mathematical logic aimed at a non-mathematical audience, intended for use in advanced logic courses as taught in many philosophy departments."
+  - GitHub link: [OpenLogicProject/OpenLogic](https://github.com/OpenLogicProject/OpenLogic)
+  - The built PDF documents for download: [Open Logic Project Builds](https://builds.openlogicproject.org/)
+
 ## License
 
 See [LICENSE](./LICENSE).
