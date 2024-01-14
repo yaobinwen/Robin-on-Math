@@ -20,6 +20,18 @@
 \begin{document}
 
 % =============================================================================
+\section{Multi-paragraph comments}
+% =============================================================================
+
+% NOTE(ywen) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\noindent\rule[-9pt]{1cm}{10pt}\rule{10cm}{0.4pt}
+
+\colorbox{lime}{NOTE(ywen)}: My multi-paragraph comments.
+
+\noindent\rule{10cm}{0.4pt}\rule{1cm}{10pt}
+% <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTE(ywen)
+
+% =============================================================================
 \section{Parentheses}
 % =============================================================================
 
@@ -172,5 +184,25 @@ A C code listing:
 \colorbox{purple!100}{\textcolor{yellow}{100\% purple}}
 \colorbox{teal!100}{100\% teal}
 \colorbox{violet!100}{\textcolor{yellow}{100\% violet}}
+
+% =============================================================================
+\section{Horizontal lines}
+% =============================================================================
+
+Below is a Line spanning the entire width of the page
+
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+
+Below is a 2cm long line
+
+\noindent\rule{2cm}{0.4pt}
+
+Below is a 4cm long line
+
+\noindent\rule{4cm}{0.4pt}
+
+Below is a 8cm long line
+
+\noindent\rule{8cm}{0.4pt}
 
 \end{document}
