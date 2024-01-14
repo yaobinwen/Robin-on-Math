@@ -1,0 +1,82 @@
+\documentclass[12pt, letterpaper, oneside]{book}
+\usepackage{pseudocode}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[letterpaper, textwidth=7.5in, textheight=8in]{geometry}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=magenta,
+  urlcolor=blue,
+}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{xcolor}
+
+\setcounter{secnumdepth}{4}
+
+\title{My commonly-used first-order logic predicates and functions}
+\author{Yaobin Wen}
+\date{Jan 2024}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\chapter*{Overview}
+\addcontentsline{toc}{chapter}{Overview}
+
+I find first-order logic calculus is a strict and clear way to make statements. If used appropriately, it can eliminate
+ambiguity and confusion in the text.
+
+However, the first-order logic's built-in predicates and functions are often insufficient to express complex statements.
+Therefore, I define the additional predicates and functions in this document that I will use in other documents.
+
+% =============================================================================
+%
+\chapter{Predicates}
+%
+% =============================================================================
+
+\begin{itemize}
+  \item $AssertTrue(pred)$: Assert the given predicate is true.
+  \item $ExactlyOneIsTrue(pred1, pred2, \ldots, predN)$: Exactly one of the predicates of \{ pred1, pred2, $\ldots$,
+        predN \} is true.
+  \item $HasMaxElement(S)$: $S \ne \emptyset \land IsOrdered(S) \land sup S \in S$.
+  \item $HasMinElement(S)$: $S \ne \emptyset \land IsOrdered(S) \land inf S \in S$.
+  \item $InheritsOrder(Q, P)$: $IsOrdered(P) \land Q \subset P$
+  \item $IsAntichain(P)$: The ordered set $P$ is an antichain.
+  \item $IsBijection(f, A, B)$: Function $f$ is a bijection from the set $A$ to set $B$.
+  \item $IsBoundedAbove(E, S)$: Subset $E$ is bounded above in the set $S$.
+  \item $IsBoundedBelow(E, S)$: Subset $E$ is bounded below in the set $S$.
+  \item $IsBounded(E, S)$: $IsBoundedAbove(E, S) \land IsBoundedBelow(E, S)$
+  \item $IsChain(P)$: The ordered set $P$ is a chain.
+  \item $IsEven(i)$: Integer $i$ is an even number (e.g., $-880$, $0$, $1938$).
+  \item $IsFinite(S)$: Set $S$ is finite.
+  \item $IsInfinite(S)$: Set $S$ is infinite.
+  \item $IsLinearlyOrdered(P)$: $IsChain(P)$.
+  \item $IsLowerBound(e, E, S)$: Element $e$ is an lower bound of $E$ in $S$ where $E \subset S$.
+  \item $IsOdd(i)$: Integer $i$ is an odd number (e.g., $-79$, $3$).
+  \item $IsOrdered(S)$: $S$ is an ordered set.
+  \item $IsTotallyOrdered(P)$: $IsChain(P)$.
+  \item $IsUpperBound(e, E, S)$: Element $e$ is an upper bound of $E$ in $S$ where $E \subset S$.
+\end{itemize}
+
+% =============================================================================
+%
+\chapter{Functions}
+%
+% =============================================================================
+
+\begin{itemize}
+  \item $MaxElement(S) \rightarrow e$: $HasMaxElement(S) \land e = sup S$
+  \item $MinElement(S) \rightarrow e$: $HasMinElement(S) \land e = inf S$
+  \item $PickElement(S) \rightarrow e$: Pick an element from the set $S$ and return it as $e$.
+\end{itemize}
+
+\end{document}
