@@ -13,6 +13,8 @@
   filecolor=magenta,
   urlcolor=blue,
 }
+\usepackage{tikz}
+\usetikzlibrary{arrows, automata, positioning, shapes.geometric}
 \usepackage{titlesec}
 \usepackage{parskip}
 \usepackage{xcolor}
@@ -75,6 +77,26 @@ Regarding the set $P$:
         \textbf{quasi-order} or \textbf{pre-order}.
   \item $\parallel$ means \textbf{non-comparability}: $x \parallel y \leftrightarrow (\lnot (x \leqslant y) \land \lnot (x \geqslant y))$
 \end{itemize}
+
+% NOTE(ywen) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\noindent\rule[-9pt]{1cm}{10pt}\rule{10cm}{0.4pt}
+
+\colorbox{lime}{NOTE(ywen)}: More on ``$\leqslant$'' and the property of reflexivity. Remember that, in section 1.1,
+the textbook said:
+
+\begin{displayquote}
+  Order relations are of two types: \textbf{strict} and \textbf{non-strict}. ... Mathematicians usually allow equality
+  and write, for instance, $3 \leqslant 3$ and $3 \leqslant 22/7$. We shall deal mainly with \textbf{non-strict} order
+  relations.
+\end{displayquote}
+
+Therefore, when we translate the everyday statements about orders, which usually imply \textbf{strict} orders, into the
+mathematical language, we need to slightly change them to include the case of equality. For example, the binary relation
+``is a descendant of'' describes the strict order ``$<$'' because when it's applied to the same person (e.g., ``Peter
+is a descendant of Peter''), the result is false and doesn't meet the requirement of reflexivity. Therefore, we need to
+change the binary relation to ``is him-/herself or is a descendant of'' to make it a ``$\le$'' relation.
+
+% <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTE(ywen)
 
 % NOTE(ywen) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 \noindent\rule[-9pt]{1cm}{10pt}\rule{10cm}{0.4pt}
@@ -200,6 +222,80 @@ be proven by using order-isomorphism's definition:
   \item (d): According to order-isomorphism's definition, $\phi$ is an order-isomorphism between $(\mathbb{P}(X);
           \Rrightarrow)$ and $(\mathcal{P}(X); \subset)$
 \end{itemize}
+
+% ******************************
+\subsection{Examples from social science and computer science}
+% ******************************
+
+\colorbox{red}{TODO(ywen)}: Skipped for now, but may revisit these sections later.
+
+% ******************************
+\subsection{Covering relation}
+% ******************************
+
+Let $P$ be an ordered set; and let $x, y \in P$. We say x is \textbf{covered by} y (or y \textbf{covers} x), and write
+$x \lessdot y$ or $y \gtrdot x$, if $x < y$ and $x \leqslant z < y$ implies $z = x$. The latter condition is demanding
+that there be no element $z \in P$ with $x < z < y$. In first-order logic, we can write it as:
+\[
+  \forall x, y \in P. ((x < y \land (\lnot \exists z \in P. (x < z < y))) \rightarrow x \lessdot y)
+\]
+
+\colorbox{lime}{NOTE(ywen)}: Intuitively, we can say that ``y sits \textbf{immediately next to} and is greater than x''.
+
+Examples of covering relation:
+\begin{itemize}
+  \item In the chain $\mathbb{N}$, $m \lessdot n \leftrightarrow n = m + 1$.
+  \item In $\mathbb{R}$, $\lnot \exists x, y \in \mathbb{R}. (x \lessdot y)$ (i.e., there are not pairs $x, y$ such
+        that $x \lessdot y$). This is because $\forall x, y \in \mathbb{R}$, there are infinite number of real numbers
+        between $x$ and $y$, so $\forall x \in \mathbb{R}$, one can't find a $y$ that sits ``immediately next to'' $x$.
+  \item In $\mathcal{P}(X)$, $\forall A, B \in \mathcal{P}(X). (A \lessdot B \leftrightarrow (\exists b \in X \setminus
+          A. (B = A \cup \{b\})))$.
+\end{itemize}
+
+% ******************************
+\subsection{Diagrams}
+% ******************************
+
+Let $P$ be a \textbf{finite} ordered set. We can represent $P$ by a configuration of circles (representing the elements
+of $P$) and interconnecting lines (indicating the covering relation). The construction goes as follows:
+\begin{enumerate}
+  \item[(1)] To each point $a \in P$, associate a point $p(a)$ of the Euclidean plane $\mathbb{R}^2$, depicted by a
+        small circle with center at $p(a)$.
+  \item[(2)] For each covering pair $a \lessdot b$ in $P$, take a line segment $l(a,b)$ joining the circle at $p(a)$ to
+        the circle at $p(b)$.
+  \item[(3)] Carry out (1) and (2) in such a way that:
+        \begin{enumerate}
+          \item[(a)] if $a \lessdot b$, then $p(a)$ is ``lower'' than $p(b)$ (that is, in standard Cartesian coordinates,
+                has a strictly smaller second coordinate),
+          \item[(b)] the circle at $p(c)$ does not intersect the line segment $l(a,b)$ if $c \ne a$ and $c \ne b$.
+        \end{enumerate}
+\end{enumerate}
+
+Such a configuration is called a \textbf{diagram}, or \textbf{Hasse diagram} of $P$.
+
+A diagram can easily tell whether one element of an ordered set is less than another: $x < y$ if and only if there is a
+sequence of \textbf{connected} line segments \textbf{moving upwards} from $x$ to $y$. In the following Hasse diagram, we
+can see that:
+\begin{enumerate}
+  \item[(1)] $e \parallel f$ because although $e$ and $f$ are connected, the segment $l(g, d)$ is not upwards but
+        downwards.
+  \item[(2)] $a < g$ because of the connected line segments in \colorbox{green}{green} all move upwards.
+\end{enumerate}
+
+\begin{tikzpicture}[scale=.7]
+  \node[circle, draw=black, text=black, label={135:f}] (f) at (0, 0) {};
+  \node[circle, draw=black, text=black, label={45:g}] (g) at (2, 0) {};
+  \node[circle, draw=black, text=black, label={135:d}] (d) at (0, -2) {};
+  \node[circle, draw=black, text=black, label={45:e}] (e) at (2, -2) {};
+  \node[circle, draw=black, text=black, label={135:b}] (b) at (0, -4) {};
+  \node[circle, draw=black, text=black, label={45:c}] (c) at (2, -4) {};
+  \node[circle, draw=black, text=black, label={45:a}] (a) at (0, -6) {};
+
+  \draw [green, thick] (a) -- (b) -- (e) -- (g);
+  \draw (b) -- (d) -- (f);
+  \draw (c) -- (e);
+  \draw (d) -- (g);
+\end{tikzpicture}
 
 % =============================================================================
 %
