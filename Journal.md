@@ -309,3 +309,13 @@ As of 2024-01-13, I haven't recorded the time of studying _CS103: Mathematical F
 - 08:20 ~ 08:53 (33m)
 
 1. Learn about the difference between a maximal/minimal element and a maximum/minimum element.
+
+## 2024-01-13 (Sat)
+
+- 11:46 ~ 13:27 (1h41m)
+- 14:23 ~ 15:25 (1h2m)
+- 18:03 ~ 19:41 (1h37m)
+- 20:02 ~ 20:35 (32m)
+- 20:45 ~ 21:28 (43m)
+
+1. _Introduction to Lattices and Order_: Chapter 1

@@ -1,0 +1,217 @@
+\documentclass[12pt, letterpaper, oneside]{book}
+\usepackage{pseudocode}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[letterpaper, textwidth=7.5in, textheight=8in]{geometry}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=magenta,
+  urlcolor=blue,
+}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{xcolor}
+
+\setcounter{secnumdepth}{4}
+
+\title{
+  Notes on \textit{Introduction to Lattices and Order (2nd edition)}
+}
+\author{Yaobin Wen}
+\date{Jan 2024}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\chapter*{Overview}
+\addcontentsline{toc}{chapter}{Overview}
+
+This document contains my study notes of the textbook \textit{Introduction to Lattices and Order (Second edition)} by
+B.A.Davey and H.A. Priestley. I use it for a few purposes:
+
+\begin{enumerate}
+  \item As a reference to quickly refresh my memory on the subjects.
+  \item Keep the notes to help me understand the text that is not obvious for
+        me to comprehend.
+\end{enumerate}
+
+% =============================================================================
+%
+% Chapter 1: Ordered Sets
+%
+% =============================================================================
+
+\chapter{Ordered Sets}
+
+% =============================================================================
+\section{Order and ordered sets}
+% =============================================================================
+
+% ******************************
+\subsection{Order and ordered sets}
+% ******************************
+
+\textbf{Definition 1.2} Let $P$ be a set. An \textbf{order} (or \textbf{partial order}) on $P$ is a binary relation
+$\leqslant$ on $P$ such that, for all $x, y, z \in P$:
+\begin{itemize}
+  \item (i) \textbf{Reflexivity}: $x \leqslant x$
+  \item (ii) \textbf{Antisymmetry}: $(x \leqslant \land y \leqslant x) \rightarrow x = y$
+  \item (iii) \textbf{Transitivity}: $(x \leqslant y \land y \leqslant z) \rightarrow x \leqslant z$
+\end{itemize}
+
+Regarding the set $P$:
+\begin{itemize}
+  \item $P$ is called an \textbf{ordered set} (or \textbf{partially ordered set}), or shortened as \textbf{``poset''}.
+  \item Formally, we write $(P; \leqslant)$ to indicate the ordered set with the binary relation.
+  \item On any set, ``='' (strictly equal to) is called the \textbf{discrete order}.
+  \item A relation $\leqslant$ that is reflexive and transitive but not necessarily antisymmetric is called a
+        \textbf{quasi-order} or \textbf{pre-order}.
+  \item $\parallel$ means \textbf{non-comparability}: $x \parallel y \leftrightarrow (\lnot (x \leqslant y) \land \lnot (x \geqslant y))$
+\end{itemize}
+
+% NOTE(ywen) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\noindent\rule[-9pt]{1cm}{10pt}\rule{10cm}{0.4pt}
+
+\colorbox{lime}{NOTE(ywen)}: More about the \textbf{discrete order} ``=''.
+
+We must be clear that, in Definition 1.2, the binary relation ``$\leqslant$'' is really just a symbol for this abstract
+binary relation. This symbol looks the same as the ``less than or equal to'' in the context of numbers, but $\leqslant$
+is more than that. In fact, some definitions uses the letter ``R'' to denote this binary relation. This shows more
+clearly that ``$\leqslant$'' should not be treated as the usual numeric version of ``$\leqslant$''.
+
+Therefore, when we say ``='' (strictly equal to) is called the discrete order, we mean we should replace ``$\leqslant$''
+with ``='' and then examine the set $P$ with this binary relation. It still fulfills Definition 1.2:
+\begin{itemize}
+  \item (i) \textbf{Reflexivity}: $x = x$
+  \item (ii) \textbf{Antisymmetry}: $(x = \land y = x) \rightarrow x = y$
+  \item (iii) \textbf{Transitivity}: $(x = y \land y = z) \rightarrow x = z$
+\end{itemize}
+
+However, ``='' is strict enough to make every two different elements in $P$ are \textbf{not comparable} because:
+\begin{itemize}
+  \item According to the definition of non-comparability, $x \parallel y \leftrightarrow (x \nleqslant y \land x \ngeqslant y)$.
+  \item Now let's replace the binary relation symbol ``$\leqslant$'' with the concrete binary relation ``=''.
+  \item Now we have: $\forall x, y \in P. (x \ne y \rightarrow (\lnot (x = y) \land \lnot (y = x)) \rightarrow x \parallel y)$.
+\end{itemize}
+
+In other words, the discrete order ``='', when applied to the set $P$, turns $P$ into an \textbf{antichain} (see
+``antichain'' below). So the discrete order is also called the \textbf{antichain order}.
+
+\noindent\rule{10cm}{0.4pt}\rule{1cm}{10pt}
+% <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTE(ywen)
+
+% NOTE(ywen) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\noindent\rule[-9pt]{1cm}{10pt}\rule{10cm}{0.4pt}
+
+\colorbox{lime}{NOTE(ywen)}: ``Antisymmetry'' is defined as follows:
+\[ \forall x, y \in (P, \leqslant). ((x \leqslant y \land x \ne y) \rightarrow x \ngeqslant y) \]
+
+It means the following:
+\begin{enumerate}
+  \item When $x \ne y$, $x \leqslant y$ and $y \leqslant x$ cannot hold simultaneously.
+  \item When $x \leqslant y$ and $y \leqslant x$ both hold, that must be because $x = y$.
+\end{enumerate}
+
+Definition 1.2 (ii) uses the second one to express antisymmetry.
+
+\noindent\rule{10cm}{0.4pt}\rule{1cm}{10pt}
+% <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTE(ywen)
+
+% ******************************
+\subsection{Induced order}
+% ******************************
+
+Let $P$ be an ordered set and let $Q$ be a subset of $P$.
+Suppose $IsOrdered(P) \land Q \subset P$. Then $Q$ \textbf{inherits} an order relation from $P$: $\forall x, y \in Q$,
+($x \leqslant y$ in $Q$) $\leftrightarrow$ ($x \leqslant y$ in $P$). We say $Q$ has the \textbf{induced order} or $Q$
+has the order \textbf{inherited} from $P$.
+
+% ******************************
+\subsection{Chains and antichains}
+% ******************************
+
+Let $P$ be an ordered set. Then $P$ is a \textbf{chain} if $\forall x, y \in P. (x \leqslant y \lor x \geqslant y)$
+(i.e., if any two elements of $P$ are comparable). In first-order logic, this is:
+\[ (IsOrdered(P) \land (\forall x, y \in P. (x \leqslant y \lor x \geqslant y))) \rightarrow IsChain(P) \]
+
+A chain is also called a \textbf{linearly ordered} set or a \textbf{totally ordered} set.
+
+The ordered set $P$ is an \textbf{antichain} if $x \leqslant y$ in $P$ only if $x = y$. In other words, any two elements
+in an antichain are \textbf{not comparable}. In first-order logic, this is:
+\[ (IsOrdered(P) \land (\forall x, y \in P. (x \ne y \rightarrow x \parallel y))) \rightarrow IsAntichain(P) \]
+or
+\[ (IsOrdered(P) \land (\forall x, y \in P. \lnot(x \leqslant y \lor x \geqslant y))) \rightarrow IsAntichain(P) \]
+
+Let $P$ be the n-element set $\{0, 1, \ldots, n-1\}$:
+\begin{itemize}
+  \item We write $\mathbf{n}$ to denote the chain obtained by giving $P$ the order in which $0 < 1 < \cdots < n - 1$.
+  \item We write $\mathbf{\bar{n}}$ for $P$ regarded as an antichain.
+\end{itemize}
+
+% ******************************
+\subsection{Order-isomorphisms}
+% ******************************
+
+Let $P$ and $Q$ be ordered sets. If there exists a bijective function $\phi: P \rightarrow Q$ such that
+$\forall x, y \in P. (x \leqslant y \leftrightarrow \phi(x) \leqslant \phi(y))$, then $\phi$ is called an \textbf{order-
+  isomorphism}. In this case, we can say $P$ and $Q$ are ``essentially the same'', or ``(order-)isomorphic'', and write
+$P \cong Q$.
+
+Note that \textbf{not every binjective function between ordered sets is an order-isomorphism}. Consider $P = Q = \mathbf{2}$
+but $\phi(0) = 1$ and $\phi(1) = 0$.
+
+The order-isomorphism $\phi: P \rightarrow Q$ has a well-defined inverse, $\phi^{-1}: Q \rightarrow P$ which is also an
+order-isomorphism.
+
+% ------------------------------
+\subsubsection{Ordered power set and ordered set of predicates}
+% ------------------------------
+
+Let $X$ be any set:
+\begin{itemize}
+  \item Apply the order $\subset$ to its ordered power set $\mathcal{P}(X)$ to make it an ordered set ($\mathcal{P}(X)$;
+        $\subset$).
+  \item Define a predicate $p$ on $X$ as this: $p: X \rightarrow \{True, False\}$.
+  \item Define $\mathbb{P}(X)$ as the set of predicates on $X$ and order it by \textit{implication} such that
+        $\forall p, q \in \mathbb{P}(X). ((p \Rrightarrow q) \leftrightarrow (\{x \in X: p(x) = True\} \subset
+          \{x \in X: q(x) = True\}))$.
+  \item Define the function $\phi: \mathbb{P}(X) \rightarrow \mathcal{P}(X)$ as $\forall p \in \mathbb{P}(X). (\phi(p)
+          = \{x \in X: p(x) = True\})$.
+\end{itemize}
+
+Then $\phi$ is an order-isomorphism between $(\mathbb{P}(X); \Rrightarrow)$ and $(\mathcal{P}(X); \subset)$. This can
+be proven by using order-isomorphism's definition:
+\begin{itemize}
+  \item (a): $\forall p, q \in (\mathbb{P}(X); \Rrightarrow). (p \Rrightarrow q \rightarrow \{x \in X: p(x) = True\}
+          \subset \{x \in X: q(x) = True\})$.
+  \item (b): According to the definition of $\phi$:
+        \begin{itemize}
+          \item (b1): $\phi(p) = \{x \in X: p(x) = True\}$
+          \item (b2): $\phi(q) = \{x \in X: q(x) = True\}$
+        \end{itemize}
+  \item (c): $((a) \land (b)) \rightarrow (p \Rrightarrow q \rightarrow \phi(p) \subset \phi(q))$.
+  \item (d): According to order-isomorphism's definition, $\phi$ is an order-isomorphism between $(\mathbb{P}(X);
+          \Rrightarrow)$ and $(\mathcal{P}(X); \subset)$
+\end{itemize}
+
+% =============================================================================
+%
+% References
+%
+% =============================================================================
+
+\chapter*{References}
+\addcontentsline{toc}{chapter}{References}
+
+\begin{itemize}
+  \item $[1]$ \href{https://www.cambridge.org/core/books/introduction-to-lattices-and-order/946458CB6638AF86D85BA00F5787F4F4}{B. A. Davey, H. A. Priestley: \it{Introduction to Lattices and Order}}
+\end{itemize}
+
+\end{document}
