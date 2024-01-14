@@ -467,4 +467,52 @@ How to change the bend angle and edge colors:
   ;
 \end{tikzpicture}
 
+% =============================================================================
+\section{Hasse diagrams}
+% =============================================================================
+
+\begin{tikzpicture}
+  \node (top) at (0,0) {$\{x,y\}$};
+  \node [below left  of=top] (left)  {$x$};
+  \node [below right of=top] (right) {$y$};
+
+  \draw [red,  thick, shorten <=-2pt, shorten >=-2pt, out=-120, in=90] (top) to (left);
+  \draw [blue, thick, shorten <=-2pt, shorten >=-2pt, out=-60,  in=90] (top) to (right);
+\end{tikzpicture}
+
+\begin{tikzpicture}[scale=.7]
+  \node (one) at (0,2) {$1$};
+  \node (a) at (-3,0) {$a$};
+  \node (b) at (-1,0) {$b$};
+  \node (c) at (1,0) {$c$};
+  \node (d) at (3,0) {$d$};
+  \node (zero) at (0,-2) {$0$};
+  \draw (zero) -- (a) -- (one) -- (b) -- (zero) -- (c) -- (one) -- (d) -- (zero);
+\end{tikzpicture}
+
+\begin{tikzpicture}[scale=.7]
+  \node (one) at (90:2cm) {$1$};
+  \node (b) at (150:2cm) {$b$};
+  \node (a) at (210:2cm) {$a$};
+  \node (zero) at (270:2cm) {$0$};
+  \node (c) at (330:2cm) {$c$};
+  \node (d) at (30:2cm) {$d$};
+  \draw (zero) -- (a) -- (b) -- (one) -- (d) -- (c) -- (zero);
+\end{tikzpicture}
+
+\begin{tikzpicture}
+  \node (max) at (0,4) {$(1,1,1)$};
+  \node (a) at (-2,2) {$(0,1,1)$};
+  \node (b) at (0,2) {$(1,0,1)$};
+  \node (c) at (2,2) {$(1,1,0)$};
+  \node (d) at (-2,0) {$(0,0,1)$};
+  \node (e) at (0,0) {$(0,1,0)$};
+  \node (f) at (2,0) {$(1,0,0)$};
+  \node (min) at (0,-2) {$(0,0,0)$};
+  \draw (min) -- (d) -- (a) -- (max) -- (b) -- (f)
+  (e) -- (min) -- (f) -- (c) -- (max)
+  (d) -- (b);
+  \draw[preaction={draw=white, -,line width=6pt}] (a) -- (e) -- (c);
+\end{tikzpicture}
+
 \end{document}
