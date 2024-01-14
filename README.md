@@ -39,6 +39,7 @@ As I was learning linear algebra and real analysis, I gradually realize I needed
 
 I'm primrily using all kinds of online resources to (re)learn the fundamental subjects:
 - [CS103: Mathematical Foundations of Computing](https://web.stanford.edu/class/cs103/)
+- [First Order Predicate Calculus](https://www.cs.rochester.edu/u/brown/173/lectures/logic/formal_logic/FOLogic.html)
 
 ## Linear algebra
 
@@ -57,6 +58,10 @@ While I'm learning linear algebra by reading a textbook, for real mathematical a
 - [Open Logic Project](https://openlogicproject.org/): "The Open Logic Project is a collection of teaching materials on mathematical logic aimed at a non-mathematical audience, intended for use in advanced logic courses as taught in many philosophy departments."
   - GitHub link: [OpenLogicProject/OpenLogic](https://github.com/OpenLogicProject/OpenLogic)
   - The built PDF documents for download: [Open Logic Project Builds](https://builds.openlogicproject.org/)
+- [Math3ma](https://www.math3ma.com/): A math blog.
+- [Logic and Proof](https://leanprover.github.io/logic_and_proof/index.html): Both this online textbook and the [Lean theorem prover](https://lean-lang.org/) are new and ongoing projects.
+  - The PDF version is [here](https://leanprover.github.io/logic_and_proof/logic_and_proof.pdf).
+  - [Theorem Proving in Lean](https://leanprover.github.io/theorem_proving_in_lean/)
 
 ## License
 
