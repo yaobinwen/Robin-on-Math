@@ -7,8 +7,8 @@
 \lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
 \usepackage{tikz}
 \usepackage{parskip}
+\usepackage{pseudocode}
 \usepackage{xcolor}
-% \usetikzlibrary{arrows.meta,decorations.pathmorphing,backgrounds,positioning,fit,petri}
 
 \hypersetup{
   colorlinks=true,
@@ -131,6 +131,30 @@ This is a reference to table \ref{table:lists_sets_comp}
   \end{tabular}
   \caption{Truth table for $p \rightarrow q$}
 \end{table}
+
+% =============================================================================
+\section{Pseudocode}
+% =============================================================================
+
+\begin{pseudocode}[ruled]{EnumerateSetElements}{S}
+  \LOCAL{T, i} \\
+  T \GETS \emptyset \\
+  i \GETS 1 \mbox{/* Next index of the picked element from S. */} \\
+  \\
+  \WHILE \NOT (S = \emptyset) \DO
+  \BEGIN
+  s \GETS \mbox{pick a random element from S} \\
+  t_i \GETS s \mbox{/* $t_i$ is just an indexed symbol to denote s. */} \\
+  S \GETS S \setminus \{s\} \\
+  T \GETS T \cup \{t_i\} \\
+  i \GETS i+1
+  \END \\
+  \\
+  \mbox{/* c is the number of elements in T. */} \\
+  c \GETS i - 1 \\
+  \\
+  \RETURN{T, c}
+\end{pseudocode}
 
 % =============================================================================
 \section{Code listings}
