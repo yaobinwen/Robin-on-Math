@@ -47,8 +47,8 @@ Therefore, I define the additional predicates and functions in this document tha
   \item $AssertTrue(pred)$: Assert the given predicate is true.
   \item $ExactlyOneIsTrue(pred1, pred2, \ldots, predN)$: Exactly one of the predicates of \{ pred1, pred2, $\ldots$,
         predN \} is true.
-  \item $HasMaxElement(S)$: $S \ne \emptyset \land IsOrdered(S) \land sup S \in S$.
-  \item $HasMinElement(S)$: $S \ne \emptyset \land IsOrdered(S) \land inf S \in S$.
+  \item $HasMaximum(S)$: $S \ne \emptyset \land IsOrdered(S) \land sup S \in S$.
+  \item $HasMinimum(S)$: $S \ne \emptyset \land IsOrdered(S) \land inf S \in S$.
   \item $InheritsOrder(Q, P)$: $IsOrdered(P) \land Q \subset P$
   \item $IsAntichain(P)$: The ordered set $P$ is an antichain.
   \item $IsBijection(f, A, B)$: Function $f$ is a bijection from the set $A$ to set $B$.
@@ -56,6 +56,7 @@ Therefore, I define the additional predicates and functions in this document tha
   \item $IsBoundedBelow(E, S)$: Subset $E$ is bounded below in the set $S$.
   \item $IsBounded(E, S)$: $IsBoundedAbove(E, S) \land IsBoundedBelow(E, S)$
   \item $IsChain(P)$: The ordered set $P$ is a chain.
+  \item $IsCountable(S)$: The set $S$ is countable.
   \item $IsEven(i)$: Integer $i$ is an even number (e.g., $-880$, $0$, $1938$).
   \item $IsFinite(S)$: Set $S$ is finite.
   \item $IsInfinite(S)$: Set $S$ is infinite.
@@ -74,9 +75,13 @@ Therefore, I define the additional predicates and functions in this document tha
 % =============================================================================
 
 \begin{itemize}
-  \item $MaxElement(S) \rightarrow e$: $HasMaxElement(S) \land e = sup S$
-  \item $MinElement(S) \rightarrow e$: $HasMinElement(S) \land e = inf S$
-  \item $PickElement(S) \rightarrow e$: Pick an element from the set $S$ and return it as $e$.
+  \item $FindMaximum(S) \rightarrow e$: $HasMaximum(S) \land e = sup S$
+  \item $FindMinimum(S) \rightarrow e$: $HasMinimum(S) \land e = inf S$
+  \item $FindMaximumMinimum(S) \rightarrow (min, max)$: $HasMinimum(S) \land HasMaximum(S) \land min = inf S \land
+          max = sup S$.
+  \item $PickElement(S) \rightarrow e$: Pick an arbitrary element $e$ from the set $S$.
+  \item $PickElement(S, pred(e)) \rightarrow e$: Pick an element $e$ from the set $S$ that satisfies the predicate
+        $pred$.
 \end{itemize}
 
 \end{document}
