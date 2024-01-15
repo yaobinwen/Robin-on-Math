@@ -6,6 +6,7 @@
 \usepackage{float}
 \usepackage[letterpaper, textwidth=7.5in, textheight=8in]{geometry}
 \usepackage{parskip}
+\usepackage{pseudocode}
 \usepackage{xcolor}
 
 \title{Exercises in \textit{Basic Analysis I: Introduction to Real Analysis, Volume 1}}
@@ -60,48 +61,130 @@ Let $S$ be an ordered set. Let $A \subset S$ be a nonempty finite subset. Then $
 exists and is in $A$ and $sup A$ exists and is in $A$. Hint: Use induction.
 
 % ------------------------------
-\subsubsection{Proof}
+\subsubsection{Breakdown}
 % ------------------------------
 
-\textbf{Proof}: Let's use induction to prove it.
+This exercise consists of many smaller parts, so let me list all of them. Let $S$ be an ordered set. Let $A \subset S$
+be a nonempty finite subset. Then:
+\begin{enumerate}
+  \item[(1a)] $A$ is bounded above.
+  \item[(1b)] $sup A$ exists.
+  \item[(1c)] $sup A \in A$.
+  \item[(2a)] $A$ is bounded below.
+  \item[(2b)] $inf A$ exists.
+  \item[(2c)] $inf A \in A$.
+\end{enumerate}
 
-Because $A$ is a nonempty finite set, that means $A$ has at least one element.
+I will prove with non-induction and then with induction.
 
-\textbf{(1)}: Let's examine the case in which $A$ has exactly one element. Suppose $A = \{ a_1 \}$, then we know
-$a_1 \in S$. Because $S$ is an ordered set, so $a_1 = a_1$. By the definition of $\le$, we can also say $a_1 \le a_1$.
-Then by definition of \textit{bounded above}, we can see that there exists $a_1 \in S$ such that $\forall x in A$,
-$x \le a_1$. Therefore, $A$ is bounded above and $a_1$ is an upper bound of $A$.
+% ------------------------------
+\subsubsection{Lemma 1.1.2 (A): A nonempty, (totally) ordered, finite set has the minimum and the maximum}
+% ------------------------------
 
-Similarly, by the definition of $\ge$, we can also say $a_1 \ge a_1$. Then by definition of \textit{bounded below}, we
-can see that there exists $a_1 \in S$ such that $\forall x in A, x \ge a_1$. Therefore, $A$ is bounded below and $a_1$
-is a lower bound of $A$.
+Consider the set $S$:
+\begin{enumerate}
+  \item $S \ne \emptyset$.
+  \item $IsChain(S)$ (i.e., totally ordered).
+  \item $IsFinite(S)$ (i.e., the algorithm can terminate).
+\end{enumerate}
 
-In sum, $A$ is bounded when $A$ has exactly one element.
+The following algorithm can find its minimum and its maximum:
 
-Now let's prove that $a_1$ is $A$'s supremum. Because $S$ is an ordered set, $\forall s \in S$, we know exactly one of
-$s < a_1$, $s = a_1$, or $s > a_1$ holds. If $s < a_1$, by definition of \textit{upper bound}, we know $s$ is not an
-upper bound of $A$. if $s > a_1$, we know $s$ is an upper bound of $A$. But because $s > a_1$, $s$ can't be equal to
-$a_1$, so this $s$ must not be in $A$. When $s = a_1$, that means $s$ is $a_1$ itself, and by the definition of upper
-bound, we can tell $a_1$ is also an upper bound. Therefore, $a_1$ is the upper bound of $A$ that whenever $s$ is any
-upper bound for $A$, we have $a_1 \le s$. So we can see $a_1$ is the supremum of $A$. Because $a_1 \in A$, we can see
-$sup A \in A$.
+\begin{pseudocode}[ruled]{FindMinimumMaximum}{S}
+  \LOCAL{min, max} \\
+  e \GETS \mbox{pick a random element from S} \\
+  min \GETS e \\
+  max \GETS e \\
+  S \GETS S \setminus \{e\} \\
+  \\
+  \WHILE (S \ne \emptyset) \DO
+  \BEGIN
+  e \GETS \mbox{pick a random element from S} \\
+  \IF e < min \THEN min \GETS e \\
+  \IF e > max \THEN max \GETS e \\
+  S \GETS S \setminus \{e\} \\
+  \END \\
+  \\
+  \RETURN{min, max}
+\end{pseudocode}
 
-Similarly, we can prove that $inf A \in A$.
+We can tell that:
+\begin{enumerate}
+  \item $min \in S$
+  \item $max \in S$
+  \item $\forall e \in S. (min \leqslant e \leqslant max)$.
+\end{enumerate}
 
-\textbf{(2)}: Let's assume that when $A$ has $N$ elements where $N \in \mathbb{N} \land N > 1$, $A$ is bounded and
-$inf A \in A$ and $sup A \in A$. Let's define $A = \{ a_1, a_2, \ldots, a_N \}$. Without losing the generality, let's
-order them in the ascending order so $a_1 \le a_2 \le \ldots \le a_N$. By the definition of upper bound and lower bound,
-we can also tell that $inf A = a_1$ and $sup A = a_N$.
+% ------------------------------
+\subsubsection{Proof (Non-induction)}
+% ------------------------------
 
-\textbf{(3)}: Now let's look at the case in which $A$ has $N+1$ elements where $N \in \mathbb{N} \land N > 1$. We can
-construct this new $A$ by adding exactly one more element $a_{N+1}$ into the $A$ in step (2). Then:
-\begin{itemize}
-  \item If $a_{N+1} \le a_1$, then $inf A = a_{N+1}$ and $sup A = a_N$.
-  \item If $a_1 \le a_{N+1} \le a_N$, then $inf A = a_1$ and $sup A = a_N$.
-  \item If $a_N \le a_{N+1}$, then $inf A = a_1$ and $sup A = a_{N+1}$.
-\end{itemize}
+Definition 1.1.2 defines ``upper bound'' and ``lower bound'' on a subset of the (totally) ordered
+set $S$. In Lemma 1.1.2 (A) above, we only thought about a totally ordered set $S$. However, because
+any set is a subset of itself, we can consider $S$ itself as a subset of $S$. Therefore, given
+$IsChain(S) \land S \subset S$:
+\begin{enumerate}
+  \item[(1)] $min, max \leftarrow FindMinimumMaximum(S)$ (Lemma 1.1.2 (A))
+  \item[(2)] $(max \in S \land (\forall x \in S. (x \leqslant max))) \rightarrow IsUpperBound(max, S, S)$.
+  \item[(3)] Suppose $\exists b \in S. (IsUpperBound(b, S, S) \land b < max)$:
+        \begin{enumerate}
+          \item $\because IsUpperBound(b, S, S) \therefore \forall x \in S. (x \leqslant b)$
+          \item $\because max \in S, \therefore max \leqslant b$
+          \item $\therefore (b < max \land max \leqslant b)$. Contradiction.
+          \item $\therefore \lnot \exists b \in S. (IsUpperBound(b, S, S) \land b < max)$
+          \item $\therefore \forall b. (IsUpperBound(b, S, S) \rightarrow max \leqslant b)$
+          \item $\therefore sup S = max$
+        \end{enumerate}
+  \item[(4)] $(min \in S \land (\forall x \in S. (x \geqslant min))) \rightarrow IsLowerBound(min, S, S)$.
+  \item[(5)] Suppose $\exists b \in S. (IsLowerBound(b, S, S) \land b > min)$:
+        \begin{enumerate}
+          \item $\because IsLowerBound(b, S, S) \therefore \forall x in S. (x \geqslant b)$
+          \item $\because min \in S \therefore min \geqslant b$
+          \item $\therefore (b > min \land min \geqslant b)$. Contradiction.
+          \item $\therefore \lnot \exists b \in S. (IsLowerBound(b, S, S) \land b > min)$
+          \item $\therefore \forall b. (IsLowerBound(b, S, S) \rightarrow min \geqslant b)$
+          \item $\therefore inf S = min$
+        \end{enumerate}
+\end{enumerate}
 
-In all the cases above, $A$ is bounded and $inf A \in A$ and $sup A \in A$.
+% ------------------------------
+\subsubsection{Proof (Induction)}
+% ------------------------------
+
+The exercise suggests induction. To use induction, we can describe the original problem in the form of ``P(n)'' where
+$n \in \mathbb{N}$ as follows:
+
+\begin{displayquote}
+  Let $S$ be an ordered set. Let $A = \{ a_n \in S: n \in \mathbb{N} \land n \ge 1 \}$. Then ...
+\end{displayquote}
+
+Now let's use induction to prove them one by one.
+
+\textbf{P(1) basis}:
+\begin{enumerate}
+  \item[(1)] $A = \{a_1\}$
+  \item[(2)] $\exists a_1 \in A. (\forall x in A. (x \leqslant a_1))$.
+  \item[(3)] $(2) \rightarrow (IsBoundedAbove(A, A) \land IsUpperBound(a_1, A, A) \land sup A = a_1)$.
+  \item[(4)] $\exists a_1 \in A. (\forall x in A. (x \geqslant a_1))$.
+  \item[(5)] $(4) \rightarrow (IsBoundedBelow(A, A) \land IsLowerBound(a_1, A, A) \land inf A = a_1)$.
+\end{enumerate}
+
+\textbf{P(1+1) basic of extension}:
+\begin{enumerate}
+  \item[(1)] Add a new element $a_2$ to $A$ in P(1).
+  \item[(2)] If $a_1 < a_2$, then it's easy to tell that $A'=\{a_1, a_2\}$ is bounded above and below, and $inf A' = a_1$
+        and $sup A' = a_2$.
+  \item[(3)] If $a_2 < a_1$, then define $b_1 = a_2$, $b_2 = a_1$, and let $A'=\{b_1, b_2\}$. It's easy to tell that $A'$
+        is bounded above and below, and $inf A' = b_1 = a_2$ and $sup A' = b_2 = a_1$.
+\end{enumerate}
+
+\textbf{P(1+k) extension}: In fact, if we repeat the process above $(k-1)$ times, we can construct P(1+k), i.e.,
+$A = \{a_1, a_2, \ldots, a_{1+k}\}$ where $inf A = a_1$ and $sup A = a_{1+k}$.
+
+\textbf{P(1+k+1)}:If we repeat the same process one more time over P(1+k), we can still construct P(1+k+1), i.e.,
+$A = \{a_1, a_2, \ldots, a_{1+k}, a_{1+k+1}\}$ where $inf A = a_1$ and $sup A = a_{1+k+1}$.
+
+$\blacksquare$
 
 % ******************************
 \subsection{Exercise 1.1.3}
@@ -211,22 +294,53 @@ This exercise is \textbf{NOT} asking us to prove that:
   \item Or, $A$ has infinite subsets.
 \end{itemize}
 
-\textbf{(1)}: Let's prove $A$ is infinite:
-\begin{itemize}
-  \item (a) For the sake of contradiction, assume $A$ is finite.
-  \item (b) According to Exercise 1.1.2, $sup A \in A$.
-  \item (c) But we already know $sup A \notin A$.
-  \item (d) (b) and (c) contradict, so the assumption (a) must be invalid. So $A$ is not finite, hence infinite.
-\end{itemize}
+\textbf{Part (1)}: Let's prove $A$ is infinite:
+\begin{enumerate}
+  \item[(a)] For the sake of contradiction, assume $A$ is finite.
+  \item[(b)] According to Exercise 1.1.2, $sup A \in A$.
+  \item[(c)] But we already know $sup A \notin A$.
+  \item[(d)] (b) and (c) contradict, so the assumption (a) must be invalid. So $A$ is not finite, hence infinite.
+\end{enumerate}
 
-\textbf{(2)}: Let's prove that $A$ contains an infinite subset:
-\begin{itemize}
-  \item (a) $A$ is infinite. (Part (1))
-  \item (b) $A \subset A$.
-  \item (c) $A$ contains at least one subset, $A$ itself, that's infinite. Let's call this subset $B$.
-\end{itemize}
+\textbf{Part (2)}: Let's prove that $A$ contains an infinite subset. Note that this question asks us to prove this:
+\[\exists B \subset A. (IsInfinite(B) \land IsCountable(B))\]
+It does \textbf{NOT} ask us to prove $\forall B \subset A. (IsInfinite(B) \rightarrow IsCountable(B))$. Therefore, as
+long as we can find/construct one countably infinite subset, we are done. To find this countably infinite subset, we
+need to prove the following lemma:
 
-\textbf{(3)}: \colorbox{red}{\textcolor{yellow}{TODO(ywen):}} Let's prove that $B$ is countable.
+\textbf{Lemma 1.1.6 (A)}: $\forall x \in A, \exists y \in A. (x \ne y \land x < y < sup A)$.
+
+For the sake of contradiction, assume $\exists x_0 \in A, \lnot \exists y \in A. (x_0 \ne y \land x_0 < y < sup A)$. In
+other words, $\forall y \in A. (y \leqslant x_0)$. According to Definition 1.1.2, $x_0$ is an upper bound of $A$. This
+contradicts with $sup A$ in two ways:
+\begin{enumerate}
+  \item[(1)] $(IsUpperBound(x_0, A, S) \land x_0 < sup A)$ $\rightarrow$ $x_0$ should be the supremum, not the current
+        $sup A$.
+  \item[(2)] If $x_0$ is the supremum, that means $sup A \in A$, contradicting with the condition $sup A \notin A$.
+\end{enumerate}
+
+Therefore, Lemma 1.1.6 (A) holds.
+
+With Lemma 1.1.6 (A) proven, we can construct a subset of $A$ as follows:
+
+\begin{pseudocode}[ruled]{ConstructCountablyInfiniteSubset}{A}
+  \LOCAL{i \GETS 1} \\
+  T \GETS \emptyset \\
+  t_i \GETS PickElement(A) \\
+  T \GETS T \cup \{t_i\} \\
+  \WHILE \TRUE \DO
+  \BEGIN
+  i \GETS i + 1 \\
+  t_i \GETS PickElement(A, (e > t_{i-1})) \\
+  T \GETS T \cup \{t_i\} \\
+  \END
+  \\
+  \RETURN{T}
+\end{pseudocode}
+
+The algorithm above doesn't terminate, but it does construct an infinite set $T \subset A$, and every element in $T$ is
+associated with a natural number in $\mathbb{N}$. Therefore, we can see $|T| = |\mathbb{N}|$. Therefore, $T \subset A$
+is countably infinite.
 
 % ******************************
 \subsection{Exercise 1.1.7}
