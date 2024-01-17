@@ -329,3 +329,9 @@ As of 2024-01-13, I haven't recorded the time of studying _CS103: Mathematical F
 
 1. _Introduction to Lattices and Order_: Chapter 1
 2. _Real Analysis_ (MIT OCW 18.100A): Exercises 1.1.2 and 1.1.6.
+
+## 2024-01-17 (Wed)
+
+- 05:50 ~ 06:50 (1h)
+
+1. _Introduction to Lattices and Order_: Chapter 1

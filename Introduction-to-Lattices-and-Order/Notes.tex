@@ -181,12 +181,12 @@ Let $P$ be the n-element set $\{0, 1, \ldots, n-1\}$:
 \subsection{Order-isomorphisms}
 % ******************************
 
-Let $P$ and $Q$ be ordered sets. If there exists a bijective function $\phi: P \rightarrow Q$ such that
+Let $P$ and $Q$ be ordered sets. If there exists a \textbf{bijective function} $\phi: P \rightarrow Q$ such that
 $\forall x, y \in P. (x \leqslant y \leftrightarrow \phi(x) \leqslant \phi(y))$, then $\phi$ is called an \textbf{order-
   isomorphism}. In this case, we can say $P$ and $Q$ are ``essentially the same'', or ``(order-)isomorphic'', and write
 $P \cong Q$.
 
-Note that \textbf{not every binjective function between ordered sets is an order-isomorphism}. Consider $P = Q = \mathbf{2}$
+Note that \textbf{not every bijective function between ordered sets is an order-isomorphism}. Consider $P = Q = \mathbf{2}$
 but $\phi(0) = 1$ and $\phi(1) = 0$.
 
 The order-isomorphism $\phi: P \rightarrow Q$ has a well-defined inverse, $\phi^{-1}: Q \rightarrow P$ which is also an
@@ -223,11 +223,15 @@ be proven by using order-isomorphism's definition:
           \Rrightarrow)$ and $(\mathcal{P}(X); \subset)$
 \end{itemize}
 
-% ******************************
-\subsection{Examples from social science and computer science}
-% ******************************
+% =============================================================================
+\section{Examples from social science and computer science}
+% =============================================================================
 
 \colorbox{red}{TODO(ywen)}: Skipped for now, but may revisit these sections later.
+
+% =============================================================================
+\section{Diagrams}
+% =============================================================================
 
 % ******************************
 \subsection{Covering relation}
@@ -253,7 +257,7 @@ Examples of covering relation:
 \end{itemize}
 
 % ******************************
-\subsection{Diagrams}
+\subsection{Hasse Diagrams}
 % ******************************
 
 Let $P$ be a \textbf{finite} ordered set. We can represent $P$ by a configuration of circles (representing the elements
@@ -296,6 +300,67 @@ can see that:
   \draw (c) -- (e);
   \draw (d) -- (g);
 \end{tikzpicture}
+
+% ------------------------------
+\subsubsection{Lemma 1.17}
+% ------------------------------
+
+Let $P$ and $Q$ be finite ordered sets and let $\phi: P \rightarrow Q$ be a bijective function. Then the following are
+equivalent:
+\begin{enumerate}
+  \item[(i)] $\phi$ is an order-isomorphism.
+  \item[(ii)] $x < y$ in $P$ if and only if $\phi(x) < \phi(y)$ in $Q$.
+  \item[(iii)] $x \lessdot y$ in $P$ if and only if $\phi(x) \lessdot \phi(y)$ in $Q$.
+\end{enumerate}
+
+% ------------------------------
+\subsubsection{Proposition 1.18}
+% ------------------------------
+
+Two finite ordered sets $P$ and $Q$ are order-isomorphism if and only if they can be drawn with identical diagrams.
+
+% =============================================================================
+\section{Constructing/destructing ordered sets}
+% =============================================================================
+
+% ******************************
+\subsection{Duality}
+% ******************************
+
+Given any ordered set $P$, we can form a new ordered set $P^{\theta}$ (the \textbf{dual} of P) by defining $x \leqslant y$
+to hold in $P^{\theta}$ if and only if $y \leqslant x$ holds in $P$. For $P$ finite, we obtain a diagram for $P^{\theta}$
+simply by \textbf{``turning upside down''} a diagram for P.
+
+In general, given any statement $\Phi$ about ordered sets, we obtain the \textbf{dual statement} $\Phi^{\theta}$ by
+replacing each occurrence of $\leqslant$ by $\geqslant$ and vice versa.
+
+% ------------------------------
+\subsubsection{The Duality Principle}
+% ------------------------------
+
+Given a statement $\Phi$ about ordered sets which is true in \textbf{all} ordered sets, the dual statement $\Phi^{\theta}$
+is also true in \textbf{all} ordered sets.
+
+% ******************************
+\subsection{Bottom and top}
+% ******************************
+
+Let $P$ be an ordered set. We say $P$ has a bottom element if there exists $\bot \in P$ (called \textbf{bottom}) with
+the property that $\forall x \in P. (\bot \leqslant x)$. Dually, $P$ has a top element if there exists $\top \in P$
+such that $\forall x \in P. (x \leqslant \top)$ (called \textbf{top}).
+
+Note that:
+\begin{enumerate}
+  \item $\bot$ is \textbf{unique} when it exists; dually, $\top$ is \textbf{unique} when it exists.
+        \begin{itemize}
+          \item The proof is simple: Suppose the bottom exists and there are two bottoms $b_1, b_2 \in P$ and $b_1 \ne b_2$.
+                By definition of bottom, $b_1 \leqslant b_2$ and $b_2 \leqslant b_1$, but by definition of an ordered
+                set, $(b_1 \leqslant b_2 \land b_2 \leqslant b_1) \rightarrow b_1 = b_2$, which contradicts with the
+                assumption that $b_1 \ne b_2$. So if an ordered set $P$ has a bottom, it must be unique.
+        \end{itemize}
+  \item $\bot$ or $\top$ \textbf{may not always exist}, because the definition requires $\bot$ or $\top$ be comparable
+        with \textbf{every other} element in $P$ but this may not always be true.
+\end{enumerate}
 
 % =============================================================================
 %
