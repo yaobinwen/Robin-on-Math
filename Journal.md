@@ -333,5 +333,6 @@ As of 2024-01-13, I haven't recorded the time of studying _CS103: Mathematical F
 ## 2024-01-17 (Wed)
 
 - 05:50 ~ 06:50 (1h)
+- 20:48 ~ 22:17 (1h28m)
 
 1. _Introduction to Lattices and Order_: Chapter 1

@@ -359,8 +359,90 @@ Note that:
                 assumption that $b_1 \ne b_2$. So if an ordered set $P$ has a bottom, it must be unique.
         \end{itemize}
   \item $\bot$ or $\top$ \textbf{may not always exist}, because the definition requires $\bot$ or $\top$ be comparable
-        with \textbf{every other} element in $P$ but this may not always be true.
+        with \textbf{every other} element in $P$ but this may not always be true. As a result:
+        \begin{itemize}
+          \item A finite chain always has bottom and top elements.
+          \item An infinite chain may not. For example, $\mathbb{N}$ has bottom element $1$ but no top; $\mathbb{Z}$
+                has neither bottom nor top.
+          \item Bottom and top do not exist in any antichains with more than one element.
+        \end{itemize}
 \end{enumerate}
+
+% ------------------------------
+\subsubsection{Lifting} \label{ch01-lifting}
+% ------------------------------
+
+Lack of a bottom element can be easily remedied by adding one. Given an ordered set $P$ (with or without $\bot$), we
+form $P_{\bot}$ (called $P$ \textbf{``lifted''}) as follows. Take an element $\mathbf{0} \notin P$, define $P_{\bot} =
+  P \cup \{\mathbf{0}\}$, and define $\leqslant$ by
+\[x \leqslant y \leftrightarrow (\forall x, y \in P. (x = \mathbf{0} \lor x \leqslant y))\]
+
+Intuitively, we just defined an element $\mathbf{0}$ that is less than every other element in $P$.
+
+% ------------------------------
+\subsubsection{Flat}
+% ------------------------------
+
+Any set $S$ can be transformed into a ordered set with $\bot$ as follows:
+\begin{enumerate}
+  \item[Step 1]: Order $S$ by making it an antichain $\bar{S}$.
+  \item[Step 2]: Form $\bar{S}_{\bot}$ by following the steps in the section \ref{ch01-lifting}.
+\end{enumerate}
+
+The ordered set $\bar{S}_{\bot}$ that's obtained in this way is called a \textbf{flat}. Intuitively, all the elements
+in $S$ are ``flattened'' and a bottom is added below all of them.
+
+\begin{tikzpicture}[scale=.7]
+  \node[circle, draw=black, text=black]                   (a) at (0, 0)  {};
+  \node[circle, draw=black, text=black]                   (b) at (2, 0)  {};
+  \node[circle, draw=black, text=black]                   (c) at (4, 0)  {};
+  \node[circle, draw=black, text=black]                   (d) at (6, 0)  {};
+  \node                                                   (e) at (8, 0)  {$\cdots$};
+  \node[circle, draw=black, text=black, label={0:$\bot$}] (f) at (3, -2) {};
+  \node                                                   (g) at (6, -2)  {$\mathbb{N}_{\bot}$};
+
+  \draw (a) -- (f);
+  \draw (b) -- (f);
+  \draw (c) -- (f);
+  \draw (d) -- (f);
+\end{tikzpicture}
+
+% ******************************
+\subsection{Maximal/minimal/maximum/minimum}
+% ******************************
+
+Let $P$ be an ordered set and let $Q \subset P$. Then $a \in Q$ is a \textbf{maximal element} of $Q$ if $\forall x \in
+  Q. (a \leqslant x \rightarrow a = x)$.
+
+% NOTE(ywen) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\noindent\rule[-9pt]{1cm}{10pt}\rule{10cm}{0.4pt}
+
+\colorbox{lime}{NOTE(ywen)}: Understanding the definition of ``maximal element''.
+
+Note that, $\forall m, n \in Q$, they can have one of the following relations, by definition of ordered sets:
+\begin{enumerate}
+  \item $m \leqslant n \land m \ngeqslant n$
+  \item $m \geqslant n \land m \nleqslant n$
+  \item $m = n$ (i.e., $m \leqslant n \land m \geqslant n$)
+  \item $m \parallel n$ (i.e., $m \nleqslant n \land m \ngeqslant n$)
+\end{enumerate}
+
+The definition of maximal element of $Q$ needs to compare $a$ with \textbf{every other} element $x$ in $Q$. So, of
+course, there can be four theoretically possible results:
+\begin{enumerate}
+  \item $a \leqslant x \land a \ngeqslant x$
+  \item $a \geqslant x \land a \nleqslant x$
+  \item $a = x$ (i.e., $a \leqslant x \land a \geqslant x$)
+  \item $a \parallel x$ (i.e., $a \nleqslant x \land a \ngeqslant x$)
+\end{enumerate}
+
+Observe that $a \leqslant x$ occurs in case 1 and case 3. The definition then says $\forall x \in Q, (a \leqslant x
+  \rightarrow a = x)$. This actually eliminates case 1. As a result, in $Q$, the element $a$, when compared to any other
+element $x$, is either greater than $x$ (i.e., case 2), or equal to $x$ (i.e., case 3), or not comparable (i.e., case
+4). But $a$ is \textbf{never} less than $x$. We thus call $a$ a maximal element.
+
+\noindent\rule{10cm}{0.4pt}\rule{1cm}{10pt}
+% <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTE(ywen)
 
 % =============================================================================
 %
