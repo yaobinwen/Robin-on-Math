@@ -301,6 +301,43 @@ can see that:
   \draw (d) -- (g);
 \end{tikzpicture}
 
+% NOTE(ywen) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\noindent\rule[-9pt]{1cm}{10pt}\rule{10cm}{0.4pt}
+
+\colorbox{lime}{NOTE(ywen)}: Why do we draw the diagram based on the covering relations?
+
+Probably because drawing based on covering relations can produce the minimal diagram that still preserve all the binary
+relations between elements. For example, in the ordered set $S = \{a, b, c\}$ where $a \leqslant b, b \leqslant c$. The
+relation $a \leqslant c$ can be implied by the transitivity of ordered set, but it is not a covering relation.
+
+If we only use the covering relations to draw diagrams, we only need to draw two segments for this set $S$:
+
+\begin{tikzpicture}[scale=.7]
+  \node[circle, draw=black, text=black, label={135:a}] (a) at (0, 0) {};
+  \node[circle, draw=black, text=black, label={135:b}] (b) at (0, 2) {};
+  \node[circle, draw=black, text=black, label={135:c}] (c) at (0, 4) {};
+
+  \draw (a) -- (b) -- (c);
+\end{tikzpicture}
+
+However, should we have been required to draw diagrams using all the relations, we'd have to draw three segments for
+$S$, making the diagram more complicated:
+
+\begin{tikzpicture}[scale=.7]
+  \node[circle, draw=black, text=black, label={135:a}] (a) at (0, 0) {};
+  \node[circle, draw=black, text=black, label={45:b}] (b) at (2, 2) {};
+  \node[circle, draw=black, text=black, label={135:c}] (c) at (0, 4) {};
+
+  \draw (a) -- (b) -- (c);
+  \draw (a) -- (c);
+\end{tikzpicture}
+
+If $S$ is a very large set, drawing based on all relations can make the diagram messier. However, drawing based on the
+covering relations can make the diagram more concise while still deliver all the needed ordering information.
+
+\noindent\rule{10cm}{0.4pt}\rule{1cm}{10pt}
+% <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTE(ywen)
+
 % ------------------------------
 \subsubsection{Lemma 1.17}
 % ------------------------------
@@ -412,7 +449,11 @@ in $S$ are ``flattened'' and a bottom is added below all of them.
 % ******************************
 
 Let $P$ be an ordered set and let $Q \subset P$. Then $a \in Q$ is a \textbf{maximal element} of $Q$ if $\forall x \in
-  Q. (a \leqslant x \rightarrow a = x)$.
+  Q. (a \leqslant x \rightarrow a = x)$. There can be multiple maximal elements in $Q$. We denote the set of maximal
+elements of $Q$ by \textbf{Max$Q$}. If $Q$ has a top element $\top_{Q}$, then Max$Q$ = \{$\top_{Q}$\}. In this case,
+$\top_{Q}$ is called the \textbf{greatest} (or \textbf{maximum}) element of $Q$. We write $\top_{Q}$ = max$Q$.
+
+A \textbf{minimal element}, the \textbf{least} (or \textbf{minimum}) element of $Q$, if they exist, are defined dually.
 
 % NOTE(ywen) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 \noindent\rule[-9pt]{1cm}{10pt}\rule{10cm}{0.4pt}
@@ -441,8 +482,108 @@ Observe that $a \leqslant x$ occurs in case 1 and case 3. The definition then sa
 element $x$, is either greater than $x$ (i.e., case 2), or equal to $x$ (i.e., case 3), or not comparable (i.e., case
 4). But $a$ is \textbf{never} less than $x$. We thus call $a$ a maximal element.
 
+\colorbox{lime}{NOTE(ywen)}: Therefore, in an antichain $S$, Max$S$ = Min$S$ = S.
+
+\colorbox{lime}{NOTE(ywen)}: According to the definition of ``top'', the maximum must be comparable with every other
+element in $Q$, while a maximal element may not be comparable with every other element in $Q$.
+
 \noindent\rule{10cm}{0.4pt}\rule{1cm}{10pt}
 % <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTE(ywen)
+
+In general, a subset $Q$ of an ordered set $P$ may have many maximal elements, just one, or none. Note $P$ and its
+subset $Q$ may be finite or infinite. Therefore, there are three cases to consider:
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|}
+    \cline{1-3}
+        & P        & $Q \subset P$ \\ [1ex] \cline{1-3}
+    (1) & infinite & infinite      \\ [0.5ex] \cline{1-3}
+    (2) & infinite & finite        \\ [0.5ex] \cline{1-3}
+    (3) & finite   & finite        \\ [0.5ex] \cline{1-3}
+  \end{tabular}
+\end{table}
+
+Intuitively, the number of maximal elements in $Q$ depends on whether $Q$ is ``bounded above'' (see real mathematical
+analysis). If $Q$ is bounded above, it has maximal elements; if $Q$ is not bounded above, it doesn't have any maximal
+elements. For example:
+\begin{enumerate}
+  \item[(1)] Consider $P = \mathbb{N}$ which is an infinite ordered set:
+        \begin{enumerate}
+          \item Its subset $Q = \{x: x = 2n, n \in \mathbb{N}\}$ does not have any maximal elements because $Q$ is not
+                ``bounded above''.
+          \item Its subset $Q = \{x: x \leqslant 0, n \in \mathbb{N}\}$ has one maximal element (which is also its
+                maximum) 0.
+        \end{enumerate}
+  \item [(1')] (Still consider case (1)) Consider $P = \mathcal{P}(\mathbb{N})$ which is an infinite ordered set:
+        \begin{enumerate}
+          \item $\mathbb{N}$ is the only top element in $P$ (In contrast, $\emptyset$ is the only bottom element in
+                $P$). Therefore, its subset $Q = P \setminus \mathbb{N}$ does not have any top element. However,
+                $\forall n \in \mathbb{N}, \mathbb{N} \setminus \{n\} \in MaxQ$. Intuitively, in the Hasse diagram of
+                $\mathcal{P}(\mathbb{N})$, $\mathbb{N}$ is the only element on the top level (hence the top element).
+                Immediately below it are all the subsets of $\mathbb{N} \setminus \{n\}$ which are the maximal elements
+                in $\mathcal{P}(\mathbb{N}) \setminus \mathbb{N}$.
+          \item Its subset $Q$ that consists of all \textbf{finite} subsets of $\mathbb{N}$ does not have any maximal
+                elements. Consider a finite subset of $\mathbb{N}$: $\{1, 2, \ldots, k\}, k \in \mathbb{N}$. It's true
+                that this subset is either greater than the subsets ``immediately below'' it (e.g., $\emptyset$,
+                $\{1, 2, \ldots, k-1\}$, $\{1, 2, \ldots, k-2\}$) or is not comparable with other finite subsets (e.g.,
+                $\{k+1, k+2, \ldots, k+m\}$). Therefore, it looks like $\{1, 2, \ldots, k\}$ could be a maximal element.
+                However, there is always another finite subset of $\mathbb{N}$, $\{1, 2, \ldots, k, k+1\}$, that is
+                greater than $\{1, 2, \ldots, k\}$. Therefore, there is no ``upper bound'', hence no maximal elements.
+        \end{enumerate}
+  \item[(2)] It's easy to see that a finite nonempty subset $Q$ has at least one maximal element; if $Q$ is $\emptyset$,
+        it doesn't have any maximal element.
+  \item[(3)] It's easy to see that a finite nonempty subset $Q$ has at least one maximal element; if $Q$ is $\emptyset$,
+        it doesn't have any maximal element.
+\end{enumerate}
+
+% ******************************
+\subsection{Sums of ordered sets}
+% ******************************
+
+The ordered sets $P$ and $Q$ we consider here are \textbf{disjoint}. This is no real restriction since we can always
+find isomorphic copies of the original ordered sets which are disjoint; see Exercise 1.9 for a. formal approach to this
+process.
+
+% ------------------------------
+\subsubsection{Disjoint union}
+% ------------------------------
+
+Suppose that $P$ and $Q$ are (disjoint) ordered sets. The \textbf{disjoint union} $P \dot{\cup} Q$ of $P$ and $Q$ is
+the ordered set formed by defining $x \leqslant y$ in $P \dot{\cup} Q$ if and only if either ($x,y \in P$ and
+$x \leqslant y$ in P) or ($x,y \in Q$ and $x \leqslant y$ in Q).
+
+A diagram for $P \dot{\cup} Q$ is formed by placing \textbf{side by side} diagrams for $P$ and $Q$.
+
+% ------------------------------
+\subsubsection{Linear sum}
+% ------------------------------
+
+Suppose that $P$ and $Q$ are (disjoint) ordered sets. The \textbf{linear sum} $P \oplus Q$ is defined by taking the
+following order relation on $P \cup Q: x \leqslant y$ if and only if:
+\begin{align*}
+        & x, y \in P \land x \leqslant y, \\
+  or \  & x, y \in Q \land x \leqslant y, \\
+  or \  & x \in P \lor y \in Q
+\end{align*}
+
+A diagram for $P \oplus Q$ (when $P$ and $Q$ are finite) is obtained by placing a diagram for $P$ directly below a
+diagram for $Q$ and then adding a line segment from each maximal element of $P$ to each minimal element of $Q$.
+
+% ------------------------------
+\subsubsection{Associativity}
+% ------------------------------
+
+The operations $\dot{\cup}$ and $\oplus$ are both associative: for pairwise disjoint ordered sets $P$, $Q$, and $R$:
+\[P \dot{\cup} (Q \dot{\cup} R) = (P \dot{\cup} Q) \dot{\cup} R\]
+and
+\[P \oplus (Q \oplus R) = (P \oplus Q) \oplus R\]
+
+% ------------------------------
+\subsubsection{$\mathbf{M}_n$}
+% ------------------------------
+
+We denote by $\mathbf{M}_n$ the linear sum $\mathbf{1} \oplus \bar{\mathbf{n}} \oplus \mathbf{1}$.
 
 % =============================================================================
 %
