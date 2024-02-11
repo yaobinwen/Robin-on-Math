@@ -96,6 +96,7 @@ mathematical language, we need to slightly change them to include the case of eq
 is a descendant of Peter''), the result is false and doesn't meet the requirement of reflexivity. Therefore, we need to
 change the binary relation to ``is him-/herself or is a descendant of'' to make it a ``$\le$'' relation.
 
+\noindent\rule{10cm}{0.4pt}\rule{1cm}{10pt}
 % <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTE(ywen)
 
 % NOTE(ywen) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -584,6 +585,127 @@ and
 % ------------------------------
 
 We denote by $\mathbf{M}_n$ the linear sum $\mathbf{1} \oplus \bar{\mathbf{n}} \oplus \mathbf{1}$.
+
+% ******************************
+\subsection{Products}
+% ******************************
+
+Let $P_1, \ldots, P_n$ be ordered sets. The Cartesian product $P_1 \times \cdots \times P_n$ can be made into an ordered
+set by imposing the coordinate-wise order defined by:
+\[
+  (x_1, \ldots, x_n) \leqslant (y_1, \ldots, y_n) \Leftrightarrow (\forall i) x_i \leqslant y_i \ in \ P_i
+\]
+
+Given an ordered set $P$, the notation $P^n$ is used as shorthand for the n-fold product $P \times \ldots \times P$.
+
+% NOTE(ywen) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\noindent\rule[-9pt]{1cm}{10pt}\rule{10cm}{0.4pt}
+
+\colorbox{lime}{NOTE(ywen)}: More on the Cartesian product.
+
+In general, given two sets $A$ and $B$, its Cartesian product $A \times B$ is defined as $\{(a, b) | a \in A \land b \in B\}$.
+Therefore, suppose $A = \{x, y\}$ and $B = \{1, 2\}$, then $A \times B = \{(x, 1), (x, 2), (y, 1), (y, 2)\}$.
+
+This can be applied to any $n$ sets: Given sets $P_1, \ldots, P_n$, the Cartesian product $P_1 \times \cdots \times P_n$
+is defined as $\{(p_1, \ldots, p_n) | p_1 \in P_1 \land \ldots \land p_n \in P_n\}$. Here, $p_i$ can be seen as an
+arbitrarily chosen element from the set $P_i$.
+
+If $P_1$ is an ordered set, that means given any two elements from $P_i$, denoted as $p_{11}$ and $p_{12}$, we have
+$p_{11} \leqslant p_{12}$ or $p_{12} \leqslant p_{11}$. Let's just assume it's $p_{11} \leqslant p_{12}$. This can be
+applied to $P_2, \ldots, P_n$, namely, we can have $p_{21} \leqslant p_{22}$, $\ldots$, $p_{n1} \leqslant p_{n2}$.
+
+Then both $(p_{11}, p_{21}, \ldots, p_{n1})$ and $(p_{12}, p_{22}, \ldots, p_{n2})$ are elements of the Cartesian
+product $P_1 \times \cdots \times P_n$. If we use $x_i$ to denote $p_{1i}$, and use $y_i$ to denote $p_{2i}$, then we
+have $(x_1, \ldots, x_n)$ and $(y_1, \ldots, y_n)$ are both elements in $P_1 \times \cdots \times P_n$.
+
+\colorbox{lime}{NOTE(ywen)}: Not all the elements in $P_1 \times \cdots \times P_n$ are comparable.
+
+Note that the order that's defined on the Cartesian product $P_1 \times \cdots \times P_n$ requires that \textbf{every}
+pair of $x_i$ and $y_i$ must be $x_i \leqslant y_i$. Therefore, for two elements $(x_1, \ldots, x_n)$ and $(y_1, \ldots, y_n)$,
+if $x_1 \leqslant y_1$, $\ldots$, $x_{k-1} \leqslant y_{k-1}$, $x_{k+1} \leqslant y_{k+1}$, $\ldots$, $x_n \leqslant y_n$,
+but $x_k > y_k$, then $(x_1, \ldots, x_n)$ and $(y_1, \ldots, y_n)$ are \textbf{not} comparable.
+
+\noindent\rule{10cm}{0.4pt}\rule{1cm}{10pt}
+% <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTE(ywen)
+
+% ------------------------------
+\subsubsection{Hasse diagrams for products (example 1)}
+% ------------------------------
+
+Consider the two ordered sets:
+\begin{enumerate}
+  \item $P = \{1, 2\}$ where $1, 2 \in \mathbb{N}$, so $1 \lessdot 2$.
+  \item $Q = \{7, 8, 9\}$ where $7, 8, 9 \in \mathbb{N}$, so $7 \lessdot 8 \lessdot 9$.
+\end{enumerate}
+
+So the Hasse diagrams for $P$ and $Q$ are:
+
+\begin{tikzpicture}[scale=.7]
+  \node[circle, draw=black, text=black, label={135:1}] (1) at (0, 0) {};
+  \node[circle, draw=black, text=black, label={135:2}] (2) at (0, 2) {};
+
+  \node[circle, draw=black, text=black, label={135:7}] (7) at (2, 0) {};
+  \node[circle, draw=black, text=black, label={135:8}] (8) at (2, 2) {};
+  \node[circle, draw=black, text=black, label={135:9}] (9) at (2, 4) {};
+
+  \draw (1) -- (2);
+  \draw (7) -- (8) -- (9);
+\end{tikzpicture}
+
+The product of $P \times Q = \{(1, 7), (1, 8), (1, 9), (2, 7), (2, 8), (2, 9)\}$. According to the order defined above
+for the product, we have:
+\begin{enumerate}
+  \item $(1, 7) \leqslant (1, 8) \leqslant (1, 9)$
+  \item $(2, 7) \leqslant (2, 8) \leqslant (2, 9)$
+  \item $(1, 7) \leqslant (2, 7)$
+  \item $(1, 8) \leqslant (2, 8)$
+  \item $(1, 9) \leqslant (2, 9)$
+  \item $(1, 8)$ and $(2, 7)$ are not comparable.
+  \item $(1, 9)$ and $(2, 7)$ are not comparable.
+  \item $(1, 9)$ and $(2, 8)$ are not comparable.
+\end{enumerate}
+
+We can also see the covering relations as follows:
+\begin{enumerate}
+  \item $(1, 7) \lessdot (1, 8) \lessdot (1, 9)$
+  \item $(2, 7) \lessdot (2, 8) \lessdot (2, 9)$
+  \item $(1, 7) \lessdot (2, 7)$
+  \item $(1, 8) \lessdot (2, 8)$
+  \item $(1, 9) \lessdot (2, 9)$
+\end{enumerate}
+
+So we can draw the following Hasse diagram for $P \times Q$:
+
+\begin{tikzpicture}[scale=.7]
+  \node[circle, draw=black, text=black, label={-45:(1, 7)}] (17) at (0, 0) {};
+  \node[circle, draw=black, text=black, label={-45:(1, 8)}] (18) at (2, 2) {};
+  \node[circle, draw=black, text=black, label={-45:(1, 9)}] (19) at (4, 4) {};
+  \node[circle, draw=black, text=black, label={135:(2, 7)}] (27) at (-2, 2) {};
+  \node[circle, draw=black, text=black, label={135:(2, 8)}] (28) at (0, 4) {};
+  \node[circle, draw=black, text=black, label={135:(2, 9)}] (29) at (2, 6) {};
+
+  \draw (17) -- (18) -- (19);
+  \draw (27) -- (28) -- (29);
+  \draw (17) -- (27);
+  \draw (18) -- (28);
+  \draw (19) -- (29);
+\end{tikzpicture}
+
+Note that $(1, 8)$ and $(2, 7)$ are not connected because they are not comparable; $(1, 9)$ and $(2, 7)$ are not
+connected because they are not comparable; $(1, 9)$ and $(2, 8)$ are not connected because they are not comparable.
+
+% ------------------------------
+\subsubsection{Lexicographic order}
+% ------------------------------
+
+Consider the ordered sets $X$ and $Y$. If we use the ordered defined above, then not all the elements in the product
+$X \times Y$ are comparable (see my notes above). However, we can also define the \textbf{lexicographic order}:
+\[
+  (x_1, x_2) \leqslant (y_1, y_2) \Leftrightarrow ((x_1 < y_1) \lor (x_1 = y_1 \land x_2 \leqslant y_2))
+\]
+
+By iteration a lexicographic order can be defined on any \textbf{finite} product of ordered sets.
+\colorbox{red}{TODO(ywen):} Can lexicographic order be defined on finite product of ordered sets only?
 
 % =============================================================================
 %
