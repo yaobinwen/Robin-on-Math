@@ -157,7 +157,7 @@ Suppose $IsOrdered(P) \land Q \subset P$. Then $Q$ \textbf{inherits} an order re
 has the order \textbf{inherited} from $P$.
 
 % ******************************
-\subsection{Chains and antichains}
+\subsection{Chains and antichains} \label{ch01-chains-and-antichains}
 % ******************************
 
 Let $P$ be an ordered set. Then $P$ is a \textbf{chain} if $\forall x, y \in P. (x \leqslant y \lor x \geqslant y)$
@@ -587,7 +587,7 @@ and
 We denote by $\mathbf{M}_n$ the linear sum $\mathbf{1} \oplus \bar{\mathbf{n}} \oplus \mathbf{1}$.
 
 % ******************************
-\subsection{Products}
+\subsection{Products} \label{ch01-products}
 % ******************************
 
 Let $P_1, \ldots, P_n$ be ordered sets. The Cartesian product $P_1 \times \cdots \times P_n$ can be made into an ordered
@@ -695,6 +695,95 @@ Note that $(1, 8)$ and $(2, 7)$ are not connected because they are not comparabl
 connected because they are not comparable; $(1, 9)$ and $(2, 8)$ are not connected because they are not comparable.
 
 % ------------------------------
+\subsubsection{Hasse diagrams for products (example 2)}
+% ------------------------------
+
+Let's consider $\mathbf{2}^4 = \mathbf{2} \times \mathbf{2} \times \mathbf{2} \times \mathbf{2}$, where
+$\mathbf{2} = \{0, 1\}$ (according to \ref{ch01-chains-and-antichains}). The elements in $\mathbf{2}^4$ are:
+\begin{enumerate}
+  \item $(0, 0, 0, 0)$
+  \item $(0, 0, 0, 1)$
+  \item $(0, 0, 1, 0)$
+  \item $(0, 0, 1, 1)$
+  \item $(0, 1, 0, 0)$
+  \item $(0, 1, 0, 1)$
+  \item $(0, 1, 1, 0)$
+  \item $(0, 1, 1, 1)$
+  \item $(1, 0, 0, 0)$
+  \item $(1, 0, 0, 1)$
+  \item $(1, 0, 1, 0)$
+  \item $(1, 0, 1, 1)$
+  \item $(1, 1, 0, 0)$
+  \item $(1, 1, 0, 1)$
+  \item $(1, 1, 1, 0)$
+  \item $(1, 1, 1, 1)$
+\end{enumerate}
+
+To study the order (which is defined in \ref{ch01-products}) of these elements, we can group them according to how many
+1's there are in each element:
+\begin{itemize}
+  \item Zero 1: $(0, 0, 0, 0)$
+  \item One 1: $(0, 0, 0, 1)$, $(0, 0, 1, 0)$, $(0, 1, 0, 0)$, $(1, 0, 0, 0)$
+  \item Two 1's: $(0, 0, 1, 1)$, $(0, 1, 0, 1)$, $(1, 0, 0, 1)$, $(0, 1, 1, 0)$, $(1, 0, 1, 0)$, $(1, 1, 0, 0)$
+  \item Three 1's: $(0, 1, 1, 1)$, $(1, 0, 1, 1)$, $(1, 1, 0, 1)$, $(1, 1, 1, 0)$
+  \item Four 1's: $(1, 1, 1, 1)$
+\end{itemize}
+
+So we can draw the following Hasse diagram for $\mathbf{2}^4$:
+
+\begin{tikzpicture}[scale=.7]
+  \node[circle, draw=black, text=black, label={-45:0000}] (0000) at (5, 0) {};
+  \node[circle, draw=black, text=black, label={-45:0001}] (0001) at (2, 2) {};
+  \node[circle, draw=black, text=black, label={-45:0010}] (0010) at (4, 2) {};
+  \node[circle, draw=black, text=black, label={-45:0100}] (0100) at (6, 2) {};
+  \node[circle, draw=black, text=black, label={-45:1000}] (1000) at (8, 2) {};
+  \node[circle, draw=black, text=black, label={-45:0011}] (0011) at (0, 4) {};
+  \node[circle, draw=black, text=black, label={-45:0101}] (0101) at (2, 4) {};
+  \node[circle, draw=black, text=black, label={-45:1001}] (1001) at (4, 4) {};
+  \node[circle, draw=black, text=black, label={-45:0110}] (0110) at (6, 4) {};
+  \node[circle, draw=black, text=black, label={-45:1010}] (1010) at (8, 4) {};
+  \node[circle, draw=black, text=black, label={-45:1100}] (1100) at (10, 4) {};
+  \node[circle, draw=black, text=black, label={-45:0111}] (0111) at (2, 6) {};
+  \node[circle, draw=black, text=black, label={-45:1011}] (1011) at (4, 6) {};
+  \node[circle, draw=black, text=black, label={-45:1101}] (1101) at (6, 6) {};
+  \node[circle, draw=black, text=black, label={-45:1110}] (1110) at (8, 6) {};
+  \node[circle, draw=black, text=black, label={-45:1111}] (1111) at (5, 8) {};
+
+  \draw (0000) -- (0001);
+  \draw (0000) -- (0010);
+  \draw (0000) -- (0100);
+  \draw (0000) -- (1000);
+  \draw (0001) -- (0011);
+  \draw (0001) -- (0101);
+  \draw (0001) -- (1001);
+  \draw (0010) -- (0011);
+  \draw (0010) -- (0110);
+  \draw (0010) -- (1010);
+  \draw (0100) -- (0101);
+  \draw (0100) -- (0110);
+  \draw (0100) -- (1100);
+  \draw (1000) -- (1001);
+  \draw (1000) -- (1010);
+  \draw (1000) -- (1100);
+  \draw (0011) -- (0111);
+  \draw (0011) -- (1011);
+  \draw (0101) -- (0111);
+  \draw (0101) -- (1101);
+  \draw (1001) -- (1011);
+  \draw (1001) -- (1101);
+  \draw (0110) -- (0111);
+  \draw (0110) -- (1110);
+  \draw (1010) -- (1011);
+  \draw (1010) -- (1110);
+  \draw (1100) -- (1101);
+  \draw (1100) -- (1110);
+  \draw (0111) -- (1111);
+  \draw (1011) -- (1111);
+  \draw (1101) -- (1111);
+  \draw (1110) -- (1111);
+\end{tikzpicture}
+
+% ------------------------------
 \subsubsection{Lexicographic order}
 % ------------------------------
 
@@ -706,6 +795,55 @@ $X \times Y$ are comparable (see my notes above). However, we can also define th
 
 By iteration a lexicographic order can be defined on any \textbf{finite} product of ordered sets.
 \colorbox{red}{TODO(ywen):} Can lexicographic order be defined on finite product of ordered sets only?
+
+% ******************************
+\subsection{Proposition}
+% ******************************
+
+Let $X = \{1, 2, \ldots, n\}$ and define $\phi: \mathcal{P}(X) \rightarrow \mathbf{2}^n$ by $\phi(A) = (\epsilon_1, \ldots, \epsilon_n)$
+where
+\[
+  \epsilon_i = \begin{cases}
+    1, & if \ i \in A    \\
+    0, & if \ i \notin A
+  \end{cases}
+\]
+
+Then $\phi$ is an order-isomorphism.
+
+% NOTE(ywen) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\noindent\rule[-9pt]{1cm}{10pt}\rule{10cm}{0.4pt}
+
+\colorbox{lime}{NOTE(ywen)}: Understanding the proposition: Before we look at its proof, we need to understand what
+this proposition is talking about. We can use $n = 2$ to understand it. When $n = 2$, the left side of $\phi$ is:
+\[
+  \{\emptyset, \{1\}, \{2\}, \{1, 2\}\}
+\]
+
+The right side of $\phi$ is
+\[
+  \mathbf{2}^2 = \{0, 1\} \times \{0, 1\} = \{(0, 0), (0, 1), (1, 0), (1, 1)\}
+\]
+
+So $\phi$ maps every element in $\mathcal{P}(\{1, 2\})$ to an element in $\{(0, 0), (0, 1), (1, 0), (1, 1)\}$ with the
+following rules:
+\begin{enumerate}
+  \item Let $\phi(\emptyset) = (\epsilon_1, \epsilon_2)$. Because $1 \notin \emptyset$, $\epsilon_1 = 0$; because
+        $2 \notin \emptyset$, $\epsilon_2 = 0$. Therefore, $\phi(\emptyset) = (0, 0)$.
+  \item Let $\phi(\{1\}) = (\epsilon_1, \epsilon_2)$. Because $1 \in \{1\}$, $\epsilon_1 = 1$; because $2 \notin \{1\}$,
+        $\epsilon_2 = 0$. Therefore, $\phi(\{1\}) = (1, 0)$.
+  \item Let $\phi(\{2\}) = (\epsilon_1, \epsilon_2)$. Because $1 \notin \{2\}$, $\epsilon_1 = 0$; because $2 \in \{2\}$,
+        $\epsilon_2 = 1$. Therefore, $\phi(\{2\}) = (0, 1)$.
+  \item Let $\phi(\{1, 2\}) = (\epsilon_1, \epsilon_2)$. Because $1 \in \{1, 2\}$, $\epsilon_1 = 1$; because $2 \in \{1, 2\}$,
+        $\epsilon_2 = 1$. Therefore, $\phi(\{1, 2\}) = (1, 1)$.
+\end{enumerate}
+
+The proposition is trying to say that $\phi$ is an order-isomorphism.
+
+\noindent\rule{10cm}{0.4pt}\rule{1cm}{10pt}
+% <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTE(ywen)
+
+\colorbox{red}{TODO(ywen):} Study the proof.
 
 % =============================================================================
 %
