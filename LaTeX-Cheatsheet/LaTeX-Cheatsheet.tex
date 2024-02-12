@@ -1,6 +1,7 @@
 \documentclass[12pt, letterpaper, oneside]{article}
 \usepackage{amsmath}
 \usepackage{csquotes}
+\usepackage{empheq}
 \usepackage{float}
 \usepackage{hyperref}
 \usepackage{listings}
@@ -78,6 +79,28 @@ This paragraph is below the quoted part.
             & = u_{11} + \ldots + u_{m1} + u_{12} + \ldots + u_{m2}     \\
             & = (u_{11} + u_{12}) + \ldots + (u_{m1} + u_{m2})
 \end{align*}
+
+% =============================================================================
+\section{Embraces}
+% =============================================================================
+
+\begin{empheq}[left=\empheqlbrace]{align*}
+  -bd &= 1 \\
+  bc &= 0
+\end{empheq}
+
+\begin{empheq}[left=\empheqlbrace]{align}
+  &ac - bd = 1 \\
+  &ad + bc = 0
+\end{empheq}
+
+\[
+  t \infty = \begin{cases}
+    -\infty, & if \ t < 0 \\
+    0,       & if \ t = 0 \\
+    \infty,  & if \ t > 0
+  \end{cases}
+\]
 
 % =============================================================================
 \section{Negation}
