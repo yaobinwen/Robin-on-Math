@@ -362,3 +362,9 @@ As of 2024-01-13, I haven't recorded the time of studying _CS103: Mathematical F
 - 16:00 ~ 19:40 (3h40m)
 
 1. _Introduction to Lattices and Order_: Chapter 1
+
+## 2024-02-15 (Thu)
+
+- 14:51 ~ 16:19 (1h28m)
+
+1. _Real Analysis_ (MIT OCW 18.100A): Review notes.
