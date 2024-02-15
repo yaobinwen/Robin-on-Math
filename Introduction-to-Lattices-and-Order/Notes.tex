@@ -478,12 +478,13 @@ course, there can be four theoretically possible results:
   \item $a \parallel x$ (i.e., $a \nleqslant x \land a \ngeqslant x$)
 \end{enumerate}
 
-Observe that $a \leqslant x$ occurs in case 1 and case 3. The definition then says $\forall x \in Q, (a \leqslant x
-  \rightarrow a = x)$. This actually eliminates case 1. As a result, in $Q$, the element $a$, when compared to any other
-element $x$, is either greater than $x$ (i.e., case 2), or equal to $x$ (i.e., case 3), or not comparable (i.e., case
-4). But $a$ is \textbf{never} less than $x$. We thus call $a$ a maximal element.
+Observe that $a \leqslant x$ occurs in case 1 and case 3. The definition then says $\forall x \in Q. (a \leqslant x \rightarrow a = x)$.
+This actually eliminates case 1 because $a \neq x$ in case 1. As a result, in $Q$, the element $a$, when compared to
+any other element $x$, is either greater than $x$ (i.e., case 2), or equal to $x$ (i.e., case 3), or not comparable
+(i.e., case 4). But $a$ is \textbf{never} less than $x$. We thus call $a$ a \textbf{maximal} element.
 
-\colorbox{lime}{NOTE(ywen)}: Therefore, in an antichain $S$, Max$S$ = Min$S$ = S.
+\colorbox{lime}{NOTE(ywen)}: Therefore, in an antichain $S$, Max$S$ = Min$S$ = S (i.e., in an antichain, every element
+is the maximal or the minimal element of the set that consists of only itself.)
 
 \colorbox{lime}{NOTE(ywen)}: According to the definition of ``top'', the maximum must be comparable with every other
 element in $Q$, while a maximal element may not be comparable with every other element in $Q$.
