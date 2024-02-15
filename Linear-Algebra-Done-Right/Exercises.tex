@@ -2,7 +2,14 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{empheq}
+\usepackage{hyperref}
 \usepackage[letterpaper, textwidth=7.5in, textheight=8in]{geometry}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=magenta,
+  urlcolor=blue,
+}
 \usepackage{csquotes}
 \usepackage{parskip}
 
@@ -114,9 +121,9 @@ Solution:
     (\frac{-1 + \sqrt{3}i}{2})^3
     & = (\frac{-1 + \sqrt{3}i}{2})^2 \cdot \frac{-1 + \sqrt{3}i}{2} \\
     & = \frac{1}{4}\bigl[ (-1)^2 - \sqrt{3}i - \sqrt{3}i + 3i^2 \bigr] \cdot
-      \frac{-1 + \sqrt{3}i}{2} \\
+    \frac{-1 + \sqrt{3}i}{2} \\
     & = \frac{1}{4}\bigl[ 1 - 2\sqrt{3}i - 3 \bigr] \cdot
-      \frac{-1 + \sqrt{3}i}{2} \\
+    \frac{-1 + \sqrt{3}i}{2} \\
     & = -\frac{1 + \sqrt{3}i}{2} \cdot \frac{-1 + \sqrt{3}i}{2} \\
     & = -\frac{1}{4}\bigl(-1 + \sqrt{3}i - \sqrt{3}i + 3i^2 \bigr) \\
     & = -\frac{1}{4} \cdot (-1 - 3) \\
@@ -191,7 +198,7 @@ Because $\lambda \in \mathbf{C}$ and $\mathbf{F}$ can denote $\mathbf{C}$,
 we have $\lambda \in \mathbf{F}$.
 
 Therefore, the expression $\lambda(2-3i, 5+4i, -6+7i)$ is a \textit{scalar
-multiplication} on $\mathbf{F}^3$, so we have:
+  multiplication} on $\mathbf{F}^3$, so we have:
 
 \[
   \lambda(2-3i, 5+4i, -6+7i) = (\lambda(2-3i), \lambda(5+4i), \lambda(-6+7i))
@@ -253,7 +260,7 @@ Therefore, according to the definition of addition on $\mathbf{F}^n$, we have:
   \begin{split}
     (x + y) + z
     & = \bigl((x_1, \ldots, x_n) + (y_1, \ldots, y_n)\bigr) +
-      (z_1, \ldots, z_n) \\
+    (z_1, \ldots, z_n) \\
     & = (x_1 + y_1, \ldots, x_n + y_n) + (z_1, \ldots, z_n) \\
     & = \bigl((x_1 + y_1), \ldots, (x_n + y_n)\bigr) + (z_1, \ldots, z_n) \\
     & = \bigl((x_1 + y_1) + z_1, \ldots, (x_n + y_n) + z_n\bigr) \\
@@ -261,7 +268,7 @@ Therefore, according to the definition of addition on $\mathbf{F}^n$, we have:
     & = (x_1, \ldots, x_n) + \bigl((y_1 + z_1), \ldots, (y_n + z_n)\bigr) \\
     & = (x_1, \ldots, x_n) + \bigl(y_1 + z_1, \ldots, y_n + z_n\bigr) \\
     & = (x_1, \ldots, x_n) + \bigl((y_1, \ldots, y_n) +
-      (z_1, \ldots, z_n)\bigr) \\
+    (z_1, \ldots, z_n)\bigr) \\
     & = x + (y + z)
   \end{split}
 \end{equation*}
@@ -271,7 +278,7 @@ Therefore, according to the definition of addition on $\mathbf{F}^n$, we have:
 % ******************************
 
 Show that $(ab)x = a(bx)$ for all $x \in \mathbf{F}^n$ and all $a, b \in
-\mathbf{F}$
+  \mathbf{F}$
 
 Solution:
 
@@ -341,7 +348,7 @@ $\mathbf{F}^n$, we have:
 % ******************************
 
 Show that $\lambda(x + y) = \lambda x + \lambda y$ for all $\lambda \in
-\mathbf{F}$ and all $x, y \in \mathbf{F}^n$.
+  \mathbf{F}$ and all $x, y \in \mathbf{F}^n$.
 
 Solution:
 
@@ -365,9 +372,9 @@ $\mathbf{F}^n$, we have:
     & = \lambda (x_1 + y_1, \ldots, x_n + y_n) \\
     & = \bigl(\lambda(x_1 + y_1), \ldots, \lambda(x_n + y_n)\bigr) \\
     & = \bigl(\lambda x_1 + \lambda y_1, \ldots,
-      \lambda x_n + \lambda y_n\bigr) \\
+    \lambda x_n + \lambda y_n\bigr) \\
     & = (\lambda x_1, \ldots, \lambda x_n) +
-      (\lambda y_1, \ldots, \lambda y_n) \\
+    (\lambda y_1, \ldots, \lambda y_n) \\
     & = \lambda x + \lambda y
   \end{split}
 \end{equation*}
@@ -377,7 +384,7 @@ $\mathbf{F}^n$, we have:
 % ******************************
 
 Show that $(a + b)x = ax + bx$ for all $a, b \in \mathbf{F}$ and all $x \in
-\mathbf{F}^n$.
+  \mathbf{F}^n$.
 
 Solution:
 
@@ -429,7 +436,7 @@ Per 1.31, we know $-v = (-1)v$ for every $v \in V$. Therefore,
 
 Because $v$ is an element in the vector space $V$, that means the scalar
 multiplication on $V$ satisfies the property of associativity, i.e., for $a, b
-\in \mathbf{F}$ and $v \in V$, we have:
+  \in \mathbf{F}$ and $v \in V$, we have:
 
 \[ (ab)v = a(bv)\]
 
@@ -500,20 +507,20 @@ This can be explained as follows:
   \item The original expression is $v + 3x = w$.
   \item Applying the commutativity on the left side, we have $3x + v = w$.
   \item Adding the additive inverse on both sides, we have $3x + v + (-v) =
-    w + (-v)$.
+          w + (-v)$.
   \item Applying the associativity on the left side, we have $3x + \bigl(v +
-    (-v)\bigr) = w + (-v)$.
+          (-v)\bigr) = w + (-v)$.
   \item Because an element adding its additive inverse equals $0$, we have
-    $3x + \bigl(v + (-v)\bigr) = 3x + 0 = w + (-v)$.
+        $3x + \bigl(v + (-v)\bigr) = 3x + 0 = w + (-v)$.
   \item Because an element adding the additive identity equals itself, we have
-    $3x + 0 = 3x = w + (-v)$.
+        $3x + 0 = 3x = w + (-v)$.
   \item Multiplying $1/3$ on both sides, we have $(\frac{1}{3})3x =
-    (\frac{1}{3}3)x = 1x = x = \frac{1}{3}\bigl(w + (-v)\bigr)$.
+          (\frac{1}{3}3)x = 1x = x = \frac{1}{3}\bigl(w + (-v)\bigr)$.
   \item Because $w, (-v) \in V$ and $V$ is a vector space, so the addition and
-    scalar multiplication are closed on $V$, so $\frac{1}{3}\bigl(w +
-    (-v)\bigr) \in V$. So $x$ exists.
+        scalar multiplication are closed on $V$, so $\frac{1}{3}\bigl(w +
+          (-v)\bigr) \in V$. So $x$ exists.
   \item Because $w, (-v)$ are specific elements in $V$, the arithmetics also
-    produce the same result. So $x$ is unique.
+        produce the same result. So $x$ is unique.
 \end{enumerate}
 
 % ******************************
@@ -556,27 +563,27 @@ original condition of additive inverse.
 
 Let $\infty$ and $-\infty$ denote two distinct objects, neither of which is in
 $\mathbf{R}$. Define an addition and scalar multiplication on $\mathbf{R} \cup
-\{\infty\} \cup \{-\infty\}$ as you could guess from the notation. Specifically,
+  \{\infty\} \cup \{-\infty\}$ as you could guess from the notation. Specifically,
 the sum and product of two real numbers is as usual, and for $t \in \mathbf{R}$
 define:
 
 \begin{itemize}
   \item
-    \[
-      t \infty = \begin{cases}
-        -\infty, & if \ t < 0 \\
-        0,       & if \ t = 0 \\
-        \infty,  & if \ t > 0
-      \end{cases}
-    \]
+        \[
+          t \infty = \begin{cases}
+            -\infty, & if \ t < 0 \\
+            0,       & if \ t = 0 \\
+            \infty,  & if \ t > 0
+          \end{cases}
+        \]
   \item
-    \[
-      t (-\infty) = \begin{cases}
-        \infty,   & if \ t < 0 \\
-        0,        & if \ t = 0 \\
-        -\infty,  & if \ t > 0
-      \end{cases}
-    \]
+        \[
+          t (-\infty) = \begin{cases}
+            \infty,  & if \ t < 0 \\
+            0,       & if \ t = 0 \\
+            -\infty, & if \ t > 0
+          \end{cases}
+        \]
   \item $t + \infty = \infty + t = \infty$
   \item $t + (-\infty) = (-\infty) + t = -\infty$
   \item $\infty + \infty = \infty$
@@ -590,10 +597,10 @@ $\mathbf{R}$? Explain
 Solution:
 
 We can solve this problem by examining $\mathbf{R} \cup \{\infty\} \cup
-\{-\infty\}$ according to the definition of vector space.
+  \{-\infty\}$ according to the definition of vector space.
 
 To make it easier to write, let's use $\mathbb{R}$ to denote $\mathbf{R} \cup
-\{\infty\} \cup \{-\infty\}$.
+  \{\infty\} \cup \{-\infty\}$.
 
 First of all, because $\mathbf{R}$ itself is already a vector space, we don't
 need to verify that again, so we can focus on verifying whether the definition
@@ -620,9 +627,9 @@ one of $u, v, w$ is $\infty$ or $-\infty$. There are the following cases:
   \item $(u + v) + -\infty$
   \item $(\infty + \infty) + w$
   \item $(-\infty + \infty) + w = 0 + w = w$, while $-\infty + (\infty + w) =
-    -\infty + \infty = 0$ (not satisfied)
+          -\infty + \infty = 0$ (not satisfied)
   \item $(\infty + -\infty) + w = 0 + w = w$, while $\infty + (-\infty + w) =
-    \infty + -\infty = 0$ (not satisfied)
+          \infty + -\infty = 0$ (not satisfied)
   \item $(-\infty + -\infty) + w$
   \item $(u + \infty) + \infty$
   \item $(u + -\infty) + \infty$ (not satisfied)
@@ -678,17 +685,17 @@ Let's call this subset $A$.
 
 \begin{itemize}
   \item The additive identity $(0, 0, 0)$ is in $A$ because $0 + 2 \cdot 0 + 3
-    \cdot 0 = 0$.
+          \cdot 0 = 0$.
   \item $A$ is closed under addition because: For $u, w \in A$, according to
-    the addition on $\mathbf{F}^3$, we have $u + w = (u_1, u_2, u_3) + (w_1,
-    w_2, w_3) = (u_1 + w_1, u_2 + w_2, u_3 + w_3)$. We can also see that
-    $(u_1 + w_1) + 2(u_2 + w_2) + 3(u_3 + w_3) = (u_1 + 2u_2 + 3u_3) + (w_1 +
-    2w_2 + 3w_3) = 0 + 0 = 0$. Therefore, we know $u + w \in A$.
+        the addition on $\mathbf{F}^3$, we have $u + w = (u_1, u_2, u_3) + (w_1,
+          w_2, w_3) = (u_1 + w_1, u_2 + w_2, u_3 + w_3)$. We can also see that
+        $(u_1 + w_1) + 2(u_2 + w_2) + 3(u_3 + w_3) = (u_1 + 2u_2 + 3u_3) + (w_1 +
+          2w_2 + 3w_3) = 0 + 0 = 0$. Therefore, we know $u + w \in A$.
   \item $A$ is closed under scalar multiplication because: For $u \in A$ and
-    $a \in \mathbf{F}$, according to the scalar multiplication on
-    $\mathbf{F}^3$, $au = a(u_1, u_2, u_3) = (a u_1, a u_2, a u_3)$. We can
-    also see that $(a u_1) + 2(a u_2) + 3(a u_3) = a(u_1 + 2u_2 + 3u_3) =
-    a \cdot 0 = 0$. Therefore, we know that $au \in A$.
+        $a \in \mathbf{F}$, according to the scalar multiplication on
+        $\mathbf{F}^3$, $au = a(u_1, u_2, u_3) = (a u_1, a u_2, a u_3)$. We can
+        also see that $(a u_1) + 2(a u_2) + 3(a u_3) = a(u_1 + 2u_2 + 3u_3) =
+          a \cdot 0 = 0$. Therefore, we know that $au \in A$.
 \end{itemize}
 
 Therefore, the subset $A$ is a subspace of $\mathbf{F}^3$.
@@ -702,18 +709,18 @@ Let's call this subset $B$.
 
 \begin{itemize}
   \item The additive identity $(0, 0, 0)$ is \textbf{not} in $B$ because $0 +
-    2 \cdot 0 + 3 \cdot 0 = 0 \neq 4$.
+          2 \cdot 0 + 3 \cdot 0 = 0 \neq 4$.
   \item $B$ is \textbf{not} closed under addition because: For $u, w \in B$,
-    according to the addition on $\mathbf{F}^3$, we have $u + w = (u_1, u_2,
-    u_3) + (w_1, w_2, w_3) = (u_1 + w_1, u_2 + w_2, u_3 + w_3)$. We can also
-    see that $(u_1 + w_1) + 2(u_2 + w_2) + 3(u_3 + w_3) = (u_1 + 2u_2 + 3u_3) +
-    (w_1 + 2w_2 + 3w_3) = 4 + 4 = 8 \neq 4$. Therefore, we know $u + w \notin
-    B$.
+        according to the addition on $\mathbf{F}^3$, we have $u + w = (u_1, u_2,
+          u_3) + (w_1, w_2, w_3) = (u_1 + w_1, u_2 + w_2, u_3 + w_3)$. We can also
+        see that $(u_1 + w_1) + 2(u_2 + w_2) + 3(u_3 + w_3) = (u_1 + 2u_2 + 3u_3) +
+          (w_1 + 2w_2 + 3w_3) = 4 + 4 = 8 \neq 4$. Therefore, we know $u + w \notin
+          B$.
   \item $B$ is \textbf{not} closed under scalar multiplication because: For $u
-    \in B$ and $a \in \mathbf{F}$, according to the scalar multiplication on
-    $\mathbf{F}^3$, $au = a(u_1, u_2, u_3) = (a u_1, a u_2, a u_3)$. We can
-    also see that $(a u_1) + 2(a u_2) + 3(a u_3) = a(u_1 + 2u_2 + 3u_3) =
-    a \cdot 0 = 0 \neq 4$. Therefore, we know that $au \notin B$.
+          \in B$ and $a \in \mathbf{F}$, according to the scalar multiplication on
+        $\mathbf{F}^3$, $au = a(u_1, u_2, u_3) = (a u_1, a u_2, a u_3)$. We can
+        also see that $(a u_1) + 2(a u_2) + 3(a u_3) = a(u_1 + 2u_2 + 3u_3) =
+          a \cdot 0 = 0 \neq 4$. Therefore, we know that $au \notin B$.
 \end{itemize}
 
 Therefore, the subset $B$ is \textbf{not} a subspace of $\mathbf{F}^3$.
@@ -728,39 +735,39 @@ complex numbers.)
 
 \begin{itemize}
   \item The additive identity $(0, 0, 0)$ is in $C$ because $0 \cdot 0 \cdot 0
-    = 0$.
+          = 0$.
   \item $C$ is \textbf{not} closed under addition because: For $u, w \in C$,
-    according to the addition on $\mathbf{F}^3$, we have:
-    \begin{equation*}
-      \begin{split}
-        u + w
-        & = (u_1, u_2, u_3) + (w_1, w_2, w_3) \\
-        & = (u_1 + w_1, u_2 + w_2, u_3 + w_3)
-      \end{split}
-    \end{equation*}
-    We can also see that:
-    \begin{equation*}
-      \begin{split}
-        & (u_1 + w_1) \cdot (u_2 + w_2) \cdot (u_3 + w_3) \\
-        & = u_1 u_2 u_3 + u_1 u_2 w_3 + u_1 w_2 u_3 + u_1 w_2 w_3 +
-          w_1 u_2 w_3 + w_1 u_2 w_3 + w_1 w_2 u_3 + w_1 w_2 w_3 \\
-        & = 0 + u_1 u_2 w_3 + u_1 w_2 u_3 + u_1 w_2 w_3 + w_1 u_2 w_3 +
-          w_1 u_2 w_3 + w_1 w_2 u_3 + 0 \\
-        & = u_1 u_2 w_3 + u_1 w_2 u_3 + u_1 w_2 w_3 + w_1 u_2 w_3 + w_1 u_2 w_3
-          + w_1 w_2 u_3
-      \end{split}
-    \end{equation*}
-    Because $u_1 u_2 u_3 = 0$ and $w_1 w_2 w_3 = 0$, we know at least one of
-    $u_1, u_2, u_3$ is 0 and at least one of $w_1, w_2, w_3$ is 0. Among all
-    the cases, in some cases the expression above is not equal to 0. For
-    example, when $u_1, u_2 \neq 0, u_3 = 0$ and $w_1 = 0, w_2, w_3 \neq 0$,
-    the expression above is $u_1 u_2 w_3 + 0 + u_1 w_2 w_3 + 0 + 0 + 0 \neq 0$.
-    Therefore, $C$ is not closed under addition.
+        according to the addition on $\mathbf{F}^3$, we have:
+        \begin{equation*}
+          \begin{split}
+            u + w
+            & = (u_1, u_2, u_3) + (w_1, w_2, w_3) \\
+            & = (u_1 + w_1, u_2 + w_2, u_3 + w_3)
+          \end{split}
+        \end{equation*}
+        We can also see that:
+        \begin{equation*}
+          \begin{split}
+            & (u_1 + w_1) \cdot (u_2 + w_2) \cdot (u_3 + w_3) \\
+            & = u_1 u_2 u_3 + u_1 u_2 w_3 + u_1 w_2 u_3 + u_1 w_2 w_3 +
+            w_1 u_2 w_3 + w_1 u_2 w_3 + w_1 w_2 u_3 + w_1 w_2 w_3 \\
+            & = 0 + u_1 u_2 w_3 + u_1 w_2 u_3 + u_1 w_2 w_3 + w_1 u_2 w_3 +
+            w_1 u_2 w_3 + w_1 w_2 u_3 + 0 \\
+            & = u_1 u_2 w_3 + u_1 w_2 u_3 + u_1 w_2 w_3 + w_1 u_2 w_3 + w_1 u_2 w_3
+            + w_1 w_2 u_3
+          \end{split}
+        \end{equation*}
+        Because $u_1 u_2 u_3 = 0$ and $w_1 w_2 w_3 = 0$, we know at least one of
+        $u_1, u_2, u_3$ is 0 and at least one of $w_1, w_2, w_3$ is 0. Among all
+        the cases, in some cases the expression above is not equal to 0. For
+        example, when $u_1, u_2 \neq 0, u_3 = 0$ and $w_1 = 0, w_2, w_3 \neq 0$,
+        the expression above is $u_1 u_2 w_3 + 0 + u_1 w_2 w_3 + 0 + 0 + 0 \neq 0$.
+        Therefore, $C$ is not closed under addition.
   \item $C$ is closed under scalar multiplication because: For $u \in C$ and
-    $a \in \mathbf{F}$, according to the scalar multiplication on
-    $\mathbf{F}^3$, $au = a(u_1, u_2, u_3) = (a u_1, a u_2, a u_3)$. We can
-    also see that $(a u_1) \cdot (a u_2) \cdot (a u_3) = a^3(u_1 u_2 u_3) =
-    a^3 \cdot 0 = 0$. Therefore, we know that $au \in C$.
+        $a \in \mathbf{F}$, according to the scalar multiplication on
+        $\mathbf{F}^3$, $au = a(u_1, u_2, u_3) = (a u_1, a u_2, a u_3)$. We can
+        also see that $(a u_1) \cdot (a u_2) \cdot (a u_3) = a^3(u_1 u_2 u_3) =
+          a^3 \cdot 0 = 0$. Therefore, we know that $au \in C$.
 \end{itemize}
 
 Therefore, the subset $C$ is \textbf{not} a subspace of $\mathbf{F}^3$.
@@ -775,13 +782,13 @@ Let's call this subset $D$.
 \begin{itemize}
   \item The additive identity $(0, 0, 0)$ is in $D$ because $0 = 5 \cdot 0$.
   \item $D$ is closed under addition because: For $u, w \in D$, according to
-    the addition on $\mathbf{F}^3$, we have $u + w = (u_1, u_2, u_3) + (w_1,
-    w_2, w_3) = (u_1 + w_1, u_2 + w_2, u_3 + w_3)$. We can also see that $(u_1
-    + w_1) = (5u_3 + 5w_3) = 5(u_3 + w_3)$. Therefore, we know $u + w \in D$.
+        the addition on $\mathbf{F}^3$, we have $u + w = (u_1, u_2, u_3) + (w_1,
+          w_2, w_3) = (u_1 + w_1, u_2 + w_2, u_3 + w_3)$. We can also see that $(u_1
+          + w_1) = (5u_3 + 5w_3) = 5(u_3 + w_3)$. Therefore, we know $u + w \in D$.
   \item $D$ is closed under scalar multiplication because: For $u \in D$ and $a
-    \in \mathbf{F}$, according to the scalar multiplication on $\mathbf{F}^3$,
-    $au = a(u_1, u_2, u_3) = (a u_1, a u_2, a u_3)$. We can also see that
-    $a u_1 = a (5u_3) = 5(a u_3)$. Therefore, we know that $au \in D$.
+          \in \mathbf{F}$, according to the scalar multiplication on $\mathbf{F}^3$,
+        $au = a(u_1, u_2, u_3) = (a u_1, a u_2, a u_3)$. We can also see that
+        $a u_1 = a (5u_3) = 5(a u_3)$. Therefore, we know that $au \in D$.
 \end{itemize}
 
 Therefore, the subset $D$ is a subspace of $\mathbf{F}^3$.
@@ -794,17 +801,17 @@ Verify all the assertions in Example 1.35:
 
 \begin{itemize}
   \item (a) If $b \in \mathbf{F}$, then \{ $(x_1, x_2, x_3, x_4) \in
-    \mathbf{F}^4: x_3 = 5x_4 + b$ \} is a subspace of $\mathbf{F}^4$ if and
-    only if $b=0$.
+          \mathbf{F}^4: x_3 = 5x_4 + b$ \} is a subspace of $\mathbf{F}^4$ if and
+        only if $b=0$.
   \item (b) The set of continuous real-valued functions on the interval [0, 1]
-    is a subspace of $\mathbf{R}^{[0,1]}$.
+        is a subspace of $\mathbf{R}^{[0,1]}$.
   \item (c) The set of differentiable real-valued functions on $\mathbf{R}$ is
-    a subspace of $\mathbf{R}^{\mathbf{R}}$.
+        a subspace of $\mathbf{R}^{\mathbf{R}}$.
   \item (d) The set of differentiable real-valued functions $f$ on the interval
-    $(0, 3)$ such that $f'(2) = b$ is a subspace of $\mathbf{R}^{(0,3)}$ if and
-    only if $b = 0$.
+        $(0, 3)$ such that $f'(2) = b$ is a subspace of $\mathbf{R}^{(0,3)}$ if and
+        only if $b = 0$.
   \item (e) The set of all sequences of complex numbers with limit 0 is a
-    subspace of $\mathbf{C}^{\infty}$.
+        subspace of $\mathbf{C}^{\infty}$.
 \end{itemize}
 
 Solution:
@@ -818,19 +825,19 @@ subspace.
 
 Let's examine the direction of sufficiency : if $b = 0$, then $A$ is a subspace
 of $\mathbf{F}^4$. When $b = 0$, set $A$ is \{ $(x_1, x_2, x_3, x_4) \in
-\mathbf{F}^4: x_3 = 5x_4 + 0 = 5x_4$ \}. Therefore:
+  \mathbf{F}^4: x_3 = 5x_4 + 0 = 5x_4$ \}. Therefore:
 
 \begin{itemize}
   \item The additive identity $(0, 0, 0, 0)$ is in $A$ because $0 = 5 \cdot 0$.
   \item $A$ is closed under addition because: For $u, w \in A$, according to
-    the addition on $\mathbf{F}^4$, we have $u + w = (u_1, u_2, u_3, u_4) +
-    (w_1, w_2, w_3, w_4) = (u_1 + w_1, u_2 + w_2, u_3 + w_3, u_4 + w_4)$. We
-    can also see that $(u_3 + w_3) = (5u_4 + 5w_4) = 5(u_4 + w_4)$. Therefore,
-    we know $u + w \in A$.
+        the addition on $\mathbf{F}^4$, we have $u + w = (u_1, u_2, u_3, u_4) +
+          (w_1, w_2, w_3, w_4) = (u_1 + w_1, u_2 + w_2, u_3 + w_3, u_4 + w_4)$. We
+        can also see that $(u_3 + w_3) = (5u_4 + 5w_4) = 5(u_4 + w_4)$. Therefore,
+        we know $u + w \in A$.
   \item $A$ is closed under scalar multiplication because: For $u \in A$ and $a
-    \in \mathbf{F}$, according to the scalar multiplication on $\mathbf{F}^4$,
-    $au = a(u_1, u_2, u_3, u_4) = (a u_1, a u_2, a u_3, a u_4)$. We can also
-    see that $a u_3 = a (5u_4) = 5(a u_4)$. Therefore, we know that $au \in A$.
+          \in \mathbf{F}$, according to the scalar multiplication on $\mathbf{F}^4$,
+        $au = a(u_1, u_2, u_3, u_4) = (a u_1, a u_2, a u_3, a u_4)$. We can also
+        see that $a u_3 = a (5u_4) = 5(a u_4)$. Therefore, we know that $au \in A$.
 \end{itemize}
 
 Therefore, we know that when $b = 0$, $A$ is a subspace of $\mathbf{F}^4$.
@@ -853,9 +860,9 @@ $\mathbf{R}^{[0,1]}$ don't have to be continuous.
 
 For two functions $f, g \in \mathbf{R}^{[0,1]}$, the sum $f + g$ is defined by
 $(f + g)(x) = f(x) + g(x)$ for all $x \in [0,1]$. (Because $f(x) \in
-\mathbf{R}$ and $g(x) \in \mathbf{R}$, $f(x) + g(x) \in \mathbf{R}$, we know
+  \mathbf{R}$ and $g(x) \in \mathbf{R}$, $f(x) + g(x) \in \mathbf{R}$, we know
 $(f + g)(x)$ is also a function from $[0,1]$ to $\mathbf{R}$, so $(f + g)(x)
-\in \mathbf{R}^{[0,1]}$.)
+  \in \mathbf{R}^{[0,1]}$.)
 
 For $\lambda \in \mathbf{R}$ and $f \in \mathbf{R}^{[0,1]}$, the product
 $\lambda f$ is defined by $(\lambda f)(x) = \lambda f(x)$ for all $x \in [0,1]$.
@@ -868,11 +875,11 @@ Using the knowledge of real analysis, we can tell that:
 \begin{itemize}
   \item $0(x) = 0$ is a continuous real-valued function so it belongs to $B$.
   \item Adding two continuous real-valued functions $f + g$ produces another
-    continuous real-valued functions, so $f + g \in B$, so $B$ is closed under
-    addition.
+        continuous real-valued functions, so $f + g \in B$, so $B$ is closed under
+        addition.
   \item Multiplying a continuous real-valued function with a real number also
-    produces a continuous real-valued function, therefore, $\lambda f \in B$,
-    so $B$ is closed under scalar multiplication.
+        produces a continuous real-valued function, therefore, $\lambda f \in B$,
+        so $B$ is closed under scalar multiplication.
 \end{itemize}
 
 Therefore, $B$ is a subspace of $\mathbf{R}^{[0,1]}$.
@@ -937,19 +944,19 @@ subspace.
 
 \begin{enumerate}
   \item The additive identity on $\mathbf{C}^2$ is $(0 + 0i, 0 + 0i) = (0, 0)$.
-    For $\forall (x_1, x_2) \in \mathbf{R}^2$, $(0, 0) + (x_1, x_2) = (0 + x_1,
-    0 + x_2) = (x_1, x_2)$. So the additive identity is in $\mathbf{R}^2$.
+        For $\forall (x_1, x_2) \in \mathbf{R}^2$, $(0, 0) + (x_1, x_2) = (0 + x_1,
+          0 + x_2) = (x_1, x_2)$. So the additive identity is in $\mathbf{R}^2$.
   \item $\mathbf{R}^2$ is closed under addition because: For $u, w \in
-    \mathbf{R}^2$, we have $u + w = (u_1, u_2) + (w_1, w_2) = (u_1 + w_1, u_2 +
-    w_2).$ Because $u_1, u_2, w_1, w_2 \in \mathbf{R}$, $u_1 + w_1 \in
-    \mathbf{R}$ and $u_2 + w_2 \in \mathbf{R}$, so $(u_1 + w_1, u_2 + w_2) \in
-    \mathbf{R}^2$, so $u + w \in \mathbf{R}^2$, so $\mathbf{R}^2$ is closed
-    under addition.
+          \mathbf{R}^2$, we have $u + w = (u_1, u_2) + (w_1, w_2) = (u_1 + w_1, u_2 +
+          w_2).$ Because $u_1, u_2, w_1, w_2 \in \mathbf{R}$, $u_1 + w_1 \in
+          \mathbf{R}$ and $u_2 + w_2 \in \mathbf{R}$, so $(u_1 + w_1, u_2 + w_2) \in
+          \mathbf{R}^2$, so $u + w \in \mathbf{R}^2$, so $\mathbf{R}^2$ is closed
+        under addition.
   \item $\mathbf{R}^2$ is closed under scalar multiplication because: For $u
-    \in \mathbf{R}^2$ and $a \in \mathbf{R}$, $au = a(u_1, u_2) = (a u_1,
-    a u_2)$. Because $u_1, u_2, a \in \mathbf{R}$, $a u_1 \in \mathbf{R}$ and
-    $a u_2 \in \mathbf{R}$, so $(a u_1, a u_2) \in \mathbf{R}^2$, so
-    $\mathbf{R}^2$ is closed under scalar multiplication.
+          \in \mathbf{R}^2$ and $a \in \mathbf{R}$, $au = a(u_1, u_2) = (a u_1,
+          a u_2)$. Because $u_1, u_2, a \in \mathbf{R}$, $a u_1 \in \mathbf{R}$ and
+        $a u_2 \in \mathbf{R}$, so $(a u_1, a u_2) \in \mathbf{R}^2$, so
+        $\mathbf{R}^2$ is closed under scalar multiplication.
 \end{enumerate}
 
 Therefore, $\mathbf{R}^2$ is a subspace of $\mathbf{C}^2$.
