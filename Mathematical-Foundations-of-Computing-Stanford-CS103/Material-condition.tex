@@ -32,11 +32,11 @@
   That using the material condition (i.e., one of the many binary truth
   functions) to represent the logical implication has caused a lot of confusion.
   One can search questions such as \textit{why is $p \rightarrow q$ $True$ if
-  $p$ is $False$ and $q$ is $True$?}, and many similar questions would show up.
+    $p$ is $False$ and $q$ is $True$?}, and many similar questions would show up.
   I myself was confused, too. My confusion was resolved (so far) after reading
   the related sections in the article \textit{Propositional Logic} that was
   published by \textit{Stanford Encyclopedia of Philosophy}\footnote{I will
-  refer to this article as \textit{SEP-PL}}. This article has my notes of
+    refer to this article as \textit{SEP-PL}}. This article has my notes of
   learning.
 
   In general, \textit{SEP-PL}, although admitted that there is controversy in
@@ -60,20 +60,20 @@
 \section{The Confusion}
 % =============================================================================
 
-When studying study propositional logic, you typically start with the
-definitions of ``proposition'' (which is usually represented by a lower-case
-letter such as ``p'') and ``connective'' (such as $\lnot$, $\land$, and $\lor$),
-followed by the definition of ``truth table''. The truth tables for $\lnot$
-(logical NOT), $\land$ (logical AND), and $\lor$ (logical OR) are not difficult
-to grasp because they match our daily experience. For example:
+When studying propositional logic, you typically start with the definitions of
+``proposition'' (which is usually represented by a lower-case letter such as
+``p'') and ``connective'' (such as $\lnot$, $\land$, and $\lor$), followed by
+the definition of ``truth table''. The truth tables for $\lnot$ (logical NOT),
+$\land$ (logical AND), and $\lor$ (logical OR) are not difficult to grasp
+because they match our daily experience. For example:
 
 \begin{itemize}
   \item $\lnot True$ = $False$. Example: NOT it is raining = It is not raining.
   \item Alice is here $\land$ Bob is here = It is true that both Alice and Bob
-    are here.
+        are here.
   \item Alice will attend the meeting $\lor$ Bob will attend the meeting =
-    Either Alice or Bob (or both of them) will attend the meeting. (Note that
-    $\lor$ is \textit{inclusive or}, so the case of ``both'' can happen.)
+        Either Alice or Bob (or both of them) will attend the meeting. (Note that
+        $\lor$ is \textit{inclusive or}, so the case of ``both'' can happen.)
 \end{itemize}
 
 However, depending on the textbooks, instructors, or courses, you may also be
@@ -83,12 +83,12 @@ implies q''. Its truth table is said to be as follows:
 \begin{table}[H]
   \centering
   \begin{tabular}{|c|c|c|ll}
-  \cline{1-3}
-  p & q & $p \rightarrow q$ &  &  \\ [1ex] \cline{1-3}
-  F & F & T                 &  &  \\ [0.5ex] \cline{1-3}
-  F & T & T                 &  &  \\ [0.5ex] \cline{1-3}
-  T & F & F                 &  &  \\ [0.5ex] \cline{1-3}
-  T & T & T                 &  &  \\ [0.5ex] \cline{1-3}
+    \cline{1-3}
+    p & q & $p \rightarrow q$ &  & \\ [1ex] \cline{1-3}
+    F & F & T                 &  & \\ [0.5ex] \cline{1-3}
+    F & T & T                 &  & \\ [0.5ex] \cline{1-3}
+    T & F & F                 &  & \\ [0.5ex] \cline{1-3}
+    T & T & T                 &  & \\ [0.5ex] \cline{1-3}
   \end{tabular}
   \caption{Truth table for $p \rightarrow q$}
   \label{table:truth_table_for_p_q}
@@ -113,7 +113,7 @@ same questions, too:
 On those Q \& A websites, some answers used ``Ex falso sequitur quodlibet''
 (``from what is false any assertion validly follows''). This helps, to some
 extent, but I think it still doesn't explain why it makes sense to define $p
-\rightarrow q$ as $True$ in these two cases. In fact, I could argue the other way:
+  \rightarrow q$ as $True$ in these two cases. In fact, I could argue the other way:
 if $p$ is already $False$, then whatever it implies cannot make sense, even if
 the proposition $q$ is a true statement, so the ``$\rightarrow$'' can't stand,
 so it doesn't make sense to define it as $True$.
@@ -127,11 +127,11 @@ is the closest to what I'm going to write below.
 
 \begin{enumerate}
   \item It is actually wrong to use material condition to indicate the relation
-    of implication $p \rightarrow q$.
+        of implication $p \rightarrow q$.
   \item Table \ref{table:truth_table_for_p_q} is actually the truth table for
-    the material condition. Because material condition should not be used to
-    indicate implication, it would make no sense to use this table to describe
-    $p \rightarrow q$.
+        the material condition. Because material condition should not be used to
+        indicate implication, it would make no sense to use this table to describe
+        $p \rightarrow q$.
 \end{enumerate}
 
 % =============================================================================
@@ -152,7 +152,7 @@ details.
 $p_1$, $p_2$, $p_3$, $\ldots$.
 
 The \textbf{propositional connectives}, denoted by $c_1^1, c_2^1, \ldots, c_1^2,
-c_2^2, \ldots$ can be applied to the propositions in order to create new
+  c_2^2, \ldots$ can be applied to the propositions in order to create new
 propositions.
 
 In all these symbols, the subscripts are used to distinguish them from one
@@ -162,55 +162,55 @@ of propositions they operate on.
 The \textbf{formulas} of propositional logic are defined recursively by:
 \begin{enumerate}
   \item Atomic propositional variables are \textbf{formulas}.
-  \begin{itemize}
-    \item \colorbox{lime}{Note}: \textit{SEP-PL} doesn't use this term but I prefer
-    to call them \textbf{atomic formulas}.
-  \end{itemize}
+        \begin{itemize}
+          \item \colorbox{lime}{Note}: \textit{SEP-PL} doesn't use this term but I prefer
+                to call them \textbf{atomic formulas}.
+        \end{itemize}
 
   \item If $c_n^m$ is a propositional connective, and $\langle A, B, C, \ldots
-    \rangle$ is a sequence of $m$, possibly but not necessarily atomic (so each
-    formula can be atomic or compound), possibly but not necessarily distinct
-    (for example, $A$ can be equal to $B$), then the result of applying $c_n^m$
-    to $\langle A, B, C, \ldots \rangle$ is a formula, written as \[c_n^m(A, B,
-    C, \ldots)\].
-    \begin{itemize}
-      \item \colorbox{lime}{Note}: \textit{SEP-PL} doesn't use this term but I
-        prefer to call them \textbf{compound formulas}.
-      \item Examples:
-      \begin{itemize}
-        \item $p_4$
-        \item $c_1^2(p_7, p_3)$
-        \item $c_2^2(c_1^1(p_1), c_1^1(c_1^2(p_2, p_3)))$
-      \end{itemize}
-    \end{itemize}
+          \rangle$ is a sequence of $m$, possibly but not necessarily atomic (so each
+        formula can be atomic or compound), possibly but not necessarily distinct
+        (for example, $A$ can be equal to $B$), then the result of applying $c_n^m$
+        to $\langle A, B, C, \ldots \rangle$ is a formula, written as \[c_n^m(A, B,
+          C, \ldots)\].
+        \begin{itemize}
+          \item \colorbox{lime}{Note}: \textit{SEP-PL} doesn't use this term but I
+                prefer to call them \textbf{compound formulas}.
+          \item Examples:
+                \begin{itemize}
+                  \item $p_4$
+                  \item $c_1^2(p_7, p_3)$
+                  \item $c_2^2(c_1^1(p_1), c_1^1(c_1^2(p_2, p_3)))$
+                \end{itemize}
+        \end{itemize}
 \end{enumerate}
 
 It is customary to the following:
 \begin{itemize}
   \item Indicate the specific connectives with special characters, typically
-    $\land$, $\lor$, $\supset$, $\lnot$.
+        $\land$, $\lor$, $\supset$, $\lnot$.
   \item Use infix notation for binary connectives, such as $A \land B$ instead
-    of $\land(A, B)$.
+        of $\land(A, B)$.
   \item Display parentheses only when there would be ambiguity. For example,
-    if one wants to express the formula $(\lnot B) \land C$, one doesn't need
-    the parentheses because the precedence guarantees the formula is calculated
-    in the correct order. However, if one wants to express $\lnot (B \land C)$,
-    the parentheses are necessary.
+        if one wants to express the formula $(\lnot B) \land C$, one doesn't need
+        the parentheses because the precedence guarantees the formula is calculated
+        in the correct order. However, if one wants to express $\lnot (B \land C)$,
+        the parentheses are necessary.
 \end{itemize}
 
 \colorbox{lime}{\textbf{Notes}}:
 \begin{enumerate}
   \item This section is helpful for those who learn propositional logic for the
-    first time. It defines the language of propositional logic in the most
-    abstract way so the readers can see what propositional logic generally
-    looks like. Understanding the abstraction is helpful when it gets more
-    specific, because the abstract expressions provide the readers a full
-    overview so the readers will not get lost in the details.
+        first time. It defines the language of propositional logic in the most
+        abstract way so the readers can see what propositional logic generally
+        looks like. Understanding the abstraction is helpful when it gets more
+        specific, because the abstract expressions provide the readers a full
+        overview so the readers will not get lost in the details.
   \item Note that the possible values of a proposition is not defined in the
-    framework. We usually think a proposition is either $True$ or $False$, but
-    later when we examine the truth functions, you will see that having binary
-    values is only one possible case (which is called the ``bivalent case'').
-    Technically, a proposition may be in more than two states.
+        framework. We usually think a proposition is either $True$ or $False$, but
+        later when we examine the truth functions, you will see that having binary
+        values is only one possible case (which is called the ``bivalent case'').
+        Technically, a proposition may be in more than two states.
 \end{enumerate}
 
 % ******************************
@@ -245,17 +245,17 @@ can be divided into two major categories, with each category being further
 divided into sub-categories:
 \begin{itemize}
   \item The classical interpretation
-    \begin{itemize}
-      \item Truth functions
-      \item Axiomatic deduction systems
-    \end{itemize}
+        \begin{itemize}
+          \item Truth functions
+          \item Axiomatic deduction systems
+        \end{itemize}
   \item The non-classical interpretation
-    \begin{itemize}
-      \item Multi-valued logics
-      \item Constructive logics
-      \item Relevance and connexive logics
-      \item Linear logic
-    \end{itemize}
+        \begin{itemize}
+          \item Multi-valued logics
+          \item Constructive logics
+          \item Relevance and connexive logics
+          \item Linear logic
+        \end{itemize}
 \end{itemize}
 
 In this article, I only talk about the truth functions in the classical
@@ -272,7 +272,7 @@ form of interpretation to the propositional connectives.
 Define $\mathcal{V} := \{v_i: v_i \in \mathcal{V}, i \in \mathbb{N}\}$ as a set
 of truth values. A function \[f: \mathcal{V}^n \rightarrow \mathcal{V}\] that
 maps a n-tuple of truth values to a truth value is called an \textbf{n-ary
-truth function}.
+  truth function}.
 
 \colorbox{lime}{Notes}: It's interesting to think about whether $\mathcal{V}$
 can be an infinite set. When describing the basic framework, \textit{SEP-PL}
@@ -285,14 +285,14 @@ $\mathcal{V}$ should be a finite set.)
 Here are some additional definitions:
 \begin{enumerate}
   \item \textbf{valence}: The number of values in $\mathcal{V}$ is called the
-    valence of the function space.
+        valence of the function space.
   \item \textbf{bivalent}: When $\mathcal{V}$ has only two values, it is said
-    to be ``bivalent''. When these two values happen to match the meanings of
-    ``true'' or ``false'' in our daily conversation, denoted as \textbf{T} and
-    \textbf{F} respectively, we have the classical theory of truth. (This is
-    another case of going from ``abstract'' to ``concrete'': Most of the time,
-    we talk about the ``true/false'' case, but that doesn't mean all the
-    bivalent cases are all about ``true'' and ``false''.)
+        to be ``bivalent''. When these two values happen to match the meanings of
+        ``true'' or ``false'' in our daily conversation, denoted as \textbf{T} and
+        \textbf{F} respectively, we have the classical theory of truth. (This is
+        another case of going from ``abstract'' to ``concrete'': Most of the time,
+        we talk about the ``true/false'' case, but that doesn't mean all the
+        bivalent cases are all about ``true'' and ``false''.)
 \end{enumerate}
 
 The bivalent case is important because it is applicable in our daily life. So
@@ -322,10 +322,10 @@ This is the case in which $n = 0$:
 \begin{table}[H]
   \centering
   \begin{tabular}{|c|c|c|}
-  \hline
-  input   &   & meaning \\ [1ex] \hline
-  $f_1^0$ & T & $\top$  \\ [0.5ex] \hline
-  $f_2^0$ & F & $\bot$  \\ [0.5ex] \hline
+    \hline
+    input   &   & meaning \\ [1ex] \hline
+    $f_1^0$ & T & $\top$  \\ [0.5ex] \hline
+    $f_2^0$ & F & $\bot$  \\ [0.5ex] \hline
   \end{tabular}
   \caption{0-ary truth functions}
 \end{table}
@@ -335,12 +335,12 @@ When $n = 1$, the truth functions are \textbf{unary}:
 \begin{table}[H]
   \centering
   \begin{tabular}{|c|c|c|c|c}
-  \cline{1-4}
-  input   & $\langle T \rangle$ & $\langle F \rangle$ & Meaning &  \\ [1ex] \cline{1-4}
-  $f_1^1$ & T                   & T                   & $\top$  &  \\ [0.5ex] \cline{1-4}
-  $f_2^1$ & T                   & F                   & Same    &  \\ [0.5ex] \cline{1-4}
-  $f_3^1$ & F                   & T                   & NOT     &  \\ [0.5ex] \cline{1-4}
-  $f_4^1$ & F                   & F                   & $\bot$  &  \\ [0.5ex] \cline{1-4}
+    \cline{1-4}
+    input   & $\langle T \rangle$ & $\langle F \rangle$ & Meaning & \\ [1ex] \cline{1-4}
+    $f_1^1$ & T                   & T                   & $\top$  & \\ [0.5ex] \cline{1-4}
+    $f_2^1$ & T                   & F                   & Same    & \\ [0.5ex] \cline{1-4}
+    $f_3^1$ & F                   & T                   & NOT     & \\ [0.5ex] \cline{1-4}
+    $f_4^1$ & F                   & F                   & $\bot$  & \\ [0.5ex] \cline{1-4}
   \end{tabular}
   \caption{unary truth functions}
 \end{table}
@@ -350,24 +350,24 @@ When $n = 2$, the truth functions are \textbf{binary}:
 \begin{table}[H]
   \centering
   \begin{tabular}{|c|c|c|c|c|c|}
-  \hline
-  input      & $\langle T, T \rangle$ & $\langle T, F \rangle$ & $\langle F, T \rangle$ & $\langle F, F \rangle$ & Meaning \\ [1ex] \hline
-  $f_1^2$    & T                      & T                      & T                      & T                      &         \\ [0.5ex] \hline
-  $f_2^2$    & T                      & T                      & T                      & F                      & OR      \\ [0.5ex] \hline
-  $f_3^2$    & T                      & T                      & F                      & T                      &         \\ [0.5ex] \hline
-  $f_4^2$    & T                      & T                      & F                      & F                      &         \\ [0.5ex] \hline
-  $f_5^2$    & T                      & F                      & T                      & T                      &         \\ [0.5ex] \hline
-  $f_6^2$    & T                      & F                      & T                      & F                      &         \\ [0.5ex] \hline
-  $f_7^2$    & T                      & F                      & F                      & T                      & Same    \\ [0.5ex] \hline
-  $f_8^2$    & T                      & F                      & F                      & F                      & AND     \\ [0.5ex] \hline
-  $f_9^2$    & F                      & T                      & T                      & T                      &         \\ [0.5ex] \hline
-  $f_{10}^2$ & F                      & T                      & T                      & F                      & XOR     \\ [0.5ex] \hline
-  $f_{11}^2$ & F                      & T                      & F                      & T                      &         \\ [0.5ex] \hline
-  $f_{12}^2$ & F                      & T                      & F                      & F                      &         \\ [0.5ex] \hline
-  $f_{13}^2$ & F                      & F                      & T                      & T                      &         \\ [0.5ex] \hline
-  $f_{14}^2$ & F                      & F                      & T                      & F                      &         \\ [0.5ex] \hline
-  $f_{15}^2$ & F                      & F                      & F                      & T                      &         \\ [0.5ex] \hline
-  $f_{16}^2$ & F                      & F                      & F                      & F                      &         \\ [0.5ex] \hline
+    \hline
+    input      & $\langle T, T \rangle$ & $\langle T, F \rangle$ & $\langle F, T \rangle$ & $\langle F, F \rangle$ & Meaning \\ [1ex] \hline
+    $f_1^2$    & T                      & T                      & T                      & T                      &         \\ [0.5ex] \hline
+    $f_2^2$    & T                      & T                      & T                      & F                      & OR      \\ [0.5ex] \hline
+    $f_3^2$    & T                      & T                      & F                      & T                      &         \\ [0.5ex] \hline
+    $f_4^2$    & T                      & T                      & F                      & F                      &         \\ [0.5ex] \hline
+    $f_5^2$    & T                      & F                      & T                      & T                      &         \\ [0.5ex] \hline
+    $f_6^2$    & T                      & F                      & T                      & F                      &         \\ [0.5ex] \hline
+    $f_7^2$    & T                      & F                      & F                      & T                      & Same    \\ [0.5ex] \hline
+    $f_8^2$    & T                      & F                      & F                      & F                      & AND     \\ [0.5ex] \hline
+    $f_9^2$    & F                      & T                      & T                      & T                      &         \\ [0.5ex] \hline
+    $f_{10}^2$ & F                      & T                      & T                      & F                      & XOR     \\ [0.5ex] \hline
+    $f_{11}^2$ & F                      & T                      & F                      & T                      &         \\ [0.5ex] \hline
+    $f_{12}^2$ & F                      & T                      & F                      & F                      &         \\ [0.5ex] \hline
+    $f_{13}^2$ & F                      & F                      & T                      & T                      &         \\ [0.5ex] \hline
+    $f_{14}^2$ & F                      & F                      & T                      & F                      &         \\ [0.5ex] \hline
+    $f_{15}^2$ & F                      & F                      & F                      & T                      &         \\ [0.5ex] \hline
+    $f_{16}^2$ & F                      & F                      & F                      & F                      &         \\ [0.5ex] \hline
   \end{tabular}
   \caption{binary truth functions}
   \label{table:binary_truth_functions}
@@ -381,81 +381,81 @@ Let's only consider $f_3^1$ (logical NOT), $f_2^2$ (logical OR), $f_8^2$
 (logical AND). In this way, the language of propositional logic restricted to
 the connectives $\lnot$, $\land$, and $\lor$ with the formulas of two-element
 Boolean algebra of \textbf{complementation}, \textbf{union}, and \textbf{
-intersection}. Suppose we have two compound propositions $p$ and $q$, we can
+  intersection}. Suppose we have two compound propositions $p$ and $q$, we can
 define:
 \begin{enumerate}
   \item $p$ is \textbf{classical propositional validity} if it evaluates as
-    \textbf{T} on every possible assignment of values to its atomic
-    propositional variables.
+        \textbf{T} on every possible assignment of values to its atomic
+        propositional variables.
   \item $p$ is \textbf{classically satisfiable} if it evaluates as \textbf{T}
-    on \textbf{at least one possible assignment} of values to its atomic
-    propositional variables (and is \textbf{classically unsatisfiable}
-    otherwise, i.e, none of the assignments can make $p$ be evaluated as
-    \textbf{T}).
+        on \textbf{at least one possible assignment} of values to its atomic
+        propositional variables (and is \textbf{classically unsatisfiable}
+        otherwise, i.e, none of the assignments can make $p$ be evaluated as
+        \textbf{T}).
   \item $p$ is a \textbf{classical propositional consequence} of $q$ if on no
-    assignment of values to the atoms that occur in $p$ and $q$ on which $q$,
-    evaluates as \textbf{T} does $p$ evaluate as \textbf{F}.
-    \colorbox{red}{TODO}: I don't understand this sentence.
+        assignment of values to the atoms that occur in $p$ and $q$ on which $q$,
+        evaluates as \textbf{T} does $p$ evaluate as \textbf{F}.
+        \colorbox{red}{TODO}: I don't understand this sentence.
   \item $p$ is a \textbf{classical propositional equivalent} of $q$ if $p$ and
-    $q$ evaluate as \textbf{T} on precisely the \textbf{same assignments} of
-    values to atoms.
+        $q$ evaluate as \textbf{T} on precisely the \textbf{same assignments} of
+        values to atoms.
 \end{enumerate}
 
 And the Boolean laws are applicable:
 \begin{itemize}
   \item \textbf{interchange}: Suppose $p$, $q$, $r_i$, $m_1$, and $m_2$ are all
-    formulas and:
-    \begin{enumerate}
-      \item $p$ and $q$ are equivalent.
-      \item $m_1 = c_1^n(p, r_1, r_2, \ldots)$
-      \item $m_2 = c_1^n(q, r_1, r_2, \ldots)$ (i.e., $m_2$ is only different
-        from $m_1$ in the replacement of $p$ with $q$ and everything else is
-        the same)
-    \end{enumerate}
-    Then $m_1$ and $m_2$ are also equivalent.
+        formulas and:
+        \begin{enumerate}
+          \item $p$ and $q$ are equivalent.
+          \item $m_1 = c_1^n(p, r_1, r_2, \ldots)$
+          \item $m_2 = c_1^n(q, r_1, r_2, \ldots)$ (i.e., $m_2$ is only different
+                from $m_1$ in the replacement of $p$ with $q$ and everything else is
+                the same)
+        \end{enumerate}
+        Then $m_1$ and $m_2$ are also equivalent.
   \item \textbf{substitution}: Suppose $p$, $q$, $m_1$, $m_2$, $n_1$, and $n_2$
-    are all formulas and:
-    \begin{enumerate}
-      \item $m_1 = c_1^n(p, \ldots)$
-      \item $n_1 = c_2^n(p, \ldots)$
-      \item $m_2$ is constructed by replacing $p$ in $m_1$ with $q$.
-      \item $n_2$ is constructed by replacing $p$ in $n_1$ with $q$.
-    \end{enumerate}
-    Then:
-    \begin{enumerate}
-      \item $m_1$ is valid $\Rightarrow$ $m_2$ is valid.
-      \item $m_1$ is unsatisfiable $\Rightarrow$ $m_2$ is unsatisfiable.
-      \item $n_1$ is a consequence of $m_1$ $\Rightarrow$ $n_2$ is a consequence
-        of $m_2$.
-      \item $m_1 \equiv n_1$ $\Rightarrow$ $m_2 \equiv n_2$
-    \end{enumerate}
+        are all formulas and:
+        \begin{enumerate}
+          \item $m_1 = c_1^n(p, \ldots)$
+          \item $n_1 = c_2^n(p, \ldots)$
+          \item $m_2$ is constructed by replacing $p$ in $m_1$ with $q$.
+          \item $n_2$ is constructed by replacing $p$ in $n_1$ with $q$.
+        \end{enumerate}
+        Then:
+        \begin{enumerate}
+          \item $m_1$ is valid $\Rightarrow$ $m_2$ is valid.
+          \item $m_1$ is unsatisfiable $\Rightarrow$ $m_2$ is unsatisfiable.
+          \item $n_1$ is a consequence of $m_1$ $\Rightarrow$ $n_2$ is a consequence
+                of $m_2$.
+          \item $m_1 \equiv n_1$ $\Rightarrow$ $m_2 \equiv n_2$
+        \end{enumerate}
   \item \textbf{complementation}: $p \lor \lnot p$ is classical validity (i.e.,
-    always true). This is also called ``law of excluded middle'' (LEM).
+        always true). This is also called ``law of excluded middle'' (LEM).
   \item \textbf{double complementation}: $\lnot \lnot p \equiv p$
   \item \textbf{commutativity}
-    \begin{enumerate}
-      \item $p \land q \equiv q \land p$
-      \item $p \lor q \equiv q \lor p$
-    \end{enumerate}
+        \begin{enumerate}
+          \item $p \land q \equiv q \land p$
+          \item $p \lor q \equiv q \lor p$
+        \end{enumerate}
   \item \textbf{associativity}
-    \begin{enumerate}
-      \item $(p \land q) \land r \equiv p \land (q \land r)$
-      \item $(p \lor q) \lor r \equiv p \lor (q \lor r)$
-    \end{enumerate}
+        \begin{enumerate}
+          \item $(p \land q) \land r \equiv p \land (q \land r)$
+          \item $(p \lor q) \lor r \equiv p \lor (q \lor r)$
+        \end{enumerate}
   \item \textbf{distribution}
-    \begin{enumerate}
-      \item $p \land (q_1 \lor q_2 \lor \ldots \lor q_n) \equiv (p \land q_1)
-        \lor (p \land q_2) \lor \ldots \lor (p \land q_n)$
-      \item $p \lor (q_1 \land q_2 \land \ldots \land q_n) \equiv (p \lor q_1)
-        \land (p \lor q_2) \land \ldots \land (p \lor q_n)$
-    \end{enumerate}
+        \begin{enumerate}
+          \item $p \land (q_1 \lor q_2 \lor \ldots \lor q_n) \equiv (p \land q_1)
+                  \lor (p \land q_2) \lor \ldots \lor (p \land q_n)$
+          \item $p \lor (q_1 \land q_2 \land \ldots \land q_n) \equiv (p \lor q_1)
+                  \land (p \lor q_2) \land \ldots \land (p \lor q_n)$
+        \end{enumerate}
   \item \textbf{De Morgan equivalence}
-    \begin{enumerate}
-      \item $\lnot (p_1 \land p_2 \land \ldots \land p_n) \equiv \lnot p_1
-        \lor \lnot p_2 \lor \ldots \lor \lnot p_n$
-      \item $\lnot (p_1 \lor p_2 \lor \ldots \lor p_n) \equiv \lnot p_1
-        \land \lnot p_2 \land \ldots \land \lnot p_n$
-    \end{enumerate}
+        \begin{enumerate}
+          \item $\lnot (p_1 \land p_2 \land \ldots \land p_n) \equiv \lnot p_1
+                  \lor \lnot p_2 \lor \ldots \lor \lnot p_n$
+          \item $\lnot (p_1 \lor p_2 \lor \ldots \lor p_n) \equiv \lnot p_1
+                  \land \lnot p_2 \land \ldots \land \lnot p_n$
+        \end{enumerate}
 \end{itemize}
 
 % ------------------------------
@@ -470,9 +470,9 @@ example:
 \begin{table}[H]
   \centering
   \begin{tabular}{|c|c|c|c|c|}
-  \hline
-  input      & $\langle T, T \rangle$ & $\langle T, F \rangle$ & $\langle F, T \rangle$ & $\langle F, F \rangle$ \\ [1ex] \hline
-  $f_5^2$    & T                      & F                      & T                      & T                      \\ [0.5ex] \hline
+    \hline
+    input   & $\langle T, T \rangle$ & $\langle T, F \rangle$ & $\langle F, T \rangle$ & $\langle F, F \rangle$ \\ [1ex] \hline
+    $f_5^2$ & T                      & F                      & T                      & T                      \\ [0.5ex] \hline
   \end{tabular}
   \caption{Connective $f_5^2$ in table \ref{table:binary_truth_functions}}
   \label{table:f52}
@@ -485,17 +485,17 @@ propositional variable that is assigned $F$, then disjoin all the conjunctions.
 So for $f_5^2$, the process is as follows:
 \begin{enumerate}
   \item Identity the columns in which the output value is $T$. So we have the
-    columns of $\langle T, T \rangle$, $\langle F, T \rangle$,
-    $\langle F, F \rangle$.
+        columns of $\langle T, T \rangle$, $\langle F, T \rangle$,
+        $\langle F, F \rangle$.
   \item For each column, construct a conjunction of the $T$ variables and the
-    negation of $F$ variables. So we have:
-    \begin{enumerate}
-      \item $\langle T, T \rangle$: $A \land B$
-      \item $\langle F, T \rangle$: $\lnot A \land B$
-      \item $\langle F, F \rangle$: $\lnot A \land \lnot A$
-    \end{enumerate}
+        negation of $F$ variables. So we have:
+        \begin{enumerate}
+          \item $\langle T, T \rangle$: $A \land B$
+          \item $\langle F, T \rangle$: $\lnot A \land B$
+          \item $\langle F, F \rangle$: $\lnot A \land \lnot A$
+        \end{enumerate}
   \item Then disjoin all the conjunctions. So we have \[ f_5^2 \equiv (A \land
-    B) \lor (\lnot A \land B) \lor (\lnot A \land \lnot B) \]
+          B) \lor (\lnot A \land B) \lor (\lnot A \land \lnot B) \]
 \end{enumerate}
 
 Then, if needed, we can use the Boolean laws to simplify the Boolean formula.
@@ -521,36 +521,36 @@ true: \textbf{implication} does not always describe \textbf{causation}, but
 \textbf{causation} always describes \textbf{implication}. For example:
 \begin{enumerate}
   \item ``Applying enough force to an object'' causes (is the reason that)
-    ``the object's velocity changes'' according to physics. We can also say
-    that ``enough force is applied to an object'' implies ``the object velocity
-    changes''.
+        ``the object's velocity changes'' according to physics. We can also say
+        that ``enough force is applied to an object'' implies ``the object velocity
+        changes''.
   \item ``T is an apple tree'' implies that ``T is a tree''. We can also say
-    that ``T is an apple tree'' is the reason that ``T is a tree''. This is a
-    case of going from a specific concept to a general concept.
+        that ``T is an apple tree'' is the reason that ``T is a tree''. This is a
+        case of going from a specific concept to a general concept.
   \item Suppose a town passes a weird law: anyone that's 18 years or older must
-    wear a blue jacket in the town; anyone that's under 18 years old must wear
-    a yellow jacket in the town. With that said, we can say:
-    \begin{enumerate}
-      \item ``A is 20 years old'' implies ``A must wear a blue jacket''. But
-        that A is 20 years old is not the reason that A must wear a blue jacket.
-        The real reason is the weird law in this town.
-      \item ``B is wearing a yellow jacket now'' implies ``B is under 18 years
-        old''. But that B is wearing a yellow jacket is not the reason that B
-        is under 18 years old. The real reason is that B was born less than 18
-        years ago.
-    \end{enumerate}
+        wear a blue jacket in the town; anyone that's under 18 years old must wear
+        a yellow jacket in the town. With that said, we can say:
+        \begin{enumerate}
+          \item ``A is 20 years old'' implies ``A must wear a blue jacket''. But
+                that A is 20 years old is not the reason that A must wear a blue jacket.
+                The real reason is the weird law in this town.
+          \item ``B is wearing a yellow jacket now'' implies ``B is under 18 years
+                old''. But that B is wearing a yellow jacket is not the reason that B
+                is under 18 years old. The real reason is that B was born less than 18
+                years ago.
+        \end{enumerate}
 \end{enumerate}
 
 We can use $A \rightarrow B$ to denote the relation that $A$ implies $B$. Now,
 \textbf{if we know the truth and falsity of $A$ and $B$, is it enough to
-determine whether the implication relation is true or false?} Consider the
+  determine whether the implication relation is true or false?} Consider the
 following examples:
 \begin{enumerate}
   \item Let $A$ be the proposition ``2 + 2 = 4''; let $B$ be the proposition
-    ``New York state is an area of land''. Both $A$ and $B$ are true but can we
-    say that $A \rightarrow B$ is true (namely, ``A implies B'')?
+        ``New York state is an area of land''. Both $A$ and $B$ are true but can we
+        say that $A \rightarrow B$ is true (namely, ``A implies B'')?
   \item Let $A$ be the proposition ``It is raining now''; let $B$ be ``the lawn
-    is wet''. Suppose both $A$ and $B$ are true now, can we say $A$ implies $B$?
+        is wet''. Suppose both $A$ and $B$ are true now, can we say $A$ implies $B$?
 \end{enumerate}
 
 It doesn't look like so. In the first example, it doesn't make sense to say
@@ -602,7 +602,7 @@ First of all, it is important to quote the first paragraph of the section in
   indicative mood condition connective ``if ..., then ...'', or even,
   \textbf{erroneously}, for the relation ``implies''. It is important to
   underscore the \textbf{error in attributing truth functionality to the
-  implication relation}. To say that one proposition implies another is to say
+    implication relation}. To say that one proposition implies another is to say
   that under any conditions in which the first is true, the second is also
   true. To suggest that this relation is truth-functional is to suggest that
   simply knowing whether A and B are true is enough to determine whether A
@@ -617,23 +617,23 @@ First of all, it is important to quote the first paragraph of the section in
 Here are \colorbox{lime}{my notes} for this paragraph:
 \begin{enumerate}
   \item The use of ``controversially'' means that \textit{SEP-PL} also agrees
-    that there is no universally accepted conclusion that whether $f_5^2$ can
-    indicate the relation of ``implies'' or not.
+        that there is no universally accepted conclusion that whether $f_5^2$ can
+        indicate the relation of ``implies'' or not.
   \item However, the use of ``erroneously'' and ``... underscore the error ...''
-    shows that \textit{SEP-PL} believes it is wrong to use $f_5^2$ to indicate
-    the relation of ``implies''.
+        shows that \textit{SEP-PL} believes it is wrong to use $f_5^2$ to indicate
+        the relation of ``implies''.
   \item The sentence ``error in attributing truth functionality to the
-    implication relation'' means that using truth functions to describe the
-    implication relation is wrong in general, not particularly because $f_5^2$
-    is used to describe this relation.
+        implication relation'' means that using truth functions to describe the
+        implication relation is wrong in general, not particularly because $f_5^2$
+        is used to describe this relation.
   \item This paragraph also explains why we can't use $f_5^2$ to indicate the
-    relation of implication. Under $f_5^2$, as long as we know the propositions
-    $A$ and $B$ are true, the implication relation must always hold. However,
-    we have seen in the previous section that it's also possible that we don't
-    have enough information to determine the implication even if $A$ and $B$
-    are both true. We said in the case of insufficient information, we can say
-    $A \rightarrow B$ is false, but this conflicts with the definition of
-    $f_5^2$ that when $A$ and $B$ are true, $A \rightarrow B$ must be true.
+        relation of implication. Under $f_5^2$, as long as we know the propositions
+        $A$ and $B$ are true, the implication relation must always hold. However,
+        we have seen in the previous section that it's also possible that we don't
+        have enough information to determine the implication even if $A$ and $B$
+        are both true. We said in the case of insufficient information, we can say
+        $A \rightarrow B$ is false, but this conflicts with the definition of
+        $f_5^2$ that when $A$ and $B$ are true, $A \rightarrow B$ must be true.
 \end{enumerate}
 
 \textit{SEP-PL} continues to say:
@@ -652,12 +652,12 @@ Here are \colorbox{lime}{my notes} for this paragraph:
 Here are \colorbox{lime}{my notes} for this paragraph:
 \begin{enumerate}
   \item The use of $\supset$ seems to be a good choice because $\rightarrow$
-    often makes people subconsciously think of ``implication''.
+        often makes people subconsciously think of ``implication''.
   \item Still, many people believe ``if ... then ...'' (i.e., ``implication'')
-    can be treated as a truth function, but many people disagree that. It's
-    controversial, as said in the previous paragraph.
+        can be treated as a truth function, but many people disagree that. It's
+        controversial, as said in the previous paragraph.
   \item I'm going to show why $A \supset B \equiv \lnot A \lor B$ in a separate
-    section.
+        section.
 \end{enumerate}
 
 The next few paragraphs in \textit{SEP-PL} presents different opinions whether
@@ -671,7 +671,7 @@ a complete picture of the issue. It then says:
   connective for classical logic? Frege saw that the value of selecting the
   material conditional as a primitive connective not from its approximation of
   ordinary language expression but \textbf{from its role internal to logical
-  theory}.
+    theory}.
 \end{displayquote}
 
 Frankly speaking, I haven't understood the reasoning in the rest of this
@@ -697,13 +697,13 @@ conclusions:
 \end{enumerate}
 
 In an earlier section, we had shown that \[ f_5^2 \equiv (A \land B) \lor
-(\lnot A \land B) \lor (\lnot A \land \lnot B) \].
+  (\lnot A \land B) \lor (\lnot A \land \lnot B) \].
 
 According to the properties of commutativity and associativity, we have:
 \begin{equation}\label{eq:A}
   \begin{aligned}[b]
-    & (A \land B) \lor (\lnot A \land B) \lor (\lnot A \land \lnot B) \\
-    = & (B \land A) \lor (B \land \lnot A) \lor (\lnot A \land \lnot B) \\
+      & (A \land B) \lor (\lnot A \land B) \lor (\lnot A \land \lnot B)             \\
+    = & (B \land A) \lor (B \land \lnot A) \lor (\lnot A \land \lnot B)             \\
     = & \bigl[(B \land A) \lor (B \land \lnot A)\bigr] \lor (\lnot A \land \lnot B)
   \end{aligned}
 \end{equation}
@@ -715,9 +715,9 @@ So equation \ref{eq:A} is:
 \begin{equation}\label{eq:B}
   \begin{aligned}[b]
     (\ref{eq:A})
-    & = \bigl[B \land (A \lor \lnot A)\bigr] \lor (\lnot A \land \lnot B) \\
-    & = \bigl[B \land \top\bigr] \lor (\lnot A \land \lnot B) \\
-    & = B \lor (\lnot A \land \lnot B)
+     & = \bigl[B \land (A \lor \lnot A)\bigr] \lor (\lnot A \land \lnot B) \\
+     & = \bigl[B \land \top\bigr] \lor (\lnot A \land \lnot B)             \\
+     & = B \lor (\lnot A \land \lnot B)
   \end{aligned}
 \end{equation}
 
@@ -725,10 +725,10 @@ According to De Morgan equivalence, equation \ref{eq:B} is:
 \begin{equation}\label{eq:C}
   \begin{aligned}[b]
     (\ref{eq:B})
-    & = B \lor (\lnot A \land \lnot B) \\
-    & = (B \lor \lnot A) \land (B \lor \lnot B) \\
-    & = (\lnot A \lor B) \land \top \\
-    & = \lnot A \lor B
+     & = B \lor (\lnot A \land \lnot B)          \\
+     & = (B \lor \lnot A) \land (B \lor \lnot B) \\
+     & = (\lnot A \lor B) \land \top             \\
+     & = \lnot A \lor B
   \end{aligned}
 \end{equation}
 
