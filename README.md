@@ -16,6 +16,19 @@ This repository thus serves two purposes as well:
 - I use it to track my progress of learning.
 - I use it to put my learning notes.
 
+## Configure LaTeX environment on VS Code
+
+The general steps are as follows (assuming Ubuntu 24.04):
+* Run the Ansible playbook [latex.yml](https://github.com/yaobinwen/work-env/blob/master/ansible/latex.yml) to install `texlive`. The VS Code plug-in `james-yu.latex-workshop` depends on this tool to work.
+* Install VS Code.
+* Install the plug-in `james-yu.latex-workshop`.
+* Specifically, install the following LaTeX packages from CTAN, using the tool [`tex-pkg`](https://github.com/yaobinwen/work-env/tree/master/python/tex-pkg):
+  * `pseudocode`: https://ctan.org/pkg/pseudocode
+* In VS Code, open the `.tex` file.
+* Build and view the generated PDF files:
+  * Method 1: Switch to `TEX` extension panel. Click "Build LaTeX project". Switch back to Explorer. Click the generated PDF file to view.
+  * Method 2: Press `Ctrl-Alt-B` to build the LaTeX project, followed by `Ctrl-Alt-V` to view the generated PDF file.
+
 ## The subjects
 
 For now (2023), I want to learn the following subjects:
