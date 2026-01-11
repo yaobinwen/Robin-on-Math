@@ -1,0 +1,115 @@
+\documentclass[12pt, letterpaper, oneside]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{arrows, automata, positioning, shapes.geometric}
+\usepackage{parskip}
+\usepackage{xcolor}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=magenta,
+  urlcolor=blue,
+}
+
+\begin{document}
+
+% =============================================================================
+\section{Prove: 0.999\ldots = 1}
+% =============================================================================
+
+This is an example to show that we can't always trust our intuition in mathematics when it comes to infinite processes
+because our daily experiences are based on finite observations.
+
+By intuition, one might think that \(0.999\ldots\) is just a number that is very close to 1, but not equal to it.
+However, mathematically, we can prove that \(0.999\ldots\) is indeed equal to 1. And we can prove this in several ways.
+
+The \textbf{first method} involves using fractions. We know that:
+\[\frac{1}{3} = 0.333\ldots\]
+
+If we multiply both sides of this equation by 3, we get:
+\[3 \times \frac{1}{3} = 3 \times 0.333\ldots\]
+
+This simplifies to:
+\[1 = 0.999\ldots\]
+
+Thus, \(0.999\ldots = 1\).
+
+The \textbf{second method} is to use algebra. Let's denote \(x = 0.999\ldots\).
+
+Then, multiplying both sides by 10 gives:
+\[10x = 9.999\ldots\]
+
+Now, subtract the original equation from this new equation:
+\[10x - x = 9.999\ldots - 0.999\ldots\]
+
+This simplifies to:
+\[9x = 9\]
+
+Dividing both sides by 9, we get:
+\[x = 1\]
+
+Since we defined \(x\) as \(0.999\ldots\), we have shown that \(0.999\ldots = 1\).
+
+The \textbf{third method} is to use the concept of infinite series. We can express \(0.999\ldots\) as an infinite series:
+\[0.999\ldots = 0.9 + 0.09 + 0.009 + \ldots\]
+
+This is a geometric series where the first term \(a = 0.9\) and the common ratio \(r = 0.1\).
+
+The sum \(S\) of an infinite geometric series can be calculated using the formula:
+\[S = \frac{a}{1 - r}\]
+
+Substituting the values, we get:
+\[S = \frac{0.9}{1 - 0.1} = \frac{0.9}{0.9} = 1\]
+
+Thus, \(0.999\ldots = 1\).
+
+The \textbf{fourth method} is to consider what 0.999\ldots means. In fact, it means ``an infinite process'', i.e., a
+\textbf{limit}. The number \(0.999\ldots\) can be thought of as the limit of the sequence:
+\[a_1 = 0.9, a_2 = 0.99, a_3 = 0.999, a_4 = 0.9999, \ldots, a_n = 0.\underbrace{99\ldots9}_{n \text{ nines}}, \ldots\]
+
+As we increase the value of \(n\), we add more 9s. This \textbf{effectively} means \(\lim_{n \to \infty} a_n\)
+
+We can write
+\[a_n = 1 - 10^{-n}\]
+
+As \(n\) approaches infinity, \(10^{-n}\) approaches 0, so
+\[0.999\ldots = \lim_{n \to \infty} a_n = \lim_{n \to \infty} (1 - 10^{-n}) = 1 - \lim_{n \to \infty} 10^{-n} = 1 - 0 = 1\]
+
+% =============================================================================
+\section{Which set has more numbers? All the even numbers or all the integers?}
+% =============================================================================
+
+This is an example to show that our intuition about sizes of infinite sets can be misleading.
+
+First of all, we need to understand what it means that two sets have the same size. In mathematics, two sets are said to
+have the same \textbf{cardinality} (or size) if there exists a one-to-one correspondence (bijection) between the elements
+of the two sets. This means that each element in one set can be paired with exactly one element in the other set, and
+vice versa.
+
+At first glance, one might think that there are more integers than even numbers because the set of integers includes
+both even and odd numbers. However, we can establish a one-to-one correspondence between the two sets to show that they
+have the same size.
+
+Let's define a function \(f\) that maps each integer \(n\) to an even number:
+\[f(n) = 2n\]
+
+This function pairs each integer with a unique even number. For examples:
+\begin{itemize}
+  \item \(f(0) = 0\)
+  \item \(f(1) = 2\)
+  \item \(f(2) = 4\)
+  \item \(f(-1) = -2\)
+  \item \(f(-2) = -4\)
+\end{itemize}
+
+Since every integer \(n\) maps to a unique even number \(2n\), and every even number can be expressed as \(2n\) for some
+integer \(n\), we have established a one-to-one correspondence between the set of integers and the set of even numbers.
+Therefore, both sets have the same cardinality, meaning they contain the same number of elements, even though one set is
+a subset of the other.
+
+\end{document}
