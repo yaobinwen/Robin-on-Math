@@ -112,4 +112,48 @@ integer \(n\), we have established a one-to-one correspondence between the set o
 Therefore, both sets have the same cardinality, meaning they contain the same number of elements, even though one set is
 a subset of the other.
 
+% =============================================================================
+\section{What are the immediate neighbors of a rational number?}
+% =============================================================================
+
+Let's think about the integers first: each integer has a clear immediate neighbor on either side. For example, the immediate neighbors of 3 are 2 and 4. We can easily tell that 2 and 4 are the immediate neighbors because there are no other integers between 2 and 3, or between 3 and 4.
+
+But given a rational number, can we identify its immediate neighbors?
+
+It looks like we can't. The rational numbers are said to be \textbf{dense}, meaning that between any two rational numbers, there is always another rational number. We can prove this property as follows.
+
+Let's take two rational numbers, \(a\) and \(b\), such that \(a < b\). We can find another rational number \(c\) that lies between \(a\) and \(b\) by calculating the average of the two numbers:
+\[c = \frac{a + b}{2}\]
+
+Since both \(a\) and \(b\) are rational, their sum \(a + b\) is also rational, and dividing by 2 (which is also rational) gives us another rational number \(c\). This means \(b\) is not the immediate neighbor of \(a\) because there exists another rational number \(c\) between them.
+
+Can we say \(c\) is the immediate neighbor of \(a\)? No, because we can repeat the same process to find another rational number between \(a\) and \(c\), say, \(d\), where
+\[d = \frac{a + c}{2}\]
+
+This process can continue indefinitely, meaning that no matter how close we get to \(a\), we can always find another rational number between \(a\) and any other rational number greater than \(a\). Therefore, we can't find the immediate neighbors of a rational number in the same way as we do for integers.
+
+However, the set of rational numbers is said to be \textbf{countable}, meaning that we can list all rational numbers in a sequence (even though there are infinitely many of them). There are many different ways of listing rational numbers. One such method is the Cantor's diagonal argument, which shows that we can arrange rational numbers in a two-dimensional grid and then traverse the grid in a diagonal manner to list all rational numbers without missing any. This can be shown as follows:
+
+\begin{center}
+\begin{tikzpicture}[node distance=1.5cm, every node/.style={draw, minimum size=1cm, anchor=center}]
+  \node (r01) {$\frac{0}{1}$};
+  \node (r11) [right of=r01] {$\frac{1}{1}$};
+  \node (r21) [right of=r11] {$\frac{2}{1}$};
+  \node (r31) [right of=r21] {$\frac{3}{1}$};
+  \node (r41) [right of=r31] {$\ldots$};
+  \node (r02) [below of=r01] {$\frac{0}{2}$};
+  \node (r12) [right of=r02] {$\frac{1}{2}$};
+  \node (r22) [right of=r12] {$\frac{2}{2}$};
+  \node (r32) [right of=r22] {$\frac{3}{2}$};
+  \node (r03) [below of=r02] {$\frac{0}{3}$};
+  \node (r13) [right of=r03] {$\frac{1}{3}$};
+  \node (r23) [right of=r13] {$\frac{2}{3}$};
+  \node (r04) [below of=r03] {$\frac{0}{4}$};
+  \node (r14) [below of=r13] {$\frac{1}{4}$};
+  \draw[thick, ->] (r01) -- (r11) -- (r02) -- (r03) -- (r12) -- (r21) -- (r31) -- (r22) -- (r13) -- (r04) -- (r14) -- (r23) -- (r32) -- (r41);
+\end{tikzpicture}
+\end{center}
+
+Because we can list all rational numbers in a sequence like \(r_0, r_1, r_2, r_3, \ldots\)), it is possible to find the immediate predecessor and successor of a rational number \textbf{in this specific listing}. Of course, this listing is not unique, so different listings may yield different immediate neighbors for the same rational number.
+
 \end{document}
