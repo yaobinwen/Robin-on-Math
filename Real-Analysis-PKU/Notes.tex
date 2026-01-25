@@ -1,0 +1,81 @@
+% Regarding `oneside` (https://stackoverflow.com/a/8371473/630364):
+%
+% `oneside` removes the blank pages between chapters.
+% "Note that this method make the margins of all the pages the same. In
+% `twoside`, the margins are different for the odd and the even pages".
+\documentclass[12pt, letterpaper, oneside]{book}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[letterpaper, textwidth=7.5in, textheight=8in]{geometry}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=magenta,
+  urlcolor=blue,
+}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{pseudocode}
+\usepackage{xcolor}
+
+\setcounter{secnumdepth}{4}
+
+\title{
+  Notes on \textit{Mathematical Analysis I}
+}
+\author{Yaobin Wen}
+\date{January 2026}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\chapter*{Overview}
+\addcontentsline{toc}{chapter}{Overview}
+
+This document contains my study notes of the Peking University open course \textit{Mathematical Analysis I}. I use it
+for a few purposes:
+
+\begin{enumerate}
+  \item As a reference to quickly refresh my memory on the subjects.
+  \item Keep the notes to help me understand the text that is not obvious for me to comprehend.
+\end{enumerate}
+
+% =============================================================================
+%
+% Chapter: Infinitesimal Sequences
+%
+% =============================================================================
+
+\chapter*{Infinitesimal Sequences}
+\addcontentsline{toc}{chapter}{Infinitesimal Sequences}
+
+% =============================================================================
+\section{Examples}
+% =============================================================================
+
+\textbf{Example 1}
+
+$\{\alpha_n\}$ is an infinitesimal sequence. Let
+\[\beta_n = \frac{\sum_{i = 1}^{n} \alpha_i }{n}\]
+Then $\{\beta_n\}$ is also an infinitesimal sequence.
+
+% =============================================================================
+%
+% References
+%
+% =============================================================================
+
+\chapter*{References}
+\addcontentsline{toc}{chapter}{References}
+
+\begin{itemize}
+  \item $[1]$ \href{https://resource.pku.edu.cn/index.php?r=course/detail&id=93}{Peking University Open Course: Mathematical Analysis I}
+\end{itemize}
+
+\end{document}
