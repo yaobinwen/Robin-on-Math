@@ -171,4 +171,141 @@ Because we can list all rational numbers in a sequence like \(r_0, r_1, r_2, r_3
 immediate predecessor and successor of a rational number \textbf{in this specific listing}. Of course, this listing is
 not unique, so different listings may yield different immediate neighbors for the same rational number.
 
+% =============================================================================
+\section{Binomial Theorem}
+% =============================================================================
+
+The Binomial Theorem describes the algebraic expansion of powers of a binomial. According to the theorem, it is possible
+to expand the expression \((x + y)^n\) into a sum involving terms of the form \(ax^by^c\), where the coefficients \(a\)
+are known as \textbf{binomial coefficients}. The theorem is stated as follows:
+
+\[(x + y)^n = \sum_{k=0}^{n} \binom{n}{k} x^{n-k} y^k\]
+
+where \(\binom{n}{k} = \frac{n!}{k!(n-k)!}\) is the binomial coefficient, representing the number of ways to choose \(k\)
+elements from a set of \(n\) elements.
+
+\textbf{Proof}: We can prove the Binomial Theorem using mathematical induction.
+
+\textbf{Base Case} (\(n = 0\)): When \(n = 0\), we have:
+
+\[(x + y)^0 = 1\]
+
+The right-hand side of the theorem also gives:
+
+\[\sum_{k=0}^{0} \binom{0}{k} x^{0-k} y^k = \binom{0}{0} x^0 y^0 = \frac{0!}{0!(0-0)!} x^0 y^0 = 1\]
+
+Thus, the base case holds.
+
+\textbf{Inductive Step}: Assume the theorem holds for some integer \(n = m\), i.e.:
+
+\[(x + y)^m = \sum_{k=0}^{m} \binom{m}{k} x^{m-k} y^k\]
+
+We need to show that it holds for \(n = m + 1\):
+
+\[(x + y)^{m+1} = (x + y)(x + y)^m\]
+
+Using the inductive hypothesis, we can substitute:
+
+\[(x + y)^{m+1} = (x + y) \sum_{k=0}^{m} \binom{m}{k} x^{m-k} y^k\]
+
+Expanding this, we get:
+
+\[(x + y)^{m+1} = \sum_{k=0}^{m} \binom{m}{k} x^{m-k+1} y^k + \sum_{k=0}^{m} \binom{m}{k} x^{m-k} y^{k+1}\]
+
+We can reindex the second sum by letting \(j = k + 1\):
+
+\[(x + y)^{m+1} = \sum_{k=0}^{m} \binom{m}{k} x^{m-k+1} y^k + \sum_{j=1}^{m+1} \binom{m}{j-1} x^{m-(j-1)} y^j\]
+
+In the first sum, we can take the term when \(k = 0\) separately, so we have:
+
+\begin{align*}
+  \sum_{k=0}^{m} \binom{m}{k} x^{m-k+1} y^k & = \binom{m}{0} x^{m+1} y^0 + \sum_{k=1}^{m} \binom{m}{k} x^{m-k+1} y^k \\
+                                            & = \binom{m}{0} x^{m+1} + \sum_{k=1}^{m} \binom{m}{k} x^{m-k+1} y^k
+\end{align*}
+
+Likewise, in the second sum, we can take the term when \(j = m + 1\) separately, so we have:
+
+\begin{align*}
+  \sum_{j=1}^{m+1} \binom{m}{j-1} x^{m-(j-1)} y^j & = \sum_{j=1}^{m} \binom{m}{j-1} x^{m-(j-1)} y^j + \binom{m}{m} x^0 y^{m+1} \\
+                                                  & = \sum_{k=1}^{m} \binom{m}{k-1} x^{m-k+1} y^k + \binom{m}{m} y^{m+1}
+\end{align*}
+
+Putting the two sums together and combining them, we have:
+
+\begin{align*}
+  (x + y)^{m+1} & = \binom{m}{0} x^{m+1} + \sum_{k=1}^{m} \binom{m}{k} x^{m-k+1} y^k + \\
+                & + \sum_{k=1}^{m} \binom{m}{k-1} x^{m-k+1} y^k + \binom{m}{m} y^{m+1} \\
+                & = \binom{m}{0} x^{m+1} + \sum_{k=1}^{m} \left(\binom{m}{k} + \binom{m}{k-1}\right) x^{m-k+1} y^k + \binom{m}{m} y^{m+1}
+\end{align*}
+
+Using the property of binomial coefficients:
+
+\[\binom{m}{k} + \binom{m}{k-1} = \binom{m+1}{k}\]
+
+and
+
+\[\binom{m}{0} = \binom{m+1}{0}\]
+
+and
+
+\[\binom{m}{m} = \binom{m+1}{m+1}\]
+
+we can rewrite the expression as:
+
+\begin{align*}
+  (x + y)^{m+1} & = \binom{m+1}{0} x^{m+1} + \sum_{k=1}^{m} \binom{m+1}{k} x^{m-k+1} y^k + \binom{m+1}{m+1} y^{m+1} \\
+                & = \sum_{k=0}^{m+1} \binom{m+1}{k} x^{(m+1)-k} y^k
+\end{align*}
+
+Thus, the inductive step holds. By the principle of mathematical induction, the Binomial Theorem is proven for all
+non-negative integers \(n\).
+
+% ******************************
+\subsection{Prove $\binom{m}{k} + \binom{m}{k-1} = \binom{m+1}{k}$}
+% ******************************
+
+\textbf{Proof}:
+\begin{equation*}
+  \begin{split}
+    \binom{m}{k} + \binom{m}{k-1}
+    & = \frac{m!}{k!(m-k)!} + \frac{m!}{(k-1)!(m-(k-1))!} \\
+    & = \frac{m! (m - k + 1)}{k!(m-k+1)!} + \frac{m! k}{k!(m-k+1)!} \\
+    & = \frac{m! (m + 1)}{k!(m-k+1)!} \\
+    & = \frac{(m + 1)!}{k!((m + 1) - k)!} \\
+    & = \binom{m+1}{k}
+  \end{split}
+\end{equation*}
+
+% ******************************
+\subsection{Prove $\binom{m}{0} = \binom{m+1}{0}$}
+% ******************************
+
+\textbf{Proof}:
+\begin{equation*}
+  \begin{split}
+    \binom{m}{0} & = \frac{m!}{0!(m-0)!} = \frac{m!}{0! m!} = 1 \\
+    \binom{m+1}{0} & = \frac{(m+1)!}{0!(m+1-0)!} = \frac{(m+1)!}{0! (m+1)!} = 1
+  \end{split}
+\end{equation*}
+
+Thus
+
+\[\binom{m}{0} = \binom{m+1}{0}\]
+
+% ******************************
+\subsection{Prove $\binom{m}{m} = \binom{m+1}{m+1}$}
+% ******************************
+
+\textbf{Proof}:
+\begin{equation*}
+  \begin{split}
+    \binom{m}{m} & = \frac{m!}{m!(m-m)!} = \frac{m!}{m! 0!} = 1 \\
+    \binom{m+1}{m+1} & = \frac{(m+1)!}{(m+1)!(0)!} = \frac{(m+1)!}{(m+1)! 0!} = 1
+  \end{split}
+\end{equation*}
+
+Thus
+
+\[\binom{m}{m} = \binom{m+1}{m+1}\]
+
 \end{document}
