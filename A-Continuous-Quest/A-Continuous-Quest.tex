@@ -1,0 +1,58 @@
+% Regarding `oneside` (https://stackoverflow.com/a/8371473/630364):
+%
+% `oneside` removes the blank pages between chapters.
+% "Note that this method make the margins of all the pages the same. In
+% `twoside`, the margins are different for the odd and the even pages".
+\documentclass[12pt, letterpaper, oneside]{book}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[letterpaper, textwidth=7.5in, textheight=8in]{geometry}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=magenta,
+  urlcolor=blue,
+}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{pseudocode}
+\usepackage{xcolor}
+
+\setcounter{secnumdepth}{4}
+
+\title{
+  A Continuous Quest \\
+  [1ex]
+  \large My journey of learning mathematical analysis
+}
+\author{Yaobin Wen}
+\date{January 2026}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+% =============================================================================
+%
+% Chapter: Introduction
+%
+% =============================================================================
+
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+
+% =============================================================================
+%
+% References
+%
+% =============================================================================
+
+\chapter*{References}
+\addcontentsline{toc}{chapter}{References}
+
+\end{document}
