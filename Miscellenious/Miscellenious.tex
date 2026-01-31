@@ -19,6 +19,103 @@
 \begin{document}
 
 % =============================================================================
+\section{What exactly is an irrational number?}
+% =============================================================================
+
+What exactly is an irrational number? An irrational number is a real number that cannot be expressed as a fraction
+of two integers. In other words, it cannot be written in the form \(\frac{p}{q}\), where \(p\) and \(q\) are integers
+and \(q \neq 0\).
+
+But in the description above, we mentioned that irrational numbers are real numbers. But is there a way to define an
+irrational number without using the concept of real numbers? Yes, we can define irrational numbers using the concept of
+decimal expansions. An irrational number is a number that has a non-terminating and non-repeating decimal expansion.
+This means that when you write the number in decimal form, the digits go on forever without ever settling into a
+repeating pattern. For example, the number \(\pi\) (approximately 3.14159...) is irrational because its decimal
+expansion goes on forever without repeating. Similarly, the square root of 2 (approximately 1.41421...) is also
+irrational for the same reason.
+
+But how can we prove that an irrational number cannot be expressed as a fraction of two integers? One common method is
+to use a proof by contradiction. For example, let's prove that \(\sqrt{2}\) is irrational. Suppose that \(\sqrt{2}\) is
+rational, meaning it can be expressed as a fraction \(\frac{p}{q}\), where \(p\) and \(q\) are integers with no common
+factors (i.e., the fraction is in its simplest form). Then we have:
+\[\sqrt{2} = \frac{p}{q}\]
+
+Squaring both sides gives:
+\[2 = \frac{p^2}{q^2}\]
+
+Multiplying both sides by \(q^2\) gives:
+\[2q^2 = p^2\]
+
+This implies that \(p^2\) is even (since it is equal to \(2q^2\)), which means that \(p\) must also be even (because
+the square of an odd number is odd). Therefore, we can write \(p\) as \(2k\) for some integer \(k\). Substituting this
+back into the equation gives:
+\[2q^2 = (2k)^2\]
+\[2q^2 = 4k^2\]
+
+Dividing both sides by 2 gives:
+\[q^2 = 2k^2\]
+
+This implies that \(q^2\) is also even, which means that \(q\) must be even as well. However, this contradicts our
+initial assumption that \(p\) and \(q\) have no common factors (since both are even, they share a factor of 2).
+Therefore, our assumption that \(\sqrt{2}\) is rational must be false, and thus \(\sqrt{2}\) is irrational.
+
+Then how can we prove that irrational numbers have non-terminating and non-repeating decimal expansions? We can prove
+this by contradiction as well. Suppose that an irrational number has a terminating or repeating decimal expansion. If
+it has a terminating decimal expansion, it can be expressed as a fraction of two integers (since any terminating decimal
+can be converted to a fraction). If it has a repeating decimal expansion, it can also be expressed as a fraction of two
+integers (using the method of converting repeating decimals to fractions). In both cases, this contradicts the
+definition of an irrational number. Therefore, irrational numbers must have non-terminating and non-repeating decimal
+expansions.
+
+A more formal proof of this can be given using the concept of limits and infinite series. Consider an irrational number
+\(x\) with a decimal expansion:
+\[x = d_0.d_1d_2d_3\ldots\]
+
+where \(d_0\) is the integer part and \(d_1, d_2, d_3, \ldots\) are the digits after the decimal point. We can express
+this decimal expansion as an infinite series:
+\[x = d_0 + \frac{d_1}{10} + \frac{d_2}{10^2} + \frac{d_3}{10^3} + \ldots\]
+
+If \(x\) were rational, then this series would either terminate or repeat. However, since \(x\) is irrational, the
+series does not terminate or repeat. This means that for any finite number of terms in the series, we can always find
+more terms that differ from the previous ones, ensuring that the decimal expansion is non-terminating and non-repeating.
+
+However, there is a very simple explanation of why irrational numbers have non-terminating and non-repeating: they are
+\textbf{defined} that way. We human beings created the concept of irrational numbers to describe numbers that cannot be
+expressed as fractions of integers. By definition, irrational numbers are those that do not fit into the category of
+rational numbers, which are defined as numbers that can be expressed as fractions of integers. Therefore, it is inherent
+in the definition of irrational numbers that they have non-terminating and non-repeating decimal expansions.
+
+% =============================================================================
+\section{Why do real numbers only consist of rational and irrational numbers?}
+% =============================================================================
+
+Simple: By definition, real numbers are defined as the set of all rational and irrational numbers. This definition is
+based on the need to create a comprehensive number system that can represent all possible quantities along a continuous
+number line. Rational numbers are those that can be expressed as fractions of integers, while irrational numbers are
+those that cannot be expressed as fractions of integers. By combining these two sets of numbers, we obtain the set of
+real numbers, which includes all possible values that can be represented on the number line.
+
+When we consider the questions like ``Why irrational numbers are non-terminating and non-repeating?'' or ``Why real
+numbers only consist of rational and irrational numbers?'', we must be aware that these concepts are defined by humans.
+Because we define them that way, then they have the properties that the definitions specify.
+
+In contrast, suppose one day an extraterrestrial object hits the Earth and the human scientists start to study it. They
+find that this object contains two chemical elements that are unknown to us before. Now, can they say that this object
+only has these two unknown elements? Could there be more? Yes, there could be more, because the fact that only two
+elements are found is just based on our current knowledge and technology. There might be other elements that we have not
+yet discovered or identified. In other words, when we face an objective object, we must prove that there are no other
+possibilities before we can conclude that only the known possibilities exist.
+
+However, when we talk about mathematical concepts like real numbers, rational numbers, and irrational numbers, we are
+dealing with definitions and abstractions created by humans. In this case, we define real numbers as the set of all
+rational and irrational numbers. Since this is a definition, there are no other possibilities to consider. The set of
+real numbers is \textbf{by definition} the union of rational and irrational numbers, and there are no other types of
+numbers included in this definition. Therefore, we don't need to prove that real numbers only consist of rational and
+irrational numbers; it is simply a matter of how we have defined these concepts in mathematics. Likewise, we don't need
+to prove that irrational numbers have non-terminating and non-repeating decimal expansions; it is also a matter of
+definition.
+
+% =============================================================================
 \section{Prove: 0.999\ldots = 1}
 % =============================================================================
 
