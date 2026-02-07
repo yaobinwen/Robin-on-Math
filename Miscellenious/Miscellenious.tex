@@ -270,6 +270,49 @@ immediate predecessor and successor of a rational number \textbf{in this specifi
 not unique, so different listings may yield different immediate neighbors for the same rational number.
 
 % =============================================================================
+\section{Another example to show that we can't always trust our intuition in mathematics}
+% =============================================================================
+
+Based on our daily experiences, we might think that a function that behaves differently for rational and irrational
+numbers would be discontinuous at the point where the behavior changes. However, this is not always the case, and we can
+construct a function that is continuous at that point despite having different definitions for rational and irrational
+numbers.
+
+Consider the following function:
+
+\[
+f(x) =
+\begin{cases}
+  x & \text{if } x \in \mathbb{R} \setminus \mathbb{Q} \text{ (irrational numbers)} \\
+  0 & \text{if } x \in \mathbb{Q}
+\end{cases}
+\]
+
+We can prove that $f(x)$ is continuous at \(x = 0\) as follows.
+
+First of all, we know that \(f(0) = 0\) since 0 is a rational number. Therefore, we have:
+
+\[|(f(x) - f(0)| = |f(x) - 0| = |f(x)| \leqslant |x|\]
+
+because for irrational numbers, \(f(x) = x\), and for rational numbers, \(f(x) = 0 \leqslant |x|\). In both cases, the
+absolute value of \(f(x)\) is less than or equal to the absolute value of \(x\).
+
+Therefore, $\forall \epsilon > 0$, we can choose $\delta = \epsilon$ such that if $0 < |x - 0| = |x| < \delta$, then
+$|f(x) - f(0)| = |f(x)| \leqslant |x| < \delta = \epsilon$. Therefore, by the definition of continuity, we have shown
+that $f(x)$ is continuous at \(x = 0\).
+
+By intuition, one might think that the continuity at \(x = 0\) means the left and right ``immediate neighbors'' of 0,
+denoted by $x_l$ and $x_r$, must be both rational numbers too, such that $f(x_l) = f(x_r) = f(x) = 0$ in order to make
+the changes from both the left and the right sides ``smooth'' without any abruptive ``jumps''. However, we can't find
+such ``immediate neighbors'' because there are infinitely many rational and irrational numbers between any two real
+numbers, so there is no immediate neighbor in the usual sense. This is sort of counter-intuitive: as $x$ approaches 0,
+$x$ changes in between rational and irrational numbers, so $f(x)$ changes in between 0 and an irrational number. Because
+$x > 0$, $f(x) > 0$ when $x \in \mathbb{R} \setminus \mathbb{Q}$, the function values approach 0 but with smaller and
+smaller ``abruptive jumps'', but eventually, and \textbf{magically}, the function values reach 0 at $x = 0$ without any
+jump. This is a very interesting example that shows how our intuition can be challenged when dealing with infinite
+processes and the density of rational and irrational numbers on the real number line.
+
+% =============================================================================
 \section{Binomial Theorem}
 % =============================================================================
 
